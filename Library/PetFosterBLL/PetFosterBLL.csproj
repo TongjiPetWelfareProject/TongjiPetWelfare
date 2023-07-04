@@ -74,8 +74,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccommodateManager.cs" />
     <Compile Include="Adopt.cs" />
+    <Compile Include="ApplicationManager.cs" />
+    <Compile Include="BulletinManager.cs" />
+    <Compile Include="CollectPetInfoManager.cs" />
+    <Compile Include="CommentPetManager.cs" />
+    <Compile Include="CommentPostManager.cs" />
+    <Compile Include="DonationManager.cs" />
     <Compile Include="EmployeeManager.cs" />
+    <Compile Include="ForumPostManager.cs" />
+    <Compile Include="FosterManager.cs" />
+    <Compile Include="LikePetManager.cs" />
+    <Compile Include="LikePostManager.cs" />
     <Compile Include="PetManager.cs" />
     <Compile Include="RoomManager.cs" />
     <Compile Include="UserManger.cs" />
