@@ -79,11 +79,11 @@ namespace PetFoster.DAL
                         // 其他列..
                         vet.vet_id = reader["Vet_ID"].ToString();
                         vet.vet_name = reader["User_Name"].ToString();
-                        vet.phone_number = reader["Account_Status"].ToString();
-                        vet.working_start_hr = Convert.ToDecimal(reader["Address"]);
-                        vet.working_start_min = Convert.ToDecimal(reader["Password"]);
-                        vet.working_end_hr = Convert.ToDecimal(reader["Phone_Number"]);
-                        vet.working_end_min = Convert.ToDecimal(reader["Working_Start_Min"]);
+                        vet.phone_number = reader["phone_number"].ToString();
+                        vet.working_start_hr = Convert.ToDecimal(reader["working_start_hr"]);
+                        vet.working_start_min = Convert.ToDecimal(reader["working_start_min"]);
+                        vet.working_end_hr = Convert.ToDecimal(reader["working_end_hr"]);
+                        vet.working_end_min = Convert.ToDecimal(reader["working_end_min"]);
                         // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
 
                     }
@@ -138,7 +138,7 @@ namespace PetFoster.DAL
                     command.CommandType = CommandType.Text;
                     command.CommandText = "INSERT INTO vet (vet_id, vet_name, salary,phone_number, working_start_hr,working_start_min," +
                         "working_end_hr,working_end_min) " +
-                        "VALUES (user_id_seq.NEXTVAL, :vet_name, :phone_number,:salary, :working_start_hr,:working_start_min,:working_end_hr,:working_end_min)";
+                        "VALUES (vet_id_seq.NEXTVAL, :vet_name, :phone_number,:salary, :working_start_hr,:working_start_min,:working_end_hr,:working_end_min)";
                     command.Parameters.Clear();
                     command.Parameters.Add("vet_name", OracleDbType.Varchar2, vetname, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);

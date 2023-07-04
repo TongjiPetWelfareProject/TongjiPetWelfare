@@ -96,7 +96,7 @@ namespace PetFoster.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserManager.ShowUserProfile(10,"User_Name");
+            EmployeeManager.ShowProfile(10,"Salary");
         }
     }
 }
