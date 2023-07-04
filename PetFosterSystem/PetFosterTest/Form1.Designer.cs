@@ -148,7 +148,7 @@
             // 
             // VetViewButton
             // 
-            this.VetViewButton.Location = new System.Drawing.Point(84, 140);
+            this.VetViewButton.Location = new System.Drawing.Point(85, 117);
             this.VetViewButton.Name = "VetViewButton";
             this.VetViewButton.Size = new System.Drawing.Size(75, 23);
             this.VetViewButton.TabIndex = 11;
