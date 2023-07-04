@@ -99,6 +99,7 @@ namespace PetFoster.Test
             //RoomManager.RentRoom();
             FosterManager.ShowFoster();
             LikePetServer.InsertLikePet("5", "7");
+            UserManager.ShowUserProfile();
         }
     }
 }
