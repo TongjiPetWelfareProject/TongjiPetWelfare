@@ -33,6 +33,30 @@ namespace PetFoster.BLL
                 throw new Exception(status + "状态不合法！");
             }
         }
+        public static void ShowUserProfile(int Limitrow = -1, string Orderby = null)
+        {
+            DataTable dt = UserServer.UserInfo(Limitrow, Orderby);
+            //调试用
+            foreach (DataColumn column in dt.Columns)
+            {
+                Console.Write("{0,-20}", column.ColumnName);
+            }
+            Console.WriteLine();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                foreach (var item in row.ItemArray)
+                {
+                    Console.Write("{0,-20}", item);
+                }
+                Console.WriteLine();
+            }
+        }
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="user">用户信息</param>
+        /// <returns>是否登陆成功</returns>
         public static bool Login(USER2Row user)
         {
             bool con = false;

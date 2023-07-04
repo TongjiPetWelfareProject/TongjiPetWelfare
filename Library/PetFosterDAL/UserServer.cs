@@ -19,6 +19,38 @@ namespace PetFoster.DAL
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
         /// <summary>
+        /// 查看用户信息，由ShowProfiles(DataTable dt)调用
+        /// 注意用户的密码不能用明文存储，最起码的要求密码不能在客户端显示！！！
+        /// </summary>
+        /// <param name="Limitrows">最多显示的行数</param>
+        /// <param name="Orderby">排序的依据（降序）</param>
+        /// <returns>返回数据表</returns>
+        public static DataTable UserInfo(decimal Limitrows = -1, string Orderby = null)
+        {
+            DataTable dataTable = new DataTable();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = "SELECT user_id,user_name,phone_number,account_status,address FROM user2";
+                if (Limitrows > 0)
+                    query += $" where rownum<={Limitrows} ";
+                if ((Orderby) != null)
+                    query += $" order by {Orderby} desc";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(command);
+
+                adapter.Fill(dataTable);
+
+                connection.Close();
+            }
+
+            Console.ReadLine();
+            return dataTable;
+        }
+        /// <summary>
         /// 用户登录时匹配用户信息，如果为0，说明密码错误,否则密码正确
         /// </summary>
         /// <param name="user">用户行</param>

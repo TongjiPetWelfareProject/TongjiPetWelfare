@@ -19,6 +19,39 @@ namespace PetFoster.DAL
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
         /// <summary>
+        /// 查看兽医信息，由ShowProfiles(DataTable dt)调用
+        /// </summary>
+        /// <param name="Limitrows">最多显示的行数</param>
+        /// <param name="Orderby">排序的依据（降序）</param>
+        /// <returns>返回数据表</returns>
+        public static DataTable VetInfo(decimal Limitrows=-1,string Orderby=null)
+        {
+            DataTable dataTable = new DataTable();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM vet_labor ";
+                if (Limitrows > 0)
+                    query += $" where rownum<={Limitrows} ";
+                if ((Orderby) != null)
+                    query += $" order by {Orderby} desc";
+                
+                OracleCommand command = new OracleCommand(query, connection);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(command);
+                
+                adapter.Fill(dataTable);
+
+                connection.Close();
+
+                
+            }
+
+            Console.ReadLine();
+            return dataTable;
+        }
+        /// <summary>
         /// 获取兽医的信息
         /// </summary>
         /// <param name="VID">兽医ID</param>

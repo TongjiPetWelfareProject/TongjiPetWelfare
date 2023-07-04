@@ -93,5 +93,10 @@ namespace PetFoster.Test
         {
             UserManager.ChangePassword(50, "Password1!", "OracleCo11!");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserManager.ShowUserProfile(10,"User_Name");
+        }
     }
 }

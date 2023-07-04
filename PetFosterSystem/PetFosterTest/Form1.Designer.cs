@@ -39,6 +39,7 @@
             this.Unregisterbutton = new System.Windows.Forms.Button();
             this.Supervisebutton = new System.Windows.Forms.Button();
             this.Chpasswdbutton = new System.Windows.Forms.Button();
+            this.VetViewButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.petAvatar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,11 +146,22 @@
             this.Chpasswdbutton.UseVisualStyleBackColor = true;
             this.Chpasswdbutton.Click += new System.EventHandler(this.Chpasswdbutton_Click);
             // 
+            // VetViewButton
+            // 
+            this.VetViewButton.Location = new System.Drawing.Point(84, 140);
+            this.VetViewButton.Name = "VetViewButton";
+            this.VetViewButton.Size = new System.Drawing.Size(75, 23);
+            this.VetViewButton.TabIndex = 11;
+            this.VetViewButton.Text = "查看用户信息";
+            this.VetViewButton.UseVisualStyleBackColor = true;
+            this.VetViewButton.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.VetViewButton);
             this.Controls.Add(this.Chpasswdbutton);
             this.Controls.Add(this.Supervisebutton);
             this.Controls.Add(this.Unregisterbutton);
@@ -182,6 +194,7 @@
         private System.Windows.Forms.Button Unregisterbutton;
         private System.Windows.Forms.Button Supervisebutton;
         private System.Windows.Forms.Button Chpasswdbutton;
+        private System.Windows.Forms.Button VetViewButton;
     }
 }
 
