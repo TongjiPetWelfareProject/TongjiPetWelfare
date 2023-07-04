@@ -8,5 +8,6 @@ namespace PetFoster.DAL
 {
     internal class FosterServer
     {
+
     }
 }
