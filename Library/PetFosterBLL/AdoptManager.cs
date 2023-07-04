@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetFosterBLL
+namespace PetFoster.BLL
 {
-    internal class Adopt
+    internal class AdoptManager
     {
     }
 }
