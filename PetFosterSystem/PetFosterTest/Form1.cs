@@ -96,8 +96,7 @@ namespace PetFoster.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //RoomManager.RentRoom();
-            RoomManager.ShowRooms();
+            RoomManager.RentRoom();
         }
     }
 }
