@@ -86,5 +86,9 @@ namespace PetFoster.BLL
             else
                 Console.WriteLine("没有符合要求的房源！");
         }
+        public static void ReturnRoom(short storey, short compartment)
+        {
+            RoomServer.UpdateRoom(storey, compartment, room_status: "N");
+        }
     }
 }

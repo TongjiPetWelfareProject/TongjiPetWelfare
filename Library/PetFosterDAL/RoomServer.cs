@@ -99,18 +99,19 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.Parameters.Clear();
+                    
                     if (HaveCleaned)
                     {
                         command.CommandText = "UPDATE room SET cleaning_time=:Cleaning_Time " +
                         "where compartment=:compartment and storey=:storey";
+                        command.Parameters.Clear();
                         command.Parameters.Add("Cleaning_Time", OracleDbType.TimeStamp, DateTime.Now, ParameterDirection.Input);
                     }
                     else
                     {
                         command.CommandText = "UPDATE room SET room_status='Y' " +
                         "where compartment=:compartment and storey=:storey";
-                        //command.Parameters.Add("room_status", OracleDbType.Varchar2, room_status, ParameterDirection.Input);
+                        command.Parameters.Clear();
                     }
                     
                     command.Parameters.Add("storey", OracleDbType.Int16, storey, ParameterDirection.Input);
