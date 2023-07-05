@@ -12,7 +12,7 @@ namespace PetFoster.BLL
     {
         public static void ShowLikePost(int Limitrow = -1, string Orderby = null)
         {
-            DataTable dt = LikePetServer.LikePetInfo(Limitrow, Orderby);
+            DataTable dt = LikePostServer.LikePostInfo(Limitrow, Orderby);
             //调试用
             foreach (DataColumn column in dt.Columns)
             {

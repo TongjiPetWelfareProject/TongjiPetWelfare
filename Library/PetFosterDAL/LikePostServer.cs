@@ -28,7 +28,7 @@ namespace PetFoster.DAL
             {
                 connection.Open();
 
-                string query = "SELECT user_id,pet_id,EXTRACT date from like_time as liked_date, EXTRACT time from like_time as liked_time FROM like_pet";
+                string query = "SELECT user_id,post_id,EXTRACT date from like_time as liked_date, EXTRACT time from like_time as liked_time FROM like_post";
                 if (Limitrows > 0)
                     query += $" where rownum<={Limitrows} ";
                 if ((Orderby) != null)
@@ -62,10 +62,10 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select *from like_pet where Pet_ID=:pet_id and User_ID=:user_id";
+                command.CommandText = "select *from like_post where Post_ID=:post_id and User_ID=:user_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                command.Parameters.Add("post_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
@@ -90,7 +90,7 @@ namespace PetFoster.DAL
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="PID"></param>
-        public static void InsertLikePet(string UID, string PID)
+        public static void InsertLikePost(string UID, string PID)
         {
             // 添加新行
             try
@@ -100,11 +100,11 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO like_pet (user_id, pet_id) " +
-                        "VALUES (:user_id,:pet_id)";
+                    command.CommandText = "INSERT INTO like_post (user_id, post_id) " +
+                        "VALUES (:user_id,:post_id)";
                     command.Parameters.Clear();
                     command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                    command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                    command.Parameters.Add("post_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
 
                     try
                     {
@@ -131,7 +131,7 @@ namespace PetFoster.DAL
         /// <param name="UID"></param>
         /// <param name="PID"></param>
         /// <returns></returns>
-        public static void DeleteLikePet(string UID, string PID)
+        public static void DeleteLikePost(string UID, string PID)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
             {
@@ -139,9 +139,9 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "delete from like_pet where Pet_ID= :Pet_ID and User_ID=:User_ID";
+                command.CommandText = "delete from like_post where Post_ID= :Post_ID and User_ID=:User_ID";
                 command.Parameters.Clear();
-                command.Parameters.Add("Pet_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                command.Parameters.Add("Post_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 try
                 {
