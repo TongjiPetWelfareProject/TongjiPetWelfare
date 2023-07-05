@@ -28,7 +28,7 @@ namespace PetFoster.DAL
             {
                 connection.Open();
 
-                string query = "SELECT user_id,post_id,EXTRACT date from like_time as liked_date, EXTRACT time from like_time as liked_time FROM like_post";
+                string query = "SELECT user_id,post_id,TO_CHAR(like_time,'YYYY-MM-DD') as liked_date, TO_CHAR(like_time,'HH24:MI:SS') as liked_time FROM like_post";
                 if (Limitrows > 0)
                     query += $" where rownum<={Limitrows} ";
                 if ((Orderby) != null)
