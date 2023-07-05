@@ -97,14 +97,15 @@ namespace PetFoster.Test
         private void button1_Click(object sender, EventArgs e)
         {
             //RoomManager.RentRoom();
-            FosterManager.ShowFoster();
-            LikePetServer.InsertLikePet("5", "7");
+            //FosterManager.ShowFoster();
+            LikePetManager.GiveALike("5", "7");
             //ForumPostServer.UncensoredForum();
             //CommentPetManager.ShowCommentPet();
             //CommentPostManager.ShowCommentPost();
-            CollectPetInfoManager.ShowCollectPetInfo();
-            ForumPostManager.ShowForumProfile();
-            ForumPostServer.UpdateForum("16", "This is the backup file!");
+            //CollectPetInfoManager.ShowCollectPetInfo();
+
+            //ForumPostManager.ShowForumProfile();
+            //ForumPostServer.UpdateForum("16", "This is the backup file!");
         }
     }
 }

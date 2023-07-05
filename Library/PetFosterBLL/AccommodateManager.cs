@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetFoster.BLL
 {
-    internal class AccommodateManager
+    public class AccommodateManager
     {
     }
 }
