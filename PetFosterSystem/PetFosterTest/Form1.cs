@@ -99,6 +99,8 @@ namespace PetFoster.Test
             //RoomManager.RentRoom();
             FosterManager.ShowFoster();
             LikePetServer.InsertLikePet("5", "7");
+            ForumPostServer.UncensoredForum();
+            ForumPostServer.UpdateForum("16", "This is the backup file!");
         }
     }
 }

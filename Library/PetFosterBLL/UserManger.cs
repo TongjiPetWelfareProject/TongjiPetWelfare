@@ -165,15 +165,13 @@ namespace PetFoster.BLL
         /// <summary>
         /// 封禁或解禁账户
         /// </summary>
-        /// <param name="UID">用户的ID</param>
-        /// <param name="flag">true为封禁，否则是解禁</param>
-        public static void Ban(decimal UID,bool flag=true)
+        /// <param name="UID"></param>
+        /// <param name="status">设置用户相应的状态</param>
+        public static void Ban(decimal UID,string status="Banned")
         {
             User user=UserServer.GetUser(UID.ToString(), "0",true);
-            if(flag) 
-                UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password,user.Phone_Number, user.Address, "Banned");
-            else
-                UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, "In Good Standing");
+            UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password,user.Phone_Number, user.Address, status);
+
         }
         static int RemainingTime = 5;
         static bool Waiting = false;
