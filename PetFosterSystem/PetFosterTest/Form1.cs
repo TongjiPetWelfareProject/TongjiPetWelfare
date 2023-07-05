@@ -102,6 +102,7 @@ namespace PetFoster.Test
             //ForumPostServer.UncensoredForum();
             ForumPostManager.ShowForumProfile();
             ForumPostServer.UpdateForum("16", "This is the backup file!");
+            ForumPostManager.DeleteForumProfile("10");
         }
     }
 }
