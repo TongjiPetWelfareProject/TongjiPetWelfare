@@ -21,14 +21,29 @@ namespace PetFoster.DAL
         /// <param name="Limitrows"></param>
         /// <param name="Orderby"></param>
         /// <returns></returns>
-        public static DataTable CommentPetInfo(decimal Limitrows = -1, string Orderby = null)
+        public static DataTable CommentPetInfo(decimal Limitrows = -1, string Orderby = null, string UID = "-1", string PID = "-1")
         {
             DataTable dataTable = new DataTable();
             using (OracleConnection connection = new OracleConnection(conStr))
             {
                 connection.Open();
-
-                string query = "SELECT user_id,pet_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_pet";
+                string query="";
+                if (UID == "-1" && PID == "-1")
+                {
+                    query = "SELECT user_id,pet_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_pet";
+                }
+                else if(PID != "-1" && UID == "-1")
+                {
+                    query = $"SELECT user_id,pet_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_pet where Pet_ID={PID}";
+                }
+                else if (PID == "-1" && UID != "-1")
+                {
+                    query = $"SELECT user_id,pet_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_pet where User_ID={UID}";
+                }
+                else
+                {
+                    query = $"SELECT user_id,pet_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_pet where Pet_ID={PID} and User_ID={UID}";
+                }
                 if (Limitrows > 0)
                     query += $" where rownum<={Limitrows} ";
                 if ((Orderby) != null)
@@ -47,50 +62,11 @@ namespace PetFoster.DAL
             return dataTable;
         }
         /// <summary>
-        /// 获取点赞宠物条目
-        /// </summary>
-        /// <param name="UID"></param>
-        /// <param name="PID"></param>
-        /// <returns>true表示有条目，则可以删除，false表示可以点赞</returns>
-        public static bool GetCommentPetEntry(string UID, string PID)
-        {
-            bool con = false;
-            User user1 = new User();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                // 连接对象将在 using 块结束时自动关闭和释放资源
-                connection.Open();
-                OracleCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = "select *from comment_pet where Pet_ID=:pet_id and User_ID=:user_id";
-                command.Parameters.Clear();
-                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
-                try
-                {
-                    OracleDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        connection.Close();
-                        return true;
-                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
-                    }
-                    connection.Close();
-                    return false;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    return false;
-                }
-            }
-        }
-        /// <summary>
         /// 点赞
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="PID"></param>
-        public static void InsertCommentPet(string UID, string PID)
+        public static void InsertCommentPet(string UID, string PID,string content)
         {
             // 添加新行
             try
@@ -100,16 +76,17 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO comment_pet (user_id, pet_id) " +
-                        "VALUES (:user_id,:pet_id)";
+                    command.CommandText = "INSERT INTO comment_pet (user_id, pet_id,comment_contents) " +
+                        "VALUES (:user_id,:pet_id,:comment_contents)";
                     command.Parameters.Clear();
                     command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                     command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                    command.Parameters.Add("comment_contents", OracleDbType.Varchar2, content, ParameterDirection.Input);
 
                     try
                     {
                         command.ExecuteNonQuery();
-                        Console.WriteLine($"{UID}给{PID}在{DateTime.Now}点赞");
+                        Console.WriteLine($"{UID}给{PID}在{DateTime.Now}评论");
 
                     }
                     catch (OracleException ex)
@@ -131,27 +108,28 @@ namespace PetFoster.DAL
         /// <param name="UID"></param>
         /// <param name="PID"></param>
         /// <returns></returns>
-        public static void DeleteCommentPet(string UID, string PID)
+        public static void DeleteCommentPet(string UID, string PID, DateTime datetime)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
-            {
+             {
                 // 执行删除操作
-                connection.Open();
+                /*connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "delete from comment_pet where Pet_ID= :Pet_ID and User_ID=:User_ID";
+                command.CommandText = $"delete from comment_pet where Pet_ID= :Pet_ID and User_ID=:User_ID and AND TO_CHAR(comment_time, 'YYYY-MM-DD HH24:MI:SS')=:DateTime";
                 command.Parameters.Clear();
                 command.Parameters.Add("Pet_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                command.Parameters.Add("DateTime", OracleDbType.Varchar2, datetime.ToString(), ParameterDirection.Input);
                 try
                 {
                     command.ExecuteNonQuery();
-                    Console.WriteLine($"{UID}给{PID}的点赞已取消");
+                    Console.WriteLine($"{UID}给{PID}的评论已取消");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"不存在{UID}给{PID}的点赞");
-                }
+                    Console.WriteLine($"不存在{UID}给{PID}的评论");
+                }*/
             }
         }
     }
