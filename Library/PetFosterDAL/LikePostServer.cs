@@ -47,7 +47,7 @@ namespace PetFoster.DAL
             return dataTable;
         }
         /// <summary>
-        /// 获取点赞宠物条目
+        /// 获取点赞帖子条目
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="PID"></param>
@@ -62,7 +62,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select *from like_post where Post_ID=:post_id and User_ID=:user_id";
+                command.CommandText = $"select *from like_post where Post_ID={PID} and User_ID={UID}";
                 command.Parameters.Clear();
                 command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 command.Parameters.Add("post_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);

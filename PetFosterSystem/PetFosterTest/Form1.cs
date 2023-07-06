@@ -98,7 +98,7 @@ namespace PetFoster.Test
         {
             //RoomManager.RentRoom();
             //FosterManager.ShowFoster();
-            LikePetManager.GiveALike("5", "7");
+            LikePostManager.GiveALike("5", "7");
             //ForumPostServer.UncensoredForum();
             //CommentPetManager.ShowCommentPet();
             //CommentPostManager.ShowCommentPost();

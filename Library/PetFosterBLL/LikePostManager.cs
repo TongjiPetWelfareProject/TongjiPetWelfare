@@ -29,5 +29,20 @@ namespace PetFoster.BLL
                 Console.WriteLine();
             }
         }
+        public static void GiveALike(string UID, string PID)
+        {
+            bool dt = LikePostServer.GetLikePostEntry(UID, PID);
+            //调试用
+            if (!dt)
+            {
+                LikePostServer.InsertLikePost(UID, PID);
+                Console.WriteLine($"{UID} gives a like to {PID}."); // 输出点赞信息
+            }
+            else
+            {
+                LikePostServer.DeleteLikePost(UID, PID);
+                Console.WriteLine($"{UID} undo a like to {PID}."); // 输出点赞信息
+            }
+        }
     }
 }
