@@ -113,7 +113,7 @@ namespace PetFoster.DAL
             using (OracleConnection connection = new OracleConnection(conStr))
              {
                 // 执行删除操作
-                connection.Open();
+                /*connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
                 command.CommandText = $"delete from comment_pet where Pet_ID= :Pet_ID and User_ID=:User_ID and AND TO_CHAR(comment_time, 'YYYY-MM-DD HH24:MI:SS')=:DateTime";
@@ -129,7 +129,7 @@ namespace PetFoster.DAL
                 catch (Exception ex)
                 {
                     Console.WriteLine($"不存在{UID}给{PID}的评论");
-                }
+                }*/
             }
         }
     }
