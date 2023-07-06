@@ -92,12 +92,6 @@
     <Compile Include="VetGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Library\PetFosterDAL\PetFosterDAL.csproj">
-      <Project>{d14d1e13-07e7-4d9b-90e3-049a8371696e}</Project>
-      <Name>PetFosterDAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
