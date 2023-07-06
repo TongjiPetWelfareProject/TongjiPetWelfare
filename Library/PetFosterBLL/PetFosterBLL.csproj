@@ -85,6 +85,7 @@
     <Compile Include="EmployeeManager.cs" />
     <Compile Include="ForumPostManager.cs" />
     <Compile Include="FosterManager.cs" />
+    <Compile Include="JsonHelper.cs" />
     <Compile Include="LikePetManager.cs" />
     <Compile Include="LikePostManager.cs" />
     <Compile Include="PetManager.cs" />

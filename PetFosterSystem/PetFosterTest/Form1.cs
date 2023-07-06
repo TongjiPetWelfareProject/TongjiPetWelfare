@@ -96,16 +96,9 @@ namespace PetFoster.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //RoomManager.RentRoom();
-            //FosterManager.ShowFoster();
-            LikePetManager.GiveALike("5", "7");
-            //ForumPostServer.UncensoredForum();
-            //CommentPetManager.ShowCommentPet();
-            //CommentPostManager.ShowCommentPost();
-            //CollectPetInfoManager.ShowCollectPetInfo();
-
-            //ForumPostManager.ShowForumProfile();
-            //ForumPostServer.UpdateForum("16", "This is the backup file!");
+            LikePetManager.GiveALike("15", "15");
+            JsonHelper.TranslateToEn("上海市","provinces");
+            UserManager.IsValidStatus("In Good Standing");
         }
     }
 }

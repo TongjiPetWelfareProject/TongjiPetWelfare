@@ -1,0 +1,90 @@
+{
+  
+  "provinces": {
+    "北京市": "Beijing",
+    "天津市": "Tianjin",
+    "河北省": "Hebei",
+    "山西省": "Shanxi",
+    "内蒙古自治区": "Inner Mongolia",
+    "辽宁省": "Liaoning",
+    "吉林省": "Jilin",
+    "黑龙江省": "Heilongjiang",
+    "上海市": "Shanghai",
+    "江苏省": "Jiangsu",
+    "浙江省": "Zhejiang",
+    "安徽省": "Anhui",
+    "福建省": "Fujian",
+    "江西省": "Jiangxi",
+    "山东省": "Shandong",
+    "河南省": "Henan",
+    "湖北省": "Hubei",
+    "湖南省": "Hunan",
+    "广东省": "Guangdong",
+    "广西壮族自治区": "Guangxi",
+    "海南省": "Hainan",
+    "重庆市": "Chongqing",
+    "四川省": "Sichuan",
+    "贵州省": "Guizhou",
+    "云南省": "Yunnan",
+    "西藏自治区": "Tibet",
+    "陕西省": "Shaanxi",
+    "甘肃省": "Gansu",
+    "青海省": "Qinghai",
+    "宁夏回族自治区": "Ningxia",
+    "新疆维吾尔自治区": "Xinjiang",
+    "台湾省": "Taiwan",
+    "香港特别行政区": "Hong Kong",
+    "澳门特别行政区": "Macau"
+  },
+    "status": {
+      "合规": "Compliant",
+      "良好": "In Good Standing",
+      "审核中": "Under Review",
+      "发出警告": "Warning Issued",
+      "已停用": "Suspended",
+      "试用期": "Probation",
+      "已封禁": "Banned",
+      "申诉中": "Appealing"
+    },
+    "categories":{
+        "治疗": "Treatment",
+        "疫苗接种": "Vaccination",
+        "繁育": "Breeding",
+        "领养": "Adoption",
+        "捐赠": "Donation",
+        "投诉": "Complaint",
+        "走失宠物": "Lost Pet"
+    },
+    "duties": {
+      "领养顾问": "Adoption Counselor",
+      "兽医技术员": "Veterinary Technician",
+      "动物行为学家": "Animal Behaviorist",
+      "志愿者协调员": "Volunteer Coordinator",
+      "寄养协调员": "Foster Coordinator",
+      "设施经理": "Facility Manager",
+      "筹款和外展协调员": "Fundraising and Outreach Coordinator",
+      "救援运输员": "Rescue Transporter",
+      "动物护理专家": "Animal Care Specialist"
+    },
+    "breed": {
+      "德国牧羊犬": "German Shepherd",
+      "拉布拉多猎犬": "Labrador Retriever",
+      "金毛猎犬": "Golden Retriever",
+      "斗牛犬": "Bulldog",
+      "比格犬": "Beagle",
+      "贵宾犬": "Poodle",
+      "罗威纳犬": "Rottweiler",
+      "约克夏梗": "Yorkshire Terrier",
+      "拳师犬": "Boxer",
+      "腊肠犬": "Dachshund"
+    },
+    "health_states": {
+      "充满活力": "Vibrant",
+      "健康": "Well",
+      "尚可": "Decent",
+      "不健康": "Unhealthy",
+      "生病": "Sickly",
+      "危急": "Critical"
+    }
+  }
+  
