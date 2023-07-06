@@ -4,6 +4,7 @@ using PetFoster.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -37,10 +38,32 @@ namespace PetFoster.BLL
 
             foreach (DataRow row in dt.Rows)
             {
-                foreach (var item in row.ItemArray)
+                for(int i=0;i<row.ItemArray.Length;i++)
                 {
-                    Console.Write("{0,-20}", item);
+                    string[] results = row.ItemArray[i].ToString().Split(',');
+                    if (i == 4&&results.Length==2)
+                    {
+                        string result = "";
+                        string province = "";
+                        province=JsonHelper.TranslateToCn(results[1],"provinces");
+                        result += province;
+                        result+= JsonHelper.TranslateToCn(results[0], results[1]);
+                        Console.Write("{0,-20}", result);
+                    }
+                    else if (i == 4 && results.Length == 1)
+                    {
+                        string province = "";
+                        province = JsonHelper.TranslateToCn(results[0], "provinces");
+                        Console.Write("{0,-20}", province);
+                    }
+                    else if (i == 3)
+                    {
+                        Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(),"status"));
+                    }
+                    else
+                        Console.Write("{0,-20}", row.ItemArray[i].ToString());
                 }
+
                 Console.WriteLine();
             }
         }
@@ -91,7 +114,7 @@ namespace PetFoster.BLL
         }
         public static bool IsValidAddress(string address)
         {
-            string res = JsonHelper.TranslateToEn(address, "provinces");
+            string res=JsonHelper.TranslateAddr(address);
             return  res!= null;
         }
         private static bool ValidRegistration(string Username, string pwd, string phoneNumber, string Address = "Beijing")
@@ -131,6 +154,7 @@ namespace PetFoster.BLL
             // 添加新行
             bool valid = ValidRegistration(Username, pwd, phoneNumber, Address);
             if (!valid) { return false; }
+            Address = JsonHelper.TranslateAddr(Address);
             string UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
             //注册时的其他操作，如验证码等等.....
             Console.WriteLine($"你好，{Username},您已经注册成功，你的UID是{UID}");

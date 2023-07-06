@@ -5,6 +5,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text.RegularExpressions;
+
 namespace PetFoster.BLL
 {
     public class JsonHelper
@@ -88,6 +90,30 @@ namespace PetFoster.BLL
                     return item.Name.ToString();
             }
             return null;
+        }
+        public static string TranslateAddr(string input)
+        {
+
+            string pattern = @"^(.*?)(省|市|自治区|特别行政区)(.*)$";
+            Regex regex = new Regex(pattern);
+            Match match = regex.Match(input);
+            string[] region = new string[3];
+            string[] res=new string[2];
+            if (match.Success)
+            {
+                region[0] = match.Groups[1].Value;
+                region[1] = match.Groups[2].Value;
+                region[2] = match.Groups[3].Value;
+                res[1] = TranslateToEn(region[0] + region[1], "provinces");
+                if (res[1]==null)return null;
+                res[0] = TranslateToEn(region[2], res[1]);
+                if (res[0]==null)return null;
+            }
+            else
+            {
+                Console.WriteLine("无法分割字符串");
+            }
+            return res[0]+','+res[1];
         }
 
     }

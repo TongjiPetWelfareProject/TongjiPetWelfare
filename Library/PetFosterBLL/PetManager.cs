@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using static PetFoster.Model.PetData;
 using static System.Net.Mime.MediaTypeNames;
 using System.Drawing;
+using System.Data;
+
 namespace PetFoster.BLL
 {
     public  class PetManager
@@ -18,6 +20,36 @@ namespace PetFoster.BLL
         public static string pwd = "campus";
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static void ShowPetProfile(int Limitrow = -1, string Orderby = null)
+        {
+            DataTable dt =DAL.PetServer.PetInfo(Limitrow, Orderby);
+            //调试用
+            foreach (DataColumn column in dt.Columns)
+            {
+                Console.Write("{0,-20}", column.ColumnName);
+            }
+            Console.WriteLine();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                for (int i = 0; i < row.ItemArray.Length; i++)
+                {
+                    if (i == 2)
+                    {
+                        Console.Write("{0,-30}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "breed"));
+                    }
+                    else if (i == 5)
+                    {
+                        Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "health_state"));
+                    }else if(i==6)
+                        Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "vaccine"));
+                    else
+                        Console.Write("{0,-20}", row.ItemArray[i].ToString());
+                }
+
+                Console.WriteLine();
+            }
+        }
         public static bool ViewProfile(int PetID,out Pet Candidate)
         {
             string PID=PetID.ToString();
