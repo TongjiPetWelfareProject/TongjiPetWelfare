@@ -111,16 +111,16 @@ namespace PetFoster.DAL
         public static void DeleteCommentPet(string UID, string PID, DateTime datetime)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
-             {
+            {
                 // 执行删除操作
-                /*connection.Open();
+                connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"delete from comment_pet where Pet_ID= :Pet_ID and User_ID=:User_ID and AND TO_CHAR(comment_time, 'YYYY-MM-DD HH24:MI:SS')=:DateTime";
+                command.CommandText = $"DELETE FROM comment_pet WHERE Pet_ID = :Pet_ID AND User_ID = :User_ID AND TO_CHAR(comment_time, 'YYYY-MM-DD HH24:MI:SS') = :DateTime";
                 command.Parameters.Clear();
-                command.Parameters.Add("Pet_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
-                command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                command.Parameters.Add("DateTime", OracleDbType.Varchar2, datetime.ToString(), ParameterDirection.Input);
+                command.Parameters.Add("Pet_ID", OracleDbType.Varchar2).Value = PID;
+                command.Parameters.Add("User_ID", OracleDbType.Varchar2).Value = UID;
+                command.Parameters.Add("DateTime", OracleDbType.Varchar2).Value = datetime.ToString("yyyy-MM-dd HH:mm:ss");
                 try
                 {
                     command.ExecuteNonQuery();
@@ -129,8 +129,9 @@ namespace PetFoster.DAL
                 catch (Exception ex)
                 {
                     Console.WriteLine($"不存在{UID}给{PID}的评论");
-                }*/
+                }
             }
         }
+
     }
 }
