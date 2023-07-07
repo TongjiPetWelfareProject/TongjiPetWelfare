@@ -71,8 +71,8 @@ namespace PetFoster.BLL
         /// 登录
         /// </summary>
         /// <param name="user">用户信息</param>
-        /// <returns>是否登陆成功</returns>
-        public static bool Login(string Username,string Pwd)
+        /// <returns>返回错误码，在JSON中指定</returns>
+        public static int Login(USER2Row user)
         {
             bool con = false;
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -81,19 +81,18 @@ namespace PetFoster.BLL
                 // 在此块中执行数据操作
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
-                User Candidate = UserServer.GetUser(Username, Pwd, true);
-                if (Candidate.Account_Status == "Banned")
-                    Console.WriteLine("用户已经被封禁");
-                else if (Candidate.User_ID == "-1")
-                    Console.WriteLine("UID不存在！");
-                else if (Candidate.Password != Pwd)
-                    Console.WriteLine("密码错误!");
-                else
-                    Console.WriteLine($"恭喜你，{Candidate.User_Name},登陆成功!");
+                User Candidate = UserServer.GetUser(user.USER_ID, user.PASSWORD, true);
                 connection.Close();
+                if (Candidate.Account_Status == "Banned")
+                    return 1;
+                else if (Candidate.User_ID == "-1")
+                    return 2;
+                else if (Candidate.Password != user.PASSWORD)
+                    return 3;
+                else
+                    return 4;
+                
             }
-
-            return con;
         }
         private static bool ValidatePhoneNumber(string phoneNumber)
         {
