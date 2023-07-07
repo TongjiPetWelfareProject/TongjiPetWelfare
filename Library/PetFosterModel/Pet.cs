@@ -11,7 +11,7 @@ namespace PetFoster.Model
         public string Pet_ID { get; set; }
         public string Pet_Name { get; set; }
         public string Breed { get; set; }
-        public int Age { get; set; }
+        public DateTime birthdate { get; set; }
         public byte[] Avatar { get; set; }
         public string Health_State { get; set; }
         public string Vaccine { get; set; }
@@ -27,7 +27,7 @@ namespace PetFoster.Model
             Pet_ID = prow.PET_ID;
             Pet_Name = prow.PET_NAME;
             Breed = prow.BREED;
-            Age = prow.AGE;
+            birthdate = prow.BIRTHDATE;
             Avatar = prow.AVATAR;
             Health_State= prow.HEALTH_STATE;
             Vaccine= prow.VACCINE;
