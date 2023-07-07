@@ -71,8 +71,8 @@ namespace PetFoster.BLL
         /// 登录
         /// </summary>
         /// <param name="user">用户信息</param>
-        /// <returns>是否登陆成功</returns>
-        public static bool Login(USER2Row user)
+        /// <returns>返回错误码，在JSON中指定</returns>
+        public static int Login(USER2Row user)
         {
             bool con = false;
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -82,18 +82,17 @@ namespace PetFoster.BLL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 User Candidate = UserServer.GetUser(user.USER_ID, user.PASSWORD, true);
-                if (Candidate.Account_Status == "Banned")
-                    Console.WriteLine("用户已经被封禁");
-                else if (Candidate.User_ID == "-1")
-                    Console.WriteLine("UID不存在！");
-                else if (Candidate.Password != user.PASSWORD)
-                    Console.WriteLine("密码错误!");
-                else
-                    Console.WriteLine($"恭喜你，{Candidate.User_Name},登陆成功!");
                 connection.Close();
+                if (Candidate.Account_Status == "Banned")
+                    return 1;
+                else if (Candidate.User_ID == "-1")
+                    return 2;
+                else if (Candidate.Password != user.PASSWORD)
+                    return 3;
+                else
+                    return 4;
+                
             }
-
-            return con;
         }
         private static bool ValidatePhoneNumber(string phoneNumber)
         {
@@ -117,29 +116,25 @@ namespace PetFoster.BLL
             string res=JsonHelper.TranslateAddr(address);
             return  res!= null;
         }
-        private static bool ValidRegistration(string Username, string pwd, string phoneNumber, string Address = "Beijing")
+        private static int ValidRegistration(string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
             if (!IsValidAddress(Address))
             {
-                Console.WriteLine("请输入有效的地址!");
-                return false;
+                return 0;
             }
             else if (!ValidatePhoneNumber(phoneNumber))
             {
-                Console.WriteLine("请输入有效的电话号码!");
-                return false;
+                return 1;
             }
             else if (!ValidatePassword(pwd))
             {
-                Console.WriteLine("密码位数为8~16位，必须包含大小写，数字与特殊字符!");
-                return false;
+                return 2;
             }
             else if (Username.Length > 20)
             {
-                Console.WriteLine("用户名不得大于20位!");
-                return false;
-            }
-            return true;
+                return 3;
+            }else 
+                return 4;
 
         }
         /// <summary>
@@ -149,26 +144,26 @@ namespace PetFoster.BLL
         /// <param name="pwd">密码</param>
         /// <param name="phoneNumber">手机号</param>
         /// <param name="Address">地址</param>
-        public static bool Register(string Username, string pwd, string phoneNumber, string Address = "Beijing")
+        /// <returns>返回状态string</returns>
+        public static string Register(string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
             // 添加新行
-            bool valid = ValidRegistration(Username, pwd, phoneNumber, Address);
-            if (!valid) { return false; }
+            int code = ValidRegistration(Username, pwd, phoneNumber, Address);
+            if (code!=4) { return JsonHelper.GetErrorMessage("register",code); }
             Address = JsonHelper.TranslateAddr(Address);
             string UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
             //注册时的其他操作，如验证码等等.....
-            Console.WriteLine($"你好，{Username},您已经注册成功，你的UID是{UID}");
-            return true;
+            return $"你好，{Username},您已经注册成功，你的UID是{UID}";
         }
-        public static void Unregister(decimal UID)
+        public static string Unregister(decimal UID)
         {
             bool rows = UserServer.DeleteUser(UID.ToString());
             if (rows)
             {
-                Console.WriteLine($"{UID},您已经注销成功!");
+                return $"{UID},您已经注销成功!";
             }
             else
-                Console.WriteLine($"不存在UID位{UID}的用户");
+                return $"不存在UID为{UID}的用户";
         }
         //以下是更改个人信息部分
         //修改密码
@@ -177,22 +172,39 @@ namespace PetFoster.BLL
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="status">设置用户相应的状态</param>
-        public static void Ban(decimal UID, string status = "Banned")
+        public static string Ban(decimal UID, string status = "Banned")
         {
             User user = UserServer.GetUser(UID.ToString(), "0", true);
-            UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, status);
-
+            if (IsValidStatus(status))
+            {
+                UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, status);
+                return $"已将用户{user.User_Name}状态设置为{status}";
+            }
+            else if(IsValidStatus(JsonHelper.TranslateToEn(status, "status"))){
+                UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, JsonHelper.TranslateToEn(status, "status"));
+                return $"已将用户{user.User_Name}状态设置为{status}";
+            }
+            else
+                return $"不存在{status}这种状态";
         }
         static int RemainingTime = 5;
         static bool Waiting = false;
         static CountdownTimer countdownTimer;
-        public static void ChangePassword(decimal UID, string Password, string NewPassword)
+        /// <summary>
+        /// 改密码
+        /// </summary>
+        /// <param name="UID">用户名</param>
+        /// <param name="Password">旧密码</param>
+        /// <param name="NewPassword">新密码</param>
+        /// <returns></returns>
+        public static string ChangePassword(decimal UID, string Password, string NewPassword)
         {
+            TimeSpan timeRemaining;
             User candidate = UserServer.GetUser(UID.ToString(), Password, true);
             if (Waiting && countdownTimer.GetTimeRemaining().Ticks > 0)
             {
-                TimeSpan timeRemaining = countdownTimer.GetTimeRemaining();
-                Console.WriteLine($"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes, {timeRemaining.Seconds} seconds");
+                timeRemaining = countdownTimer.GetTimeRemaining();
+                return $"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes, {timeRemaining.Seconds} seconds";
             }
             else if (Waiting && countdownTimer.GetTimeRemaining().Ticks <= 0)
             {
@@ -201,7 +213,7 @@ namespace PetFoster.BLL
             }
             if (candidate.Password != Password && --RemainingTime > 0)
             {
-                Console.WriteLine($"密码不正确,还有{RemainingTime}次机会，共计5次机会");
+                return $"密码不正确,还有{RemainingTime}次机会，共计5次机会";
             }
             else if (RemainingTime == 0)
             {
@@ -213,12 +225,13 @@ namespace PetFoster.BLL
             {
                 if (!ValidatePassword(NewPassword))
                 {
-                    Console.WriteLine("密码长度必须为8~16位，同时包含大小写，数字，特殊字符！");
-                    return;
+                    return "密码长度必须为8~16位，同时包含大小写，数字，特殊字符！";
                 }
                 UserServer.UpdateUser(UID.ToString(), candidate.User_Name, NewPassword, candidate.Phone_Number, candidate.Address, candidate.Account_Status);
-                Console.WriteLine($"{candidate.User_Name},你好！密码已成功修改，请不要忘记密码");
+                return $"{candidate.User_Name},你好！密码已成功修改，请不要忘记密码";
             }
+            timeRemaining = countdownTimer.GetTimeRemaining();
+            return $"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes, {timeRemaining.Seconds} seconds";
 
         }
     }

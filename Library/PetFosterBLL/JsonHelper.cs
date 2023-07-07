@@ -6,6 +6,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text.Json.Nodes;
 
 namespace PetFoster.BLL
 {
@@ -115,6 +118,34 @@ namespace PetFoster.BLL
             }
             return res[0]+','+res[1];
         }
+        public static string GetErrorMessage(string method,int code)
+        {
+            var directory = System.AppContext.BaseDirectory.Split(Path.DirectorySeparatorChar);
+            directory[0] += '/';
+            var slice = new ArraySegment<string>(directory, 0, directory.Length - 4);
+            var path = Path.Combine(slice.ToArray());
+            string filePath = Path.Combine(path, "values.json");
+            string jsonFromFile = File.ReadAllText(filePath);
 
+            // 解析JSON字符串
+            string json = File.ReadAllText(filePath);
+            // 解析JSON字符串
+            JsonDocument doc = JsonDocument.Parse(json);
+
+            // 获取provinces数组
+            JsonElement root = doc.RootElement;
+            JsonElement statusData = root.GetProperty(method);
+            // 获取 "status" 属性下的数据
+            JsonElement[] jsonArray = statusData.EnumerateArray().ToArray();
+            if (code >= 0 && code < jsonArray.Length)
+            {
+                string message = jsonArray[code].GetString();
+                return message;
+            }
+            else
+            {
+                return "未知错误！";
+            }
+        }
     }
 }

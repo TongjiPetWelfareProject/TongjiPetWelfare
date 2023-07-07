@@ -97,8 +97,6 @@ namespace PetFoster.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string dateTimeString = "04-7月-23 09.23.13.276000000 下午";
-            //string format = "dd-M月-yy hh.mm.ss.fffffff tt";
             DateTime bd = new DateTime(2006, 7, 9);
             PetManager.RegisterPet("2ndDog", "German Shepherd", bd, "E:\\GenshinVedio\\Yuan Shen 原神\\Yuan Shen 原神 Screenshot 2022.10.03 - 00.17.26.87.png", "Vibrant", true);
             //DateTime dateTime =new DateTime (year:2023,month:7,day:4,hour:9,minute:23,second:13,millisecond:276);
