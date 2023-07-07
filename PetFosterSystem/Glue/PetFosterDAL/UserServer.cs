@@ -32,7 +32,7 @@ namespace PetFoster.DAL
             {
                 connection.Open();
 
-                string query = "SELECT user_id,user_name,phone_number,account_status,address FROM user2";
+                string query = "SELECT user_id,user_name,phone_number,account_status,address FROM user2 where role='User'";
                 if (Limitrows > 0)
                     query += $" where rownum<={Limitrows} ";
                 if ((Orderby) != null)
@@ -50,12 +50,13 @@ namespace PetFoster.DAL
             Console.ReadLine();
             return dataTable;
         }
+
         /// <summary>
         /// 用户登录时匹配用户信息，如果为0，说明密码错误,否则密码正确
         /// </summary>
         /// <param name="user">用户行</param>
         /// <returns></returns>
-        public static User GetUser(string UID,string pwd,bool IsAdmin=false)
+        public static User GetUser(string UID, string pwd, bool IsAdmin = false)
         {
             bool con = false;
             User user1 = new User();
@@ -65,13 +66,13 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                if(!IsAdmin)
+                if (!IsAdmin)
                     command.CommandText = "select *from user2 where User_ID=:user_id and password=:pwd";
                 else
                     command.CommandText = "select *from user2 where User_ID=:user_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                if(!IsAdmin)
+                if (!IsAdmin)
                     command.Parameters.Add("pwd", OracleDbType.Varchar2, pwd, ParameterDirection.Input);
                 try
                 {
@@ -86,8 +87,9 @@ namespace PetFoster.DAL
                         user1.Address = reader["Address"].ToString();
                         user1.Password = reader["Password"].ToString();
                         user1.Phone_Number = reader["Phone_Number"].ToString();
+                        user1.Role = reader["Role"].ToString();
                         // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
-                        
+
                     }
                     if (user1.User_ID == "-1")
                         throw new Exception("不存在的用户，请注册新用户！");
@@ -100,6 +102,34 @@ namespace PetFoster.DAL
             }
 
             return user1;
+        }
+        public static string GetRole(string UID)
+        {
+            bool con = false;
+            User user1 = new User();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select *from user2 where User_ID=:user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    string role = command.ExecuteScalar() as string;
+                    if (role == null)
+                        return "Unknown";
+                    else
+                        return role;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "Error";
+                }
+            }
         }
         static bool IsValidAddress(string address)
         {
@@ -155,7 +185,7 @@ namespace PetFoster.DAL
 
                         throw;
                     }
-                    connection.Close(); 
+                    connection.Close();
                 }
             }
             catch (Exception ex)
@@ -182,12 +212,14 @@ namespace PetFoster.DAL
                     int rowsAffected = command.ExecuteNonQuery();
                     connection.Close();
                     return true;
-                }catch(Exception ex) {
+                }
+                catch (Exception ex)
+                {
                     return false;
                 }
             }
         }
-        public static void UpdateUser(string UID,string Username, string pwd, string phoneNumber, string Address = "Beijing",string account_status="In Good Standing")
+        public static void UpdateUser(string UID, string Username, string pwd, string phoneNumber, string Address = "Beijing", string account_status = "In Good Standing")
         {
             // 更改信息
             try
