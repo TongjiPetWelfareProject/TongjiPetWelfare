@@ -364,6 +364,102 @@
         "来宾市": "Laibin",
         "崇左市": "Chongzuo"
       },
+	  "Hunan": {
+	      "长沙市": "Changsha",
+	      "株洲市": "Zhuzhou",
+	      "湘潭市": "Xiangtan",
+	      "衡阳市": "Hengyang",
+	      "邵阳市": "Shaoyang",
+	      "岳阳市": "Yueyang",
+	      "常德市": "Changde",
+	      "张家界市": "Zhangjiajie",
+	      "益阳市": "Yiyang",
+	      "郴州市": "Chenzhou",
+	      "永州市": "Yongzhou",
+	      "怀化市": "Huaihua",
+	      "娄底市": "Loudi",
+	      "湘西土家族苗族自治州": "Xiangxi Tujia and Miao Autonomous Prefecture"
+	    },
+		"Hubei": {
+		    "武汉市": "Wuhan",
+		    "黄石市": "Huangshi",
+		    "十堰市": "Shiyan",
+		    "宜昌市": "Yichang",
+		    "襄阳市": "Xiangyang",
+		    "鄂州市": "Ezhou",
+		    "荆门市": "Jingmen",
+		    "孝感市": "Xiaogan",
+		    "荆州市": "Jingzhou",
+		    "黄冈市": "Huanggang",
+		    "咸宁市": "Xianning",
+		    "随州市": "Suizhou",
+		    "恩施土家族苗族自治州": "Enshi Tujia and Miao Autonomous Prefecture",
+		    "仙桃市": "Xiantao",
+		    "潜江市": "Qianjiang",
+		    "天门市": "Tianmen",
+		    "神农架林区": "Shennongjia Forestry District"
+		  },
+		  "Tibet": {
+		      "拉萨市": "Lhasa",
+		      "日喀则市": "Shigatse",
+		      "昌都市": "Qamdo",
+		      "林芝市": "Nyingchi",
+		      "山南市": "Shannan",
+		      "那曲市": "Nagqu",
+		      "阿里地区": "Ngari"
+		    },
+			"Yunnan": {
+			    "昆明市": "Kunming",
+			    "曲靖市": "Qujing",
+			    "玉溪市": "Yuxi",
+			    "保山市": "Baoshan",
+			    "昭通市": "Zhaotong",
+			    "丽江市": "Lijiang",
+			    "普洱市": "Pu'er",
+			    "临沧市": "Lincang",
+			    "楚雄彝族自治州": "Chuxiong Yi Autonomous Prefecture",
+			    "红河哈尼族彝族自治州": "Honghe Hani and Yi Autonomous Prefecture",
+			    "文山壮族苗族自治州": "Wenshan Zhuang and Miao Autonomous Prefecture",
+			    "西双版纳傣族自治州": "Xishuangbanna Dai Autonomous Prefecture",
+			    "大理白族自治州": "Dali Bai Autonomous Prefecture",
+			    "德宏傣族景颇族自治州": "Dehong Dai and Jingpo Autonomous Prefecture",
+			    "怒江傈僳族自治州": "Nujiang Lisu Autonomous Prefecture",
+			    "迪庆藏族自治州": "Deqen Tibetan Autonomous Prefecture"
+			  },
+			  "Guizhou": {
+			      "贵阳市": "Guiyang",
+			      "六盘水市": "Liupanshui",
+			      "遵义市": "Zunyi",
+			      "安顺市": "Anshun",
+			      "毕节市": "Bijie",
+			      "铜仁市": "Tongren",
+			      "黔西南布依族苗族自治州": "Qianxinan Buyei and Miao Autonomous Prefecture",
+			      "黔东南苗族侗族自治州": "Qiandongnan Miao and Dong Autonomous Prefecture",
+			      "黔南布依族苗族自治州": "Qiannan Buyei and Miao Autonomous Prefecture"
+			    },
+				"Sichuan": {
+				    "成都市": "Chengdu",
+				    "自贡市": "Zigong",
+				    "攀枝花市": "Panzhihua",
+				    "泸州市": "Luzhou",
+				    "德阳市": "Deyang",
+				    "绵阳市": "Mianyang",
+				    "广元市": "Guangyuan",
+				    "遂宁市": "Suining",
+				    "内江市": "Neijiang",
+				    "乐山市": "Leshan",
+				    "南充市": "Nanchong",
+				    "眉山市": "Meishan",
+				    "宜宾市": "Yibin",
+				    "广安市": "Guang'an",
+				    "达州市": "Dazhou",
+				    "雅安市": "Ya'an",
+				    "巴中市": "Bazhong",
+				    "资阳市": "Ziyang",
+				    "阿坝藏族羌族自治州": "Aba Tibetan and Qiang Autonomous Prefecture",
+				    "甘孜藏族自治州": "Garze Tibetan Autonomous Prefecture",
+				    "凉山彝族自治州": "Liangshan Yi Autonomous Prefecture"
+				  },
       "Hainan": {
         "海口市": "Haikou",
         "三亚市": "Sanya",
@@ -471,22 +567,6 @@
     "vaccine":{
       "已经接种":"Y",
       "未接种":"N"
-    },
-    "login":[
-      "恭喜你，输入成功！",
-      "用户已经被封禁",
-      "UID不存在",
-      "密码错误",
-      "密码输入次数过多"
-      
-    ],
-    "register":[
-      "请输入有效的地址!",
-      "请输入有效的电话号码!",
-      "密码位数为8~16位，必须包含大小写，数字与特殊字符!",
-      "用户名不得大于20位!"
-
-    ]
-
+    }
   }
   
