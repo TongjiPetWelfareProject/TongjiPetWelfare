@@ -18,10 +18,10 @@ namespace Glue.Controllers
 
             public RegisterModel()
             {
-                Username = String.Empty;
-                Password = String.Empty;
-                PhoneNumber = String.Empty;
-                City = String.Empty;
+                Username = string.Empty;
+                Password = string.Empty;
+                PhoneNumber = string.Empty;
+                City = string.Empty;
             }
         }
         /*
@@ -47,16 +47,21 @@ namespace Glue.Controllers
             string password = registerModel.Password;
             string phoneNumber = registerModel.PhoneNumber;
             string city = registerModel.City;
+            string? UID;
 
             IActionResult respond;
 
-            if (UserManager.Register(username,password,phoneNumber,city))
+            int status = UserManager.Register(out UID, username, password, phoneNumber, city);
+            string message;
+            if (status == 4)
             {
-                respond = Ok();
+                message = JsonHelper.GetErrorMessage("register", status);
+                respond = Ok(message);
             }
             else
             {
-                respond = BadRequest();
+                message = $"你好，{username},您已经注册成功，你的UID是{UID}";
+                respond = Unauthorized(message);
             }
             return respond;
         }

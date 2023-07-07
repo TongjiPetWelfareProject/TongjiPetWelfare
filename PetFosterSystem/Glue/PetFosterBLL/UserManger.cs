@@ -72,7 +72,7 @@ namespace PetFoster.BLL
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>返回错误码，在JSON中指定</returns>
-        public static int Login(USER2Row user)
+        public static int Login(string username, string pwd)
         {
             bool con = false;
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -81,13 +81,13 @@ namespace PetFoster.BLL
                 // 在此块中执行数据操作
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
-                User Candidate = UserServer.GetUser(user.USER_ID, user.PASSWORD, true);
+                User Candidate = UserServer.GetUser(username, pwd, true);
                 connection.Close();
                 if (Candidate.Account_Status == "Banned")
                     return 1;
                 else if (Candidate.User_ID == "-1")
                     return 2;
-                else if (Candidate.Password != user.PASSWORD)
+                else if (Candidate.Password != pwd)
                     return 3;
                 else
                     return 4;
@@ -145,15 +145,16 @@ namespace PetFoster.BLL
         /// <param name="phoneNumber">手机号</param>
         /// <param name="Address">地址</param>
         /// <returns>返回状态string</returns>
-        public static string Register(string Username, string pwd, string phoneNumber, string Address = "Beijing")
+        public static int Register(out string? UID, string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
             // 添加新行
+            UID = null;
             int code = ValidRegistration(Username, pwd, phoneNumber, Address);
-            if (code!=4) { return JsonHelper.GetErrorMessage("register",code); }
+            if (code!=4) { return code; }
             Address = JsonHelper.TranslateAddr(Address);
-            string UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
+            UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
             //注册时的其他操作，如验证码等等.....
-            return $"你好，{Username},您已经注册成功，你的UID是{UID}";
+            return code;
         }
         public static string Unregister(decimal UID)
         {

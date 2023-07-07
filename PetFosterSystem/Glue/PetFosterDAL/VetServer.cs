@@ -80,10 +80,10 @@ namespace PetFoster.DAL
                         vet.vet_id = reader["Vet_ID"].ToString();
                         vet.vet_name = reader["User_Name"].ToString();
                         vet.phone_number = reader["phone_number"].ToString();
-                        vet.working_start_hr = Convert.ToDecimal(reader["working_start_hr"]);
-                        vet.working_start_min = Convert.ToDecimal(reader["working_start_min"]);
-                        vet.working_end_hr = Convert.ToDecimal(reader["working_end_hr"]);
-                        vet.working_end_min = Convert.ToDecimal(reader["working_end_min"]);
+                        vet.working_start_hr = Convert.ToInt32(reader["working_start_hr"]);
+                        vet.working_start_min = Convert.ToInt32(reader["working_start_min"]);
+                        vet.working_end_hr = Convert.ToInt32(reader["working_end_hr"]);
+                        vet.working_end_min = Convert.ToInt32(reader["working_end_min"]);
                         // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
 
                     }

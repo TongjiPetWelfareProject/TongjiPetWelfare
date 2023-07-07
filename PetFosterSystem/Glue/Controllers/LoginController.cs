@@ -60,7 +60,7 @@ namespace WebApplicationTest1
             string username = loginModel.Username;
             string password = loginModel.Password;
             Console.WriteLine(username + " " + password);
-            IActionResult respond;
+            int status = UserManager.Login(username, password);
             /*
             using (OracleConnection oracle = new OracleConnection(conStr))
             {
@@ -76,16 +76,17 @@ namespace WebApplicationTest1
                 oracle.Close();
             }
             */
-            if (UserManager.Login(username,password)) {
-                respond = Ok();
+            string message = JsonHelper.GetErrorMessage("login", status);
+            Console.WriteLine(message);
+            if (status == 4)
+            {
+                return Ok(message);
             }
             else
             {
-                respond = BadRequest();
+                return Unauthorized(message);
             }
-            return respond;
         }
-
         // PUT api/<LoginController>/5
         /*
         [HttpPut("{id}")]

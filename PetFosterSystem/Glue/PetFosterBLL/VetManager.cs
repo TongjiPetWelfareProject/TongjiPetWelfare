@@ -10,7 +10,7 @@ namespace PetFoster.BLL
 {
     public class VetManager
     {
-        public static void ShowVetProfile(int Limitrow=-1,string Orderby=null)
+        public static DataTable ShowVetProfile(int Limitrow=-1,string Orderby=null)
         {
             DataTable dt=VetServer.VetInfo(Limitrow,Orderby);
             //调试用
@@ -28,6 +28,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;  //交给连接层转换并返回给前端
         }
     }
 }

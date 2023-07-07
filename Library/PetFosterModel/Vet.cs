@@ -12,10 +12,10 @@ namespace PetFoster.Model
         public string vet_name;
         public double salary;
         public string phone_number;
-        public decimal working_start_hr;
-        public decimal working_end_hr;
-        public decimal working_start_min;
-        public decimal working_end_min;
+        public int working_start_hr;
+        public int working_end_hr;
+        public int working_start_min;
+        public int working_end_min;
         public Vet() { }
         public Vet(PetData.VETRow vrow)
         {
