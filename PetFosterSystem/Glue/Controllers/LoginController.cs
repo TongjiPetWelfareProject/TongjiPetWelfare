@@ -6,7 +6,6 @@ using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using System.Data.OracleClient;
 using PetFoster.DAL;
-using Glue.Model;
 namespace WebApplicationTest1
 {
 
@@ -14,15 +13,29 @@ namespace WebApplicationTest1
     [ApiController]
     public class LoginController : ControllerBase
     {
+        public class LoginModel
+        {
+            public string Username { get; set; }
+            public string Password { get; set; }
+
+            public LoginModel()
+            {
+                Username = string.Empty;
+                Password = string.Empty;
+            }
+        }
+        /*
         public static string user = "\"C##PET\"";
         public static string pwd = "campus";
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        */
         //private readonly UserManager _userManager;
 
         //public LoginController()
 
         // GET: api/<LoginController>
+        /*
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -47,10 +60,11 @@ namespace WebApplicationTest1
             string username = loginModel.Username;
             string password = loginModel.Password;
             Console.WriteLine(username + " " + password);
-            IActionResult respond = Ok();
+            IActionResult respond;
+            /*
             using (OracleConnection oracle = new OracleConnection(conStr))
             {
-                oracle.Open();/*
+                oracle.Open();
                 if (UserManager.Login(username, password))
                 {
                     respond = Ok();
@@ -58,16 +72,22 @@ namespace WebApplicationTest1
                 else
                 {
                     respond = BadRequest();
-                }*/
+                }
                 oracle.Close();
             }
+            */
             if (UserManager.Login(username,password)) {
-                return Ok();
+                respond = Ok();
             }
-            return BadRequest();
+            else
+            {
+                respond = BadRequest();
+            }
+            return respond;
         }
 
         // PUT api/<LoginController>/5
+        /*
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
@@ -78,5 +98,6 @@ namespace WebApplicationTest1
         public void Delete(int id)
         {
         }
+        */
     }
 }
