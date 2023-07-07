@@ -14,6 +14,7 @@ namespace PetFoster.Model
         public string Phone_Number;
         public string Account_Status;
         public string Address;
+        public string Role;
         public User() {
             User_ID = "-1";
         }
@@ -25,6 +26,7 @@ namespace PetFoster.Model
             Phone_Number= urow.PHONE_NUMBER;
             Account_Status= urow.ACCOUNT_STATUS;
             Address=urow.ADDRESS;
+            Role=urow.ROLE;
         }
     }
 }

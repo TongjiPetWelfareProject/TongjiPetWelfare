@@ -35,7 +35,7 @@ namespace PetFoster.Test
                 PetData.USER2Row newrow = dataset1.USER2.NewUSER2Row();
                 newrow.PASSWORD = PwdBox.Text;
                 newrow.USER_ID = UIDBox.Text;
-                UserManager.Login(newrow);
+                UserManager.Login(newrow.USER_ID,newrow.PASSWORD);
                 connection.Close();
             }
 
@@ -97,22 +97,11 @@ namespace PetFoster.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string dateTimeString = "04-7月-23 09.23.13.276000000 下午";
-            //string format = "dd-M月-yy hh.mm.ss.fffffff tt";
-            //PetManager.ShowPetProfile();
-            //DateTime dateTime =new DateTime (year:2023,month:7,day:4,hour:9,minute:23,second:13,millisecond:276);
-            //RoomManager.RentRoom();
-            //FosterManager.ShowFoster();
-            //LikePostManager.GiveALike("5", "7");
-            //ForumPostServer.UncensoredForum();
-            CommentPetManager.ShowCommentPet(UID:"6",PID: "47");
-            CommentPetManager.GiveAComment("5", "7","Hello,I'm 5 I'll give 7 a comment");
-            //CommentPetManager.UndoAComment("42", "4", dateTime);
-            //CommentPostManager.ShowCommentPost();
-            //CollectPetInfoManager.ShowCollectPetInfo();
 
-            //ForumPostManager.ShowForumProfile();
-            //ForumPostServer.UpdateForum("16", "This is the backup file!");
+            //CommentPetManager.ShowCommentPet(UID:"6",PID: "47");
+            //CommentPetManager.GiveAComment("5", "7","Hello,I'm 5 I'll give 7 a comment");
+            UserManager.ShowUserProfile();
+            
         }
     }
 }

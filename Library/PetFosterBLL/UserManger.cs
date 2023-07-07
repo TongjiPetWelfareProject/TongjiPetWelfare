@@ -71,8 +71,8 @@ namespace PetFoster.BLL
         /// 登录
         /// </summary>
         /// <param name="user">用户信息</param>
-        /// <returns>返回错误码，在JSON中指定</returns>
-        public static int Login(USER2Row user)
+        /// <returns>返回错误码，在JSON中指定,4为管理员，5为用户</returns>
+        public static int Login(string UID,string Pwd)
         {
             bool con = false;
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -81,16 +81,27 @@ namespace PetFoster.BLL
                 // 在此块中执行数据操作
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
-                User Candidate = UserServer.GetUser(user.USER_ID, user.PASSWORD, true);
+                User Candidate = UserServer.GetUser(UID, Pwd);
                 connection.Close();
                 if (Candidate.Account_Status == "Banned")
                     return 1;
                 else if (Candidate.User_ID == "-1")
                     return 2;
-                else if (Candidate.Password != user.PASSWORD)
+                else if (Candidate.Password != Pwd)
                     return 3;
                 else
-                    return 4;
+                {
+                    if (Candidate.Role == "Admin")
+                    {
+                        Console.WriteLine($"你好，管理员{Candidate.User_Name}已经登陆成功");
+                        return 5;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"你好，用户{Candidate.User_Name}已经登陆成功");
+                        return 4;
+                    }
+                }
                 
             }
         }
