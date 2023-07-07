@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace PetFosterModel {
+namespace PetFoster.Model {
     
     
     /// <summary>
@@ -13294,7 +13294,7 @@ namespace PetFosterModel {
         }
     }
 }
-namespace PetFosterModel.PetDataTableAdapters {
+namespace PetFoster.Model.PetDataTableAdapters {
     
     
     /// <summary>
