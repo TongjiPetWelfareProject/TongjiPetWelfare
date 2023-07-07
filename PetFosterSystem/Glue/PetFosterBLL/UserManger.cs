@@ -38,16 +38,16 @@ namespace PetFoster.BLL
 
             foreach (DataRow row in dt.Rows)
             {
-                for(int i=0;i<row.ItemArray.Length;i++)
+                for (int i = 0; i < row.ItemArray.Length; i++)
                 {
                     string[] results = row.ItemArray[i].ToString().Split(',');
-                    if (i == 4&&results.Length==2)
+                    if (i == 4 && results.Length == 2)
                     {
                         string result = "";
                         string province = "";
-                        province=JsonHelper.TranslateToCn(results[1],"provinces");
+                        province = JsonHelper.TranslateToCn(results[1], "provinces");
                         result += province;
-                        result+= JsonHelper.TranslateToCn(results[0], results[1]);
+                        result += JsonHelper.TranslateToCn(results[0], results[1]);
                         Console.Write("{0,-20}", result);
                     }
                     else if (i == 4 && results.Length == 1)
@@ -58,7 +58,7 @@ namespace PetFoster.BLL
                     }
                     else if (i == 3)
                     {
-                        Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(),"status"));
+                        Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "status"));
                     }
                     else
                         Console.Write("{0,-20}", row.ItemArray[i].ToString());
@@ -71,8 +71,8 @@ namespace PetFoster.BLL
         /// 登录
         /// </summary>
         /// <param name="user">用户信息</param>
-        /// <returns>返回错误码，在JSON中指定</returns>
-        public static int Login(USER2Row user)
+        /// <returns>返回错误码，在JSON中指定,4为管理员，5为用户</returns>
+        public static int Login(string UID, string Pwd)
         {
             bool con = false;
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -81,17 +81,28 @@ namespace PetFoster.BLL
                 // 在此块中执行数据操作
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
-                User Candidate = UserServer.GetUser(user.USER_ID, user.PASSWORD, true);
+                User Candidate = UserServer.GetUser(UID, Pwd);
                 connection.Close();
                 if (Candidate.Account_Status == "Banned")
                     return 1;
                 else if (Candidate.User_ID == "-1")
                     return 2;
-                else if (Candidate.Password != user.PASSWORD)
+                else if (Candidate.Password != Pwd)
                     return 3;
                 else
-                    return 4;
-                
+                {
+                    if (Candidate.Role == "Admin")
+                    {
+                        Console.WriteLine($"你好，管理员{Candidate.User_Name}已经登陆成功");
+                        return 5;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"你好，用户{Candidate.User_Name}已经登陆成功");
+                        return 4;
+                    }
+                }
+
             }
         }
         private static bool ValidatePhoneNumber(string phoneNumber)
@@ -113,8 +124,8 @@ namespace PetFoster.BLL
         }
         public static bool IsValidAddress(string address)
         {
-            string res=JsonHelper.TranslateAddr(address);
-            return  res!= null;
+            string res = JsonHelper.TranslateAddr(address);
+            return res != null;
         }
         private static int ValidRegistration(string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
@@ -133,7 +144,8 @@ namespace PetFoster.BLL
             else if (Username.Length > 20)
             {
                 return 3;
-            }else 
+            }
+            else
                 return 4;
 
         }
@@ -149,7 +161,7 @@ namespace PetFoster.BLL
         {
             // 添加新行
             int code = ValidRegistration(Username, pwd, phoneNumber, Address);
-            if (code!=4) { return JsonHelper.GetErrorMessage("register",code); }
+            if (code != 4) { return JsonHelper.GetErrorMessage("register", code); }
             Address = JsonHelper.TranslateAddr(Address);
             string UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
             //注册时的其他操作，如验证码等等.....
@@ -180,7 +192,8 @@ namespace PetFoster.BLL
                 UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, status);
                 return $"已将用户{user.User_Name}状态设置为{status}";
             }
-            else if(IsValidStatus(JsonHelper.TranslateToEn(status, "status"))){
+            else if (IsValidStatus(JsonHelper.TranslateToEn(status, "status")))
+            {
                 UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, JsonHelper.TranslateToEn(status, "status"));
                 return $"已将用户{user.User_Name}状态设置为{status}";
             }
