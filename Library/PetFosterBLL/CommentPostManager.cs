@@ -33,13 +33,13 @@ namespace PetFoster.BLL
         {
             //调试用
             CommentPostServer.InsertCommentPost(UID, PID, content);
-            Console.WriteLine($"{UID} gives a comment that reads {content} to {PID}."); // 输出点赞信息
+            Console.WriteLine($"{UID} gives a comment that reads {content} to {PID}."); // 添加评论信息
         }
         public static void UndoACommentPost(string UID, string PID, DateTime dateTime)
         {
             //调试用
-            //CommentPostServer.DeleteCommentPost(UID, PID, dateTime);
-            Console.WriteLine($"{UID} undo a post comment to {PID}."); // 输出点赞信息
+            CommentPostServer.DeleteCommentPost(UID, PID, dateTime);
+            Console.WriteLine($"{UID} undo a post comment to {PID}."); // 删除评论信息
         }
     }
 

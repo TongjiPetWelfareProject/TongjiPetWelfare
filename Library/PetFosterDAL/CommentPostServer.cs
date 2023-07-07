@@ -108,7 +108,7 @@ namespace PetFoster.DAL
         /// <param name="UID"></param>
         /// <param name="PID"></param>
         /// <returns></returns>
-        public static void DeleteCommentPost(string UID, string PID)
+        public static void DeleteCommentPost(string UID, string PID, DateTime datetime)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
             {
@@ -116,18 +116,23 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "delete from comment_post where Post_ID= :Post_ID and User_ID=:User_ID";
+                command.CommandText = $"DELETE FROM comment_post WHERE Post_ID = :Post_ID AND User_ID = :User_ID AND TO_CHAR(comment_time, 'YYYY-MM-DD HH24:MI:SS') = :DateTime";
                 command.Parameters.Clear();
-                command.Parameters.Add("Post_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
-                command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                command.Parameters.Add("Post_ID", OracleDbType.Varchar2).Value = PID;
+                command.Parameters.Add("User_ID", OracleDbType.Varchar2).Value = UID;
+                command.Parameters.Add("DateTime", OracleDbType.Varchar2).Value = datetime.ToString("yyyy-MM-dd HH:mm:ss");
                 try
                 {
-                    command.ExecuteNonQuery();
-                    Console.WriteLine($"{UID}给{PID}的点赞已取消");
+                    int rowsEffected = command.ExecuteNonQuery();
+                    if (rowsEffected == 0)
+                        throw new Exception($"不存在{UID}给{PID}的评论");
+                    else
+                        Console.WriteLine($"{UID}给{PID}的评论已取消");
+
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"不存在{UID}给{PID}的点赞");
+                    Console.WriteLine(ex.Message);
                 }
             }
         }

@@ -123,12 +123,16 @@ namespace PetFoster.DAL
                 command.Parameters.Add("DateTime", OracleDbType.Varchar2).Value = datetime.ToString("yyyy-MM-dd HH:mm:ss");
                 try
                 {
-                    command.ExecuteNonQuery();
-                    Console.WriteLine($"{UID}给{PID}的评论已取消");
+                    int rowsEffected = command.ExecuteNonQuery();
+                    if (rowsEffected == 0)
+                        throw new Exception($"不存在{UID}给{PID}的评论");
+                    else
+                        Console.WriteLine($"{UID}给{PID}的评论已取消");
+
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"不存在{UID}给{PID}的评论");
+                    Console.WriteLine(ex.Message);
                 }
             }
         }

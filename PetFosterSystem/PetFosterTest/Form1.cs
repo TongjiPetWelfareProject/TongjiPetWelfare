@@ -99,7 +99,7 @@ namespace PetFoster.Test
         {
             //string dateTimeString = "04-7月-23 09.23.13.276000000 下午";
             //string format = "dd-M月-yy hh.mm.ss.fffffff tt";
-            DateTime datetime = new DateTime(2023, 7, 4, 9, 23, 13);
+            DateTime datetime = new DateTime(2023, 7, 4, 21, 23, 13);
             PetManager.ShowPetProfile();
             //DateTime dateTime =new DateTime (year:2023,month:7,day:4,hour:9,minute:23,second:13,millisecond:276);
             //RoomManager.RentRoom();
@@ -108,7 +108,8 @@ namespace PetFoster.Test
             //ForumPostServer.UncensoredForum();
             //CommentPetManager.ShowCommentPet(-1, null, "6", "47");
             //CommentPetManager.GiveAComment("5", "7","Hello,I'm 5 I'll give 7 a comment");
-            CommentPetManager.UndoAComment("42", "4", datetime);
+            //CommentPetManager.UndoAComment("12", "48", datetime);
+            CommentPostManager.UndoACommentPost("19", "15", datetime);
             //CommentPostManager.GiveACommentPost("35", "7", "Hello,I'm 35 I'll give 7 a comment");
             //CollectPetInfoManager.ShowCollectPetInfo();
 
