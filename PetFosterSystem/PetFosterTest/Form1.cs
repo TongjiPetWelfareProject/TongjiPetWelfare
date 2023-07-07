@@ -108,7 +108,7 @@ namespace PetFoster.Test
             //CommentPetManager.ShowCommentPet(-1, null, "6", "47");
             //CommentPetManager.GiveAComment("5", "7","Hello,I'm 5 I'll give 7 a comment");
             //CommentPetManager.UndoAComment("42", "4", dateTime);
-            //CommentPostManager.ShowCommentPost();
+            CommentPostManager.GiveACommentPost("35", "7", "Hello,I'm 35 I'll give 7 a comment");
             //CollectPetInfoManager.ShowCollectPetInfo();
 
             //ForumPostManager.ShowForumProfile();

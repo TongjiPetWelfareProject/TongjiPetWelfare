@@ -39,7 +39,7 @@ namespace PetFoster.BLL
         {
             //调试用
             //CommentPostServer.DeleteCommentPost(UID, PID, dateTime);
-            Console.WriteLine($"{UID} undo a like to {PID}."); // 输出点赞信息
+            Console.WriteLine($"{UID} undo a post comment to {PID}."); // 输出点赞信息
         }
     }
 
