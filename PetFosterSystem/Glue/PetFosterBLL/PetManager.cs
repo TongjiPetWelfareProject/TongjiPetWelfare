@@ -11,10 +11,9 @@ using static PetFoster.Model.PetData;
 using static System.Net.Mime.MediaTypeNames;
 using System.Drawing;
 using System.Data;
-
 namespace PetFoster.BLL
 {
-    public  class PetManager
+    public class PetManager
     {
         public static string user = "\"C##PET\"";
         public static string pwd = "campus";
@@ -22,7 +21,7 @@ namespace PetFoster.BLL
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
         public static void ShowPetProfile(int Limitrow = -1, string Orderby = null)
         {
-            DataTable dt =DAL.PetServer.PetInfo(Limitrow, Orderby);
+            DataTable dt = DAL.PetServer.PetInfo(Limitrow, Orderby);
             //调试用
             foreach (DataColumn column in dt.Columns)
             {
@@ -41,7 +40,8 @@ namespace PetFoster.BLL
                     else if (i == 5)
                     {
                         Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "health_state"));
-                    }else if(i==6)
+                    }
+                    else if (i == 6)
                         Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "vaccine"));
                     else
                         Console.Write("{0,-20}", row.ItemArray[i].ToString());
@@ -50,9 +50,9 @@ namespace PetFoster.BLL
                 Console.WriteLine();
             }
         }
-        public static bool ViewProfile(int PetID,out Pet Candidate)
+        public static bool ViewProfile(int PetID, out Pet Candidate)
         {
-            string PID=PetID.ToString();
+            string PID = PetID.ToString();
             bool con = false;
             using (OracleConnection connection = new OracleConnection(conStr))
             {
@@ -64,13 +64,28 @@ namespace PetFoster.BLL
                 if (Candidate.Pet_ID == "-1")
                     Console.WriteLine("PID不存在！");
                 else
-                    Console.WriteLine($"宠物叫做{Candidate.Pet_Name}\n,品种是{Candidate.Breed}\n,年龄{Candidate.Age}\n!");
+                    Console.WriteLine($"宠物叫做{Candidate.Pet_Name}\n,品种是{Candidate.Breed}\n,年龄{Candidate.birthdate}\n!");
                 connection.Close();
             }
 
             return con;
         }
+        public static void RegisterPet(string Petname, string Breed, int Age, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
+        {
+            DateTime birthDate = DateTime.Now.AddYears(-Age);
+            // 读取图像文件
+            byte[] BinImage = DAL.PetServer.ConvertImageToByteArray(Petname);
 
-        
+            DAL.PetServer.InsertPet(Petname, Breed, birthDate, BinImage, Health_State, HaveVaccinated);
+
+        }
+        public static void RegisterPet(string Petname, string Breed, DateTime birthDate, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
+        {
+            // 读取图像文件
+            byte[] BinImage = DAL.PetServer.ConvertImageToByteArray(Path);
+
+            DAL.PetServer.InsertPet(Petname, Breed, birthDate, BinImage, Health_State, HaveVaccinated);
+
+        }
     }
 }
