@@ -38,7 +38,7 @@ namespace PetFoster.Utility
                     command.Parameters.Clear();
                     command.Parameters.Add("pet_name", OracleDbType.Varchar2, pet_name, ParameterDirection.Input);
                     command.Parameters.Add("breed", OracleDbType.Varchar2, breed, ParameterDirection.Input);
-                    command.Parameters.Add("age", OracleDbType.Int32, age, ParameterDirection.Input);
+                    command.Parameters.Add("birthdate", OracleDbType.Int32, age, ParameterDirection.Input);
                     command.Parameters.Add("avatar", OracleDbType.Blob, avatar, ParameterDirection.Input);
                     command.Parameters.Add("health_state", OracleDbType.Varchar2, health_state, ParameterDirection.Input);
                     command.Parameters.Add("vaccine", OracleDbType.Char, vaccine, ParameterDirection.Input);

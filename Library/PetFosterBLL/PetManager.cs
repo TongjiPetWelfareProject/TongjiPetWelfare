@@ -11,7 +11,6 @@ using static PetFoster.Model.PetData;
 using static System.Net.Mime.MediaTypeNames;
 using System.Drawing;
 using System.Data;
-
 namespace PetFoster.BLL
 {
     public  class PetManager
@@ -64,13 +63,28 @@ namespace PetFoster.BLL
                 if (Candidate.Pet_ID == "-1")
                     Console.WriteLine("PID不存在！");
                 else
-                    Console.WriteLine($"宠物叫做{Candidate.Pet_Name}\n,品种是{Candidate.Breed}\n,年龄{Candidate.Age}\n!");
+                    Console.WriteLine($"宠物叫做{Candidate.Pet_Name}\n,品种是{Candidate.Breed}\n,年龄{Candidate.birthdate}\n!");
                 connection.Close();
             }
 
             return con;
         }
+        public static void RegisterPet(string Petname, string Breed, int Age, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
+        {
+            DateTime birthDate=DateTime.Now.AddYears(-Age);
+            // 读取图像文件
+            byte[] BinImage = DAL.PetServer.ConvertImageToByteArray(Petname);
 
-        
+            DAL.PetServer.InsertPet(Petname, Breed, birthDate, BinImage, Health_State, HaveVaccinated);
+
+        }
+        public static void RegisterPet(string Petname, string Breed, DateTime birthDate, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
+        {
+            // 读取图像文件
+            byte[] BinImage=DAL.PetServer.ConvertImageToByteArray(Path);
+
+            DAL.PetServer.InsertPet(Petname,Breed,birthDate,BinImage,Health_State,HaveVaccinated);
+
+        }
     }
 }
