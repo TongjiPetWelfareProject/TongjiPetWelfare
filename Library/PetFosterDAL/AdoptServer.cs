@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetFoster.DAL
 {
-    internal class AdoptServer
+    public class AdoptServer
     {
     }
 }

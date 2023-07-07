@@ -78,7 +78,6 @@
     <Compile Include="AdoptServer.cs" />
     <Compile Include="ApplicationServer.cs" />
     <Compile Include="BulletinServer.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="CollectPetInfoServer.cs" />
     <Compile Include="CommentPetServer.cs" />
     <Compile Include="CommentPostServer.cs" />
