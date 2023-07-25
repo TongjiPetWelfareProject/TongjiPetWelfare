@@ -42,30 +42,30 @@ namespace Glue.Controllers
             }
             return vetList;
         }
-        /*
+        
         // GET: api/<DoctorController>
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<DoctorController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-        */
-        // POST api/<DoctorController>
-        [HttpPost]
-        public IEnumerable<Doctor> Post()
+        public IEnumerable<Doctor> Get()
         {
             DataTable vetProfiles = VetManager.ShowVetProfile();
             List<Doctor> vets = ConvertDataTableToVetList(vetProfiles);
             return vets;
         }
         /*
+        // GET api/<DoctorController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+        
+        // POST api/<DoctorController>
+        [HttpPost]
+        public IEnumerable<Doctor> Post()
+        {
+            
+        }
+        
         // PUT api/<DoctorController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
