@@ -14,6 +14,7 @@ namespace PetFoster.Model
         public string Phone_Number;
         public string Account_Status;
         public string Address;
+        public string Role;
         public User() {
             User_ID = "-1";
         }

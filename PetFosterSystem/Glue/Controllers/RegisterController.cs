@@ -51,16 +51,17 @@ namespace Glue.Controllers
 
             IActionResult respond;
 
+            Console.WriteLine(username + " " + password + " " + phoneNumber + " " + city);
             int status = UserManager.Register(out UID, username, password, phoneNumber, city);
             string message;
             if (status == 4)
             {
-                message = JsonHelper.GetErrorMessage("register", status);
+                message = $"你好，{username},您已经注册成功，你的UID是{UID}";
                 respond = Ok(message);
             }
             else
             {
-                message = $"你好，{username},您已经注册成功，你的UID是{UID}";
+                message = JsonHelper.GetErrorMessage("register", status);
                 respond = Unauthorized(message);
             }
             return respond;

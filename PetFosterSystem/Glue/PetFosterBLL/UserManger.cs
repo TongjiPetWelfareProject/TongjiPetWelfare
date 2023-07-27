@@ -157,15 +157,16 @@ namespace PetFoster.BLL
         /// <param name="phoneNumber">手机号</param>
         /// <param name="Address">地址</param>
         /// <returns>返回状态string</returns>
-        public static string Register(string Username, string pwd, string phoneNumber, string Address = "Beijing")
+        public static int Register(out string? UID, string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
             // 添加新行
+            UID = null;
             int code = ValidRegistration(Username, pwd, phoneNumber, Address);
-            if (code != 4) { return JsonHelper.GetErrorMessage("register", code); }
+            if (code != 4) { return code; }
             Address = JsonHelper.TranslateAddr(Address);
-            string UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
+            UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
             //注册时的其他操作，如验证码等等.....
-            return $"你好，{Username},您已经注册成功，你的UID是{UID}";
+            return code;
         }
         public static string Unregister(decimal UID)
         {
