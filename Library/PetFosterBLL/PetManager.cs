@@ -69,21 +69,21 @@ namespace PetFoster.BLL
 
             return con;
         }
-        public static void RegisterPet(string Petname, string Breed, int Age, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
+        public static void RegisterPet(string Petname, string Breed, string Psize,int Age, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
         {
             DateTime birthDate=DateTime.Now.AddYears(-Age);
             // 读取图像文件
             byte[] BinImage = DAL.PetServer.ConvertImageToByteArray(Petname);
 
-            DAL.PetServer.InsertPet(Petname, Breed, birthDate, BinImage, Health_State, HaveVaccinated);
+            DAL.PetServer.InsertPet(Petname, Breed, Psize, birthDate, BinImage, Health_State, HaveVaccinated);
 
         }
-        public static void RegisterPet(string Petname, string Breed, DateTime birthDate, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
+        public static void RegisterPet(string Petname, string Breed, string Psize,DateTime birthDate, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
         {
             // 读取图像文件
             byte[] BinImage=DAL.PetServer.ConvertImageToByteArray(Path);
 
-            DAL.PetServer.InsertPet(Petname,Breed,birthDate,BinImage,Health_State,HaveVaccinated);
+            DAL.PetServer.InsertPet(Petname,Breed,Psize,birthDate,BinImage,Health_State,HaveVaccinated);
 
         }
     }
