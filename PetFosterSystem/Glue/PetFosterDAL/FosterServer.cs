@@ -23,19 +23,8 @@ namespace PetFoster.DAL
         /// <param name="Limitrows">最多显示的行数</param>
         /// <param name="Orderby">排序的依据（降序）</param>
         /// <returns>返回数据表</returns>
-        public static DataTable FosterInfo(int censor_state,decimal Limitrows = -1, string Orderby = null)
+        public static DataTable FosterInfo(string censorStr,decimal Limitrows = -1, string Orderby = null)
         {
-            string censorStr="";
-            if(censor_state == 0)
-            {
-                censorStr = "to be censored";
-            }else if(censor_state == 1)
-            {
-                censorStr = "aborted";
-            }else if (censor_state == 2)
-            {
-                censorStr = "legitimate";
-            }
             DataTable dataTable = new DataTable();
             using (OracleConnection connection = new OracleConnection(conStr))
             {
