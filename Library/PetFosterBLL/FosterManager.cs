@@ -11,14 +11,16 @@ namespace PetFoster.BLL
     public class FosterManager
     {
         /// <summary>
-        /// 
+        /// 展示未审核/已审核/未通过界面
         /// </summary>
         /// <param name="censorstate">0为未审核，1为未通过审核，2为通过审核</param>
         /// <param name="Limitrow"></param>
         /// <param name="Orderby"></param>
         public static void CensorFoster(int censorstate=0,int Limitrow = -1, string Orderby = null)
         {
-            DataTable dt = FosterServer.FosterInfo(censorstate,Limitrow, Orderby);
+            string censorStr=JsonHelper.GetErrorMessage("censor_status",censorstate);
+
+            DataTable dt = FosterServer.FosterInfo(censorStr,Limitrow, Orderby);
             //调试用
             foreach (DataColumn column in dt.Columns)
             {

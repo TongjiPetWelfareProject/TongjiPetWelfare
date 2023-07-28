@@ -582,6 +582,13 @@
     "密码位数为8~16位，必须包含大小写，数字与特殊字符!",
     "用户名不得大于20位!"
 
+  ],
+  "censor_state":[
+    "to be censored",
+    "aborted",
+    "legitimate",
+    "outdated",
+    "invalid"
   ]
 }
   
