@@ -111,8 +111,12 @@ namespace PetFoster.Test
             //CommentPostManager.ShowCommentPost();
             //CollectPetInfoManager.ShowCollectPetInfo();
 
-            //ForumPostManager.ShowForumProfile();
-            //ForumPostServer.UpdateForum("16", "This is the backup file!");
+            //CommentPetManager.ShowCommentPet(UID:"6",PID: "47");
+            //CommentPetManager.GiveAComment("5", "7","Hello,I'm 5 I'll give 7 a comment");
+            FosterManager.ApplyFoster("1", "Kazuhe's dog", "Dachshund", "large", DateTime.UtcNow, 90, "Hello,I want to rent a room!");
+
+
+
         }
     }
 }
