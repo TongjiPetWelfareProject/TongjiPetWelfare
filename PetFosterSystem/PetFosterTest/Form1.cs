@@ -113,9 +113,9 @@ namespace PetFoster.Test
 
             //CommentPetManager.ShowCommentPet(UID:"6",PID: "47");
             //CommentPetManager.GiveAComment("5", "7","Hello,I'm 5 I'll give 7 a comment");
-            FosterManager.ApplyFoster("1", "Kazuhe's dog", "Dachshund", "large", DateTime.UtcNow, 90, "Hello,I want to rent a room!");
-
-
+           // FosterManager.ApplyFoster("1", "somedog", "Dachshund", "large", DateTime.UtcNow.AddDays(-90).AddMinutes(1), 90, "Hello,I want to rent a room!");
+           // FosterManager.Censorship("1",64, DateTime.UtcNow.AddDays(-90).AddMinutes(1), 4);
+            FosterManager.CensorFoster(0,verbose: false);
 
         }
     }
