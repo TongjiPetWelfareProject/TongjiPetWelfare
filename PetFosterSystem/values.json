@@ -588,7 +588,16 @@
     "aborted",
     "legitimate",
     "outdated",
-    "invalid"
+    "invalid",
+    "at capacity"
+  ],
+  "foster":[
+    "恭喜你，申请寄养成功!",
+    "时间冲突",
+    "不存在此宠物",
+    "房间分配已满",
+    "系统故障",
+    "无此寄养记录或终身无效"
   ]
 }
   

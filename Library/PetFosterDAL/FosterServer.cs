@@ -18,12 +18,14 @@ namespace PetFoster.DAL
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
         /// <summary>
-        /// 查看领养信息（RQX的我的领养），由ShowProfiles(DataTable dt)调用
+        /// 查看寄养信息
         /// </summary>
-        /// <param name="Limitrows">最多显示的行数</param>
-        /// <param name="Orderby">排序的依据（降序）</param>
-        /// <returns>返回数据表</returns>
-        public static DataTable FosterInfo(string censorStr,decimal Limitrows = -1, string Orderby = null)
+        /// <param name="censorStr">审核状态</param>
+        /// <param name="Limitrows"></param>
+        /// <param name="Orderby"></param>
+        /// <param name="verbose">是否查看详细信息</param>
+        /// <returns></returns>
+        public static DataTable FosterInfo(string censorStr="",decimal Limitrows = -1, string Orderby = null,bool verbose=false)
         {
             DataTable dataTable = new DataTable();
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -32,16 +34,19 @@ namespace PetFoster.DAL
 
                 string query = "SELECT fosterer,pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
                     ",REMARK FROM foster ";
+                if (verbose)
+                    query = "SELECT * from foster_window";
                 if (Limitrows > 0)
                 {
                     if (censorStr != "")
                         query += $" where rownum<={Limitrows} and censor_state='{censorStr}'";
                     else
                         query += $" where rownum<={Limitrows}";
-                }
+                }else
+                    query += $" where censor_state='{censorStr}'";
                 if ((Orderby) != null)
                     query += $" order by {Orderby} desc";
-
+                
                 OracleCommand command = new OracleCommand(query, connection);
 
                 OracleDataAdapter adapter = new OracleDataAdapter(command);
@@ -63,12 +68,13 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"UPDATE foster SET censor_status={censor_status}" +
-                    $" where user_id={UID} and pet_id={PID} and start_year={date.Year}" +
-                    $"and start_month={date.Month} and start_day={date.Day}";
+                command.CommandText = $"UPDATE foster SET censor_state='{censor_status}'" +
+                    $" where fosterer={UID} and pet_id={PID} and start_year={date.Year}" +
+                    $" and start_month={date.Month} and start_day={date.Day}";
                 try
                 {
                     command.ExecuteNonQuery();
+                    Console.WriteLine($"用户:{UID}对宠物{PID}的寄养申请通过状态为{censor_status}");
                 }
                 catch (OracleException ex)
                 {
@@ -79,37 +85,7 @@ namespace PetFoster.DAL
                 connection.Close();
             }
         }
-        public static bool GetFosterEntries(string UID, string PID)
-        {
-            bool con = false;
-            User user1 = new User();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                // 连接对象将在 using 块结束时自动关闭和释放资源
-                connection.Open();
-                OracleCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = $"select *from like_pet where Pet_ID={PID} and User_ID={UID}";
-                command.Parameters.Clear();
-                try
-                {
-                    OracleDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        connection.Close();
-                        return true;
-                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
-                    }
-                    connection.Close();
-                    return false;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    return false;
-                }
-            }
-        }
+        
         /// <summary>
         /// 
         /// </summary>
@@ -194,5 +170,33 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static bool GetPendingUser(string UID, string PID, DateTime date)
+        {
+            bool exist = false;
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"select count(*) from foster where User_ID='{UID}' and password='{pwd}' " +
+                    $" and start_year={date.Year} and start_month={date.Month} and start_day={date.Day} and " +
+                    $"(censor_state='at capacity' or censor_state='invalid')";
+                try
+                {
+                    exist=Convert.ToBoolean(command.ExecuteScalar());
+                    connection.Close();
+                    return exist;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    connection.Close();
+                    return false;
+                }
+                
+            }
         }
+    }
+
 }
