@@ -1,88 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="PetData" targetNamespace="http://tempuri.org/PetData.xsd" xmlns:mstns="http://tempuri.org/PetData.xsd" xmlns="http://tempuri.org/PetData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" ParameterPrefix=":" PropertyReference="ApplicationSettings.PetFosterTest.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="Oracle.ManagedDataAccess.Client" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" ParameterPrefix=":" PropertyReference="ApplicationSettings.Glue.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="Oracle.ManagedDataAccess.Client" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString1" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString1 (Settings)" PropertyReference="ApplicationSettings.Glue.Properties.Settings.GlobalReference.Default.ConnectionString1" Provider="System.Data.OracleClient" />
+          <Connection ConnectionStringObject="DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\Users\Victor\Oracle\network\admin;PASSWORD=campus;USER ID='&quot;C##PET&quot;'" IsAppSettingsProperty="false" Modifier="Assembly" Name="ConnectionString" ParameterPrefix=":" Provider="Oracle.ManagedDataAccess.Client" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ACCOMMODATETableAdapter" GeneratorDataComponentClassName="ACCOMMODATETableAdapter" Name="ACCOMMODATE" UserDataComponentName="ACCOMMODATETableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.ACCOMMODATE" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.ACCOMMODATE" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM "C##PET"."ACCOMMODATE" WHERE (("PET_ID" = :Original_PET_ID) AND ("STOREY" = :Original_STOREY) AND ("COMPARTMENT" = :Original_COMPARTMENT) AND ((:IsNull_DURATION = 1 AND "DURATION" IS NULL) OR ("DURATION" = :Original_DURATION)) AND ("START_YEAR" = :Original_START_YEAR) AND ("START_MONTH" = :Original_START_MONTH) AND ("START_DAY" = :Original_START_DAY))</CommandText>
+                    <CommandText>DELETE FROM "C##PET"."ACCOMMODATE" WHERE (((:IsNull_OWNER_ID = 1 AND "OWNER_ID" IS NULL) OR ("OWNER_ID" = :Original_OWNER_ID)) AND ("PET_ID" = :Original_PET_ID) AND ("STOREY" = :Original_STOREY) AND ("COMPARTMENT" = :Original_COMPARTMENT))</CommandText>
                     <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_OWNER_ID" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="OWNER_ID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_OWNER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="OWNER_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_PET_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_STOREY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="STOREY" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_COMPARTMENT" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="COMPARTMENT" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DURATION" Precision="0" ProviderType="Int32" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_DURATION" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_YEAR" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_YEAR" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_MONTH" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_MONTH" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_DAY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_DAY" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO "C##PET"."ACCOMMODATE" ("PET_ID", "STOREY", "COMPARTMENT", "DURATION", "START_YEAR", "START_MONTH", "START_DAY") VALUES (:PET_ID, :STOREY, :COMPARTMENT, :DURATION, :START_YEAR, :START_MONTH, :START_DAY)</CommandText>
+                    <CommandText>INSERT INTO "C##PET"."ACCOMMODATE" ("OWNER_ID", "PET_ID", "STOREY", "COMPARTMENT") VALUES (:OWNER_ID, :PET_ID, :STOREY, :COMPARTMENT)</CommandText>
                     <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="OWNER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="OWNER_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PET_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="STOREY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="STOREY" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="COMPARTMENT" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="COMPARTMENT" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="DURATION" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_YEAR" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_YEAR" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_MONTH" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_MONTH" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_DAY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_DAY" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT PET_ID, STOREY, COMPARTMENT, "DURATION", START_YEAR, START_MONTH, START_DAY FROM "C##PET".ACCOMMODATE</CommandText>
+                    <CommandText>SELECT OWNER_ID, PET_ID, STOREY, COMPARTMENT FROM "C##PET".ACCOMMODATE</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE "C##PET"."ACCOMMODATE" SET "PET_ID" = :PET_ID, "STOREY" = :STOREY, "COMPARTMENT" = :COMPARTMENT, "DURATION" = :DURATION, "START_YEAR" = :START_YEAR, "START_MONTH" = :START_MONTH, "START_DAY" = :START_DAY WHERE (("PET_ID" = :Original_PET_ID) AND ("STOREY" = :Original_STOREY) AND ("COMPARTMENT" = :Original_COMPARTMENT) AND ((:IsNull_DURATION = 1 AND "DURATION" IS NULL) OR ("DURATION" = :Original_DURATION)) AND ("START_YEAR" = :Original_START_YEAR) AND ("START_MONTH" = :Original_START_MONTH) AND ("START_DAY" = :Original_START_DAY))</CommandText>
+                    <CommandText>UPDATE "C##PET"."ACCOMMODATE" SET "OWNER_ID" = :OWNER_ID, "PET_ID" = :PET_ID, "STOREY" = :STOREY, "COMPARTMENT" = :COMPARTMENT WHERE (((:IsNull_OWNER_ID = 1 AND "OWNER_ID" IS NULL) OR ("OWNER_ID" = :Original_OWNER_ID)) AND ("PET_ID" = :Original_PET_ID) AND ("STOREY" = :Original_STOREY) AND ("COMPARTMENT" = :Original_COMPARTMENT))</CommandText>
                     <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="OWNER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="OWNER_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PET_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="STOREY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="STOREY" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="COMPARTMENT" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="COMPARTMENT" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="DURATION" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_YEAR" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_YEAR" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_MONTH" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_MONTH" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_DAY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_DAY" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_OWNER_ID" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="OWNER_ID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_OWNER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="OWNER_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_PET_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_STOREY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="STOREY" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_COMPARTMENT" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="COMPARTMENT" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DURATION" Precision="0" ProviderType="Int32" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_DURATION" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_YEAR" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_YEAR" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_MONTH" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_MONTH" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_DAY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_DAY" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
             </MainSource>
             <Mappings>
+              <Mapping SourceColumn="OWNER_ID" DataSetColumn="OWNER_ID" />
               <Mapping SourceColumn="PET_ID" DataSetColumn="PET_ID" />
               <Mapping SourceColumn="STOREY" DataSetColumn="STOREY" />
               <Mapping SourceColumn="COMPARTMENT" DataSetColumn="COMPARTMENT" />
-              <Mapping SourceColumn="DURATION" DataSetColumn="DURATION" />
-              <Mapping SourceColumn="START_YEAR" DataSetColumn="START_YEAR" />
-              <Mapping SourceColumn="START_MONTH" DataSetColumn="START_MONTH" />
-              <Mapping SourceColumn="START_DAY" DataSetColumn="START_DAY" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ADOPTTableAdapter" GeneratorDataComponentClassName="ADOPTTableAdapter" Name="ADOPT" UserDataComponentName="ADOPTTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.ADOPT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.ADOPT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."ADOPT" WHERE (("ADOPTER_ID" = :Original_ADOPTER_ID) AND ("PET_ID" = :Original_PET_ID) AND ((:IsNull_ADOPTION_TIME = 1 AND "ADOPTION_TIME" IS NULL) OR ("ADOPTION_TIME" = :Original_ADOPTION_TIME)))</CommandText>
@@ -135,7 +122,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="APPLICATIONTableAdapter" GeneratorDataComponentClassName="APPLICATIONTableAdapter" Name="APPLICATION" UserDataComponentName="APPLICATIONTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.APPLICATION" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.APPLICATION" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."APPLICATION" WHERE (("PET_ID" = :Original_PET_ID) AND ("USER_ID" = :Original_USER_ID) AND ((:IsNull_CATEGORY = 1 AND "CATEGORY" IS NULL) OR ("CATEGORY" = :Original_CATEGORY)) AND ("REASON" = :Original_REASON) AND ("APPLY_TIME" = :Original_APPLY_TIME))</CommandText>
@@ -198,7 +185,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BULLETINTableAdapter" GeneratorDataComponentClassName="BULLETINTableAdapter" Name="BULLETIN" UserDataComponentName="BULLETINTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.BULLETIN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.BULLETIN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."BULLETIN" WHERE (("BULLETIN_ID" = :Original_BULLETIN_ID) AND ((:IsNull_EMPLOYEE_ID = 1 AND "EMPLOYEE_ID" IS NULL) OR ("EMPLOYEE_ID" = :Original_EMPLOYEE_ID)) AND ((:IsNull_HEADING = 1 AND "HEADING" IS NULL) OR ("HEADING" = :Original_HEADING)) AND ("BULLETIN_CONTENTS" = :Original_BULLETIN_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND "READ_COUNT" IS NULL) OR ("READ_COUNT" = :Original_READ_COUNT)) AND ((:IsNull_PUBLISHED_TIME = 1 AND "PUBLISHED_TIME" IS NULL) OR ("PUBLISHED_TIME" = :Original_PUBLISHED_TIME)))</CommandText>
@@ -272,7 +259,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="COLLECT_PET_INFOTableAdapter" GeneratorDataComponentClassName="COLLECT_PET_INFOTableAdapter" Name="COLLECT_PET_INFO" UserDataComponentName="COLLECT_PET_INFOTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.COLLECT_PET_INFO" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.COLLECT_PET_INFO" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."COLLECT_PET_INFO" WHERE (("USER_ID" = :Original_USER_ID) AND ("PET_ID" = :Original_PET_ID) AND ("COLLECT_TIME" = :Original_COLLECT_TIME))</CommandText>
@@ -323,7 +310,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="COMMENT_PETTableAdapter" GeneratorDataComponentClassName="COMMENT_PETTableAdapter" Name="COMMENT_PET" UserDataComponentName="COMMENT_PETTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.COMMENT_PET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.COMMENT_PET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."COMMENT_PET" WHERE (("USER_ID" = :Original_USER_ID) AND ("PET_ID" = :Original_PET_ID) AND ("COMMENT_CONTENTS" = :Original_COMMENT_CONTENTS) AND ("COMMENT_TIME" = :Original_COMMENT_TIME))</CommandText>
@@ -379,7 +366,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="COMMENT_POSTTableAdapter" GeneratorDataComponentClassName="COMMENT_POSTTableAdapter" Name="COMMENT_POST" UserDataComponentName="COMMENT_POSTTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.COMMENT_POST" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.COMMENT_POST" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."COMMENT_POST" WHERE (("USER_ID" = :Original_USER_ID) AND ("POST_ID" = :Original_POST_ID) AND ("COMMENT_CONTENTS" = :Original_COMMENT_CONTENTS) AND ("COMMENT_TIME" = :Original_COMMENT_TIME))</CommandText>
@@ -435,43 +422,49 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DONATIONTableAdapter" GeneratorDataComponentClassName="DONATIONTableAdapter" Name="DONATION" UserDataComponentName="DONATIONTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.DONATION" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.DONATION" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM "C##PET"."DONATION" WHERE (("DONOR_ID" = :Original_DONOR_ID) AND ("DONATION_AMOUNT" = :Original_DONATION_AMOUNT) AND ("DONATION_TIME" = :Original_DONATION_TIME))</CommandText>
+                    <CommandText>DELETE FROM "C##PET"."DONATION" WHERE (("DONOR_ID" = :Original_DONOR_ID) AND ("DONATION_AMOUNT" = :Original_DONATION_AMOUNT) AND ("DONATION_TIME" = :Original_DONATION_TIME) AND ((:IsNull_CENSOR_STATE = 1 AND "CENSOR_STATE" IS NULL) OR ("CENSOR_STATE" = :Original_CENSOR_STATE)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_DONOR_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="DONOR_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_DONATION_AMOUNT" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DONATION_AMOUNT" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="Original_DONATION_TIME" Precision="0" ProviderType="TimeStamp" Scale="0" Size="11" SourceColumn="DONATION_TIME" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_CENSOR_STATE" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_CENSOR_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO "C##PET"."DONATION" ("DONOR_ID", "DONATION_AMOUNT", "DONATION_TIME") VALUES (:DONOR_ID, :DONATION_AMOUNT, :DONATION_TIME)</CommandText>
+                    <CommandText>INSERT INTO "C##PET"."DONATION" ("DONOR_ID", "DONATION_AMOUNT", "DONATION_TIME", "CENSOR_STATE") VALUES (:DONOR_ID, :DONATION_AMOUNT, :DONATION_TIME, :CENSOR_STATE)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="DONOR_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="DONOR_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="DONATION_AMOUNT" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DONATION_AMOUNT" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="DONATION_TIME" Precision="0" ProviderType="TimeStamp" Scale="0" Size="11" SourceColumn="DONATION_TIME" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="CENSOR_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT DONOR_ID, DONATION_AMOUNT, DONATION_TIME FROM "C##PET".DONATION</CommandText>
+                    <CommandText>SELECT DONOR_ID, DONATION_AMOUNT, DONATION_TIME, CENSOR_STATE FROM "C##PET".DONATION</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE "C##PET"."DONATION" SET "DONOR_ID" = :DONOR_ID, "DONATION_AMOUNT" = :DONATION_AMOUNT, "DONATION_TIME" = :DONATION_TIME WHERE (("DONOR_ID" = :Original_DONOR_ID) AND ("DONATION_AMOUNT" = :Original_DONATION_AMOUNT) AND ("DONATION_TIME" = :Original_DONATION_TIME))</CommandText>
+                    <CommandText>UPDATE "C##PET"."DONATION" SET "DONOR_ID" = :DONOR_ID, "DONATION_AMOUNT" = :DONATION_AMOUNT, "DONATION_TIME" = :DONATION_TIME, "CENSOR_STATE" = :CENSOR_STATE WHERE (("DONOR_ID" = :Original_DONOR_ID) AND ("DONATION_AMOUNT" = :Original_DONATION_AMOUNT) AND ("DONATION_TIME" = :Original_DONATION_TIME) AND ((:IsNull_CENSOR_STATE = 1 AND "CENSOR_STATE" IS NULL) OR ("CENSOR_STATE" = :Original_CENSOR_STATE)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="DONOR_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="DONOR_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="DONATION_AMOUNT" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DONATION_AMOUNT" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="DONATION_TIME" Precision="0" ProviderType="TimeStamp" Scale="0" Size="11" SourceColumn="DONATION_TIME" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="CENSOR_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_DONOR_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="DONOR_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_DONATION_AMOUNT" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DONATION_AMOUNT" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="Original_DONATION_TIME" Precision="0" ProviderType="TimeStamp" Scale="0" Size="11" SourceColumn="DONATION_TIME" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_CENSOR_STATE" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_CENSOR_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -481,12 +474,13 @@
               <Mapping SourceColumn="DONOR_ID" DataSetColumn="DONOR_ID" />
               <Mapping SourceColumn="DONATION_AMOUNT" DataSetColumn="DONATION_AMOUNT" />
               <Mapping SourceColumn="DONATION_TIME" DataSetColumn="DONATION_TIME" />
+              <Mapping SourceColumn="CENSOR_STATE" DataSetColumn="CENSOR_STATE" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EMPLOYEETableAdapter" GeneratorDataComponentClassName="EMPLOYEETableAdapter" Name="EMPLOYEE" UserDataComponentName="EMPLOYEETableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.EMPLOYEE" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.EMPLOYEE" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."EMPLOYEE" WHERE (("EMPLOYEE_ID" = :Original_EMPLOYEE_ID) AND ((:IsNull_EMPLOYEE_NAME = 1 AND "EMPLOYEE_NAME" IS NULL) OR ("EMPLOYEE_NAME" = :Original_EMPLOYEE_NAME)) AND ((:IsNull_SALARY = 1 AND "SALARY" IS NULL) OR ("SALARY" = :Original_SALARY)) AND ((:IsNull_PHONE_NUMBER = 1 AND "PHONE_NUMBER" IS NULL) OR ("PHONE_NUMBER" = :Original_PHONE_NUMBER)) AND ((:IsNull_DUTY = 1 AND "DUTY" IS NULL) OR ("DUTY" = :Original_DUTY)) AND ((:IsNull_WORKING_START_HR = 1 AND "WORKING_START_HR" IS NULL) OR ("WORKING_START_HR" = :Original_WORKING_START_HR)) AND ((:IsNull_WORKING_START_MIN = 1 AND "WORKING_START_MIN" IS NULL) OR ("WORKING_START_MIN" = :Original_WORKING_START_MIN)) AND ((:IsNull_WORKING_END_HR = 1 AND "WORKING_END_HR" IS NULL) OR ("WORKING_END_HR" = :Original_WORKING_END_HR)) AND ((:IsNull_WORKING_END_MIN = 1 AND "WORKING_END_MIN" IS NULL) OR ("WORKING_END_MIN" = :Original_WORKING_END_MIN)))</CommandText>
@@ -583,10 +577,10 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FORUM_POSTSTableAdapter" GeneratorDataComponentClassName="FORUM_POSTSTableAdapter" Name="FORUM_POSTS" UserDataComponentName="FORUM_POSTSTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.FORUM_POSTS" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.FORUM_POSTS" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM "C##PET"."FORUM_POSTS" WHERE (("POST_ID" = :Original_POST_ID) AND ((:IsNull_USER_ID = 1 AND "USER_ID" IS NULL) OR ("USER_ID" = :Original_USER_ID)) AND ("POST_CONTENTS" = :Original_POST_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND "READ_COUNT" IS NULL) OR ("READ_COUNT" = :Original_READ_COUNT)) AND ((:IsNull_LIKE_NUM = 1 AND "LIKE_NUM" IS NULL) OR ("LIKE_NUM" = :Original_LIKE_NUM)) AND ((:IsNull_COMMENT_NUM = 1 AND "COMMENT_NUM" IS NULL) OR ("COMMENT_NUM" = :Original_COMMENT_NUM)) AND ((:IsNull_POST_TIME = 1 AND "POST_TIME" IS NULL) OR ("POST_TIME" = :Original_POST_TIME)))</CommandText>
+                    <CommandText>DELETE FROM "C##PET"."FORUM_POSTS" WHERE (("POST_ID" = :Original_POST_ID) AND ((:IsNull_USER_ID = 1 AND "USER_ID" IS NULL) OR ("USER_ID" = :Original_USER_ID)) AND ("POST_CONTENTS" = :Original_POST_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND "READ_COUNT" IS NULL) OR ("READ_COUNT" = :Original_READ_COUNT)) AND ((:IsNull_LIKE_NUM = 1 AND "LIKE_NUM" IS NULL) OR ("LIKE_NUM" = :Original_LIKE_NUM)) AND ((:IsNull_COMMENT_NUM = 1 AND "COMMENT_NUM" IS NULL) OR ("COMMENT_NUM" = :Original_COMMENT_NUM)) AND ((:IsNull_CENSORED = 1 AND "CENSORED" IS NULL) OR ("CENSORED" = :Original_CENSORED)) AND ((:IsNull_POST_TIME = 1 AND "POST_TIME" IS NULL) OR ("POST_TIME" = :Original_POST_TIME)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_POST_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="POST_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_USER_ID" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="USER_ID" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -598,6 +592,8 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_LIKE_NUM" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="LIKE_NUM" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_COMMENT_NUM" Precision="0" ProviderType="Int32" Scale="0" Size="22" SourceColumn="COMMENT_NUM" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_COMMENT_NUM" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="COMMENT_NUM" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_CENSORED" Precision="0" ProviderType="Int32" Scale="0" Size="1" SourceColumn="CENSORED" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="Original_CENSORED" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="CENSORED" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_POST_TIME" Precision="0" ProviderType="Int32" Scale="0" Size="11" SourceColumn="POST_TIME" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="Original_POST_TIME" Precision="0" ProviderType="TimeStamp" Scale="0" Size="11" SourceColumn="POST_TIME" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
@@ -605,7 +601,7 @@
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO "C##PET"."FORUM_POSTS" ("POST_ID", "USER_ID", "POST_CONTENTS", "READ_COUNT", "LIKE_NUM", "COMMENT_NUM", "POST_TIME") VALUES (:POST_ID, :USER_ID, :POST_CONTENTS, :READ_COUNT, :LIKE_NUM, :COMMENT_NUM, :POST_TIME)</CommandText>
+                    <CommandText>INSERT INTO "C##PET"."FORUM_POSTS" ("POST_ID", "USER_ID", "POST_CONTENTS", "READ_COUNT", "LIKE_NUM", "COMMENT_NUM", "CENSORED", "POST_TIME") VALUES (:POST_ID, :USER_ID, :POST_CONTENTS, :READ_COUNT, :LIKE_NUM, :COMMENT_NUM, :CENSORED, :POST_TIME)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="POST_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="POST_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="USER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -613,19 +609,20 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="READ_COUNT" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="READ_COUNT" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="LIKE_NUM" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="LIKE_NUM" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="COMMENT_NUM" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="COMMENT_NUM" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="CENSORED" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="CENSORED" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="POST_TIME" Precision="0" ProviderType="TimeStamp" Scale="0" Size="11" SourceColumn="POST_TIME" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT POST_ID, USER_ID, POST_CONTENTS, READ_COUNT, LIKE_NUM, COMMENT_NUM, POST_TIME FROM "C##PET".FORUM_POSTS</CommandText>
+                    <CommandText>SELECT POST_ID, USER_ID, POST_CONTENTS, READ_COUNT, LIKE_NUM, COMMENT_NUM, CENSORED, POST_TIME FROM "C##PET".FORUM_POSTS</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE "C##PET"."FORUM_POSTS" SET "POST_ID" = :POST_ID, "USER_ID" = :USER_ID, "POST_CONTENTS" = :POST_CONTENTS, "READ_COUNT" = :READ_COUNT, "LIKE_NUM" = :LIKE_NUM, "COMMENT_NUM" = :COMMENT_NUM, "POST_TIME" = :POST_TIME WHERE (("POST_ID" = :Original_POST_ID) AND ((:IsNull_USER_ID = 1 AND "USER_ID" IS NULL) OR ("USER_ID" = :Original_USER_ID)) AND ("POST_CONTENTS" = :Original_POST_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND "READ_COUNT" IS NULL) OR ("READ_COUNT" = :Original_READ_COUNT)) AND ((:IsNull_LIKE_NUM = 1 AND "LIKE_NUM" IS NULL) OR ("LIKE_NUM" = :Original_LIKE_NUM)) AND ((:IsNull_COMMENT_NUM = 1 AND "COMMENT_NUM" IS NULL) OR ("COMMENT_NUM" = :Original_COMMENT_NUM)) AND ((:IsNull_POST_TIME = 1 AND "POST_TIME" IS NULL) OR ("POST_TIME" = :Original_POST_TIME)))</CommandText>
+                    <CommandText>UPDATE "C##PET"."FORUM_POSTS" SET "POST_ID" = :POST_ID, "USER_ID" = :USER_ID, "POST_CONTENTS" = :POST_CONTENTS, "READ_COUNT" = :READ_COUNT, "LIKE_NUM" = :LIKE_NUM, "COMMENT_NUM" = :COMMENT_NUM, "CENSORED" = :CENSORED, "POST_TIME" = :POST_TIME WHERE (("POST_ID" = :Original_POST_ID) AND ((:IsNull_USER_ID = 1 AND "USER_ID" IS NULL) OR ("USER_ID" = :Original_USER_ID)) AND ("POST_CONTENTS" = :Original_POST_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND "READ_COUNT" IS NULL) OR ("READ_COUNT" = :Original_READ_COUNT)) AND ((:IsNull_LIKE_NUM = 1 AND "LIKE_NUM" IS NULL) OR ("LIKE_NUM" = :Original_LIKE_NUM)) AND ((:IsNull_COMMENT_NUM = 1 AND "COMMENT_NUM" IS NULL) OR ("COMMENT_NUM" = :Original_COMMENT_NUM)) AND ((:IsNull_CENSORED = 1 AND "CENSORED" IS NULL) OR ("CENSORED" = :Original_CENSORED)) AND ((:IsNull_POST_TIME = 1 AND "POST_TIME" IS NULL) OR ("POST_TIME" = :Original_POST_TIME)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="POST_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="POST_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="USER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -633,6 +630,7 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="READ_COUNT" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="READ_COUNT" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="LIKE_NUM" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="LIKE_NUM" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="COMMENT_NUM" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="COMMENT_NUM" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="CENSORED" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="CENSORED" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="POST_TIME" Precision="0" ProviderType="TimeStamp" Scale="0" Size="11" SourceColumn="POST_TIME" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_POST_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="POST_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_USER_ID" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="USER_ID" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -644,6 +642,8 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_LIKE_NUM" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="LIKE_NUM" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_COMMENT_NUM" Precision="0" ProviderType="Int32" Scale="0" Size="22" SourceColumn="COMMENT_NUM" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_COMMENT_NUM" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="COMMENT_NUM" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_CENSORED" Precision="0" ProviderType="Int32" Scale="0" Size="1" SourceColumn="CENSORED" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="Original_CENSORED" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="CENSORED" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_POST_TIME" Precision="0" ProviderType="Int32" Scale="0" Size="11" SourceColumn="POST_TIME" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="Original_POST_TIME" Precision="0" ProviderType="TimeStamp" Scale="0" Size="11" SourceColumn="POST_TIME" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
@@ -658,16 +658,17 @@
               <Mapping SourceColumn="READ_COUNT" DataSetColumn="READ_COUNT" />
               <Mapping SourceColumn="LIKE_NUM" DataSetColumn="LIKE_NUM" />
               <Mapping SourceColumn="COMMENT_NUM" DataSetColumn="COMMENT_NUM" />
+              <Mapping SourceColumn="CENSORED" DataSetColumn="CENSORED" />
               <Mapping SourceColumn="POST_TIME" DataSetColumn="POST_TIME" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FOSTERTableAdapter" GeneratorDataComponentClassName="FOSTERTableAdapter" Name="FOSTER" UserDataComponentName="FOSTERTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.FOSTER" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.FOSTER" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM "C##PET"."FOSTER" WHERE (((:IsNull_DURATION = 1 AND "DURATION" IS NULL) OR ("DURATION" = :Original_DURATION)) AND ("FOSTERER" = :Original_FOSTERER) AND ("PET_ID" = :Original_PET_ID) AND ("START_YEAR" = :Original_START_YEAR) AND ("START_MONTH" = :Original_START_MONTH) AND ("START_DAY" = :Original_START_DAY))</CommandText>
+                    <CommandText>DELETE FROM "C##PET"."FOSTER" WHERE (((:IsNull_DURATION = 1 AND "DURATION" IS NULL) OR ("DURATION" = :Original_DURATION)) AND ("FOSTERER" = :Original_FOSTERER) AND ("PET_ID" = :Original_PET_ID) AND ("START_YEAR" = :Original_START_YEAR) AND ("START_MONTH" = :Original_START_MONTH) AND ("START_DAY" = :Original_START_DAY) AND ((:IsNull_CENSOR_STATE = 1 AND "CENSOR_STATE" IS NULL) OR ("CENSOR_STATE" = :Original_CENSOR_STATE)) AND ((:IsNull_REMARK = 1 AND "REMARK" IS NULL) OR ("REMARK" = :Original_REMARK)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DURATION" Precision="0" ProviderType="Int32" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_DURATION" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -676,12 +677,16 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_YEAR" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_YEAR" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_MONTH" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_MONTH" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_DAY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_DAY" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_CENSOR_STATE" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_CENSOR_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_REMARK" Precision="0" ProviderType="Int32" Scale="0" Size="100" SourceColumn="REMARK" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_REMARK" Precision="0" ProviderType="Varchar2" Scale="0" Size="100" SourceColumn="REMARK" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO "C##PET"."FOSTER" ("DURATION", "FOSTERER", "PET_ID", "START_YEAR", "START_MONTH", "START_DAY") VALUES (:DURATION, :FOSTERER, :PET_ID, :START_YEAR, :START_MONTH, :START_DAY)</CommandText>
+                    <CommandText>INSERT INTO "C##PET"."FOSTER" ("DURATION", "FOSTERER", "PET_ID", "START_YEAR", "START_MONTH", "START_DAY", "CENSOR_STATE", "REMARK") VALUES (:DURATION, :FOSTERER, :PET_ID, :START_YEAR, :START_MONTH, :START_DAY, :CENSOR_STATE, :REMARK)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="DURATION" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="FOSTERER" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="FOSTERER" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -689,18 +694,20 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_YEAR" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_YEAR" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_MONTH" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_MONTH" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_DAY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_DAY" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="CENSOR_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="REMARK" Precision="0" ProviderType="Varchar2" Scale="0" Size="100" SourceColumn="REMARK" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT "DURATION", FOSTERER, PET_ID, START_YEAR, START_MONTH, START_DAY FROM "C##PET".FOSTER</CommandText>
+                    <CommandText>SELECT "DURATION", FOSTERER, PET_ID, START_YEAR, START_MONTH, START_DAY, CENSOR_STATE, REMARK FROM "C##PET".FOSTER</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE "C##PET"."FOSTER" SET "DURATION" = :DURATION, "FOSTERER" = :FOSTERER, "PET_ID" = :PET_ID, "START_YEAR" = :START_YEAR, "START_MONTH" = :START_MONTH, "START_DAY" = :START_DAY WHERE (((:IsNull_DURATION = 1 AND "DURATION" IS NULL) OR ("DURATION" = :Original_DURATION)) AND ("FOSTERER" = :Original_FOSTERER) AND ("PET_ID" = :Original_PET_ID) AND ("START_YEAR" = :Original_START_YEAR) AND ("START_MONTH" = :Original_START_MONTH) AND ("START_DAY" = :Original_START_DAY))</CommandText>
+                    <CommandText>UPDATE "C##PET"."FOSTER" SET "DURATION" = :DURATION, "FOSTERER" = :FOSTERER, "PET_ID" = :PET_ID, "START_YEAR" = :START_YEAR, "START_MONTH" = :START_MONTH, "START_DAY" = :START_DAY, "CENSOR_STATE" = :CENSOR_STATE, "REMARK" = :REMARK WHERE (((:IsNull_DURATION = 1 AND "DURATION" IS NULL) OR ("DURATION" = :Original_DURATION)) AND ("FOSTERER" = :Original_FOSTERER) AND ("PET_ID" = :Original_PET_ID) AND ("START_YEAR" = :Original_START_YEAR) AND ("START_MONTH" = :Original_START_MONTH) AND ("START_DAY" = :Original_START_DAY) AND ((:IsNull_CENSOR_STATE = 1 AND "CENSOR_STATE" IS NULL) OR ("CENSOR_STATE" = :Original_CENSOR_STATE)) AND ((:IsNull_REMARK = 1 AND "REMARK" IS NULL) OR ("REMARK" = :Original_REMARK)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="DURATION" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="FOSTERER" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="FOSTERER" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -708,6 +715,8 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_YEAR" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_YEAR" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_MONTH" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_MONTH" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="START_DAY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_DAY" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="CENSOR_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="REMARK" Precision="0" ProviderType="Varchar2" Scale="0" Size="100" SourceColumn="REMARK" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DURATION" Precision="0" ProviderType="Int32" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="Original_DURATION" Precision="0" ProviderType="Decimal" Scale="0" Size="22" SourceColumn="DURATION" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_FOSTERER" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="FOSTERER" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -715,6 +724,10 @@
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_YEAR" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_YEAR" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_MONTH" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_MONTH" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_START_DAY" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="START_DAY" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_CENSOR_STATE" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_CENSOR_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="CENSOR_STATE" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_REMARK" Precision="0" ProviderType="Int32" Scale="0" Size="100" SourceColumn="REMARK" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_REMARK" Precision="0" ProviderType="Varchar2" Scale="0" Size="100" SourceColumn="REMARK" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -727,12 +740,14 @@
               <Mapping SourceColumn="START_YEAR" DataSetColumn="START_YEAR" />
               <Mapping SourceColumn="START_MONTH" DataSetColumn="START_MONTH" />
               <Mapping SourceColumn="START_DAY" DataSetColumn="START_DAY" />
+              <Mapping SourceColumn="CENSOR_STATE" DataSetColumn="CENSOR_STATE" />
+              <Mapping SourceColumn="REMARK" DataSetColumn="REMARK" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LIKE_PETTableAdapter" GeneratorDataComponentClassName="LIKE_PETTableAdapter" Name="LIKE_PET" UserDataComponentName="LIKE_PETTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.LIKE_PET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.LIKE_PET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."LIKE_PET" WHERE (("USER_ID" = :Original_USER_ID) AND ("PET_ID" = :Original_PET_ID) AND ("LIKE_TIME" = :Original_LIKE_TIME))</CommandText>
@@ -783,7 +798,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LIKE_POSTTableAdapter" GeneratorDataComponentClassName="LIKE_POSTTableAdapter" Name="LIKE_POST" UserDataComponentName="LIKE_POSTTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.LIKE_POST" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.LIKE_POST" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."LIKE_POST" WHERE (("USER_ID" = :Original_USER_ID) AND ("POST_ID" = :Original_POST_ID) AND ("LIKE_TIME" = :Original_LIKE_TIME))</CommandText>
@@ -834,18 +849,20 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PETTableAdapter" GeneratorDataComponentClassName="PETTableAdapter" Name="PET" UserDataComponentName="PETTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.PET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.PET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM "C##PET"."PET" WHERE (("PET_ID" = :Original_PET_ID) AND ((:IsNull_PET_NAME = 1 AND "PET_NAME" IS NULL) OR ("PET_NAME" = :Original_PET_NAME)) AND ((:IsNull_BREED = 1 AND "BREED" IS NULL) OR ("BREED" = :Original_BREED)) AND ((:IsNull_AGE = 1 AND "AGE" IS NULL) OR ("AGE" = :Original_AGE)) AND ((:IsNull_HEALTH_STATE = 1 AND "HEALTH_STATE" IS NULL) OR ("HEALTH_STATE" = :Original_HEALTH_STATE)) AND ((:IsNull_VACCINE = 1 AND "VACCINE" IS NULL) OR ("VACCINE" = :Original_VACCINE)) AND ((:IsNull_READ_NUM = 1 AND "READ_NUM" IS NULL) OR ("READ_NUM" = :Original_READ_NUM)) AND ((:IsNull_LIKE_NUM = 1 AND "LIKE_NUM" IS NULL) OR ("LIKE_NUM" = :Original_LIKE_NUM)) AND ((:IsNull_COLLECT_NUM = 1 AND "COLLECT_NUM" IS NULL) OR ("COLLECT_NUM" = :Original_COLLECT_NUM)))</CommandText>
+                    <CommandText>DELETE FROM "C##PET"."PET" WHERE (("PET_ID" = :Original_PET_ID) AND ((:IsNull_PET_NAME = 1 AND "PET_NAME" IS NULL) OR ("PET_NAME" = :Original_PET_NAME)) AND ((:IsNull_BREED = 1 AND "BREED" IS NULL) OR ("BREED" = :Original_BREED)) AND ((:IsNull_PSIZE = 1 AND "PSIZE" IS NULL) OR ("PSIZE" = :Original_PSIZE)) AND ((:IsNull_BIRTHDATE = 1 AND "BIRTHDATE" IS NULL) OR ("BIRTHDATE" = :Original_BIRTHDATE)) AND ((:IsNull_HEALTH_STATE = 1 AND "HEALTH_STATE" IS NULL) OR ("HEALTH_STATE" = :Original_HEALTH_STATE)) AND ((:IsNull_VACCINE = 1 AND "VACCINE" IS NULL) OR ("VACCINE" = :Original_VACCINE)) AND ((:IsNull_READ_NUM = 1 AND "READ_NUM" IS NULL) OR ("READ_NUM" = :Original_READ_NUM)) AND ((:IsNull_LIKE_NUM = 1 AND "LIKE_NUM" IS NULL) OR ("LIKE_NUM" = :Original_LIKE_NUM)) AND ((:IsNull_COLLECT_NUM = 1 AND "COLLECT_NUM" IS NULL) OR ("COLLECT_NUM" = :Original_COLLECT_NUM)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_PET_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_PET_NAME" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="PET_NAME" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_PET_NAME" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_NAME" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_BREED" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="BREED" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_BREED" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="BREED" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_AGE" Precision="0" ProviderType="Int32" Scale="0" Size="22" SourceColumn="AGE" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_AGE" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="AGE" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_PSIZE" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="PSIZE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_PSIZE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PSIZE" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_BIRTHDATE" Precision="0" ProviderType="Int32" Scale="0" Size="7" SourceColumn="BIRTHDATE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="Original_BIRTHDATE" Precision="0" ProviderType="Date" Scale="0" Size="7" SourceColumn="BIRTHDATE" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_HEALTH_STATE" Precision="0" ProviderType="Int32" Scale="0" Size="15" SourceColumn="HEALTH_STATE" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_HEALTH_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="15" SourceColumn="HEALTH_STATE" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_VACCINE" Precision="0" ProviderType="Int32" Scale="0" Size="1" SourceColumn="VACCINE" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -861,12 +878,13 @@
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO "C##PET"."PET" ("PET_ID", "PET_NAME", "BREED", "AGE", "AVATAR", "HEALTH_STATE", "VACCINE", "READ_NUM", "LIKE_NUM", "COLLECT_NUM") VALUES (:PET_ID, :PET_NAME, :BREED, :AGE, :AVATAR, :HEALTH_STATE, :VACCINE, :READ_NUM, :LIKE_NUM, :COLLECT_NUM)</CommandText>
+                    <CommandText>INSERT INTO "C##PET"."PET" ("PET_ID", "PET_NAME", "BREED", "PSIZE", "BIRTHDATE", "AVATAR", "HEALTH_STATE", "VACCINE", "READ_NUM", "LIKE_NUM", "COLLECT_NUM") VALUES (:PET_ID, :PET_NAME, :BREED, :PSIZE, :BIRTHDATE, :AVATAR, :HEALTH_STATE, :VACCINE, :READ_NUM, :LIKE_NUM, :COLLECT_NUM)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PET_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PET_NAME" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_NAME" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="BREED" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="BREED" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="AGE" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="AGE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PSIZE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PSIZE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="BIRTHDATE" Precision="0" ProviderType="Date" Scale="0" Size="7" SourceColumn="BIRTHDATE" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="AVATAR" Precision="0" ProviderType="Blob" Scale="0" Size="2147483647" SourceColumn="AVATAR" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="HEALTH_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="15" SourceColumn="HEALTH_STATE" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="VACCINE" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="VACCINE" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -878,18 +896,19 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT PET_ID, PET_NAME, BREED, AGE, AVATAR, HEALTH_STATE, VACCINE, READ_NUM, LIKE_NUM, COLLECT_NUM FROM "C##PET".PET</CommandText>
+                    <CommandText>SELECT PET_ID, PET_NAME, BREED, PSIZE, BIRTHDATE, AVATAR, HEALTH_STATE, VACCINE, READ_NUM, LIKE_NUM, COLLECT_NUM FROM "C##PET".PET</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE "C##PET"."PET" SET "PET_ID" = :PET_ID, "PET_NAME" = :PET_NAME, "BREED" = :BREED, "AGE" = :AGE, "AVATAR" = :AVATAR, "HEALTH_STATE" = :HEALTH_STATE, "VACCINE" = :VACCINE, "READ_NUM" = :READ_NUM, "LIKE_NUM" = :LIKE_NUM, "COLLECT_NUM" = :COLLECT_NUM WHERE (("PET_ID" = :Original_PET_ID) AND ((:IsNull_PET_NAME = 1 AND "PET_NAME" IS NULL) OR ("PET_NAME" = :Original_PET_NAME)) AND ((:IsNull_BREED = 1 AND "BREED" IS NULL) OR ("BREED" = :Original_BREED)) AND ((:IsNull_AGE = 1 AND "AGE" IS NULL) OR ("AGE" = :Original_AGE)) AND ((:IsNull_HEALTH_STATE = 1 AND "HEALTH_STATE" IS NULL) OR ("HEALTH_STATE" = :Original_HEALTH_STATE)) AND ((:IsNull_VACCINE = 1 AND "VACCINE" IS NULL) OR ("VACCINE" = :Original_VACCINE)) AND ((:IsNull_READ_NUM = 1 AND "READ_NUM" IS NULL) OR ("READ_NUM" = :Original_READ_NUM)) AND ((:IsNull_LIKE_NUM = 1 AND "LIKE_NUM" IS NULL) OR ("LIKE_NUM" = :Original_LIKE_NUM)) AND ((:IsNull_COLLECT_NUM = 1 AND "COLLECT_NUM" IS NULL) OR ("COLLECT_NUM" = :Original_COLLECT_NUM)))</CommandText>
+                    <CommandText>UPDATE "C##PET"."PET" SET "PET_ID" = :PET_ID, "PET_NAME" = :PET_NAME, "BREED" = :BREED, "PSIZE" = :PSIZE, "BIRTHDATE" = :BIRTHDATE, "AVATAR" = :AVATAR, "HEALTH_STATE" = :HEALTH_STATE, "VACCINE" = :VACCINE, "READ_NUM" = :READ_NUM, "LIKE_NUM" = :LIKE_NUM, "COLLECT_NUM" = :COLLECT_NUM WHERE (("PET_ID" = :Original_PET_ID) AND ((:IsNull_PET_NAME = 1 AND "PET_NAME" IS NULL) OR ("PET_NAME" = :Original_PET_NAME)) AND ((:IsNull_BREED = 1 AND "BREED" IS NULL) OR ("BREED" = :Original_BREED)) AND ((:IsNull_PSIZE = 1 AND "PSIZE" IS NULL) OR ("PSIZE" = :Original_PSIZE)) AND ((:IsNull_BIRTHDATE = 1 AND "BIRTHDATE" IS NULL) OR ("BIRTHDATE" = :Original_BIRTHDATE)) AND ((:IsNull_HEALTH_STATE = 1 AND "HEALTH_STATE" IS NULL) OR ("HEALTH_STATE" = :Original_HEALTH_STATE)) AND ((:IsNull_VACCINE = 1 AND "VACCINE" IS NULL) OR ("VACCINE" = :Original_VACCINE)) AND ((:IsNull_READ_NUM = 1 AND "READ_NUM" IS NULL) OR ("READ_NUM" = :Original_READ_NUM)) AND ((:IsNull_LIKE_NUM = 1 AND "LIKE_NUM" IS NULL) OR ("LIKE_NUM" = :Original_LIKE_NUM)) AND ((:IsNull_COLLECT_NUM = 1 AND "COLLECT_NUM" IS NULL) OR ("COLLECT_NUM" = :Original_COLLECT_NUM)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PET_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PET_NAME" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_NAME" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="BREED" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="BREED" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="AGE" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="AGE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PSIZE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PSIZE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="BIRTHDATE" Precision="0" ProviderType="Date" Scale="0" Size="7" SourceColumn="BIRTHDATE" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="AVATAR" Precision="0" ProviderType="Blob" Scale="0" Size="2147483647" SourceColumn="AVATAR" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="HEALTH_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="15" SourceColumn="HEALTH_STATE" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="VACCINE" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="VACCINE" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -901,8 +920,10 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_PET_NAME" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PET_NAME" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_BREED" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="BREED" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_BREED" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="BREED" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_AGE" Precision="0" ProviderType="Int32" Scale="0" Size="22" SourceColumn="AGE" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int16" Direction="Input" ParameterName="Original_AGE" Precision="0" ProviderType="Int16" Scale="0" Size="22" SourceColumn="AGE" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_PSIZE" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="PSIZE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_PSIZE" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PSIZE" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_BIRTHDATE" Precision="0" ProviderType="Int32" Scale="0" Size="7" SourceColumn="BIRTHDATE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="Original_BIRTHDATE" Precision="0" ProviderType="Date" Scale="0" Size="7" SourceColumn="BIRTHDATE" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_HEALTH_STATE" Precision="0" ProviderType="Int32" Scale="0" Size="15" SourceColumn="HEALTH_STATE" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_HEALTH_STATE" Precision="0" ProviderType="Varchar2" Scale="0" Size="15" SourceColumn="HEALTH_STATE" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_VACCINE" Precision="0" ProviderType="Int32" Scale="0" Size="1" SourceColumn="VACCINE" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -922,7 +943,8 @@
               <Mapping SourceColumn="PET_ID" DataSetColumn="PET_ID" />
               <Mapping SourceColumn="PET_NAME" DataSetColumn="PET_NAME" />
               <Mapping SourceColumn="BREED" DataSetColumn="BREED" />
-              <Mapping SourceColumn="AGE" DataSetColumn="AGE" />
+              <Mapping SourceColumn="PSIZE" DataSetColumn="PSIZE" />
+              <Mapping SourceColumn="BIRTHDATE" DataSetColumn="BIRTHDATE" />
               <Mapping SourceColumn="AVATAR" DataSetColumn="AVATAR" />
               <Mapping SourceColumn="HEALTH_STATE" DataSetColumn="HEALTH_STATE" />
               <Mapping SourceColumn="VACCINE" DataSetColumn="VACCINE" />
@@ -934,7 +956,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ROOMTableAdapter" GeneratorDataComponentClassName="ROOMTableAdapter" Name="ROOM" UserDataComponentName="ROOMTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.ROOM" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.ROOM" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."ROOM" WHERE (((:IsNull_ROOM_STATUS = 1 AND "ROOM_STATUS" IS NULL) OR ("ROOM_STATUS" = :Original_ROOM_STATUS)) AND ((:IsNull_ROOM_SIZE = 1 AND "ROOM_SIZE" IS NULL) OR ("ROOM_SIZE" = :Original_ROOM_SIZE)) AND ("STOREY" = :Original_STOREY) AND ("COMPARTMENT" = :Original_COMPARTMENT) AND ((:IsNull_CLEANING_TIME = 1 AND "CLEANING_TIME" IS NULL) OR ("CLEANING_TIME" = :Original_CLEANING_TIME)))</CommandText>
@@ -1001,7 +1023,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TREATMENTTableAdapter" GeneratorDataComponentClassName="TREATMENTTableAdapter" Name="TREATMENT" UserDataComponentName="TREATMENTTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.TREATMENT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.TREATMENT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."TREATMENT" WHERE (((:IsNull_CATEGORY = 1 AND "CATEGORY" IS NULL) OR ("CATEGORY" = :Original_CATEGORY)) AND ("PET_ID" = :Original_PET_ID) AND ("VET_ID" = :Original_VET_ID) AND ("TREAT_TIME" = :Original_TREAT_TIME))</CommandText>
@@ -1059,10 +1081,10 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="USER2TableAdapter" GeneratorDataComponentClassName="USER2TableAdapter" Name="USER2" UserDataComponentName="USER2TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.USER2" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.USER2" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM "C##PET"."USER2" WHERE (("USER_ID" = :Original_USER_ID) AND ((:IsNull_USER_NAME = 1 AND "USER_NAME" IS NULL) OR ("USER_NAME" = :Original_USER_NAME)) AND ((:IsNull_PASSWORD = 1 AND "PASSWORD" IS NULL) OR ("PASSWORD" = :Original_PASSWORD)) AND ((:IsNull_PHONE_NUMBER = 1 AND "PHONE_NUMBER" IS NULL) OR ("PHONE_NUMBER" = :Original_PHONE_NUMBER)) AND ((:IsNull_ACCOUNT_STATUS = 1 AND "ACCOUNT_STATUS" IS NULL) OR ("ACCOUNT_STATUS" = :Original_ACCOUNT_STATUS)) AND ((:IsNull_ADDRESS = 1 AND "ADDRESS" IS NULL) OR ("ADDRESS" = :Original_ADDRESS)))</CommandText>
+                    <CommandText>DELETE FROM "C##PET"."USER2" WHERE (("USER_ID" = :Original_USER_ID) AND ((:IsNull_USER_NAME = 1 AND "USER_NAME" IS NULL) OR ("USER_NAME" = :Original_USER_NAME)) AND ((:IsNull_PASSWORD = 1 AND "PASSWORD" IS NULL) OR ("PASSWORD" = :Original_PASSWORD)) AND ((:IsNull_PHONE_NUMBER = 1 AND "PHONE_NUMBER" IS NULL) OR ("PHONE_NUMBER" = :Original_PHONE_NUMBER)) AND ((:IsNull_ACCOUNT_STATUS = 1 AND "ACCOUNT_STATUS" IS NULL) OR ("ACCOUNT_STATUS" = :Original_ACCOUNT_STATUS)) AND ((:IsNull_ADDRESS = 1 AND "ADDRESS" IS NULL) OR ("ADDRESS" = :Original_ADDRESS)) AND ((:IsNull_ROLE = 1 AND "ROLE" IS NULL) OR ("ROLE" = :Original_ROLE)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_USER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_USER_NAME" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="USER_NAME" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -1075,12 +1097,14 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_ACCOUNT_STATUS" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="ACCOUNT_STATUS" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_ADDRESS" Precision="0" ProviderType="Int32" Scale="0" Size="100" SourceColumn="ADDRESS" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_ADDRESS" Precision="0" ProviderType="Varchar2" Scale="0" Size="100" SourceColumn="ADDRESS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_ROLE" Precision="0" ProviderType="Int32" Scale="0" Size="10" SourceColumn="ROLE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_ROLE" Precision="0" ProviderType="Varchar2" Scale="0" Size="10" SourceColumn="ROLE" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO "C##PET"."USER2" ("USER_ID", "USER_NAME", "PASSWORD", "PHONE_NUMBER", "ACCOUNT_STATUS", "ADDRESS") VALUES (:USER_ID, :USER_NAME, :PASSWORD, :PHONE_NUMBER, :ACCOUNT_STATUS, :ADDRESS)</CommandText>
+                    <CommandText>INSERT INTO "C##PET"."USER2" ("USER_ID", "USER_NAME", "PASSWORD", "PHONE_NUMBER", "ACCOUNT_STATUS", "ADDRESS", "ROLE") VALUES (:USER_ID, :USER_NAME, :PASSWORD, :PHONE_NUMBER, :ACCOUNT_STATUS, :ADDRESS, :ROLE)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="USER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="USER_NAME" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_NAME" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -1088,18 +1112,19 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PHONE_NUMBER" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PHONE_NUMBER" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="ACCOUNT_STATUS" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="ACCOUNT_STATUS" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="ADDRESS" Precision="0" ProviderType="Varchar2" Scale="0" Size="100" SourceColumn="ADDRESS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="ROLE" Precision="0" ProviderType="Varchar2" Scale="0" Size="10" SourceColumn="ROLE" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT USER_ID, USER_NAME, PASSWORD, PHONE_NUMBER, ACCOUNT_STATUS, ADDRESS FROM "C##PET".USER2</CommandText>
+                    <CommandText>SELECT USER_ID, USER_NAME, PASSWORD, PHONE_NUMBER, ACCOUNT_STATUS, ADDRESS, ROLE FROM "C##PET".USER2</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE "C##PET"."USER2" SET "USER_ID" = :USER_ID, "USER_NAME" = :USER_NAME, "PASSWORD" = :PASSWORD, "PHONE_NUMBER" = :PHONE_NUMBER, "ACCOUNT_STATUS" = :ACCOUNT_STATUS, "ADDRESS" = :ADDRESS WHERE (("USER_ID" = :Original_USER_ID) AND ((:IsNull_USER_NAME = 1 AND "USER_NAME" IS NULL) OR ("USER_NAME" = :Original_USER_NAME)) AND ((:IsNull_PASSWORD = 1 AND "PASSWORD" IS NULL) OR ("PASSWORD" = :Original_PASSWORD)) AND ((:IsNull_PHONE_NUMBER = 1 AND "PHONE_NUMBER" IS NULL) OR ("PHONE_NUMBER" = :Original_PHONE_NUMBER)) AND ((:IsNull_ACCOUNT_STATUS = 1 AND "ACCOUNT_STATUS" IS NULL) OR ("ACCOUNT_STATUS" = :Original_ACCOUNT_STATUS)) AND ((:IsNull_ADDRESS = 1 AND "ADDRESS" IS NULL) OR ("ADDRESS" = :Original_ADDRESS)))</CommandText>
+                    <CommandText>UPDATE "C##PET"."USER2" SET "USER_ID" = :USER_ID, "USER_NAME" = :USER_NAME, "PASSWORD" = :PASSWORD, "PHONE_NUMBER" = :PHONE_NUMBER, "ACCOUNT_STATUS" = :ACCOUNT_STATUS, "ADDRESS" = :ADDRESS, "ROLE" = :ROLE WHERE (("USER_ID" = :Original_USER_ID) AND ((:IsNull_USER_NAME = 1 AND "USER_NAME" IS NULL) OR ("USER_NAME" = :Original_USER_NAME)) AND ((:IsNull_PASSWORD = 1 AND "PASSWORD" IS NULL) OR ("PASSWORD" = :Original_PASSWORD)) AND ((:IsNull_PHONE_NUMBER = 1 AND "PHONE_NUMBER" IS NULL) OR ("PHONE_NUMBER" = :Original_PHONE_NUMBER)) AND ((:IsNull_ACCOUNT_STATUS = 1 AND "ACCOUNT_STATUS" IS NULL) OR ("ACCOUNT_STATUS" = :Original_ACCOUNT_STATUS)) AND ((:IsNull_ADDRESS = 1 AND "ADDRESS" IS NULL) OR ("ADDRESS" = :Original_ADDRESS)) AND ((:IsNull_ROLE = 1 AND "ROLE" IS NULL) OR ("ROLE" = :Original_ROLE)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="USER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="USER_NAME" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_NAME" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -1107,6 +1132,7 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="PHONE_NUMBER" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="PHONE_NUMBER" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="ACCOUNT_STATUS" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="ACCOUNT_STATUS" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="ADDRESS" Precision="0" ProviderType="Varchar2" Scale="0" Size="100" SourceColumn="ADDRESS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="ROLE" Precision="0" ProviderType="Varchar2" Scale="0" Size="10" SourceColumn="ROLE" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_USER_ID" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_USER_NAME" Precision="0" ProviderType="Int32" Scale="0" Size="20" SourceColumn="USER_NAME" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_USER_NAME" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="USER_NAME" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -1118,6 +1144,8 @@
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_ACCOUNT_STATUS" Precision="0" ProviderType="Varchar2" Scale="0" Size="20" SourceColumn="ACCOUNT_STATUS" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_ADDRESS" Precision="0" ProviderType="Int32" Scale="0" Size="100" SourceColumn="ADDRESS" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_ADDRESS" Precision="0" ProviderType="Varchar2" Scale="0" Size="100" SourceColumn="ADDRESS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_ROLE" Precision="0" ProviderType="Int32" Scale="0" Size="10" SourceColumn="ROLE" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_ROLE" Precision="0" ProviderType="Varchar2" Scale="0" Size="10" SourceColumn="ROLE" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -1130,12 +1158,13 @@
               <Mapping SourceColumn="PHONE_NUMBER" DataSetColumn="PHONE_NUMBER" />
               <Mapping SourceColumn="ACCOUNT_STATUS" DataSetColumn="ACCOUNT_STATUS" />
               <Mapping SourceColumn="ADDRESS" DataSetColumn="ADDRESS" />
+              <Mapping SourceColumn="ROLE" DataSetColumn="ROLE" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VETTableAdapter" GeneratorDataComponentClassName="VETTableAdapter" Name="VET" UserDataComponentName="VETTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.VET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.VET" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM "C##PET"."VET" WHERE (("VET_ID" = :Original_VET_ID) AND ((:IsNull_VET_NAME = 1 AND "VET_NAME" IS NULL) OR ("VET_NAME" = :Original_VET_NAME)) AND ((:IsNull_SALARY = 1 AND "SALARY" IS NULL) OR ("SALARY" = :Original_SALARY)) AND ((:IsNull_PHONE_NUMBER = 1 AND "PHONE_NUMBER" IS NULL) OR ("PHONE_NUMBER" = :Original_PHONE_NUMBER)) AND ((:IsNull_WORKING_START_HR = 1 AND "WORKING_START_HR" IS NULL) OR ("WORKING_START_HR" = :Original_WORKING_START_HR)) AND ((:IsNull_WORKING_END_HR = 1 AND "WORKING_END_HR" IS NULL) OR ("WORKING_END_HR" = :Original_WORKING_END_HR)) AND ((:IsNull_WORKING_START_MIN = 1 AND "WORKING_START_MIN" IS NULL) OR ("WORKING_START_MIN" = :Original_WORKING_START_MIN)) AND ((:IsNull_WORKING_END_MIN = 1 AND "WORKING_END_MIN" IS NULL) OR ("WORKING_END_MIN" = :Original_WORKING_END_MIN)))</CommandText>
@@ -1223,9 +1252,36 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FOSTER_WINDOWTableAdapter" GeneratorDataComponentClassName="FOSTER_WINDOWTableAdapter" Name="FOSTER_WINDOW" UserDataComponentName="FOSTER_WINDOWTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.FOSTER_WINDOW" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT USER_ID, OWNER, PET_ID, PET_NAME, BREED, PSIZE, "DURATION", FOSTER_START_DATE, FOSTER_END_DATE, ROOM_ID, ROOM_SIZE, CENSOR_STATE FROM "C##PET".FOSTER_WINDOW</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="USER_ID" DataSetColumn="USER_ID" />
+              <Mapping SourceColumn="OWNER" DataSetColumn="OWNER" />
+              <Mapping SourceColumn="PET_ID" DataSetColumn="PET_ID" />
+              <Mapping SourceColumn="PET_NAME" DataSetColumn="PET_NAME" />
+              <Mapping SourceColumn="BREED" DataSetColumn="BREED" />
+              <Mapping SourceColumn="PSIZE" DataSetColumn="PSIZE" />
+              <Mapping SourceColumn="DURATION" DataSetColumn="DURATION" />
+              <Mapping SourceColumn="FOSTER_START_DATE" DataSetColumn="FOSTER_START_DATE" />
+              <Mapping SourceColumn="FOSTER_END_DATE" DataSetColumn="FOSTER_END_DATE" />
+              <Mapping SourceColumn="ROOM_ID" DataSetColumn="ROOM_ID" />
+              <Mapping SourceColumn="ROOM_SIZE" DataSetColumn="ROOM_SIZE" />
+              <Mapping SourceColumn="CENSOR_STATE" DataSetColumn="CENSOR_STATE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EMPLOYEE_LABORTableAdapter" GeneratorDataComponentClassName="EMPLOYEE_LABORTableAdapter" Name="EMPLOYEE_LABOR" UserDataComponentName="EMPLOYEE_LABORTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.EMPLOYEE_LABOR" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.EMPLOYEE_LABOR" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT EMPLOYEE_ID, EMPLOYEE_NAME, SALARY, DUTY, WORKING_HOURS FROM "C##PET".EMPLOYEE_LABOR</CommandText>
@@ -1243,68 +1299,9 @@
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OWNERSHIPTableAdapter" GeneratorDataComponentClassName="OWNERSHIPTableAdapter" Name="OWNERSHIP" UserDataComponentName="OWNERSHIPTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.OWNERSHIP" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT PET_ID, PET_NAME, STATUS, START_TIME, END_TIME FROM "C##PET".OWNERSHIP</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="PET_ID" DataSetColumn="PET_ID" />
-              <Mapping SourceColumn="PET_NAME" DataSetColumn="PET_NAME" />
-              <Mapping SourceColumn="STATUS" DataSetColumn="STATUS" />
-              <Mapping SourceColumn="START_TIME" DataSetColumn="START_TIME" />
-              <Mapping SourceColumn="END_TIME" DataSetColumn="END_TIME" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ROOM_AVAIABLETableAdapter" GeneratorDataComponentClassName="ROOM_AVAIABLETableAdapter" Name="ROOM_AVAIABLE" UserDataComponentName="ROOM_AVAIABLETableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.ROOM_AVAIABLE" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT STOREY, CAPACITY FROM "C##PET".ROOM_AVAIABLE</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="STOREY" DataSetColumn="STOREY" />
-              <Mapping SourceColumn="CAPACITY" DataSetColumn="CAPACITY" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="USER_PROFILETableAdapter" GeneratorDataComponentClassName="USER_PROFILETableAdapter" Name="USER_PROFILE" UserDataComponentName="USER_PROFILETableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.USER_PROFILE" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT USER_ID, USER_NAME, TOTAL_POSTS, TOTAL_READS, TOTAL_POST_LIKES, TOTAL_POST_COMMENTS, DONATION_TOTOL_AMOUNTS FROM "C##PET".USER_PROFILE</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="USER_ID" DataSetColumn="USER_ID" />
-              <Mapping SourceColumn="USER_NAME" DataSetColumn="USER_NAME" />
-              <Mapping SourceColumn="TOTAL_POSTS" DataSetColumn="TOTAL_POSTS" />
-              <Mapping SourceColumn="TOTAL_READS" DataSetColumn="TOTAL_READS" />
-              <Mapping SourceColumn="TOTAL_POST_LIKES" DataSetColumn="TOTAL_POST_LIKES" />
-              <Mapping SourceColumn="TOTAL_POST_COMMENTS" DataSetColumn="TOTAL_POST_COMMENTS" />
-              <Mapping SourceColumn="DONATION_TOTOL_AMOUNTS" DataSetColumn="DONATION_TOTOL_AMOUNTS" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VET_LABORTableAdapter" GeneratorDataComponentClassName="VET_LABORTableAdapter" Name="VET_LABOR" UserDataComponentName="VET_LABORTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.VET_LABOR" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString" DbObjectName="&quot;C##PET&quot;.VET_LABOR" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT VET_ID, VET_NAME, SALARY, WORKING_HOURS FROM "C##PET".VET_LABOR</CommandText>
@@ -1322,33 +1319,23 @@
             <Sources />
           </TableAdapter>
         </Tables>
-        <Sources>
-          <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.INSERT_FILE" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="INSERT_FILE" MethodsParameterType="CLR" Modifier="Public" Name="INSERT_FILE" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="INSERT_FILE">
-            <SelectCommand>
-              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
-                <CommandText>"C##PET".INSERT_FILE</CommandText>
-                <Parameters />
-              </DbCommand>
-            </SelectCommand>
-          </DbSource>
-          <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="&quot;C##PET&quot;.MOVE_OLD_PARTITIONS" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="MOVE_OLD_PARTITIONS" MethodsParameterType="CLR" Modifier="Public" Name="MOVE_OLD_PARTITIONS" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="MOVE_OLD_PARTITIONS">
-            <SelectCommand>
-              <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
-                <CommandText>"C##PET".MOVE_OLD_PARTITIONS</CommandText>
-                <Parameters />
-              </DbCommand>
-            </SelectCommand>
-          </DbSource>
-        </Sources>
+        <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="DataSet1" msprop:Generator_DataSetName="DataSet1">
+  <xs:element name="PetData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="PetData" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PetData">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="ACCOMMODATE" msprop:Generator_RowEvHandlerName="ACCOMMODATERowChangeEventHandler" msprop:Generator_RowDeletedName="ACCOMMODATERowDeleted" msprop:Generator_RowDeletingName="ACCOMMODATERowDeleting" msprop:Generator_RowEvArgName="ACCOMMODATERowChangeEvent" msprop:Generator_TablePropName="ACCOMMODATE" msprop:Generator_RowChangedName="ACCOMMODATERowChanged" msprop:Generator_RowChangingName="ACCOMMODATERowChanging" msprop:Generator_TableClassName="ACCOMMODATEDataTable" msprop:Generator_RowClassName="ACCOMMODATERow" msprop:Generator_TableVarName="tableACCOMMODATE" msprop:Generator_UserTableName="ACCOMMODATE">
           <xs:complexType>
             <xs:sequence>
+              <xs:element name="OWNER_ID" msprop:Generator_ColumnPropNameInRow="OWNER_ID" msprop:Generator_ColumnPropNameInTable="OWNER_IDColumn" msprop:Generator_ColumnVarNameInTable="columnOWNER_ID" msprop:Generator_UserColumnName="OWNER_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="PET_ID" msprop:Generator_ColumnPropNameInRow="PET_ID" msprop:Generator_ColumnPropNameInTable="PET_IDColumn" msprop:Generator_ColumnVarNameInTable="columnPET_ID" msprop:Generator_UserColumnName="PET_ID">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1358,10 +1345,6 @@
               </xs:element>
               <xs:element name="STOREY" msprop:Generator_ColumnPropNameInRow="STOREY" msprop:Generator_ColumnPropNameInTable="STOREYColumn" msprop:Generator_ColumnVarNameInTable="columnSTOREY" msprop:Generator_UserColumnName="STOREY" type="xs:short" />
               <xs:element name="COMPARTMENT" msprop:Generator_ColumnPropNameInRow="COMPARTMENT" msprop:Generator_ColumnPropNameInTable="COMPARTMENTColumn" msprop:Generator_ColumnVarNameInTable="columnCOMPARTMENT" msprop:Generator_UserColumnName="COMPARTMENT" type="xs:short" />
-              <xs:element name="DURATION" msprop:Generator_ColumnPropNameInRow="DURATION" msprop:Generator_ColumnPropNameInTable="DURATIONColumn" msprop:Generator_ColumnVarNameInTable="columnDURATION" msprop:Generator_UserColumnName="DURATION" type="xs:decimal" minOccurs="0" />
-              <xs:element name="START_YEAR" msprop:Generator_ColumnPropNameInRow="START_YEAR" msprop:Generator_ColumnPropNameInTable="START_YEARColumn" msprop:Generator_ColumnVarNameInTable="columnSTART_YEAR" msprop:Generator_UserColumnName="START_YEAR" type="xs:short" />
-              <xs:element name="START_MONTH" msprop:Generator_ColumnPropNameInRow="START_MONTH" msprop:Generator_ColumnPropNameInTable="START_MONTHColumn" msprop:Generator_ColumnVarNameInTable="columnSTART_MONTH" msprop:Generator_UserColumnName="START_MONTH" type="xs:short" />
-              <xs:element name="START_DAY" msprop:Generator_ColumnPropNameInRow="START_DAY" msprop:Generator_ColumnPropNameInTable="START_DAYColumn" msprop:Generator_ColumnVarNameInTable="columnSTART_DAY" msprop:Generator_UserColumnName="START_DAY" type="xs:short" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1546,6 +1529,13 @@
               </xs:element>
               <xs:element name="DONATION_AMOUNT" msprop:Generator_ColumnPropNameInRow="DONATION_AMOUNT" msprop:Generator_ColumnPropNameInTable="DONATION_AMOUNTColumn" msprop:Generator_ColumnVarNameInTable="columnDONATION_AMOUNT" msprop:Generator_UserColumnName="DONATION_AMOUNT" type="xs:decimal" />
               <xs:element name="DONATION_TIME" msprop:Generator_ColumnPropNameInRow="DONATION_TIME" msprop:Generator_ColumnPropNameInTable="DONATION_TIMEColumn" msprop:Generator_ColumnVarNameInTable="columnDONATION_TIME" msprop:Generator_UserColumnName="DONATION_TIME" type="xs:dateTime" />
+              <xs:element name="CENSOR_STATE" msprop:Generator_ColumnPropNameInRow="CENSOR_STATE" msprop:Generator_ColumnPropNameInTable="CENSOR_STATEColumn" msprop:Generator_ColumnVarNameInTable="columnCENSOR_STATE" msprop:Generator_UserColumnName="CENSOR_STATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1615,6 +1605,13 @@
               <xs:element name="READ_COUNT" msprop:Generator_ColumnPropNameInRow="READ_COUNT" msprop:Generator_ColumnPropNameInTable="READ_COUNTColumn" msprop:Generator_ColumnVarNameInTable="columnREAD_COUNT" msprop:Generator_UserColumnName="READ_COUNT" type="xs:decimal" minOccurs="0" />
               <xs:element name="LIKE_NUM" msprop:Generator_ColumnPropNameInRow="LIKE_NUM" msprop:Generator_ColumnPropNameInTable="LIKE_NUMColumn" msprop:Generator_ColumnVarNameInTable="columnLIKE_NUM" msprop:Generator_UserColumnName="LIKE_NUM" type="xs:decimal" minOccurs="0" />
               <xs:element name="COMMENT_NUM" msprop:Generator_ColumnPropNameInRow="COMMENT_NUM" msprop:Generator_ColumnPropNameInTable="COMMENT_NUMColumn" msprop:Generator_ColumnVarNameInTable="columnCOMMENT_NUM" msprop:Generator_UserColumnName="COMMENT_NUM" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CENSORED" msprop:Generator_ColumnPropNameInRow="CENSORED" msprop:Generator_ColumnPropNameInTable="CENSOREDColumn" msprop:Generator_ColumnVarNameInTable="columnCENSORED" msprop:Generator_UserColumnName="CENSORED" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="POST_TIME" msprop:Generator_ColumnPropNameInRow="POST_TIME" msprop:Generator_ColumnPropNameInTable="POST_TIMEColumn" msprop:Generator_ColumnVarNameInTable="columnPOST_TIME" msprop:Generator_UserColumnName="POST_TIME" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
@@ -1640,6 +1637,20 @@
               <xs:element name="START_YEAR" msprop:Generator_ColumnPropNameInRow="START_YEAR" msprop:Generator_ColumnPropNameInTable="START_YEARColumn" msprop:Generator_ColumnVarNameInTable="columnSTART_YEAR" msprop:Generator_UserColumnName="START_YEAR" type="xs:short" />
               <xs:element name="START_MONTH" msprop:Generator_ColumnPropNameInRow="START_MONTH" msprop:Generator_ColumnPropNameInTable="START_MONTHColumn" msprop:Generator_ColumnVarNameInTable="columnSTART_MONTH" msprop:Generator_UserColumnName="START_MONTH" type="xs:short" />
               <xs:element name="START_DAY" msprop:Generator_ColumnPropNameInRow="START_DAY" msprop:Generator_ColumnPropNameInTable="START_DAYColumn" msprop:Generator_ColumnVarNameInTable="columnSTART_DAY" msprop:Generator_UserColumnName="START_DAY" type="xs:short" />
+              <xs:element name="CENSOR_STATE" msprop:Generator_ColumnPropNameInRow="CENSOR_STATE" msprop:Generator_ColumnPropNameInTable="CENSOR_STATEColumn" msprop:Generator_ColumnVarNameInTable="columnCENSOR_STATE" msprop:Generator_UserColumnName="CENSOR_STATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REMARK" msprop:Generator_ColumnPropNameInRow="REMARK" msprop:Generator_ColumnPropNameInTable="REMARKColumn" msprop:Generator_ColumnVarNameInTable="columnREMARK" msprop:Generator_UserColumnName="REMARK" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1709,7 +1720,14 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="AGE" msprop:Generator_ColumnPropNameInRow="AGE" msprop:Generator_ColumnPropNameInTable="AGEColumn" msprop:Generator_ColumnVarNameInTable="columnAGE" msprop:Generator_UserColumnName="AGE" type="xs:short" minOccurs="0" />
+              <xs:element name="PSIZE" msprop:Generator_ColumnPropNameInRow="PSIZE" msprop:Generator_ColumnPropNameInTable="PSIZEColumn" msprop:Generator_ColumnVarNameInTable="columnPSIZE" msprop:Generator_UserColumnName="PSIZE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BIRTHDATE" msprop:Generator_ColumnPropNameInRow="BIRTHDATE" msprop:Generator_ColumnPropNameInTable="BIRTHDATEColumn" msprop:Generator_ColumnVarNameInTable="columnBIRTHDATE" msprop:Generator_UserColumnName="BIRTHDATE" type="xs:dateTime" minOccurs="0" />
               <xs:element name="AVATAR" msprop:Generator_ColumnPropNameInRow="AVATAR" msprop:Generator_ColumnPropNameInTable="AVATARColumn" msprop:Generator_ColumnVarNameInTable="columnAVATAR" msprop:Generator_UserColumnName="AVATAR" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="HEALTH_STATE" msprop:Generator_ColumnPropNameInRow="HEALTH_STATE" msprop:Generator_ColumnPropNameInTable="HEALTH_STATEColumn" msprop:Generator_ColumnVarNameInTable="columnHEALTH_STATE" msprop:Generator_UserColumnName="HEALTH_STATE" minOccurs="0">
                 <xs:simpleType>
@@ -1827,6 +1845,13 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="ROLE" msprop:Generator_ColumnPropNameInRow="ROLE" msprop:Generator_ColumnPropNameInTable="ROLEColumn" msprop:Generator_ColumnVarNameInTable="columnROLE" msprop:Generator_UserColumnName="ROLE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1862,6 +1887,84 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="FOSTER_WINDOW" msprop:Generator_RowEvHandlerName="FOSTER_WINDOWRowChangeEventHandler" msprop:Generator_RowDeletedName="FOSTER_WINDOWRowDeleted" msprop:Generator_RowDeletingName="FOSTER_WINDOWRowDeleting" msprop:Generator_RowEvArgName="FOSTER_WINDOWRowChangeEvent" msprop:Generator_TablePropName="FOSTER_WINDOW" msprop:Generator_RowChangedName="FOSTER_WINDOWRowChanged" msprop:Generator_RowChangingName="FOSTER_WINDOWRowChanging" msprop:Generator_TableClassName="FOSTER_WINDOWDataTable" msprop:Generator_RowClassName="FOSTER_WINDOWRow" msprop:Generator_TableVarName="tableFOSTER_WINDOW" msprop:Generator_UserTableName="FOSTER_WINDOW">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="USER_ID" msprop:Generator_ColumnPropNameInRow="USER_ID" msprop:Generator_ColumnPropNameInTable="USER_IDColumn" msprop:Generator_ColumnVarNameInTable="columnUSER_ID" msprop:Generator_UserColumnName="USER_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OWNER" msprop:Generator_ColumnPropNameInRow="OWNER" msprop:Generator_ColumnPropNameInTable="OWNERColumn" msprop:Generator_ColumnVarNameInTable="columnOWNER" msprop:Generator_UserColumnName="OWNER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PET_ID" msprop:Generator_ColumnPropNameInRow="PET_ID" msprop:Generator_ColumnPropNameInTable="PET_IDColumn" msprop:Generator_ColumnVarNameInTable="columnPET_ID" msprop:Generator_UserColumnName="PET_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PET_NAME" msprop:Generator_ColumnPropNameInRow="PET_NAME" msprop:Generator_ColumnPropNameInTable="PET_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnPET_NAME" msprop:Generator_UserColumnName="PET_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BREED" msprop:Generator_ColumnPropNameInRow="BREED" msprop:Generator_ColumnPropNameInTable="BREEDColumn" msprop:Generator_ColumnVarNameInTable="columnBREED" msprop:Generator_UserColumnName="BREED" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PSIZE" msprop:Generator_ColumnPropNameInRow="PSIZE" msprop:Generator_ColumnPropNameInTable="PSIZEColumn" msprop:Generator_ColumnVarNameInTable="columnPSIZE" msprop:Generator_UserColumnName="PSIZE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DURATION" msprop:Generator_ColumnPropNameInRow="DURATION" msprop:Generator_ColumnPropNameInTable="DURATIONColumn" msprop:Generator_ColumnVarNameInTable="columnDURATION" msprop:Generator_UserColumnName="DURATION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FOSTER_START_DATE" msprop:Generator_ColumnPropNameInRow="FOSTER_START_DATE" msprop:Generator_ColumnPropNameInTable="FOSTER_START_DATEColumn" msprop:Generator_ColumnVarNameInTable="columnFOSTER_START_DATE" msprop:Generator_UserColumnName="FOSTER_START_DATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="122" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FOSTER_END_DATE" msprop:Generator_ColumnPropNameInRow="FOSTER_END_DATE" msprop:Generator_ColumnPropNameInTable="FOSTER_END_DATEColumn" msprop:Generator_ColumnVarNameInTable="columnFOSTER_END_DATE" msprop:Generator_UserColumnName="FOSTER_END_DATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ROOM_ID" msprop:Generator_ColumnPropNameInRow="ROOM_ID" msprop:Generator_ColumnPropNameInTable="ROOM_IDColumn" msprop:Generator_ColumnVarNameInTable="columnROOM_ID" msprop:Generator_UserColumnName="ROOM_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="81" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ROOM_SIZE" msprop:Generator_ColumnPropNameInRow="ROOM_SIZE" msprop:Generator_ColumnPropNameInTable="ROOM_SIZEColumn" msprop:Generator_ColumnVarNameInTable="columnROOM_SIZE" msprop:Generator_UserColumnName="ROOM_SIZE" type="xs:float" minOccurs="0" />
+              <xs:element name="CENSOR_STATE" msprop:Generator_ColumnPropNameInRow="CENSOR_STATE" msprop:Generator_ColumnPropNameInTable="CENSOR_STATEColumn" msprop:Generator_ColumnVarNameInTable="columnCENSOR_STATE" msprop:Generator_UserColumnName="CENSOR_STATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
         <xs:element name="EMPLOYEE_LABOR" msprop:Generator_RowEvHandlerName="EMPLOYEE_LABORRowChangeEventHandler" msprop:Generator_RowDeletedName="EMPLOYEE_LABORRowDeleted" msprop:Generator_RowDeletingName="EMPLOYEE_LABORRowDeleting" msprop:Generator_RowEvArgName="EMPLOYEE_LABORRowChangeEvent" msprop:Generator_TablePropName="EMPLOYEE_LABOR" msprop:Generator_RowChangedName="EMPLOYEE_LABORRowChanged" msprop:Generator_RowChangingName="EMPLOYEE_LABORRowChanging" msprop:Generator_TableClassName="EMPLOYEE_LABORDataTable" msprop:Generator_RowClassName="EMPLOYEE_LABORRow" msprop:Generator_TableVarName="tableEMPLOYEE_LABOR" msprop:Generator_UserTableName="EMPLOYEE_LABOR">
           <xs:complexType>
             <xs:sequence>
@@ -1888,80 +1991,6 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="WORKING_HOURS" msprop:Generator_ColumnPropNameInRow="WORKING_HOURS" msprop:Generator_ColumnPropNameInTable="WORKING_HOURSColumn" msprop:Generator_ColumnVarNameInTable="columnWORKING_HOURS" msprop:Generator_UserColumnName="WORKING_HOURS" type="xs:decimal" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="OWNERSHIP" msprop:Generator_RowEvHandlerName="OWNERSHIPRowChangeEventHandler" msprop:Generator_RowDeletedName="OWNERSHIPRowDeleted" msprop:Generator_RowDeletingName="OWNERSHIPRowDeleting" msprop:Generator_RowEvArgName="OWNERSHIPRowChangeEvent" msprop:Generator_TablePropName="OWNERSHIP" msprop:Generator_RowChangedName="OWNERSHIPRowChanged" msprop:Generator_RowChangingName="OWNERSHIPRowChanging" msprop:Generator_TableClassName="OWNERSHIPDataTable" msprop:Generator_RowClassName="OWNERSHIPRow" msprop:Generator_TableVarName="tableOWNERSHIP" msprop:Generator_UserTableName="OWNERSHIP">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="PET_ID" msprop:Generator_ColumnPropNameInRow="PET_ID" msprop:Generator_ColumnPropNameInTable="PET_IDColumn" msprop:Generator_ColumnVarNameInTable="columnPET_ID" msprop:Generator_UserColumnName="PET_ID">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PET_NAME" msprop:Generator_ColumnPropNameInRow="PET_NAME" msprop:Generator_ColumnPropNameInTable="PET_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnPET_NAME" msprop:Generator_UserColumnName="PET_NAME" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="STATUS" msprop:Generator_ColumnPropNameInRow="STATUS" msprop:Generator_ColumnPropNameInTable="STATUSColumn" msprop:Generator_ColumnVarNameInTable="columnSTATUS" msprop:Generator_UserColumnName="STATUS" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="102" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="START_TIME" msprop:Generator_ColumnPropNameInRow="START_TIME" msprop:Generator_ColumnPropNameInTable="START_TIMEColumn" msprop:Generator_ColumnVarNameInTable="columnSTART_TIME" msprop:Generator_UserColumnName="START_TIME" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="END_TIME" msprop:Generator_ColumnPropNameInRow="END_TIME" msprop:Generator_ColumnPropNameInTable="END_TIMEColumn" msprop:Generator_ColumnVarNameInTable="columnEND_TIME" msprop:Generator_UserColumnName="END_TIME" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="ROOM_AVAIABLE" msprop:Generator_RowEvHandlerName="ROOM_AVAIABLERowChangeEventHandler" msprop:Generator_RowDeletedName="ROOM_AVAIABLERowDeleted" msprop:Generator_RowDeletingName="ROOM_AVAIABLERowDeleting" msprop:Generator_RowEvArgName="ROOM_AVAIABLERowChangeEvent" msprop:Generator_TablePropName="ROOM_AVAIABLE" msprop:Generator_RowChangedName="ROOM_AVAIABLERowChanged" msprop:Generator_RowChangingName="ROOM_AVAIABLERowChanging" msprop:Generator_TableClassName="ROOM_AVAIABLEDataTable" msprop:Generator_RowClassName="ROOM_AVAIABLERow" msprop:Generator_TableVarName="tableROOM_AVAIABLE" msprop:Generator_UserTableName="ROOM_AVAIABLE">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="STOREY" msprop:Generator_ColumnPropNameInRow="STOREY" msprop:Generator_ColumnPropNameInTable="STOREYColumn" msprop:Generator_ColumnVarNameInTable="columnSTOREY" msprop:Generator_UserColumnName="STOREY" type="xs:short" />
-              <xs:element name="CAPACITY" msprop:Generator_ColumnPropNameInRow="CAPACITY" msprop:Generator_ColumnPropNameInTable="CAPACITYColumn" msprop:Generator_ColumnVarNameInTable="columnCAPACITY" msprop:Generator_UserColumnName="CAPACITY" type="xs:decimal" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="USER_PROFILE" msprop:Generator_RowEvHandlerName="USER_PROFILERowChangeEventHandler" msprop:Generator_RowDeletedName="USER_PROFILERowDeleted" msprop:Generator_RowDeletingName="USER_PROFILERowDeleting" msprop:Generator_RowEvArgName="USER_PROFILERowChangeEvent" msprop:Generator_TablePropName="USER_PROFILE" msprop:Generator_RowChangedName="USER_PROFILERowChanged" msprop:Generator_RowChangingName="USER_PROFILERowChanging" msprop:Generator_TableClassName="USER_PROFILEDataTable" msprop:Generator_RowClassName="USER_PROFILERow" msprop:Generator_TableVarName="tableUSER_PROFILE" msprop:Generator_UserTableName="USER_PROFILE">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="USER_ID" msprop:Generator_ColumnPropNameInRow="USER_ID" msprop:Generator_ColumnPropNameInTable="USER_IDColumn" msprop:Generator_ColumnVarNameInTable="columnUSER_ID" msprop:Generator_UserColumnName="USER_ID">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="USER_NAME" msprop:Generator_ColumnPropNameInRow="USER_NAME" msprop:Generator_ColumnPropNameInTable="USER_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnUSER_NAME" msprop:Generator_UserColumnName="USER_NAME" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="TOTAL_POSTS" msprop:Generator_ColumnPropNameInRow="TOTAL_POSTS" msprop:Generator_ColumnPropNameInTable="TOTAL_POSTSColumn" msprop:Generator_ColumnVarNameInTable="columnTOTAL_POSTS" msprop:Generator_UserColumnName="TOTAL_POSTS" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TOTAL_READS" msprop:Generator_ColumnPropNameInRow="TOTAL_READS" msprop:Generator_ColumnPropNameInTable="TOTAL_READSColumn" msprop:Generator_ColumnVarNameInTable="columnTOTAL_READS" msprop:Generator_UserColumnName="TOTAL_READS" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TOTAL_POST_LIKES" msprop:Generator_ColumnPropNameInRow="TOTAL_POST_LIKES" msprop:Generator_ColumnPropNameInTable="TOTAL_POST_LIKESColumn" msprop:Generator_ColumnVarNameInTable="columnTOTAL_POST_LIKES" msprop:Generator_UserColumnName="TOTAL_POST_LIKES" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TOTAL_POST_COMMENTS" msprop:Generator_ColumnPropNameInRow="TOTAL_POST_COMMENTS" msprop:Generator_ColumnPropNameInTable="TOTAL_POST_COMMENTSColumn" msprop:Generator_ColumnVarNameInTable="columnTOTAL_POST_COMMENTS" msprop:Generator_UserColumnName="TOTAL_POST_COMMENTS" type="xs:decimal" minOccurs="0" />
-              <xs:element name="DONATION_TOTOL_AMOUNTS" msprop:Generator_ColumnPropNameInRow="DONATION_TOTOL_AMOUNTS" msprop:Generator_ColumnPropNameInTable="DONATION_TOTOL_AMOUNTSColumn" msprop:Generator_ColumnVarNameInTable="columnDONATION_TOTOL_AMOUNTS" msprop:Generator_UserColumnName="DONATION_TOTOL_AMOUNTS" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1994,9 +2023,6 @@
       <xs:field xpath="mstns:PET_ID" />
       <xs:field xpath="mstns:STOREY" />
       <xs:field xpath="mstns:COMPARTMENT" />
-      <xs:field xpath="mstns:START_YEAR" />
-      <xs:field xpath="mstns:START_MONTH" />
-      <xs:field xpath="mstns:START_DAY" />
     </xs:unique>
     <xs:unique name="ADOPT_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:ADOPT" />
@@ -2091,29 +2117,30 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="SYS_C0047807" msdata:parent="PET" msdata:child="ACCOMMODATE" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="ACCOMMODATE" msprop:Generator_RelationVarName="relationSYS_C0047807" msprop:Generator_UserRelationName="SYS_C0047807" msprop:Generator_ChildPropName="GetACCOMMODATERows" msprop:Generator_ParentPropName="PETRow" />
-      <msdata:Relationship name="SYS_C0047808" msdata:parent="ROOM" msdata:child="ACCOMMODATE" msdata:parentkey="STOREY COMPARTMENT" msdata:childkey="STOREY COMPARTMENT" msprop:Generator_UserParentTable="ROOM" msprop:Generator_UserChildTable="ACCOMMODATE" msprop:Generator_RelationVarName="relationSYS_C0047808" msprop:Generator_UserRelationName="SYS_C0047808" msprop:Generator_ChildPropName="GetACCOMMODATERows" msprop:Generator_ParentPropName="ROOMRowParent" />
-      <msdata:Relationship name="SYS_C0047799" msdata:parent="USER2" msdata:child="ADOPT" msdata:parentkey="USER_ID" msdata:childkey="ADOPTER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="ADOPT" msprop:Generator_RelationVarName="relationSYS_C0047799" msprop:Generator_UserRelationName="SYS_C0047799" msprop:Generator_ChildPropName="GetADOPTRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047800" msdata:parent="PET" msdata:child="ADOPT" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="ADOPT" msprop:Generator_RelationVarName="relationSYS_C0047800" msprop:Generator_UserRelationName="SYS_C0047800" msprop:Generator_ChildPropName="GetADOPTRows" msprop:Generator_ParentPropName="PETRow" />
-      <msdata:Relationship name="SYS_C0047814" msdata:parent="PET" msdata:child="APPLICATION" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="APPLICATION" msprop:Generator_RelationVarName="relationSYS_C0047814" msprop:Generator_UserRelationName="SYS_C0047814" msprop:Generator_ChildPropName="GetAPPLICATIONRows" msprop:Generator_ParentPropName="PETRow" />
-      <msdata:Relationship name="SYS_C0047815" msdata:parent="USER2" msdata:child="APPLICATION" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="APPLICATION" msprop:Generator_RelationVarName="relationSYS_C0047815" msprop:Generator_UserRelationName="SYS_C0047815" msprop:Generator_ChildPropName="GetAPPLICATIONRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047789" msdata:parent="EMPLOYEE" msdata:child="BULLETIN" msdata:parentkey="EMPLOYEE_ID" msdata:childkey="EMPLOYEE_ID" msprop:Generator_UserParentTable="EMPLOYEE" msprop:Generator_UserChildTable="BULLETIN" msprop:Generator_RelationVarName="relationSYS_C0047789" msprop:Generator_UserRelationName="SYS_C0047789" msprop:Generator_ChildPropName="GetBULLETINRows" msprop:Generator_ParentPropName="EMPLOYEERow" />
-      <msdata:Relationship name="SYS_C0047831" msdata:parent="USER2" msdata:child="COLLECT_PET_INFO" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="COLLECT_PET_INFO" msprop:Generator_RelationVarName="relationSYS_C0047831" msprop:Generator_UserRelationName="SYS_C0047831" msprop:Generator_ChildPropName="GetCOLLECT_PET_INFORows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047832" msdata:parent="PET" msdata:child="COLLECT_PET_INFO" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="COLLECT_PET_INFO" msprop:Generator_RelationVarName="relationSYS_C0047832" msprop:Generator_UserRelationName="SYS_C0047832" msprop:Generator_ChildPropName="GetCOLLECT_PET_INFORows" msprop:Generator_ParentPropName="PETRow" />
-      <msdata:Relationship name="SYS_C0047828" msdata:parent="USER2" msdata:child="COMMENT_PET" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="COMMENT_PET" msprop:Generator_RelationVarName="relationSYS_C0047828" msprop:Generator_UserRelationName="SYS_C0047828" msprop:Generator_ChildPropName="GetCOMMENT_PETRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047829" msdata:parent="PET" msdata:child="COMMENT_PET" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="COMMENT_PET" msprop:Generator_RelationVarName="relationSYS_C0047829" msprop:Generator_UserRelationName="SYS_C0047829" msprop:Generator_ChildPropName="GetCOMMENT_PETRows" msprop:Generator_ParentPropName="PETRow" />
-      <msdata:Relationship name="SYS_C0047821" msdata:parent="USER2" msdata:child="COMMENT_POST" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="COMMENT_POST" msprop:Generator_RelationVarName="relationSYS_C0047821" msprop:Generator_UserRelationName="SYS_C0047821" msprop:Generator_ChildPropName="GetCOMMENT_POSTRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047822" msdata:parent="FORUM_POSTS" msdata:child="COMMENT_POST" msdata:parentkey="POST_ID" msdata:childkey="POST_ID" msprop:Generator_UserParentTable="FORUM_POSTS" msprop:Generator_UserChildTable="COMMENT_POST" msprop:Generator_RelationVarName="relationSYS_C0047822" msprop:Generator_UserRelationName="SYS_C0047822" msprop:Generator_ChildPropName="GetCOMMENT_POSTRows" msprop:Generator_ParentPropName="FORUM_POSTSRow" />
-      <msdata:Relationship name="SYS_C0047797" msdata:parent="USER2" msdata:child="DONATION" msdata:parentkey="USER_ID" msdata:childkey="DONOR_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="DONATION" msprop:Generator_RelationVarName="relationSYS_C0047797" msprop:Generator_UserRelationName="SYS_C0047797" msprop:Generator_ChildPropName="GetDONATIONRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047794" msdata:parent="USER2" msdata:child="FORUM_POSTS" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="FORUM_POSTS" msprop:Generator_RelationVarName="relationSYS_C0047794" msprop:Generator_UserRelationName="SYS_C0047794" msprop:Generator_ChildPropName="GetFORUM_POSTSRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047803" msdata:parent="USER2" msdata:child="FOSTER" msdata:parentkey="USER_ID" msdata:childkey="FOSTERER" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="FOSTER" msprop:Generator_RelationVarName="relationSYS_C0047803" msprop:Generator_UserRelationName="SYS_C0047803" msprop:Generator_ChildPropName="GetFOSTERRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047804" msdata:parent="PET" msdata:child="FOSTER" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="FOSTER" msprop:Generator_RelationVarName="relationSYS_C0047804" msprop:Generator_UserRelationName="SYS_C0047804" msprop:Generator_ChildPropName="GetFOSTERRows" msprop:Generator_ParentPropName="PETRow" />
-      <msdata:Relationship name="SYS_C0047824" msdata:parent="USER2" msdata:child="LIKE_PET" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="LIKE_PET" msprop:Generator_RelationVarName="relationSYS_C0047824" msprop:Generator_UserRelationName="SYS_C0047824" msprop:Generator_ChildPropName="GetLIKE_PETRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047825" msdata:parent="PET" msdata:child="LIKE_PET" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="LIKE_PET" msprop:Generator_RelationVarName="relationSYS_C0047825" msprop:Generator_UserRelationName="SYS_C0047825" msprop:Generator_ChildPropName="GetLIKE_PETRows" msprop:Generator_ParentPropName="PETRow" />
-      <msdata:Relationship name="SYS_C0047817" msdata:parent="USER2" msdata:child="LIKE_POST" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="LIKE_POST" msprop:Generator_RelationVarName="relationSYS_C0047817" msprop:Generator_UserRelationName="SYS_C0047817" msprop:Generator_ChildPropName="GetLIKE_POSTRows" msprop:Generator_ParentPropName="USER2Row" />
-      <msdata:Relationship name="SYS_C0047818" msdata:parent="FORUM_POSTS" msdata:child="LIKE_POST" msdata:parentkey="POST_ID" msdata:childkey="POST_ID" msprop:Generator_UserParentTable="FORUM_POSTS" msprop:Generator_UserChildTable="LIKE_POST" msprop:Generator_RelationVarName="relationSYS_C0047818" msprop:Generator_ChildPropName="GetLIKE_POSTRows" msprop:Generator_ParentPropName="FORUM_POSTSRow" msprop:Generator_UserRelationName="SYS_C0047818" />
-      <msdata:Relationship name="SYS_C0047810" msdata:parent="PET" msdata:child="TREATMENT" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="TREATMENT" msprop:Generator_RelationVarName="relationSYS_C0047810" msprop:Generator_ChildPropName="GetTREATMENTRows" msprop:Generator_ParentPropName="PETRow" msprop:Generator_UserRelationName="SYS_C0047810" />
-      <msdata:Relationship name="SYS_C0047811" msdata:parent="VET" msdata:child="TREATMENT" msdata:parentkey="VET_ID" msdata:childkey="VET_ID" msprop:Generator_UserParentTable="VET" msprop:Generator_UserChildTable="TREATMENT" msprop:Generator_RelationVarName="relationSYS_C0047811" msprop:Generator_UserRelationName="SYS_C0047811" msprop:Generator_ChildPropName="GetTREATMENTRows" msprop:Generator_ParentPropName="VETRow" />
+      <msdata:Relationship name="SYS_C0048980" msdata:parent="EMPLOYEE" msdata:child="BULLETIN" msdata:parentkey="EMPLOYEE_ID" msdata:childkey="EMPLOYEE_ID" msprop:Generator_UserParentTable="EMPLOYEE" msprop:Generator_UserChildTable="BULLETIN" msprop:Generator_RelationVarName="relationSYS_C0048980" msprop:Generator_UserRelationName="SYS_C0048980" msprop:Generator_ChildPropName="GetBULLETINRows" msprop:Generator_ParentPropName="EMPLOYEERow" />
+      <msdata:Relationship name="SYS_C0049016" msdata:parent="FORUM_POSTS" msdata:child="COMMENT_POST" msdata:parentkey="POST_ID" msdata:childkey="POST_ID" msprop:Generator_UserParentTable="FORUM_POSTS" msprop:Generator_UserChildTable="COMMENT_POST" msprop:Generator_RelationVarName="relationSYS_C0049016" msprop:Generator_UserRelationName="SYS_C0049016" msprop:Generator_ChildPropName="GetCOMMENT_POSTRows" msprop:Generator_ParentPropName="FORUM_POSTSRow" />
+      <msdata:Relationship name="SYS_C0049012" msdata:parent="FORUM_POSTS" msdata:child="LIKE_POST" msdata:parentkey="POST_ID" msdata:childkey="POST_ID" msprop:Generator_UserParentTable="FORUM_POSTS" msprop:Generator_UserChildTable="LIKE_POST" msprop:Generator_RelationVarName="relationSYS_C0049012" msprop:Generator_ChildPropName="GetLIKE_POSTRows" msprop:Generator_ParentPropName="FORUM_POSTSRow" msprop:Generator_UserRelationName="SYS_C0049012" />
+      <msdata:Relationship name="SYS_C0049001" msdata:parent="PET" msdata:child="ACCOMMODATE" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="ACCOMMODATE" msprop:Generator_RelationVarName="relationSYS_C0049001" msprop:Generator_UserRelationName="SYS_C0049001" msprop:Generator_ChildPropName="GetACCOMMODATERows" msprop:Generator_ParentPropName="PETRow" />
+      <msdata:Relationship name="SYS_C0048993" msdata:parent="PET" msdata:child="ADOPT" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="ADOPT" msprop:Generator_RelationVarName="relationSYS_C0048993" msprop:Generator_UserRelationName="SYS_C0048993" msprop:Generator_ChildPropName="GetADOPTRows" msprop:Generator_ParentPropName="PETRow" />
+      <msdata:Relationship name="SYS_C0049008" msdata:parent="PET" msdata:child="APPLICATION" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="APPLICATION" msprop:Generator_RelationVarName="relationSYS_C0049008" msprop:Generator_UserRelationName="SYS_C0049008" msprop:Generator_ChildPropName="GetAPPLICATIONRows" msprop:Generator_ParentPropName="PETRow" />
+      <msdata:Relationship name="SYS_C0049026" msdata:parent="PET" msdata:child="COLLECT_PET_INFO" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="COLLECT_PET_INFO" msprop:Generator_RelationVarName="relationSYS_C0049026" msprop:Generator_UserRelationName="SYS_C0049026" msprop:Generator_ChildPropName="GetCOLLECT_PET_INFORows" msprop:Generator_ParentPropName="PETRow" />
+      <msdata:Relationship name="SYS_C0049023" msdata:parent="PET" msdata:child="COMMENT_PET" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="COMMENT_PET" msprop:Generator_RelationVarName="relationSYS_C0049023" msprop:Generator_UserRelationName="SYS_C0049023" msprop:Generator_ChildPropName="GetCOMMENT_PETRows" msprop:Generator_ParentPropName="PETRow" />
+      <msdata:Relationship name="SYS_C0048998" msdata:parent="PET" msdata:child="FOSTER" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="FOSTER" msprop:Generator_RelationVarName="relationSYS_C0048998" msprop:Generator_UserRelationName="SYS_C0048998" msprop:Generator_ChildPropName="GetFOSTERRows" msprop:Generator_ParentPropName="PETRow" />
+      <msdata:Relationship name="SYS_C0049019" msdata:parent="PET" msdata:child="LIKE_PET" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="LIKE_PET" msprop:Generator_RelationVarName="relationSYS_C0049019" msprop:Generator_UserRelationName="SYS_C0049019" msprop:Generator_ChildPropName="GetLIKE_PETRows" msprop:Generator_ParentPropName="PETRow" />
+      <msdata:Relationship name="SYS_C0049002" msdata:parent="ROOM" msdata:child="ACCOMMODATE" msdata:parentkey="STOREY COMPARTMENT" msdata:childkey="STOREY COMPARTMENT" msprop:Generator_UserParentTable="ROOM" msprop:Generator_UserChildTable="ACCOMMODATE" msprop:Generator_RelationVarName="relationSYS_C0049002" msprop:Generator_UserRelationName="SYS_C0049002" msprop:Generator_ChildPropName="GetACCOMMODATERows" msprop:Generator_ParentPropName="ROOMRowParent" />
+      <msdata:Relationship name="SYS_C0049004" msdata:parent="PET" msdata:child="TREATMENT" msdata:parentkey="PET_ID" msdata:childkey="PET_ID" msprop:Generator_UserParentTable="PET" msprop:Generator_UserChildTable="TREATMENT" msprop:Generator_RelationVarName="relationSYS_C0049004" msprop:Generator_ChildPropName="GetTREATMENTRows" msprop:Generator_ParentPropName="PETRow" msprop:Generator_UserRelationName="SYS_C0049004" />
+      <msdata:Relationship name="SYS_C0049000" msdata:parent="USER2" msdata:child="ACCOMMODATE" msdata:parentkey="USER_ID" msdata:childkey="OWNER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="ACCOMMODATE" msprop:Generator_RelationVarName="relationSYS_C0049000" msprop:Generator_UserRelationName="SYS_C0049000" msprop:Generator_ChildPropName="GetACCOMMODATERows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0048992" msdata:parent="USER2" msdata:child="ADOPT" msdata:parentkey="USER_ID" msdata:childkey="ADOPTER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="ADOPT" msprop:Generator_RelationVarName="relationSYS_C0048992" msprop:Generator_UserRelationName="SYS_C0048992" msprop:Generator_ChildPropName="GetADOPTRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0049009" msdata:parent="USER2" msdata:child="APPLICATION" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="APPLICATION" msprop:Generator_RelationVarName="relationSYS_C0049009" msprop:Generator_UserRelationName="SYS_C0049009" msprop:Generator_ChildPropName="GetAPPLICATIONRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0049025" msdata:parent="USER2" msdata:child="COLLECT_PET_INFO" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="COLLECT_PET_INFO" msprop:Generator_RelationVarName="relationSYS_C0049025" msprop:Generator_UserRelationName="SYS_C0049025" msprop:Generator_ChildPropName="GetCOLLECT_PET_INFORows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0049022" msdata:parent="USER2" msdata:child="COMMENT_PET" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="COMMENT_PET" msprop:Generator_RelationVarName="relationSYS_C0049022" msprop:Generator_UserRelationName="SYS_C0049022" msprop:Generator_ChildPropName="GetCOMMENT_PETRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0049015" msdata:parent="USER2" msdata:child="COMMENT_POST" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="COMMENT_POST" msprop:Generator_RelationVarName="relationSYS_C0049015" msprop:Generator_UserRelationName="SYS_C0049015" msprop:Generator_ChildPropName="GetCOMMENT_POSTRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0048990" msdata:parent="USER2" msdata:child="DONATION" msdata:parentkey="USER_ID" msdata:childkey="DONOR_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="DONATION" msprop:Generator_RelationVarName="relationSYS_C0048990" msprop:Generator_UserRelationName="SYS_C0048990" msprop:Generator_ChildPropName="GetDONATIONRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0048986" msdata:parent="USER2" msdata:child="FORUM_POSTS" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="FORUM_POSTS" msprop:Generator_RelationVarName="relationSYS_C0048986" msprop:Generator_UserRelationName="SYS_C0048986" msprop:Generator_ChildPropName="GetFORUM_POSTSRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0048997" msdata:parent="USER2" msdata:child="FOSTER" msdata:parentkey="USER_ID" msdata:childkey="FOSTERER" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="FOSTER" msprop:Generator_RelationVarName="relationSYS_C0048997" msprop:Generator_UserRelationName="SYS_C0048997" msprop:Generator_ChildPropName="GetFOSTERRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0049018" msdata:parent="USER2" msdata:child="LIKE_PET" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="LIKE_PET" msprop:Generator_RelationVarName="relationSYS_C0049018" msprop:Generator_UserRelationName="SYS_C0049018" msprop:Generator_ChildPropName="GetLIKE_PETRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0049011" msdata:parent="USER2" msdata:child="LIKE_POST" msdata:parentkey="USER_ID" msdata:childkey="USER_ID" msprop:Generator_UserParentTable="USER2" msprop:Generator_UserChildTable="LIKE_POST" msprop:Generator_RelationVarName="relationSYS_C0049011" msprop:Generator_UserRelationName="SYS_C0049011" msprop:Generator_ChildPropName="GetLIKE_POSTRows" msprop:Generator_ParentPropName="USER2Row" />
+      <msdata:Relationship name="SYS_C0049005" msdata:parent="VET" msdata:child="TREATMENT" msdata:parentkey="VET_ID" msdata:childkey="VET_ID" msprop:Generator_UserParentTable="VET" msprop:Generator_UserChildTable="TREATMENT" msprop:Generator_RelationVarName="relationSYS_C0049005" msprop:Generator_UserRelationName="SYS_C0049005" msprop:Generator_ChildPropName="GetTREATMENTRows" msprop:Generator_ParentPropName="VETRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

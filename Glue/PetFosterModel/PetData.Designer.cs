@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace PetFosterTest {
+namespace PetFoster.Model {
     
     
     /// <summary>
@@ -20,9 +20,9 @@ namespace PetFosterTest {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("PetData")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSet1 : global::System.Data.DataSet {
+    public partial class PetData : global::System.Data.DataSet {
         
         private ACCOMMODATEDataTable tableACCOMMODATE;
         
@@ -60,67 +60,65 @@ namespace PetFosterTest {
         
         private VETDataTable tableVET;
         
+        private FOSTER_WINDOWDataTable tableFOSTER_WINDOW;
+        
         private EMPLOYEE_LABORDataTable tableEMPLOYEE_LABOR;
-        
-        private OWNERSHIPDataTable tableOWNERSHIP;
-        
-        private ROOM_AVAIABLEDataTable tableROOM_AVAIABLE;
-        
-        private USER_PROFILEDataTable tableUSER_PROFILE;
         
         private VET_LABORDataTable tableVET_LABOR;
         
-        private global::System.Data.DataRelation relationSYS_C0047807;
+        private global::System.Data.DataRelation relationSYS_C0048980;
         
-        private global::System.Data.DataRelation relationSYS_C0047808;
+        private global::System.Data.DataRelation relationSYS_C0049016;
         
-        private global::System.Data.DataRelation relationSYS_C0047799;
+        private global::System.Data.DataRelation relationSYS_C0049012;
         
-        private global::System.Data.DataRelation relationSYS_C0047800;
+        private global::System.Data.DataRelation relationSYS_C0049001;
         
-        private global::System.Data.DataRelation relationSYS_C0047814;
+        private global::System.Data.DataRelation relationSYS_C0048993;
         
-        private global::System.Data.DataRelation relationSYS_C0047815;
+        private global::System.Data.DataRelation relationSYS_C0049008;
         
-        private global::System.Data.DataRelation relationSYS_C0047789;
+        private global::System.Data.DataRelation relationSYS_C0049026;
         
-        private global::System.Data.DataRelation relationSYS_C0047831;
+        private global::System.Data.DataRelation relationSYS_C0049023;
         
-        private global::System.Data.DataRelation relationSYS_C0047832;
+        private global::System.Data.DataRelation relationSYS_C0048998;
         
-        private global::System.Data.DataRelation relationSYS_C0047828;
+        private global::System.Data.DataRelation relationSYS_C0049019;
         
-        private global::System.Data.DataRelation relationSYS_C0047829;
+        private global::System.Data.DataRelation relationSYS_C0049002;
         
-        private global::System.Data.DataRelation relationSYS_C0047821;
+        private global::System.Data.DataRelation relationSYS_C0049004;
         
-        private global::System.Data.DataRelation relationSYS_C0047822;
+        private global::System.Data.DataRelation relationSYS_C0049000;
         
-        private global::System.Data.DataRelation relationSYS_C0047797;
+        private global::System.Data.DataRelation relationSYS_C0048992;
         
-        private global::System.Data.DataRelation relationSYS_C0047794;
+        private global::System.Data.DataRelation relationSYS_C0049009;
         
-        private global::System.Data.DataRelation relationSYS_C0047803;
+        private global::System.Data.DataRelation relationSYS_C0049025;
         
-        private global::System.Data.DataRelation relationSYS_C0047804;
+        private global::System.Data.DataRelation relationSYS_C0049022;
         
-        private global::System.Data.DataRelation relationSYS_C0047824;
+        private global::System.Data.DataRelation relationSYS_C0049015;
         
-        private global::System.Data.DataRelation relationSYS_C0047825;
+        private global::System.Data.DataRelation relationSYS_C0048990;
         
-        private global::System.Data.DataRelation relationSYS_C0047817;
+        private global::System.Data.DataRelation relationSYS_C0048986;
         
-        private global::System.Data.DataRelation relationSYS_C0047818;
+        private global::System.Data.DataRelation relationSYS_C0048997;
         
-        private global::System.Data.DataRelation relationSYS_C0047810;
+        private global::System.Data.DataRelation relationSYS_C0049018;
         
-        private global::System.Data.DataRelation relationSYS_C0047811;
+        private global::System.Data.DataRelation relationSYS_C0049011;
+        
+        private global::System.Data.DataRelation relationSYS_C0049005;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DataSet1() {
+        public PetData() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -131,7 +129,7 @@ namespace PetFosterTest {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected PetData(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -198,17 +196,11 @@ namespace PetFosterTest {
                 if ((ds.Tables["VET"] != null)) {
                     base.Tables.Add(new VETDataTable(ds.Tables["VET"]));
                 }
+                if ((ds.Tables["FOSTER_WINDOW"] != null)) {
+                    base.Tables.Add(new FOSTER_WINDOWDataTable(ds.Tables["FOSTER_WINDOW"]));
+                }
                 if ((ds.Tables["EMPLOYEE_LABOR"] != null)) {
                     base.Tables.Add(new EMPLOYEE_LABORDataTable(ds.Tables["EMPLOYEE_LABOR"]));
-                }
-                if ((ds.Tables["OWNERSHIP"] != null)) {
-                    base.Tables.Add(new OWNERSHIPDataTable(ds.Tables["OWNERSHIP"]));
-                }
-                if ((ds.Tables["ROOM_AVAIABLE"] != null)) {
-                    base.Tables.Add(new ROOM_AVAIABLEDataTable(ds.Tables["ROOM_AVAIABLE"]));
-                }
-                if ((ds.Tables["USER_PROFILE"] != null)) {
-                    base.Tables.Add(new USER_PROFILEDataTable(ds.Tables["USER_PROFILE"]));
                 }
                 if ((ds.Tables["VET_LABOR"] != null)) {
                     base.Tables.Add(new VET_LABORDataTable(ds.Tables["VET_LABOR"]));
@@ -415,39 +407,19 @@ namespace PetFosterTest {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public FOSTER_WINDOWDataTable FOSTER_WINDOW {
+            get {
+                return this.tableFOSTER_WINDOW;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public EMPLOYEE_LABORDataTable EMPLOYEE_LABOR {
             get {
                 return this.tableEMPLOYEE_LABOR;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public OWNERSHIPDataTable OWNERSHIP {
-            get {
-                return this.tableOWNERSHIP;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ROOM_AVAIABLEDataTable ROOM_AVAIABLE {
-            get {
-                return this.tableROOM_AVAIABLE;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public USER_PROFILEDataTable USER_PROFILE {
-            get {
-                return this.tableUSER_PROFILE;
             }
         }
         
@@ -503,7 +475,7 @@ namespace PetFosterTest {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSet1 cln = ((DataSet1)(base.Clone()));
+            PetData cln = ((PetData)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -582,17 +554,11 @@ namespace PetFosterTest {
                 if ((ds.Tables["VET"] != null)) {
                     base.Tables.Add(new VETDataTable(ds.Tables["VET"]));
                 }
+                if ((ds.Tables["FOSTER_WINDOW"] != null)) {
+                    base.Tables.Add(new FOSTER_WINDOWDataTable(ds.Tables["FOSTER_WINDOW"]));
+                }
                 if ((ds.Tables["EMPLOYEE_LABOR"] != null)) {
                     base.Tables.Add(new EMPLOYEE_LABORDataTable(ds.Tables["EMPLOYEE_LABOR"]));
-                }
-                if ((ds.Tables["OWNERSHIP"] != null)) {
-                    base.Tables.Add(new OWNERSHIPDataTable(ds.Tables["OWNERSHIP"]));
-                }
-                if ((ds.Tables["ROOM_AVAIABLE"] != null)) {
-                    base.Tables.Add(new ROOM_AVAIABLEDataTable(ds.Tables["ROOM_AVAIABLE"]));
-                }
-                if ((ds.Tables["USER_PROFILE"] != null)) {
-                    base.Tables.Add(new USER_PROFILEDataTable(ds.Tables["USER_PROFILE"]));
                 }
                 if ((ds.Tables["VET_LABOR"] != null)) {
                     base.Tables.Add(new VET_LABORDataTable(ds.Tables["VET_LABOR"]));
@@ -738,28 +704,16 @@ namespace PetFosterTest {
                     this.tableVET.InitVars();
                 }
             }
+            this.tableFOSTER_WINDOW = ((FOSTER_WINDOWDataTable)(base.Tables["FOSTER_WINDOW"]));
+            if ((initTable == true)) {
+                if ((this.tableFOSTER_WINDOW != null)) {
+                    this.tableFOSTER_WINDOW.InitVars();
+                }
+            }
             this.tableEMPLOYEE_LABOR = ((EMPLOYEE_LABORDataTable)(base.Tables["EMPLOYEE_LABOR"]));
             if ((initTable == true)) {
                 if ((this.tableEMPLOYEE_LABOR != null)) {
                     this.tableEMPLOYEE_LABOR.InitVars();
-                }
-            }
-            this.tableOWNERSHIP = ((OWNERSHIPDataTable)(base.Tables["OWNERSHIP"]));
-            if ((initTable == true)) {
-                if ((this.tableOWNERSHIP != null)) {
-                    this.tableOWNERSHIP.InitVars();
-                }
-            }
-            this.tableROOM_AVAIABLE = ((ROOM_AVAIABLEDataTable)(base.Tables["ROOM_AVAIABLE"]));
-            if ((initTable == true)) {
-                if ((this.tableROOM_AVAIABLE != null)) {
-                    this.tableROOM_AVAIABLE.InitVars();
-                }
-            }
-            this.tableUSER_PROFILE = ((USER_PROFILEDataTable)(base.Tables["USER_PROFILE"]));
-            if ((initTable == true)) {
-                if ((this.tableUSER_PROFILE != null)) {
-                    this.tableUSER_PROFILE.InitVars();
                 }
             }
             this.tableVET_LABOR = ((VET_LABORDataTable)(base.Tables["VET_LABOR"]));
@@ -768,37 +722,38 @@ namespace PetFosterTest {
                     this.tableVET_LABOR.InitVars();
                 }
             }
-            this.relationSYS_C0047807 = this.Relations["SYS_C0047807"];
-            this.relationSYS_C0047808 = this.Relations["SYS_C0047808"];
-            this.relationSYS_C0047799 = this.Relations["SYS_C0047799"];
-            this.relationSYS_C0047800 = this.Relations["SYS_C0047800"];
-            this.relationSYS_C0047814 = this.Relations["SYS_C0047814"];
-            this.relationSYS_C0047815 = this.Relations["SYS_C0047815"];
-            this.relationSYS_C0047789 = this.Relations["SYS_C0047789"];
-            this.relationSYS_C0047831 = this.Relations["SYS_C0047831"];
-            this.relationSYS_C0047832 = this.Relations["SYS_C0047832"];
-            this.relationSYS_C0047828 = this.Relations["SYS_C0047828"];
-            this.relationSYS_C0047829 = this.Relations["SYS_C0047829"];
-            this.relationSYS_C0047821 = this.Relations["SYS_C0047821"];
-            this.relationSYS_C0047822 = this.Relations["SYS_C0047822"];
-            this.relationSYS_C0047797 = this.Relations["SYS_C0047797"];
-            this.relationSYS_C0047794 = this.Relations["SYS_C0047794"];
-            this.relationSYS_C0047803 = this.Relations["SYS_C0047803"];
-            this.relationSYS_C0047804 = this.Relations["SYS_C0047804"];
-            this.relationSYS_C0047824 = this.Relations["SYS_C0047824"];
-            this.relationSYS_C0047825 = this.Relations["SYS_C0047825"];
-            this.relationSYS_C0047817 = this.Relations["SYS_C0047817"];
-            this.relationSYS_C0047818 = this.Relations["SYS_C0047818"];
-            this.relationSYS_C0047810 = this.Relations["SYS_C0047810"];
-            this.relationSYS_C0047811 = this.Relations["SYS_C0047811"];
+            this.relationSYS_C0048980 = this.Relations["SYS_C0048980"];
+            this.relationSYS_C0049016 = this.Relations["SYS_C0049016"];
+            this.relationSYS_C0049012 = this.Relations["SYS_C0049012"];
+            this.relationSYS_C0049001 = this.Relations["SYS_C0049001"];
+            this.relationSYS_C0048993 = this.Relations["SYS_C0048993"];
+            this.relationSYS_C0049008 = this.Relations["SYS_C0049008"];
+            this.relationSYS_C0049026 = this.Relations["SYS_C0049026"];
+            this.relationSYS_C0049023 = this.Relations["SYS_C0049023"];
+            this.relationSYS_C0048998 = this.Relations["SYS_C0048998"];
+            this.relationSYS_C0049019 = this.Relations["SYS_C0049019"];
+            this.relationSYS_C0049002 = this.Relations["SYS_C0049002"];
+            this.relationSYS_C0049004 = this.Relations["SYS_C0049004"];
+            this.relationSYS_C0049000 = this.Relations["SYS_C0049000"];
+            this.relationSYS_C0048992 = this.Relations["SYS_C0048992"];
+            this.relationSYS_C0049009 = this.Relations["SYS_C0049009"];
+            this.relationSYS_C0049025 = this.Relations["SYS_C0049025"];
+            this.relationSYS_C0049022 = this.Relations["SYS_C0049022"];
+            this.relationSYS_C0049015 = this.Relations["SYS_C0049015"];
+            this.relationSYS_C0048990 = this.Relations["SYS_C0048990"];
+            this.relationSYS_C0048986 = this.Relations["SYS_C0048986"];
+            this.relationSYS_C0048997 = this.Relations["SYS_C0048997"];
+            this.relationSYS_C0049018 = this.Relations["SYS_C0049018"];
+            this.relationSYS_C0049011 = this.Relations["SYS_C0049011"];
+            this.relationSYS_C0049005 = this.Relations["SYS_C0049005"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSet1";
+            this.DataSetName = "PetData";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSet1.xsd";
+            this.Namespace = "http://tempuri.org/PetData.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableACCOMMODATE = new ACCOMMODATEDataTable();
@@ -837,110 +792,110 @@ namespace PetFosterTest {
             base.Tables.Add(this.tableUSER2);
             this.tableVET = new VETDataTable();
             base.Tables.Add(this.tableVET);
+            this.tableFOSTER_WINDOW = new FOSTER_WINDOWDataTable();
+            base.Tables.Add(this.tableFOSTER_WINDOW);
             this.tableEMPLOYEE_LABOR = new EMPLOYEE_LABORDataTable();
             base.Tables.Add(this.tableEMPLOYEE_LABOR);
-            this.tableOWNERSHIP = new OWNERSHIPDataTable();
-            base.Tables.Add(this.tableOWNERSHIP);
-            this.tableROOM_AVAIABLE = new ROOM_AVAIABLEDataTable();
-            base.Tables.Add(this.tableROOM_AVAIABLE);
-            this.tableUSER_PROFILE = new USER_PROFILEDataTable();
-            base.Tables.Add(this.tableUSER_PROFILE);
             this.tableVET_LABOR = new VET_LABORDataTable();
             base.Tables.Add(this.tableVET_LABOR);
-            this.relationSYS_C0047807 = new global::System.Data.DataRelation("SYS_C0047807", new global::System.Data.DataColumn[] {
+            this.relationSYS_C0048980 = new global::System.Data.DataRelation("SYS_C0048980", new global::System.Data.DataColumn[] {
+                        this.tableEMPLOYEE.EMPLOYEE_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableBULLETIN.EMPLOYEE_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0048980);
+            this.relationSYS_C0049016 = new global::System.Data.DataRelation("SYS_C0049016", new global::System.Data.DataColumn[] {
+                        this.tableFORUM_POSTS.POST_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCOMMENT_POST.POST_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049016);
+            this.relationSYS_C0049012 = new global::System.Data.DataRelation("SYS_C0049012", new global::System.Data.DataColumn[] {
+                        this.tableFORUM_POSTS.POST_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLIKE_POST.POST_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049012);
+            this.relationSYS_C0049001 = new global::System.Data.DataRelation("SYS_C0049001", new global::System.Data.DataColumn[] {
                         this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableACCOMMODATE.PET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047807);
-            this.relationSYS_C0047808 = new global::System.Data.DataRelation("SYS_C0047808", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationSYS_C0049001);
+            this.relationSYS_C0048993 = new global::System.Data.DataRelation("SYS_C0048993", new global::System.Data.DataColumn[] {
+                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableADOPT.PET_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0048993);
+            this.relationSYS_C0049008 = new global::System.Data.DataRelation("SYS_C0049008", new global::System.Data.DataColumn[] {
+                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAPPLICATION.PET_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049008);
+            this.relationSYS_C0049026 = new global::System.Data.DataRelation("SYS_C0049026", new global::System.Data.DataColumn[] {
+                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCOLLECT_PET_INFO.PET_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049026);
+            this.relationSYS_C0049023 = new global::System.Data.DataRelation("SYS_C0049023", new global::System.Data.DataColumn[] {
+                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCOMMENT_PET.PET_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049023);
+            this.relationSYS_C0048998 = new global::System.Data.DataRelation("SYS_C0048998", new global::System.Data.DataColumn[] {
+                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFOSTER.PET_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0048998);
+            this.relationSYS_C0049019 = new global::System.Data.DataRelation("SYS_C0049019", new global::System.Data.DataColumn[] {
+                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLIKE_PET.PET_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049019);
+            this.relationSYS_C0049002 = new global::System.Data.DataRelation("SYS_C0049002", new global::System.Data.DataColumn[] {
                         this.tableROOM.STOREYColumn,
                         this.tableROOM.COMPARTMENTColumn}, new global::System.Data.DataColumn[] {
                         this.tableACCOMMODATE.STOREYColumn,
                         this.tableACCOMMODATE.COMPARTMENTColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047808);
-            this.relationSYS_C0047799 = new global::System.Data.DataRelation("SYS_C0047799", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableADOPT.ADOPTER_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047799);
-            this.relationSYS_C0047800 = new global::System.Data.DataRelation("SYS_C0047800", new global::System.Data.DataColumn[] {
-                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableADOPT.PET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047800);
-            this.relationSYS_C0047814 = new global::System.Data.DataRelation("SYS_C0047814", new global::System.Data.DataColumn[] {
-                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAPPLICATION.PET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047814);
-            this.relationSYS_C0047815 = new global::System.Data.DataRelation("SYS_C0047815", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAPPLICATION.USER_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047815);
-            this.relationSYS_C0047789 = new global::System.Data.DataRelation("SYS_C0047789", new global::System.Data.DataColumn[] {
-                        this.tableEMPLOYEE.EMPLOYEE_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableBULLETIN.EMPLOYEE_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047789);
-            this.relationSYS_C0047831 = new global::System.Data.DataRelation("SYS_C0047831", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCOLLECT_PET_INFO.USER_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047831);
-            this.relationSYS_C0047832 = new global::System.Data.DataRelation("SYS_C0047832", new global::System.Data.DataColumn[] {
-                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCOLLECT_PET_INFO.PET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047832);
-            this.relationSYS_C0047828 = new global::System.Data.DataRelation("SYS_C0047828", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCOMMENT_PET.USER_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047828);
-            this.relationSYS_C0047829 = new global::System.Data.DataRelation("SYS_C0047829", new global::System.Data.DataColumn[] {
-                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCOMMENT_PET.PET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047829);
-            this.relationSYS_C0047821 = new global::System.Data.DataRelation("SYS_C0047821", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCOMMENT_POST.USER_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047821);
-            this.relationSYS_C0047822 = new global::System.Data.DataRelation("SYS_C0047822", new global::System.Data.DataColumn[] {
-                        this.tableFORUM_POSTS.POST_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCOMMENT_POST.POST_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047822);
-            this.relationSYS_C0047797 = new global::System.Data.DataRelation("SYS_C0047797", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDONATION.DONOR_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047797);
-            this.relationSYS_C0047794 = new global::System.Data.DataRelation("SYS_C0047794", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFORUM_POSTS.USER_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047794);
-            this.relationSYS_C0047803 = new global::System.Data.DataRelation("SYS_C0047803", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFOSTER.FOSTERERColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047803);
-            this.relationSYS_C0047804 = new global::System.Data.DataRelation("SYS_C0047804", new global::System.Data.DataColumn[] {
-                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFOSTER.PET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047804);
-            this.relationSYS_C0047824 = new global::System.Data.DataRelation("SYS_C0047824", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableLIKE_PET.USER_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047824);
-            this.relationSYS_C0047825 = new global::System.Data.DataRelation("SYS_C0047825", new global::System.Data.DataColumn[] {
-                        this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableLIKE_PET.PET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047825);
-            this.relationSYS_C0047817 = new global::System.Data.DataRelation("SYS_C0047817", new global::System.Data.DataColumn[] {
-                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableLIKE_POST.USER_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047817);
-            this.relationSYS_C0047818 = new global::System.Data.DataRelation("SYS_C0047818", new global::System.Data.DataColumn[] {
-                        this.tableFORUM_POSTS.POST_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableLIKE_POST.POST_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047818);
-            this.relationSYS_C0047810 = new global::System.Data.DataRelation("SYS_C0047810", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationSYS_C0049002);
+            this.relationSYS_C0049004 = new global::System.Data.DataRelation("SYS_C0049004", new global::System.Data.DataColumn[] {
                         this.tablePET.PET_IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTREATMENT.PET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047810);
-            this.relationSYS_C0047811 = new global::System.Data.DataRelation("SYS_C0047811", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationSYS_C0049004);
+            this.relationSYS_C0049000 = new global::System.Data.DataRelation("SYS_C0049000", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableACCOMMODATE.OWNER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049000);
+            this.relationSYS_C0048992 = new global::System.Data.DataRelation("SYS_C0048992", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableADOPT.ADOPTER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0048992);
+            this.relationSYS_C0049009 = new global::System.Data.DataRelation("SYS_C0049009", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAPPLICATION.USER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049009);
+            this.relationSYS_C0049025 = new global::System.Data.DataRelation("SYS_C0049025", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCOLLECT_PET_INFO.USER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049025);
+            this.relationSYS_C0049022 = new global::System.Data.DataRelation("SYS_C0049022", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCOMMENT_PET.USER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049022);
+            this.relationSYS_C0049015 = new global::System.Data.DataRelation("SYS_C0049015", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCOMMENT_POST.USER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049015);
+            this.relationSYS_C0048990 = new global::System.Data.DataRelation("SYS_C0048990", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDONATION.DONOR_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0048990);
+            this.relationSYS_C0048986 = new global::System.Data.DataRelation("SYS_C0048986", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFORUM_POSTS.USER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0048986);
+            this.relationSYS_C0048997 = new global::System.Data.DataRelation("SYS_C0048997", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFOSTER.FOSTERERColumn}, false);
+            this.Relations.Add(this.relationSYS_C0048997);
+            this.relationSYS_C0049018 = new global::System.Data.DataRelation("SYS_C0049018", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLIKE_PET.USER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049018);
+            this.relationSYS_C0049011 = new global::System.Data.DataRelation("SYS_C0049011", new global::System.Data.DataColumn[] {
+                        this.tableUSER2.USER_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLIKE_POST.USER_IDColumn}, false);
+            this.Relations.Add(this.relationSYS_C0049011);
+            this.relationSYS_C0049005 = new global::System.Data.DataRelation("SYS_C0049005", new global::System.Data.DataColumn[] {
                         this.tableVET.VET_IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTREATMENT.VET_IDColumn}, false);
-            this.Relations.Add(this.relationSYS_C0047811);
+            this.Relations.Add(this.relationSYS_C0049005);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1053,25 +1008,13 @@ namespace PetFosterTest {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeFOSTER_WINDOW() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeEMPLOYEE_LABOR() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeOWNERSHIP() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeROOM_AVAIABLE() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeUSER_PROFILE() {
             return false;
         }
         
@@ -1092,7 +1035,7 @@ namespace PetFosterTest {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSet1 ds = new DataSet1();
+            PetData ds = new PetData();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -1191,16 +1134,10 @@ namespace PetFosterTest {
         public delegate void VETRowChangeEventHandler(object sender, VETRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void FOSTER_WINDOWRowChangeEventHandler(object sender, FOSTER_WINDOWRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void EMPLOYEE_LABORRowChangeEventHandler(object sender, EMPLOYEE_LABORRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void OWNERSHIPRowChangeEventHandler(object sender, OWNERSHIPRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void ROOM_AVAIABLERowChangeEventHandler(object sender, ROOM_AVAIABLERowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void USER_PROFILERowChangeEventHandler(object sender, USER_PROFILERowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void VET_LABORRowChangeEventHandler(object sender, VET_LABORRowChangeEvent e);
@@ -1212,19 +1149,13 @@ namespace PetFosterTest {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ACCOMMODATEDataTable : global::System.Data.TypedTableBase<ACCOMMODATERow> {
             
+            private global::System.Data.DataColumn columnOWNER_ID;
+            
             private global::System.Data.DataColumn columnPET_ID;
             
             private global::System.Data.DataColumn columnSTOREY;
             
             private global::System.Data.DataColumn columnCOMPARTMENT;
-            
-            private global::System.Data.DataColumn columnDURATION;
-            
-            private global::System.Data.DataColumn columnSTART_YEAR;
-            
-            private global::System.Data.DataColumn columnSTART_MONTH;
-            
-            private global::System.Data.DataColumn columnSTART_DAY;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1261,6 +1192,14 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OWNER_IDColumn {
+                get {
+                    return this.columnOWNER_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn PET_IDColumn {
                 get {
                     return this.columnPET_ID;
@@ -1280,38 +1219,6 @@ namespace PetFosterTest {
             public global::System.Data.DataColumn COMPARTMENTColumn {
                 get {
                     return this.columnCOMPARTMENT;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DURATIONColumn {
-                get {
-                    return this.columnDURATION;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn START_YEARColumn {
-                get {
-                    return this.columnSTART_YEAR;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn START_MONTHColumn {
-                get {
-                    return this.columnSTART_MONTH;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn START_DAYColumn {
-                get {
-                    return this.columnSTART_DAY;
                 }
             }
             
@@ -1352,18 +1259,18 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ACCOMMODATERow AddACCOMMODATERow(PETRow parentPETRowBySYS_C0047807, short STOREY, short COMPARTMENT, decimal DURATION, short START_YEAR, short START_MONTH, short START_DAY) {
+            public ACCOMMODATERow AddACCOMMODATERow(USER2Row parentUSER2RowBySYS_C0049000, PETRow parentPETRowBySYS_C0049001, short STOREY, short COMPARTMENT) {
                 ACCOMMODATERow rowACCOMMODATERow = ((ACCOMMODATERow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
+                        null,
                         STOREY,
-                        COMPARTMENT,
-                        DURATION,
-                        START_YEAR,
-                        START_MONTH,
-                        START_DAY};
-                if ((parentPETRowBySYS_C0047807 != null)) {
-                    columnValuesArray[0] = parentPETRowBySYS_C0047807[0];
+                        COMPARTMENT};
+                if ((parentUSER2RowBySYS_C0049000 != null)) {
+                    columnValuesArray[0] = parentUSER2RowBySYS_C0049000[0];
+                }
+                if ((parentPETRowBySYS_C0049001 != null)) {
+                    columnValuesArray[1] = parentPETRowBySYS_C0049001[0];
                 }
                 rowACCOMMODATERow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowACCOMMODATERow);
@@ -1372,14 +1279,11 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ACCOMMODATERow FindByPET_IDSTOREYCOMPARTMENTSTART_YEARSTART_MONTHSTART_DAY(string PET_ID, short STOREY, short COMPARTMENT, short START_YEAR, short START_MONTH, short START_DAY) {
+            public ACCOMMODATERow FindByPET_IDSTOREYCOMPARTMENT(string PET_ID, short STOREY, short COMPARTMENT) {
                 return ((ACCOMMODATERow)(this.Rows.Find(new object[] {
                             PET_ID,
                             STOREY,
-                            COMPARTMENT,
-                            START_YEAR,
-                            START_MONTH,
-                            START_DAY})));
+                            COMPARTMENT})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1399,46 +1303,32 @@ namespace PetFosterTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnOWNER_ID = base.Columns["OWNER_ID"];
                 this.columnPET_ID = base.Columns["PET_ID"];
                 this.columnSTOREY = base.Columns["STOREY"];
                 this.columnCOMPARTMENT = base.Columns["COMPARTMENT"];
-                this.columnDURATION = base.Columns["DURATION"];
-                this.columnSTART_YEAR = base.Columns["START_YEAR"];
-                this.columnSTART_MONTH = base.Columns["START_MONTH"];
-                this.columnSTART_DAY = base.Columns["START_DAY"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnOWNER_ID = new global::System.Data.DataColumn("OWNER_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOWNER_ID);
                 this.columnPET_ID = new global::System.Data.DataColumn("PET_ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPET_ID);
                 this.columnSTOREY = new global::System.Data.DataColumn("STOREY", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSTOREY);
                 this.columnCOMPARTMENT = new global::System.Data.DataColumn("COMPARTMENT", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCOMPARTMENT);
-                this.columnDURATION = new global::System.Data.DataColumn("DURATION", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDURATION);
-                this.columnSTART_YEAR = new global::System.Data.DataColumn("START_YEAR", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTART_YEAR);
-                this.columnSTART_MONTH = new global::System.Data.DataColumn("START_MONTH", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTART_MONTH);
-                this.columnSTART_DAY = new global::System.Data.DataColumn("START_DAY", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTART_DAY);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPET_ID,
                                 this.columnSTOREY,
-                                this.columnCOMPARTMENT,
-                                this.columnSTART_YEAR,
-                                this.columnSTART_MONTH,
-                                this.columnSTART_DAY}, true));
+                                this.columnCOMPARTMENT}, true));
+                this.columnOWNER_ID.MaxLength = 20;
                 this.columnPET_ID.AllowDBNull = false;
                 this.columnPET_ID.MaxLength = 20;
                 this.columnSTOREY.AllowDBNull = false;
                 this.columnCOMPARTMENT.AllowDBNull = false;
-                this.columnSTART_YEAR.AllowDBNull = false;
-                this.columnSTART_MONTH.AllowDBNull = false;
-                this.columnSTART_DAY.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1506,7 +1396,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1672,17 +1562,17 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ADOPTRow AddADOPTRow(USER2Row parentUSER2RowBySYS_C0047799, PETRow parentPETRowBySYS_C0047800, System.DateTime ADOPTION_TIME) {
+            public ADOPTRow AddADOPTRow(USER2Row parentUSER2RowBySYS_C0048992, PETRow parentPETRowBySYS_C0048993, System.DateTime ADOPTION_TIME) {
                 ADOPTRow rowADOPTRow = ((ADOPTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         ADOPTION_TIME};
-                if ((parentUSER2RowBySYS_C0047799 != null)) {
-                    columnValuesArray[0] = parentUSER2RowBySYS_C0047799[0];
+                if ((parentUSER2RowBySYS_C0048992 != null)) {
+                    columnValuesArray[0] = parentUSER2RowBySYS_C0048992[0];
                 }
-                if ((parentPETRowBySYS_C0047800 != null)) {
-                    columnValuesArray[1] = parentPETRowBySYS_C0047800[0];
+                if ((parentPETRowBySYS_C0048993 != null)) {
+                    columnValuesArray[1] = parentPETRowBySYS_C0048993[0];
                 }
                 rowADOPTRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowADOPTRow);
@@ -1802,7 +1692,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1988,7 +1878,7 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public APPLICATIONRow AddAPPLICATIONRow(PETRow parentPETRowBySYS_C0047814, USER2Row parentUSER2RowBySYS_C0047815, string CATEGORY, string REASON, System.DateTime APPLY_TIME) {
+            public APPLICATIONRow AddAPPLICATIONRow(PETRow parentPETRowBySYS_C0049008, USER2Row parentUSER2RowBySYS_C0049009, string CATEGORY, string REASON, System.DateTime APPLY_TIME) {
                 APPLICATIONRow rowAPPLICATIONRow = ((APPLICATIONRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1996,11 +1886,11 @@ namespace PetFosterTest {
                         CATEGORY,
                         REASON,
                         APPLY_TIME};
-                if ((parentPETRowBySYS_C0047814 != null)) {
-                    columnValuesArray[0] = parentPETRowBySYS_C0047814[0];
+                if ((parentPETRowBySYS_C0049008 != null)) {
+                    columnValuesArray[0] = parentPETRowBySYS_C0049008[0];
                 }
-                if ((parentUSER2RowBySYS_C0047815 != null)) {
-                    columnValuesArray[1] = parentUSER2RowBySYS_C0047815[0];
+                if ((parentUSER2RowBySYS_C0049009 != null)) {
+                    columnValuesArray[1] = parentUSER2RowBySYS_C0049009[0];
                 }
                 rowAPPLICATIONRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAPPLICATIONRow);
@@ -2132,7 +2022,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2328,7 +2218,7 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BULLETINRow AddBULLETINRow(string BULLETIN_ID, EMPLOYEERow parentEMPLOYEERowBySYS_C0047789, string HEADING, string BULLETIN_CONTENTS, decimal READ_COUNT, System.DateTime PUBLISHED_TIME) {
+            public BULLETINRow AddBULLETINRow(string BULLETIN_ID, EMPLOYEERow parentEMPLOYEERowBySYS_C0048980, string HEADING, string BULLETIN_CONTENTS, decimal READ_COUNT, System.DateTime PUBLISHED_TIME) {
                 BULLETINRow rowBULLETINRow = ((BULLETINRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         BULLETIN_ID,
@@ -2337,8 +2227,8 @@ namespace PetFosterTest {
                         BULLETIN_CONTENTS,
                         READ_COUNT,
                         PUBLISHED_TIME};
-                if ((parentEMPLOYEERowBySYS_C0047789 != null)) {
-                    columnValuesArray[1] = parentEMPLOYEERowBySYS_C0047789[0];
+                if ((parentEMPLOYEERowBySYS_C0048980 != null)) {
+                    columnValuesArray[1] = parentEMPLOYEERowBySYS_C0048980[0];
                 }
                 rowBULLETINRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBULLETINRow);
@@ -2468,7 +2358,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2634,17 +2524,17 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public COLLECT_PET_INFORow AddCOLLECT_PET_INFORow(USER2Row parentUSER2RowBySYS_C0047831, PETRow parentPETRowBySYS_C0047832, System.DateTime COLLECT_TIME) {
+            public COLLECT_PET_INFORow AddCOLLECT_PET_INFORow(USER2Row parentUSER2RowBySYS_C0049025, PETRow parentPETRowBySYS_C0049026, System.DateTime COLLECT_TIME) {
                 COLLECT_PET_INFORow rowCOLLECT_PET_INFORow = ((COLLECT_PET_INFORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         COLLECT_TIME};
-                if ((parentUSER2RowBySYS_C0047831 != null)) {
-                    columnValuesArray[0] = parentUSER2RowBySYS_C0047831[0];
+                if ((parentUSER2RowBySYS_C0049025 != null)) {
+                    columnValuesArray[0] = parentUSER2RowBySYS_C0049025[0];
                 }
-                if ((parentPETRowBySYS_C0047832 != null)) {
-                    columnValuesArray[1] = parentPETRowBySYS_C0047832[0];
+                if ((parentPETRowBySYS_C0049026 != null)) {
+                    columnValuesArray[1] = parentPETRowBySYS_C0049026[0];
                 }
                 rowCOLLECT_PET_INFORow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCOLLECT_PET_INFORow);
@@ -2767,7 +2657,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2943,18 +2833,18 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public COMMENT_PETRow AddCOMMENT_PETRow(USER2Row parentUSER2RowBySYS_C0047828, PETRow parentPETRowBySYS_C0047829, string COMMENT_CONTENTS, System.DateTime COMMENT_TIME) {
+            public COMMENT_PETRow AddCOMMENT_PETRow(USER2Row parentUSER2RowBySYS_C0049022, PETRow parentPETRowBySYS_C0049023, string COMMENT_CONTENTS, System.DateTime COMMENT_TIME) {
                 COMMENT_PETRow rowCOMMENT_PETRow = ((COMMENT_PETRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         COMMENT_CONTENTS,
                         COMMENT_TIME};
-                if ((parentUSER2RowBySYS_C0047828 != null)) {
-                    columnValuesArray[0] = parentUSER2RowBySYS_C0047828[0];
+                if ((parentUSER2RowBySYS_C0049022 != null)) {
+                    columnValuesArray[0] = parentUSER2RowBySYS_C0049022[0];
                 }
-                if ((parentPETRowBySYS_C0047829 != null)) {
-                    columnValuesArray[1] = parentPETRowBySYS_C0047829[0];
+                if ((parentPETRowBySYS_C0049023 != null)) {
+                    columnValuesArray[1] = parentPETRowBySYS_C0049023[0];
                 }
                 rowCOMMENT_PETRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCOMMENT_PETRow);
@@ -3082,7 +2972,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3258,18 +3148,18 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public COMMENT_POSTRow AddCOMMENT_POSTRow(USER2Row parentUSER2RowBySYS_C0047821, FORUM_POSTSRow parentFORUM_POSTSRowBySYS_C0047822, string COMMENT_CONTENTS, System.DateTime COMMENT_TIME) {
+            public COMMENT_POSTRow AddCOMMENT_POSTRow(USER2Row parentUSER2RowBySYS_C0049015, FORUM_POSTSRow parentFORUM_POSTSRowBySYS_C0049016, string COMMENT_CONTENTS, System.DateTime COMMENT_TIME) {
                 COMMENT_POSTRow rowCOMMENT_POSTRow = ((COMMENT_POSTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         COMMENT_CONTENTS,
                         COMMENT_TIME};
-                if ((parentUSER2RowBySYS_C0047821 != null)) {
-                    columnValuesArray[0] = parentUSER2RowBySYS_C0047821[0];
+                if ((parentUSER2RowBySYS_C0049015 != null)) {
+                    columnValuesArray[0] = parentUSER2RowBySYS_C0049015[0];
                 }
-                if ((parentFORUM_POSTSRowBySYS_C0047822 != null)) {
-                    columnValuesArray[1] = parentFORUM_POSTSRowBySYS_C0047822[0];
+                if ((parentFORUM_POSTSRowBySYS_C0049016 != null)) {
+                    columnValuesArray[1] = parentFORUM_POSTSRowBySYS_C0049016[0];
                 }
                 rowCOMMENT_POSTRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCOMMENT_POSTRow);
@@ -3397,7 +3287,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3469,6 +3359,8 @@ namespace PetFosterTest {
             
             private global::System.Data.DataColumn columnDONATION_TIME;
             
+            private global::System.Data.DataColumn columnCENSOR_STATE;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DONATIONDataTable() {
@@ -3528,6 +3420,14 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CENSOR_STATEColumn {
+                get {
+                    return this.columnCENSOR_STATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3563,14 +3463,15 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DONATIONRow AddDONATIONRow(USER2Row parentUSER2RowBySYS_C0047797, decimal DONATION_AMOUNT, System.DateTime DONATION_TIME) {
+            public DONATIONRow AddDONATIONRow(USER2Row parentUSER2RowBySYS_C0048990, decimal DONATION_AMOUNT, System.DateTime DONATION_TIME, string CENSOR_STATE) {
                 DONATIONRow rowDONATIONRow = ((DONATIONRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         DONATION_AMOUNT,
-                        DONATION_TIME};
-                if ((parentUSER2RowBySYS_C0047797 != null)) {
-                    columnValuesArray[0] = parentUSER2RowBySYS_C0047797[0];
+                        DONATION_TIME,
+                        CENSOR_STATE};
+                if ((parentUSER2RowBySYS_C0048990 != null)) {
+                    columnValuesArray[0] = parentUSER2RowBySYS_C0048990[0];
                 }
                 rowDONATIONRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDONATIONRow);
@@ -3606,6 +3507,7 @@ namespace PetFosterTest {
                 this.columnDONOR_ID = base.Columns["DONOR_ID"];
                 this.columnDONATION_AMOUNT = base.Columns["DONATION_AMOUNT"];
                 this.columnDONATION_TIME = base.Columns["DONATION_TIME"];
+                this.columnCENSOR_STATE = base.Columns["CENSOR_STATE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3617,6 +3519,8 @@ namespace PetFosterTest {
                 base.Columns.Add(this.columnDONATION_AMOUNT);
                 this.columnDONATION_TIME = new global::System.Data.DataColumn("DONATION_TIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDONATION_TIME);
+                this.columnCENSOR_STATE = new global::System.Data.DataColumn("CENSOR_STATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCENSOR_STATE);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDONOR_ID,
                                 this.columnDONATION_AMOUNT,
@@ -3625,6 +3529,7 @@ namespace PetFosterTest {
                 this.columnDONOR_ID.MaxLength = 20;
                 this.columnDONATION_AMOUNT.AllowDBNull = false;
                 this.columnDONATION_TIME.AllowDBNull = false;
+                this.columnCENSOR_STATE.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3692,7 +3597,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4066,7 +3971,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4143,6 +4048,8 @@ namespace PetFosterTest {
             private global::System.Data.DataColumn columnLIKE_NUM;
             
             private global::System.Data.DataColumn columnCOMMENT_NUM;
+            
+            private global::System.Data.DataColumn columnCENSORED;
             
             private global::System.Data.DataColumn columnPOST_TIME;
             
@@ -4229,6 +4136,14 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CENSOREDColumn {
+                get {
+                    return this.columnCENSORED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn POST_TIMEColumn {
                 get {
                     return this.columnPOST_TIME;
@@ -4272,7 +4187,7 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FORUM_POSTSRow AddFORUM_POSTSRow(string POST_ID, USER2Row parentUSER2RowBySYS_C0047794, string POST_CONTENTS, decimal READ_COUNT, decimal LIKE_NUM, decimal COMMENT_NUM, System.DateTime POST_TIME) {
+            public FORUM_POSTSRow AddFORUM_POSTSRow(string POST_ID, USER2Row parentUSER2RowBySYS_C0048986, string POST_CONTENTS, decimal READ_COUNT, decimal LIKE_NUM, decimal COMMENT_NUM, string CENSORED, System.DateTime POST_TIME) {
                 FORUM_POSTSRow rowFORUM_POSTSRow = ((FORUM_POSTSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         POST_ID,
@@ -4281,9 +4196,10 @@ namespace PetFosterTest {
                         READ_COUNT,
                         LIKE_NUM,
                         COMMENT_NUM,
+                        CENSORED,
                         POST_TIME};
-                if ((parentUSER2RowBySYS_C0047794 != null)) {
-                    columnValuesArray[1] = parentUSER2RowBySYS_C0047794[0];
+                if ((parentUSER2RowBySYS_C0048986 != null)) {
+                    columnValuesArray[1] = parentUSER2RowBySYS_C0048986[0];
                 }
                 rowFORUM_POSTSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFORUM_POSTSRow);
@@ -4320,6 +4236,7 @@ namespace PetFosterTest {
                 this.columnREAD_COUNT = base.Columns["READ_COUNT"];
                 this.columnLIKE_NUM = base.Columns["LIKE_NUM"];
                 this.columnCOMMENT_NUM = base.Columns["COMMENT_NUM"];
+                this.columnCENSORED = base.Columns["CENSORED"];
                 this.columnPOST_TIME = base.Columns["POST_TIME"];
             }
             
@@ -4338,6 +4255,8 @@ namespace PetFosterTest {
                 base.Columns.Add(this.columnLIKE_NUM);
                 this.columnCOMMENT_NUM = new global::System.Data.DataColumn("COMMENT_NUM", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCOMMENT_NUM);
+                this.columnCENSORED = new global::System.Data.DataColumn("CENSORED", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCENSORED);
                 this.columnPOST_TIME = new global::System.Data.DataColumn("POST_TIME", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPOST_TIME);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -4348,6 +4267,7 @@ namespace PetFosterTest {
                 this.columnUSER_ID.MaxLength = 20;
                 this.columnPOST_CONTENTS.AllowDBNull = false;
                 this.columnPOST_CONTENTS.MaxLength = 1000;
+                this.columnCENSORED.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4415,7 +4335,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4492,6 +4412,10 @@ namespace PetFosterTest {
             private global::System.Data.DataColumn columnSTART_MONTH;
             
             private global::System.Data.DataColumn columnSTART_DAY;
+            
+            private global::System.Data.DataColumn columnCENSOR_STATE;
+            
+            private global::System.Data.DataColumn columnREMARK;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -4576,6 +4500,22 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CENSOR_STATEColumn {
+                get {
+                    return this.columnCENSOR_STATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn REMARKColumn {
+                get {
+                    return this.columnREMARK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4611,7 +4551,7 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FOSTERRow AddFOSTERRow(decimal DURATION, USER2Row parentUSER2RowBySYS_C0047803, PETRow parentPETRowBySYS_C0047804, short START_YEAR, short START_MONTH, short START_DAY) {
+            public FOSTERRow AddFOSTERRow(decimal DURATION, USER2Row parentUSER2RowBySYS_C0048997, PETRow parentPETRowBySYS_C0048998, short START_YEAR, short START_MONTH, short START_DAY, string CENSOR_STATE, string REMARK) {
                 FOSTERRow rowFOSTERRow = ((FOSTERRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DURATION,
@@ -4619,12 +4559,14 @@ namespace PetFosterTest {
                         null,
                         START_YEAR,
                         START_MONTH,
-                        START_DAY};
-                if ((parentUSER2RowBySYS_C0047803 != null)) {
-                    columnValuesArray[1] = parentUSER2RowBySYS_C0047803[0];
+                        START_DAY,
+                        CENSOR_STATE,
+                        REMARK};
+                if ((parentUSER2RowBySYS_C0048997 != null)) {
+                    columnValuesArray[1] = parentUSER2RowBySYS_C0048997[0];
                 }
-                if ((parentPETRowBySYS_C0047804 != null)) {
-                    columnValuesArray[2] = parentPETRowBySYS_C0047804[0];
+                if ((parentPETRowBySYS_C0048998 != null)) {
+                    columnValuesArray[2] = parentPETRowBySYS_C0048998[0];
                 }
                 rowFOSTERRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFOSTERRow);
@@ -4665,6 +4607,8 @@ namespace PetFosterTest {
                 this.columnSTART_YEAR = base.Columns["START_YEAR"];
                 this.columnSTART_MONTH = base.Columns["START_MONTH"];
                 this.columnSTART_DAY = base.Columns["START_DAY"];
+                this.columnCENSOR_STATE = base.Columns["CENSOR_STATE"];
+                this.columnREMARK = base.Columns["REMARK"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4682,6 +4626,10 @@ namespace PetFosterTest {
                 base.Columns.Add(this.columnSTART_MONTH);
                 this.columnSTART_DAY = new global::System.Data.DataColumn("START_DAY", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSTART_DAY);
+                this.columnCENSOR_STATE = new global::System.Data.DataColumn("CENSOR_STATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCENSOR_STATE);
+                this.columnREMARK = new global::System.Data.DataColumn("REMARK", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnREMARK);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnFOSTERER,
                                 this.columnPET_ID,
@@ -4695,6 +4643,8 @@ namespace PetFosterTest {
                 this.columnSTART_YEAR.AllowDBNull = false;
                 this.columnSTART_MONTH.AllowDBNull = false;
                 this.columnSTART_DAY.AllowDBNull = false;
+                this.columnCENSOR_STATE.MaxLength = 20;
+                this.columnREMARK.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4762,7 +4712,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4928,17 +4878,17 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public LIKE_PETRow AddLIKE_PETRow(USER2Row parentUSER2RowBySYS_C0047824, PETRow parentPETRowBySYS_C0047825, System.DateTime LIKE_TIME) {
+            public LIKE_PETRow AddLIKE_PETRow(USER2Row parentUSER2RowBySYS_C0049018, PETRow parentPETRowBySYS_C0049019, System.DateTime LIKE_TIME) {
                 LIKE_PETRow rowLIKE_PETRow = ((LIKE_PETRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         LIKE_TIME};
-                if ((parentUSER2RowBySYS_C0047824 != null)) {
-                    columnValuesArray[0] = parentUSER2RowBySYS_C0047824[0];
+                if ((parentUSER2RowBySYS_C0049018 != null)) {
+                    columnValuesArray[0] = parentUSER2RowBySYS_C0049018[0];
                 }
-                if ((parentPETRowBySYS_C0047825 != null)) {
-                    columnValuesArray[1] = parentPETRowBySYS_C0047825[0];
+                if ((parentPETRowBySYS_C0049019 != null)) {
+                    columnValuesArray[1] = parentPETRowBySYS_C0049019[0];
                 }
                 rowLIKE_PETRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLIKE_PETRow);
@@ -5061,7 +5011,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -5227,17 +5177,17 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public LIKE_POSTRow AddLIKE_POSTRow(USER2Row parentUSER2RowBySYS_C0047817, FORUM_POSTSRow parentFORUM_POSTSRowBySYS_C0047818, System.DateTime LIKE_TIME) {
+            public LIKE_POSTRow AddLIKE_POSTRow(USER2Row parentUSER2RowBySYS_C0049011, FORUM_POSTSRow parentFORUM_POSTSRowBySYS_C0049012, System.DateTime LIKE_TIME) {
                 LIKE_POSTRow rowLIKE_POSTRow = ((LIKE_POSTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         LIKE_TIME};
-                if ((parentUSER2RowBySYS_C0047817 != null)) {
-                    columnValuesArray[0] = parentUSER2RowBySYS_C0047817[0];
+                if ((parentUSER2RowBySYS_C0049011 != null)) {
+                    columnValuesArray[0] = parentUSER2RowBySYS_C0049011[0];
                 }
-                if ((parentFORUM_POSTSRowBySYS_C0047818 != null)) {
-                    columnValuesArray[1] = parentFORUM_POSTSRowBySYS_C0047818[0];
+                if ((parentFORUM_POSTSRowBySYS_C0049012 != null)) {
+                    columnValuesArray[1] = parentFORUM_POSTSRowBySYS_C0049012[0];
                 }
                 rowLIKE_POSTRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLIKE_POSTRow);
@@ -5360,7 +5310,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -5432,7 +5382,9 @@ namespace PetFosterTest {
             
             private global::System.Data.DataColumn columnBREED;
             
-            private global::System.Data.DataColumn columnAGE;
+            private global::System.Data.DataColumn columnPSIZE;
+            
+            private global::System.Data.DataColumn columnBIRTHDATE;
             
             private global::System.Data.DataColumn columnAVATAR;
             
@@ -5505,9 +5457,17 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn AGEColumn {
+            public global::System.Data.DataColumn PSIZEColumn {
                 get {
-                    return this.columnAGE;
+                    return this.columnPSIZE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn BIRTHDATEColumn {
+                get {
+                    return this.columnBIRTHDATE;
                 }
             }
             
@@ -5596,13 +5556,14 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PETRow AddPETRow(string PET_ID, string PET_NAME, string BREED, short AGE, byte[] AVATAR, string HEALTH_STATE, string VACCINE, decimal READ_NUM, decimal LIKE_NUM, decimal COLLECT_NUM) {
+            public PETRow AddPETRow(string PET_ID, string PET_NAME, string BREED, string PSIZE, System.DateTime BIRTHDATE, byte[] AVATAR, string HEALTH_STATE, string VACCINE, decimal READ_NUM, decimal LIKE_NUM, decimal COLLECT_NUM) {
                 PETRow rowPETRow = ((PETRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PET_ID,
                         PET_NAME,
                         BREED,
-                        AGE,
+                        PSIZE,
+                        BIRTHDATE,
                         AVATAR,
                         HEALTH_STATE,
                         VACCINE,
@@ -5641,7 +5602,8 @@ namespace PetFosterTest {
                 this.columnPET_ID = base.Columns["PET_ID"];
                 this.columnPET_NAME = base.Columns["PET_NAME"];
                 this.columnBREED = base.Columns["BREED"];
-                this.columnAGE = base.Columns["AGE"];
+                this.columnPSIZE = base.Columns["PSIZE"];
+                this.columnBIRTHDATE = base.Columns["BIRTHDATE"];
                 this.columnAVATAR = base.Columns["AVATAR"];
                 this.columnHEALTH_STATE = base.Columns["HEALTH_STATE"];
                 this.columnVACCINE = base.Columns["VACCINE"];
@@ -5659,8 +5621,10 @@ namespace PetFosterTest {
                 base.Columns.Add(this.columnPET_NAME);
                 this.columnBREED = new global::System.Data.DataColumn("BREED", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBREED);
-                this.columnAGE = new global::System.Data.DataColumn("AGE", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAGE);
+                this.columnPSIZE = new global::System.Data.DataColumn("PSIZE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPSIZE);
+                this.columnBIRTHDATE = new global::System.Data.DataColumn("BIRTHDATE", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBIRTHDATE);
                 this.columnAVATAR = new global::System.Data.DataColumn("AVATAR", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAVATAR);
                 this.columnHEALTH_STATE = new global::System.Data.DataColumn("HEALTH_STATE", typeof(string), null, global::System.Data.MappingType.Element);
@@ -5680,6 +5644,7 @@ namespace PetFosterTest {
                 this.columnPET_ID.MaxLength = 20;
                 this.columnPET_NAME.MaxLength = 20;
                 this.columnBREED.MaxLength = 20;
+                this.columnPSIZE.MaxLength = 20;
                 this.columnHEALTH_STATE.MaxLength = 15;
                 this.columnVACCINE.MaxLength = 1;
             }
@@ -5749,7 +5714,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -6067,7 +6032,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -6243,18 +6208,18 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TREATMENTRow AddTREATMENTRow(string CATEGORY, PETRow parentPETRowBySYS_C0047810, VETRow parentVETRowBySYS_C0047811, System.DateTime TREAT_TIME) {
+            public TREATMENTRow AddTREATMENTRow(string CATEGORY, PETRow parentPETRowBySYS_C0049004, VETRow parentVETRowBySYS_C0049005, System.DateTime TREAT_TIME) {
                 TREATMENTRow rowTREATMENTRow = ((TREATMENTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CATEGORY,
                         null,
                         null,
                         TREAT_TIME};
-                if ((parentPETRowBySYS_C0047810 != null)) {
-                    columnValuesArray[1] = parentPETRowBySYS_C0047810[0];
+                if ((parentPETRowBySYS_C0049004 != null)) {
+                    columnValuesArray[1] = parentPETRowBySYS_C0049004[0];
                 }
-                if ((parentVETRowBySYS_C0047811 != null)) {
-                    columnValuesArray[2] = parentVETRowBySYS_C0047811[0];
+                if ((parentVETRowBySYS_C0049005 != null)) {
+                    columnValuesArray[2] = parentVETRowBySYS_C0049005[0];
                 }
                 rowTREATMENTRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTREATMENTRow);
@@ -6381,7 +6346,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -6458,6 +6423,8 @@ namespace PetFosterTest {
             private global::System.Data.DataColumn columnACCOUNT_STATUS;
             
             private global::System.Data.DataColumn columnADDRESS;
+            
+            private global::System.Data.DataColumn columnROLE;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -6542,6 +6509,14 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ROLEColumn {
+                get {
+                    return this.columnROLE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6577,7 +6552,7 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row AddUSER2Row(string USER_ID, string USER_NAME, string PASSWORD, string PHONE_NUMBER, string ACCOUNT_STATUS, string ADDRESS) {
+            public USER2Row AddUSER2Row(string USER_ID, string USER_NAME, string PASSWORD, string PHONE_NUMBER, string ACCOUNT_STATUS, string ADDRESS, string ROLE) {
                 USER2Row rowUSER2Row = ((USER2Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         USER_ID,
@@ -6585,7 +6560,8 @@ namespace PetFosterTest {
                         PASSWORD,
                         PHONE_NUMBER,
                         ACCOUNT_STATUS,
-                        ADDRESS};
+                        ADDRESS,
+                        ROLE};
                 rowUSER2Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUSER2Row);
                 return rowUSER2Row;
@@ -6621,6 +6597,7 @@ namespace PetFosterTest {
                 this.columnPHONE_NUMBER = base.Columns["PHONE_NUMBER"];
                 this.columnACCOUNT_STATUS = base.Columns["ACCOUNT_STATUS"];
                 this.columnADDRESS = base.Columns["ADDRESS"];
+                this.columnROLE = base.Columns["ROLE"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6638,6 +6615,8 @@ namespace PetFosterTest {
                 base.Columns.Add(this.columnACCOUNT_STATUS);
                 this.columnADDRESS = new global::System.Data.DataColumn("ADDRESS", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnADDRESS);
+                this.columnROLE = new global::System.Data.DataColumn("ROLE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnROLE);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnUSER_ID}, true));
                 this.columnUSER_ID.AllowDBNull = false;
@@ -6648,6 +6627,7 @@ namespace PetFosterTest {
                 this.columnPHONE_NUMBER.MaxLength = 20;
                 this.columnACCOUNT_STATUS.MaxLength = 20;
                 this.columnADDRESS.MaxLength = 100;
+                this.columnROLE.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6715,7 +6695,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -7074,7 +7054,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -7093,6 +7073,419 @@ namespace PetFosterTest {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "VETDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class FOSTER_WINDOWDataTable : global::System.Data.TypedTableBase<FOSTER_WINDOWRow> {
+            
+            private global::System.Data.DataColumn columnUSER_ID;
+            
+            private global::System.Data.DataColumn columnOWNER;
+            
+            private global::System.Data.DataColumn columnPET_ID;
+            
+            private global::System.Data.DataColumn columnPET_NAME;
+            
+            private global::System.Data.DataColumn columnBREED;
+            
+            private global::System.Data.DataColumn columnPSIZE;
+            
+            private global::System.Data.DataColumn columnDURATION;
+            
+            private global::System.Data.DataColumn columnFOSTER_START_DATE;
+            
+            private global::System.Data.DataColumn columnFOSTER_END_DATE;
+            
+            private global::System.Data.DataColumn columnROOM_ID;
+            
+            private global::System.Data.DataColumn columnROOM_SIZE;
+            
+            private global::System.Data.DataColumn columnCENSOR_STATE;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FOSTER_WINDOWDataTable() {
+                this.TableName = "FOSTER_WINDOW";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal FOSTER_WINDOWDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected FOSTER_WINDOWDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn USER_IDColumn {
+                get {
+                    return this.columnUSER_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OWNERColumn {
+                get {
+                    return this.columnOWNER;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PET_IDColumn {
+                get {
+                    return this.columnPET_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PET_NAMEColumn {
+                get {
+                    return this.columnPET_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn BREEDColumn {
+                get {
+                    return this.columnBREED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PSIZEColumn {
+                get {
+                    return this.columnPSIZE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DURATIONColumn {
+                get {
+                    return this.columnDURATION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FOSTER_START_DATEColumn {
+                get {
+                    return this.columnFOSTER_START_DATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FOSTER_END_DATEColumn {
+                get {
+                    return this.columnFOSTER_END_DATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ROOM_IDColumn {
+                get {
+                    return this.columnROOM_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ROOM_SIZEColumn {
+                get {
+                    return this.columnROOM_SIZE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CENSOR_STATEColumn {
+                get {
+                    return this.columnCENSOR_STATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FOSTER_WINDOWRow this[int index] {
+                get {
+                    return ((FOSTER_WINDOWRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event FOSTER_WINDOWRowChangeEventHandler FOSTER_WINDOWRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event FOSTER_WINDOWRowChangeEventHandler FOSTER_WINDOWRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event FOSTER_WINDOWRowChangeEventHandler FOSTER_WINDOWRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event FOSTER_WINDOWRowChangeEventHandler FOSTER_WINDOWRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddFOSTER_WINDOWRow(FOSTER_WINDOWRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FOSTER_WINDOWRow AddFOSTER_WINDOWRow(string USER_ID, string OWNER, string PET_ID, string PET_NAME, string BREED, string PSIZE, decimal DURATION, string FOSTER_START_DATE, string FOSTER_END_DATE, string ROOM_ID, float ROOM_SIZE, string CENSOR_STATE) {
+                FOSTER_WINDOWRow rowFOSTER_WINDOWRow = ((FOSTER_WINDOWRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        USER_ID,
+                        OWNER,
+                        PET_ID,
+                        PET_NAME,
+                        BREED,
+                        PSIZE,
+                        DURATION,
+                        FOSTER_START_DATE,
+                        FOSTER_END_DATE,
+                        ROOM_ID,
+                        ROOM_SIZE,
+                        CENSOR_STATE};
+                rowFOSTER_WINDOWRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowFOSTER_WINDOWRow);
+                return rowFOSTER_WINDOWRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                FOSTER_WINDOWDataTable cln = ((FOSTER_WINDOWDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new FOSTER_WINDOWDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnUSER_ID = base.Columns["USER_ID"];
+                this.columnOWNER = base.Columns["OWNER"];
+                this.columnPET_ID = base.Columns["PET_ID"];
+                this.columnPET_NAME = base.Columns["PET_NAME"];
+                this.columnBREED = base.Columns["BREED"];
+                this.columnPSIZE = base.Columns["PSIZE"];
+                this.columnDURATION = base.Columns["DURATION"];
+                this.columnFOSTER_START_DATE = base.Columns["FOSTER_START_DATE"];
+                this.columnFOSTER_END_DATE = base.Columns["FOSTER_END_DATE"];
+                this.columnROOM_ID = base.Columns["ROOM_ID"];
+                this.columnROOM_SIZE = base.Columns["ROOM_SIZE"];
+                this.columnCENSOR_STATE = base.Columns["CENSOR_STATE"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnUSER_ID = new global::System.Data.DataColumn("USER_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUSER_ID);
+                this.columnOWNER = new global::System.Data.DataColumn("OWNER", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOWNER);
+                this.columnPET_ID = new global::System.Data.DataColumn("PET_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPET_ID);
+                this.columnPET_NAME = new global::System.Data.DataColumn("PET_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPET_NAME);
+                this.columnBREED = new global::System.Data.DataColumn("BREED", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBREED);
+                this.columnPSIZE = new global::System.Data.DataColumn("PSIZE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPSIZE);
+                this.columnDURATION = new global::System.Data.DataColumn("DURATION", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDURATION);
+                this.columnFOSTER_START_DATE = new global::System.Data.DataColumn("FOSTER_START_DATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFOSTER_START_DATE);
+                this.columnFOSTER_END_DATE = new global::System.Data.DataColumn("FOSTER_END_DATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFOSTER_END_DATE);
+                this.columnROOM_ID = new global::System.Data.DataColumn("ROOM_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnROOM_ID);
+                this.columnROOM_SIZE = new global::System.Data.DataColumn("ROOM_SIZE", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnROOM_SIZE);
+                this.columnCENSOR_STATE = new global::System.Data.DataColumn("CENSOR_STATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCENSOR_STATE);
+                this.columnUSER_ID.AllowDBNull = false;
+                this.columnUSER_ID.MaxLength = 20;
+                this.columnOWNER.MaxLength = 20;
+                this.columnPET_ID.AllowDBNull = false;
+                this.columnPET_ID.MaxLength = 20;
+                this.columnPET_NAME.MaxLength = 20;
+                this.columnBREED.MaxLength = 20;
+                this.columnPSIZE.MaxLength = 20;
+                this.columnFOSTER_START_DATE.MaxLength = 122;
+                this.columnFOSTER_END_DATE.MaxLength = 10;
+                this.columnROOM_ID.MaxLength = 81;
+                this.columnCENSOR_STATE.MaxLength = 20;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FOSTER_WINDOWRow NewFOSTER_WINDOWRow() {
+                return ((FOSTER_WINDOWRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new FOSTER_WINDOWRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(FOSTER_WINDOWRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.FOSTER_WINDOWRowChanged != null)) {
+                    this.FOSTER_WINDOWRowChanged(this, new FOSTER_WINDOWRowChangeEvent(((FOSTER_WINDOWRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.FOSTER_WINDOWRowChanging != null)) {
+                    this.FOSTER_WINDOWRowChanging(this, new FOSTER_WINDOWRowChangeEvent(((FOSTER_WINDOWRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.FOSTER_WINDOWRowDeleted != null)) {
+                    this.FOSTER_WINDOWRowDeleted(this, new FOSTER_WINDOWRowChangeEvent(((FOSTER_WINDOWRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.FOSTER_WINDOWRowDeleting != null)) {
+                    this.FOSTER_WINDOWRowDeleting(this, new FOSTER_WINDOWRowChangeEvent(((FOSTER_WINDOWRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveFOSTER_WINDOWRow(FOSTER_WINDOWRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                PetData ds = new PetData();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "FOSTER_WINDOWDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -7381,7 +7774,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -7400,911 +7793,6 @@ namespace PetFosterTest {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "EMPLOYEE_LABORDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class OWNERSHIPDataTable : global::System.Data.TypedTableBase<OWNERSHIPRow> {
-            
-            private global::System.Data.DataColumn columnPET_ID;
-            
-            private global::System.Data.DataColumn columnPET_NAME;
-            
-            private global::System.Data.DataColumn columnSTATUS;
-            
-            private global::System.Data.DataColumn columnSTART_TIME;
-            
-            private global::System.Data.DataColumn columnEND_TIME;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OWNERSHIPDataTable() {
-                this.TableName = "OWNERSHIP";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal OWNERSHIPDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected OWNERSHIPDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PET_IDColumn {
-                get {
-                    return this.columnPET_ID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PET_NAMEColumn {
-                get {
-                    return this.columnPET_NAME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn STATUSColumn {
-                get {
-                    return this.columnSTATUS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn START_TIMEColumn {
-                get {
-                    return this.columnSTART_TIME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn END_TIMEColumn {
-                get {
-                    return this.columnEND_TIME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OWNERSHIPRow this[int index] {
-                get {
-                    return ((OWNERSHIPRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event OWNERSHIPRowChangeEventHandler OWNERSHIPRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event OWNERSHIPRowChangeEventHandler OWNERSHIPRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event OWNERSHIPRowChangeEventHandler OWNERSHIPRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event OWNERSHIPRowChangeEventHandler OWNERSHIPRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddOWNERSHIPRow(OWNERSHIPRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OWNERSHIPRow AddOWNERSHIPRow(string PET_ID, string PET_NAME, string STATUS, string START_TIME, string END_TIME) {
-                OWNERSHIPRow rowOWNERSHIPRow = ((OWNERSHIPRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        PET_ID,
-                        PET_NAME,
-                        STATUS,
-                        START_TIME,
-                        END_TIME};
-                rowOWNERSHIPRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowOWNERSHIPRow);
-                return rowOWNERSHIPRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                OWNERSHIPDataTable cln = ((OWNERSHIPDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new OWNERSHIPDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnPET_ID = base.Columns["PET_ID"];
-                this.columnPET_NAME = base.Columns["PET_NAME"];
-                this.columnSTATUS = base.Columns["STATUS"];
-                this.columnSTART_TIME = base.Columns["START_TIME"];
-                this.columnEND_TIME = base.Columns["END_TIME"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnPET_ID = new global::System.Data.DataColumn("PET_ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPET_ID);
-                this.columnPET_NAME = new global::System.Data.DataColumn("PET_NAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPET_NAME);
-                this.columnSTATUS = new global::System.Data.DataColumn("STATUS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTATUS);
-                this.columnSTART_TIME = new global::System.Data.DataColumn("START_TIME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTART_TIME);
-                this.columnEND_TIME = new global::System.Data.DataColumn("END_TIME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEND_TIME);
-                this.columnPET_ID.AllowDBNull = false;
-                this.columnPET_ID.MaxLength = 20;
-                this.columnPET_NAME.MaxLength = 20;
-                this.columnSTATUS.MaxLength = 102;
-                this.columnSTART_TIME.MaxLength = 10;
-                this.columnEND_TIME.MaxLength = 10;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OWNERSHIPRow NewOWNERSHIPRow() {
-                return ((OWNERSHIPRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new OWNERSHIPRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(OWNERSHIPRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.OWNERSHIPRowChanged != null)) {
-                    this.OWNERSHIPRowChanged(this, new OWNERSHIPRowChangeEvent(((OWNERSHIPRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.OWNERSHIPRowChanging != null)) {
-                    this.OWNERSHIPRowChanging(this, new OWNERSHIPRowChangeEvent(((OWNERSHIPRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.OWNERSHIPRowDeleted != null)) {
-                    this.OWNERSHIPRowDeleted(this, new OWNERSHIPRowChangeEvent(((OWNERSHIPRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.OWNERSHIPRowDeleting != null)) {
-                    this.OWNERSHIPRowDeleting(this, new OWNERSHIPRowChangeEvent(((OWNERSHIPRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveOWNERSHIPRow(OWNERSHIPRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "OWNERSHIPDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ROOM_AVAIABLEDataTable : global::System.Data.TypedTableBase<ROOM_AVAIABLERow> {
-            
-            private global::System.Data.DataColumn columnSTOREY;
-            
-            private global::System.Data.DataColumn columnCAPACITY;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ROOM_AVAIABLEDataTable() {
-                this.TableName = "ROOM_AVAIABLE";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal ROOM_AVAIABLEDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected ROOM_AVAIABLEDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn STOREYColumn {
-                get {
-                    return this.columnSTOREY;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CAPACITYColumn {
-                get {
-                    return this.columnCAPACITY;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ROOM_AVAIABLERow this[int index] {
-                get {
-                    return ((ROOM_AVAIABLERow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ROOM_AVAIABLERowChangeEventHandler ROOM_AVAIABLERowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ROOM_AVAIABLERowChangeEventHandler ROOM_AVAIABLERowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ROOM_AVAIABLERowChangeEventHandler ROOM_AVAIABLERowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event ROOM_AVAIABLERowChangeEventHandler ROOM_AVAIABLERowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddROOM_AVAIABLERow(ROOM_AVAIABLERow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ROOM_AVAIABLERow AddROOM_AVAIABLERow(short STOREY, decimal CAPACITY) {
-                ROOM_AVAIABLERow rowROOM_AVAIABLERow = ((ROOM_AVAIABLERow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        STOREY,
-                        CAPACITY};
-                rowROOM_AVAIABLERow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowROOM_AVAIABLERow);
-                return rowROOM_AVAIABLERow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                ROOM_AVAIABLEDataTable cln = ((ROOM_AVAIABLEDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new ROOM_AVAIABLEDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnSTOREY = base.Columns["STOREY"];
-                this.columnCAPACITY = base.Columns["CAPACITY"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnSTOREY = new global::System.Data.DataColumn("STOREY", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTOREY);
-                this.columnCAPACITY = new global::System.Data.DataColumn("CAPACITY", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCAPACITY);
-                this.columnSTOREY.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ROOM_AVAIABLERow NewROOM_AVAIABLERow() {
-                return ((ROOM_AVAIABLERow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ROOM_AVAIABLERow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(ROOM_AVAIABLERow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.ROOM_AVAIABLERowChanged != null)) {
-                    this.ROOM_AVAIABLERowChanged(this, new ROOM_AVAIABLERowChangeEvent(((ROOM_AVAIABLERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.ROOM_AVAIABLERowChanging != null)) {
-                    this.ROOM_AVAIABLERowChanging(this, new ROOM_AVAIABLERowChangeEvent(((ROOM_AVAIABLERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.ROOM_AVAIABLERowDeleted != null)) {
-                    this.ROOM_AVAIABLERowDeleted(this, new ROOM_AVAIABLERowChangeEvent(((ROOM_AVAIABLERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.ROOM_AVAIABLERowDeleting != null)) {
-                    this.ROOM_AVAIABLERowDeleting(this, new ROOM_AVAIABLERowChangeEvent(((ROOM_AVAIABLERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveROOM_AVAIABLERow(ROOM_AVAIABLERow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ROOM_AVAIABLEDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class USER_PROFILEDataTable : global::System.Data.TypedTableBase<USER_PROFILERow> {
-            
-            private global::System.Data.DataColumn columnUSER_ID;
-            
-            private global::System.Data.DataColumn columnUSER_NAME;
-            
-            private global::System.Data.DataColumn columnTOTAL_POSTS;
-            
-            private global::System.Data.DataColumn columnTOTAL_READS;
-            
-            private global::System.Data.DataColumn columnTOTAL_POST_LIKES;
-            
-            private global::System.Data.DataColumn columnTOTAL_POST_COMMENTS;
-            
-            private global::System.Data.DataColumn columnDONATION_TOTOL_AMOUNTS;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER_PROFILEDataTable() {
-                this.TableName = "USER_PROFILE";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal USER_PROFILEDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected USER_PROFILEDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn USER_IDColumn {
-                get {
-                    return this.columnUSER_ID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn USER_NAMEColumn {
-                get {
-                    return this.columnUSER_NAME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TOTAL_POSTSColumn {
-                get {
-                    return this.columnTOTAL_POSTS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TOTAL_READSColumn {
-                get {
-                    return this.columnTOTAL_READS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TOTAL_POST_LIKESColumn {
-                get {
-                    return this.columnTOTAL_POST_LIKES;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TOTAL_POST_COMMENTSColumn {
-                get {
-                    return this.columnTOTAL_POST_COMMENTS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DONATION_TOTOL_AMOUNTSColumn {
-                get {
-                    return this.columnDONATION_TOTOL_AMOUNTS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER_PROFILERow this[int index] {
-                get {
-                    return ((USER_PROFILERow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event USER_PROFILERowChangeEventHandler USER_PROFILERowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event USER_PROFILERowChangeEventHandler USER_PROFILERowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event USER_PROFILERowChangeEventHandler USER_PROFILERowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event USER_PROFILERowChangeEventHandler USER_PROFILERowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddUSER_PROFILERow(USER_PROFILERow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER_PROFILERow AddUSER_PROFILERow(string USER_ID, string USER_NAME, decimal TOTAL_POSTS, decimal TOTAL_READS, decimal TOTAL_POST_LIKES, decimal TOTAL_POST_COMMENTS, decimal DONATION_TOTOL_AMOUNTS) {
-                USER_PROFILERow rowUSER_PROFILERow = ((USER_PROFILERow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        USER_ID,
-                        USER_NAME,
-                        TOTAL_POSTS,
-                        TOTAL_READS,
-                        TOTAL_POST_LIKES,
-                        TOTAL_POST_COMMENTS,
-                        DONATION_TOTOL_AMOUNTS};
-                rowUSER_PROFILERow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowUSER_PROFILERow);
-                return rowUSER_PROFILERow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                USER_PROFILEDataTable cln = ((USER_PROFILEDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new USER_PROFILEDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnUSER_ID = base.Columns["USER_ID"];
-                this.columnUSER_NAME = base.Columns["USER_NAME"];
-                this.columnTOTAL_POSTS = base.Columns["TOTAL_POSTS"];
-                this.columnTOTAL_READS = base.Columns["TOTAL_READS"];
-                this.columnTOTAL_POST_LIKES = base.Columns["TOTAL_POST_LIKES"];
-                this.columnTOTAL_POST_COMMENTS = base.Columns["TOTAL_POST_COMMENTS"];
-                this.columnDONATION_TOTOL_AMOUNTS = base.Columns["DONATION_TOTOL_AMOUNTS"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnUSER_ID = new global::System.Data.DataColumn("USER_ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUSER_ID);
-                this.columnUSER_NAME = new global::System.Data.DataColumn("USER_NAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUSER_NAME);
-                this.columnTOTAL_POSTS = new global::System.Data.DataColumn("TOTAL_POSTS", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTOTAL_POSTS);
-                this.columnTOTAL_READS = new global::System.Data.DataColumn("TOTAL_READS", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTOTAL_READS);
-                this.columnTOTAL_POST_LIKES = new global::System.Data.DataColumn("TOTAL_POST_LIKES", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTOTAL_POST_LIKES);
-                this.columnTOTAL_POST_COMMENTS = new global::System.Data.DataColumn("TOTAL_POST_COMMENTS", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTOTAL_POST_COMMENTS);
-                this.columnDONATION_TOTOL_AMOUNTS = new global::System.Data.DataColumn("DONATION_TOTOL_AMOUNTS", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDONATION_TOTOL_AMOUNTS);
-                this.columnUSER_ID.AllowDBNull = false;
-                this.columnUSER_ID.MaxLength = 20;
-                this.columnUSER_NAME.MaxLength = 20;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER_PROFILERow NewUSER_PROFILERow() {
-                return ((USER_PROFILERow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new USER_PROFILERow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(USER_PROFILERow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.USER_PROFILERowChanged != null)) {
-                    this.USER_PROFILERowChanged(this, new USER_PROFILERowChangeEvent(((USER_PROFILERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.USER_PROFILERowChanging != null)) {
-                    this.USER_PROFILERowChanging(this, new USER_PROFILERowChangeEvent(((USER_PROFILERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.USER_PROFILERowDeleted != null)) {
-                    this.USER_PROFILERowDeleted(this, new USER_PROFILERowChangeEvent(((USER_PROFILERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.USER_PROFILERowDeleting != null)) {
-                    this.USER_PROFILERowDeleting(this, new USER_PROFILERowChangeEvent(((USER_PROFILERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveUSER_PROFILERow(USER_PROFILERow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "USER_PROFILEDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -8578,7 +8066,7 @@ namespace PetFosterTest {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
+                PetData ds = new PetData();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -8653,6 +8141,22 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OWNER_ID {
+                get {
+                    try {
+                        return ((string)(this[this.tableACCOMMODATE.OWNER_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OWNER_ID\' in table \'ACCOMMODATE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACCOMMODATE.OWNER_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string PET_ID {
                 get {
                     return ((string)(this[this.tableACCOMMODATE.PET_IDColumn]));
@@ -8686,61 +8190,12 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal DURATION {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableACCOMMODATE.DURATIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DURATION\' in table \'ACCOMMODATE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableACCOMMODATE.DURATIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short START_YEAR {
-                get {
-                    return ((short)(this[this.tableACCOMMODATE.START_YEARColumn]));
-                }
-                set {
-                    this[this.tableACCOMMODATE.START_YEARColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short START_MONTH {
-                get {
-                    return ((short)(this[this.tableACCOMMODATE.START_MONTHColumn]));
-                }
-                set {
-                    this[this.tableACCOMMODATE.START_MONTHColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short START_DAY {
-                get {
-                    return ((short)(this[this.tableACCOMMODATE.START_DAYColumn]));
-                }
-                set {
-                    this[this.tableACCOMMODATE.START_DAYColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PETRow PETRow {
                 get {
-                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047807"])));
+                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049001"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047807"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049001"]);
                 }
             }
             
@@ -8748,23 +8203,34 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ROOMRow ROOMRowParent {
                 get {
-                    return ((ROOMRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047808"])));
+                    return ((ROOMRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049002"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047808"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049002"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDURATIONNull() {
-                return this.IsNull(this.tableACCOMMODATE.DURATIONColumn);
+            public USER2Row USER2Row {
+                get {
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049000"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049000"]);
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDURATIONNull() {
-                this[this.tableACCOMMODATE.DURATIONColumn] = global::System.Convert.DBNull;
+            public bool IsOWNER_IDNull() {
+                return this.IsNull(this.tableACCOMMODATE.OWNER_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOWNER_IDNull() {
+                this[this.tableACCOMMODATE.OWNER_IDColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8822,23 +8288,23 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row USER2Row {
+            public PETRow PETRow {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047799"])));
+                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0048993"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047799"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0048993"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PETRow PETRow {
+            public USER2Row USER2Row {
                 get {
-                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047800"])));
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0048992"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047800"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0048992"]);
                 }
             }
             
@@ -8933,10 +8399,10 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PETRow PETRow {
                 get {
-                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047814"])));
+                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049008"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047814"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049008"]);
                 }
             }
             
@@ -8944,10 +8410,10 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public USER2Row USER2Row {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047815"])));
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049009"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047815"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049009"]);
                 }
             }
             
@@ -9068,10 +8534,10 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EMPLOYEERow EMPLOYEERow {
                 get {
-                    return ((EMPLOYEERow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047789"])));
+                    return ((EMPLOYEERow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0048980"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047789"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0048980"]);
                 }
             }
             
@@ -9173,23 +8639,23 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row USER2Row {
+            public PETRow PETRow {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047831"])));
+                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049026"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047831"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049026"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PETRow PETRow {
+            public USER2Row USER2Row {
                 get {
-                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047832"])));
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049025"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047832"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049025"]);
                 }
             }
         }
@@ -9254,23 +8720,23 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row USER2Row {
+            public PETRow PETRow {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047828"])));
+                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049023"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047828"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049023"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PETRow PETRow {
+            public USER2Row USER2Row {
                 get {
-                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047829"])));
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049022"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047829"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049022"]);
                 }
             }
         }
@@ -9335,23 +8801,23 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row USER2Row {
+            public FORUM_POSTSRow FORUM_POSTSRow {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047821"])));
+                    return ((FORUM_POSTSRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049016"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047821"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049016"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FORUM_POSTSRow FORUM_POSTSRow {
+            public USER2Row USER2Row {
                 get {
-                    return ((FORUM_POSTSRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047822"])));
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049015"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047822"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049015"]);
                 }
             }
         }
@@ -9405,13 +8871,41 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row USER2Row {
+            public string CENSOR_STATE {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047797"])));
+                    try {
+                        return ((string)(this[this.tableDONATION.CENSOR_STATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CENSOR_STATE\' in table \'DONATION\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047797"]);
+                    this[this.tableDONATION.CENSOR_STATEColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public USER2Row USER2Row {
+                get {
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0048990"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0048990"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCENSOR_STATENull() {
+                return this.IsNull(this.tableDONATION.CENSOR_STATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCENSOR_STATENull() {
+                this[this.tableDONATION.CENSOR_STATEColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9667,11 +9161,11 @@ namespace PetFosterTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public BULLETINRow[] GetBULLETINRows() {
-                if ((this.Table.ChildRelations["SYS_C0047789"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0048980"] == null)) {
                     return new BULLETINRow[0];
                 }
                 else {
-                    return ((BULLETINRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047789"])));
+                    return ((BULLETINRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0048980"])));
                 }
             }
         }
@@ -9778,6 +9272,22 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string CENSORED {
+                get {
+                    try {
+                        return ((string)(this[this.tableFORUM_POSTS.CENSOREDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CENSORED\' in table \'FORUM_POSTS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFORUM_POSTS.CENSOREDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime POST_TIME {
                 get {
                     try {
@@ -9796,10 +9306,10 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public USER2Row USER2Row {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047794"])));
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0048986"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047794"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0048986"]);
                 }
             }
             
@@ -9853,6 +9363,18 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCENSOREDNull() {
+                return this.IsNull(this.tableFORUM_POSTS.CENSOREDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCENSOREDNull() {
+                this[this.tableFORUM_POSTS.CENSOREDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPOST_TIMENull() {
                 return this.IsNull(this.tableFORUM_POSTS.POST_TIMEColumn);
             }
@@ -9866,22 +9388,22 @@ namespace PetFosterTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public COMMENT_POSTRow[] GetCOMMENT_POSTRows() {
-                if ((this.Table.ChildRelations["SYS_C0047822"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049016"] == null)) {
                     return new COMMENT_POSTRow[0];
                 }
                 else {
-                    return ((COMMENT_POSTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047822"])));
+                    return ((COMMENT_POSTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049016"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public LIKE_POSTRow[] GetLIKE_POSTRows() {
-                if ((this.Table.ChildRelations["SYS_C0047818"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049012"] == null)) {
                     return new LIKE_POSTRow[0];
                 }
                 else {
-                    return ((LIKE_POSTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047818"])));
+                    return ((LIKE_POSTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049012"])));
                 }
             }
         }
@@ -9973,12 +9495,33 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row USER2Row {
+            public string CENSOR_STATE {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047803"])));
+                    try {
+                        return ((string)(this[this.tableFOSTER.CENSOR_STATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CENSOR_STATE\' in table \'FOSTER\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047803"]);
+                    this[this.tableFOSTER.CENSOR_STATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string REMARK {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER.REMARKColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'REMARK\' in table \'FOSTER\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER.REMARKColumn] = value;
                 }
             }
             
@@ -9986,10 +9529,21 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PETRow PETRow {
                 get {
-                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047804"])));
+                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0048998"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047804"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0048998"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public USER2Row USER2Row {
+                get {
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0048997"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0048997"]);
                 }
             }
             
@@ -10003,6 +9557,30 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDURATIONNull() {
                 this[this.tableFOSTER.DURATIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCENSOR_STATENull() {
+                return this.IsNull(this.tableFOSTER.CENSOR_STATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCENSOR_STATENull() {
+                this[this.tableFOSTER.CENSOR_STATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsREMARKNull() {
+                return this.IsNull(this.tableFOSTER.REMARKColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetREMARKNull() {
+                this[this.tableFOSTER.REMARKColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10055,23 +9633,23 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row USER2Row {
+            public PETRow PETRow {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047824"])));
+                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049019"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047824"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049019"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PETRow PETRow {
+            public USER2Row USER2Row {
                 get {
-                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047825"])));
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049018"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047825"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049018"]);
                 }
             }
         }
@@ -10125,23 +9703,23 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER2Row USER2Row {
+            public FORUM_POSTSRow FORUM_POSTSRow {
                 get {
-                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047817"])));
+                    return ((FORUM_POSTSRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049012"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047817"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049012"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FORUM_POSTSRow FORUM_POSTSRow {
+            public USER2Row USER2Row {
                 get {
-                    return ((FORUM_POSTSRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047818"])));
+                    return ((USER2Row)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049011"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047818"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049011"]);
                 }
             }
         }
@@ -10205,17 +9783,33 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short AGE {
+            public string PSIZE {
                 get {
                     try {
-                        return ((short)(this[this.tablePET.AGEColumn]));
+                        return ((string)(this[this.tablePET.PSIZEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AGE\' in table \'PET\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PSIZE\' in table \'PET\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePET.AGEColumn] = value;
+                    this[this.tablePET.PSIZEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime BIRTHDATE {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablePET.BIRTHDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BIRTHDATE\' in table \'PET\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePET.BIRTHDATEColumn] = value;
                 }
             }
             
@@ -10341,14 +9935,26 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsAGENull() {
-                return this.IsNull(this.tablePET.AGEColumn);
+            public bool IsPSIZENull() {
+                return this.IsNull(this.tablePET.PSIZEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetAGENull() {
-                this[this.tablePET.AGEColumn] = global::System.Convert.DBNull;
+            public void SetPSIZENull() {
+                this[this.tablePET.PSIZEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsBIRTHDATENull() {
+                return this.IsNull(this.tablePET.BIRTHDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetBIRTHDATENull() {
+                this[this.tablePET.BIRTHDATEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10426,88 +10032,88 @@ namespace PetFosterTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ACCOMMODATERow[] GetACCOMMODATERows() {
-                if ((this.Table.ChildRelations["SYS_C0047807"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049001"] == null)) {
                     return new ACCOMMODATERow[0];
                 }
                 else {
-                    return ((ACCOMMODATERow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047807"])));
+                    return ((ACCOMMODATERow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049001"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ADOPTRow[] GetADOPTRows() {
-                if ((this.Table.ChildRelations["SYS_C0047800"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0048993"] == null)) {
                     return new ADOPTRow[0];
                 }
                 else {
-                    return ((ADOPTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047800"])));
+                    return ((ADOPTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0048993"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public APPLICATIONRow[] GetAPPLICATIONRows() {
-                if ((this.Table.ChildRelations["SYS_C0047814"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049008"] == null)) {
                     return new APPLICATIONRow[0];
                 }
                 else {
-                    return ((APPLICATIONRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047814"])));
+                    return ((APPLICATIONRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049008"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public COLLECT_PET_INFORow[] GetCOLLECT_PET_INFORows() {
-                if ((this.Table.ChildRelations["SYS_C0047832"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049026"] == null)) {
                     return new COLLECT_PET_INFORow[0];
                 }
                 else {
-                    return ((COLLECT_PET_INFORow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047832"])));
+                    return ((COLLECT_PET_INFORow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049026"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public COMMENT_PETRow[] GetCOMMENT_PETRows() {
-                if ((this.Table.ChildRelations["SYS_C0047829"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049023"] == null)) {
                     return new COMMENT_PETRow[0];
                 }
                 else {
-                    return ((COMMENT_PETRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047829"])));
+                    return ((COMMENT_PETRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049023"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public FOSTERRow[] GetFOSTERRows() {
-                if ((this.Table.ChildRelations["SYS_C0047804"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0048998"] == null)) {
                     return new FOSTERRow[0];
                 }
                 else {
-                    return ((FOSTERRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047804"])));
+                    return ((FOSTERRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0048998"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public LIKE_PETRow[] GetLIKE_PETRows() {
-                if ((this.Table.ChildRelations["SYS_C0047825"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049019"] == null)) {
                     return new LIKE_PETRow[0];
                 }
                 else {
-                    return ((LIKE_PETRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047825"])));
+                    return ((LIKE_PETRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049019"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TREATMENTRow[] GetTREATMENTRows() {
-                if ((this.Table.ChildRelations["SYS_C0047810"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049004"] == null)) {
                     return new TREATMENTRow[0];
                 }
                 else {
-                    return ((TREATMENTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047810"])));
+                    return ((TREATMENTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049004"])));
                 }
             }
         }
@@ -10635,11 +10241,11 @@ namespace PetFosterTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ACCOMMODATERow[] GetACCOMMODATERows() {
-                if ((this.Table.ChildRelations["SYS_C0047808"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049002"] == null)) {
                     return new ACCOMMODATERow[0];
                 }
                 else {
-                    return ((ACCOMMODATERow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047808"])));
+                    return ((ACCOMMODATERow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049002"])));
                 }
             }
         }
@@ -10711,10 +10317,10 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PETRow PETRow {
                 get {
-                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047810"])));
+                    return ((PETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049004"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047810"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049004"]);
                 }
             }
             
@@ -10722,10 +10328,10 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public VETRow VETRow {
                 get {
-                    return ((VETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0047811"])));
+                    return ((VETRow)(this.GetParentRow(this.Table.ParentRelations["SYS_C0049005"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0047811"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["SYS_C0049005"]);
                 }
             }
             
@@ -10849,6 +10455,22 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string ROLE {
+                get {
+                    try {
+                        return ((string)(this[this.tableUSER2.ROLEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ROLE\' in table \'USER2\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableUSER2.ROLEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsUSER_NAMENull() {
                 return this.IsNull(this.tableUSER2.USER_NAMEColumn);
             }
@@ -10909,111 +10531,134 @@ namespace PetFosterTest {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsROLENull() {
+                return this.IsNull(this.tableUSER2.ROLEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetROLENull() {
+                this[this.tableUSER2.ROLEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ACCOMMODATERow[] GetACCOMMODATERows() {
+                if ((this.Table.ChildRelations["SYS_C0049000"] == null)) {
+                    return new ACCOMMODATERow[0];
+                }
+                else {
+                    return ((ACCOMMODATERow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049000"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ADOPTRow[] GetADOPTRows() {
-                if ((this.Table.ChildRelations["SYS_C0047799"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0048992"] == null)) {
                     return new ADOPTRow[0];
                 }
                 else {
-                    return ((ADOPTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047799"])));
+                    return ((ADOPTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0048992"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public APPLICATIONRow[] GetAPPLICATIONRows() {
-                if ((this.Table.ChildRelations["SYS_C0047815"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049009"] == null)) {
                     return new APPLICATIONRow[0];
                 }
                 else {
-                    return ((APPLICATIONRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047815"])));
+                    return ((APPLICATIONRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049009"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public COLLECT_PET_INFORow[] GetCOLLECT_PET_INFORows() {
-                if ((this.Table.ChildRelations["SYS_C0047831"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049025"] == null)) {
                     return new COLLECT_PET_INFORow[0];
                 }
                 else {
-                    return ((COLLECT_PET_INFORow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047831"])));
+                    return ((COLLECT_PET_INFORow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049025"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public COMMENT_PETRow[] GetCOMMENT_PETRows() {
-                if ((this.Table.ChildRelations["SYS_C0047828"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049022"] == null)) {
                     return new COMMENT_PETRow[0];
                 }
                 else {
-                    return ((COMMENT_PETRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047828"])));
+                    return ((COMMENT_PETRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049022"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public COMMENT_POSTRow[] GetCOMMENT_POSTRows() {
-                if ((this.Table.ChildRelations["SYS_C0047821"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049015"] == null)) {
                     return new COMMENT_POSTRow[0];
                 }
                 else {
-                    return ((COMMENT_POSTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047821"])));
+                    return ((COMMENT_POSTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049015"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DONATIONRow[] GetDONATIONRows() {
-                if ((this.Table.ChildRelations["SYS_C0047797"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0048990"] == null)) {
                     return new DONATIONRow[0];
                 }
                 else {
-                    return ((DONATIONRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047797"])));
+                    return ((DONATIONRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0048990"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public FORUM_POSTSRow[] GetFORUM_POSTSRows() {
-                if ((this.Table.ChildRelations["SYS_C0047794"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0048986"] == null)) {
                     return new FORUM_POSTSRow[0];
                 }
                 else {
-                    return ((FORUM_POSTSRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047794"])));
+                    return ((FORUM_POSTSRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0048986"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public FOSTERRow[] GetFOSTERRows() {
-                if ((this.Table.ChildRelations["SYS_C0047803"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0048997"] == null)) {
                     return new FOSTERRow[0];
                 }
                 else {
-                    return ((FOSTERRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047803"])));
+                    return ((FOSTERRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0048997"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public LIKE_PETRow[] GetLIKE_PETRows() {
-                if ((this.Table.ChildRelations["SYS_C0047824"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049018"] == null)) {
                     return new LIKE_PETRow[0];
                 }
                 else {
-                    return ((LIKE_PETRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047824"])));
+                    return ((LIKE_PETRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049018"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public LIKE_POSTRow[] GetLIKE_POSTRows() {
-                if ((this.Table.ChildRelations["SYS_C0047817"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049011"] == null)) {
                     return new LIKE_POSTRow[0];
                 }
                 else {
-                    return ((LIKE_POSTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047817"])));
+                    return ((LIKE_POSTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049011"])));
                 }
             }
         }
@@ -11242,12 +10887,329 @@ namespace PetFosterTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TREATMENTRow[] GetTREATMENTRows() {
-                if ((this.Table.ChildRelations["SYS_C0047811"] == null)) {
+                if ((this.Table.ChildRelations["SYS_C0049005"] == null)) {
                     return new TREATMENTRow[0];
                 }
                 else {
-                    return ((TREATMENTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0047811"])));
+                    return ((TREATMENTRow[])(base.GetChildRows(this.Table.ChildRelations["SYS_C0049005"])));
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class FOSTER_WINDOWRow : global::System.Data.DataRow {
+            
+            private FOSTER_WINDOWDataTable tableFOSTER_WINDOW;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal FOSTER_WINDOWRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableFOSTER_WINDOW = ((FOSTER_WINDOWDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string USER_ID {
+                get {
+                    return ((string)(this[this.tableFOSTER_WINDOW.USER_IDColumn]));
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.USER_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OWNER {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER_WINDOW.OWNERColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OWNER\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.OWNERColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string PET_ID {
+                get {
+                    return ((string)(this[this.tableFOSTER_WINDOW.PET_IDColumn]));
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.PET_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string PET_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER_WINDOW.PET_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PET_NAME\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.PET_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string BREED {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER_WINDOW.BREEDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BREED\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.BREEDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string PSIZE {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER_WINDOW.PSIZEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PSIZE\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.PSIZEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal DURATION {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableFOSTER_WINDOW.DURATIONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DURATION\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.DURATIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FOSTER_START_DATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER_WINDOW.FOSTER_START_DATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FOSTER_START_DATE\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.FOSTER_START_DATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FOSTER_END_DATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER_WINDOW.FOSTER_END_DATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FOSTER_END_DATE\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.FOSTER_END_DATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string ROOM_ID {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER_WINDOW.ROOM_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ROOM_ID\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.ROOM_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public float ROOM_SIZE {
+                get {
+                    try {
+                        return ((float)(this[this.tableFOSTER_WINDOW.ROOM_SIZEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ROOM_SIZE\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.ROOM_SIZEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string CENSOR_STATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableFOSTER_WINDOW.CENSOR_STATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CENSOR_STATE\' in table \'FOSTER_WINDOW\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFOSTER_WINDOW.CENSOR_STATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOWNERNull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.OWNERColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOWNERNull() {
+                this[this.tableFOSTER_WINDOW.OWNERColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPET_NAMENull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.PET_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPET_NAMENull() {
+                this[this.tableFOSTER_WINDOW.PET_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsBREEDNull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.BREEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetBREEDNull() {
+                this[this.tableFOSTER_WINDOW.BREEDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPSIZENull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.PSIZEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPSIZENull() {
+                this[this.tableFOSTER_WINDOW.PSIZEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDURATIONNull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.DURATIONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDURATIONNull() {
+                this[this.tableFOSTER_WINDOW.DURATIONColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFOSTER_START_DATENull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.FOSTER_START_DATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFOSTER_START_DATENull() {
+                this[this.tableFOSTER_WINDOW.FOSTER_START_DATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFOSTER_END_DATENull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.FOSTER_END_DATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFOSTER_END_DATENull() {
+                this[this.tableFOSTER_WINDOW.FOSTER_END_DATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsROOM_IDNull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.ROOM_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetROOM_IDNull() {
+                this[this.tableFOSTER_WINDOW.ROOM_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsROOM_SIZENull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.ROOM_SIZEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetROOM_SIZENull() {
+                this[this.tableFOSTER_WINDOW.ROOM_SIZEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCENSOR_STATENull() {
+                return this.IsNull(this.tableFOSTER_WINDOW.CENSOR_STATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCENSOR_STATENull() {
+                this[this.tableFOSTER_WINDOW.CENSOR_STATEColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11386,392 +11348,6 @@ namespace PetFosterTest {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetWORKING_HOURSNull() {
                 this[this.tableEMPLOYEE_LABOR.WORKING_HOURSColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class OWNERSHIPRow : global::System.Data.DataRow {
-            
-            private OWNERSHIPDataTable tableOWNERSHIP;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal OWNERSHIPRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableOWNERSHIP = ((OWNERSHIPDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string PET_ID {
-                get {
-                    return ((string)(this[this.tableOWNERSHIP.PET_IDColumn]));
-                }
-                set {
-                    this[this.tableOWNERSHIP.PET_IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string PET_NAME {
-                get {
-                    try {
-                        return ((string)(this[this.tableOWNERSHIP.PET_NAMEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PET_NAME\' in table \'OWNERSHIP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOWNERSHIP.PET_NAMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string STATUS {
-                get {
-                    try {
-                        return ((string)(this[this.tableOWNERSHIP.STATUSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'STATUS\' in table \'OWNERSHIP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOWNERSHIP.STATUSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string START_TIME {
-                get {
-                    try {
-                        return ((string)(this[this.tableOWNERSHIP.START_TIMEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'START_TIME\' in table \'OWNERSHIP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOWNERSHIP.START_TIMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string END_TIME {
-                get {
-                    try {
-                        return ((string)(this[this.tableOWNERSHIP.END_TIMEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'END_TIME\' in table \'OWNERSHIP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOWNERSHIP.END_TIMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPET_NAMENull() {
-                return this.IsNull(this.tableOWNERSHIP.PET_NAMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPET_NAMENull() {
-                this[this.tableOWNERSHIP.PET_NAMEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSTATUSNull() {
-                return this.IsNull(this.tableOWNERSHIP.STATUSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSTATUSNull() {
-                this[this.tableOWNERSHIP.STATUSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSTART_TIMENull() {
-                return this.IsNull(this.tableOWNERSHIP.START_TIMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSTART_TIMENull() {
-                this[this.tableOWNERSHIP.START_TIMEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEND_TIMENull() {
-                return this.IsNull(this.tableOWNERSHIP.END_TIMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEND_TIMENull() {
-                this[this.tableOWNERSHIP.END_TIMEColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class ROOM_AVAIABLERow : global::System.Data.DataRow {
-            
-            private ROOM_AVAIABLEDataTable tableROOM_AVAIABLE;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal ROOM_AVAIABLERow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableROOM_AVAIABLE = ((ROOM_AVAIABLEDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short STOREY {
-                get {
-                    return ((short)(this[this.tableROOM_AVAIABLE.STOREYColumn]));
-                }
-                set {
-                    this[this.tableROOM_AVAIABLE.STOREYColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal CAPACITY {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableROOM_AVAIABLE.CAPACITYColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CAPACITY\' in table \'ROOM_AVAIABLE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableROOM_AVAIABLE.CAPACITYColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCAPACITYNull() {
-                return this.IsNull(this.tableROOM_AVAIABLE.CAPACITYColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCAPACITYNull() {
-                this[this.tableROOM_AVAIABLE.CAPACITYColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class USER_PROFILERow : global::System.Data.DataRow {
-            
-            private USER_PROFILEDataTable tableUSER_PROFILE;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal USER_PROFILERow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableUSER_PROFILE = ((USER_PROFILEDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string USER_ID {
-                get {
-                    return ((string)(this[this.tableUSER_PROFILE.USER_IDColumn]));
-                }
-                set {
-                    this[this.tableUSER_PROFILE.USER_IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string USER_NAME {
-                get {
-                    try {
-                        return ((string)(this[this.tableUSER_PROFILE.USER_NAMEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'USER_NAME\' in table \'USER_PROFILE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableUSER_PROFILE.USER_NAMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TOTAL_POSTS {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableUSER_PROFILE.TOTAL_POSTSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TOTAL_POSTS\' in table \'USER_PROFILE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableUSER_PROFILE.TOTAL_POSTSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TOTAL_READS {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableUSER_PROFILE.TOTAL_READSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TOTAL_READS\' in table \'USER_PROFILE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableUSER_PROFILE.TOTAL_READSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TOTAL_POST_LIKES {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableUSER_PROFILE.TOTAL_POST_LIKESColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TOTAL_POST_LIKES\' in table \'USER_PROFILE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableUSER_PROFILE.TOTAL_POST_LIKESColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TOTAL_POST_COMMENTS {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableUSER_PROFILE.TOTAL_POST_COMMENTSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TOTAL_POST_COMMENTS\' in table \'USER_PROFILE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableUSER_PROFILE.TOTAL_POST_COMMENTSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal DONATION_TOTOL_AMOUNTS {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableUSER_PROFILE.DONATION_TOTOL_AMOUNTSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DONATION_TOTOL_AMOUNTS\' in table \'USER_PROFILE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableUSER_PROFILE.DONATION_TOTOL_AMOUNTSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsUSER_NAMENull() {
-                return this.IsNull(this.tableUSER_PROFILE.USER_NAMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetUSER_NAMENull() {
-                this[this.tableUSER_PROFILE.USER_NAMEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTOTAL_POSTSNull() {
-                return this.IsNull(this.tableUSER_PROFILE.TOTAL_POSTSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTOTAL_POSTSNull() {
-                this[this.tableUSER_PROFILE.TOTAL_POSTSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTOTAL_READSNull() {
-                return this.IsNull(this.tableUSER_PROFILE.TOTAL_READSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTOTAL_READSNull() {
-                this[this.tableUSER_PROFILE.TOTAL_READSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTOTAL_POST_LIKESNull() {
-                return this.IsNull(this.tableUSER_PROFILE.TOTAL_POST_LIKESColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTOTAL_POST_LIKESNull() {
-                this[this.tableUSER_PROFILE.TOTAL_POST_LIKESColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTOTAL_POST_COMMENTSNull() {
-                return this.IsNull(this.tableUSER_PROFILE.TOTAL_POST_COMMENTSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTOTAL_POST_COMMENTSNull() {
-                this[this.tableUSER_PROFILE.TOTAL_POST_COMMENTSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDONATION_TOTOL_AMOUNTSNull() {
-                return this.IsNull(this.tableUSER_PROFILE.DONATION_TOTOL_AMOUNTSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDONATION_TOTOL_AMOUNTSNull() {
-                this[this.tableUSER_PROFILE.DONATION_TOTOL_AMOUNTSColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -12501,6 +12077,40 @@ namespace PetFosterTest {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class FOSTER_WINDOWRowChangeEvent : global::System.EventArgs {
+            
+            private FOSTER_WINDOWRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FOSTER_WINDOWRowChangeEvent(FOSTER_WINDOWRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FOSTER_WINDOWRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public class EMPLOYEE_LABORRowChangeEvent : global::System.EventArgs {
             
             private EMPLOYEE_LABORRow eventRow;
@@ -12517,108 +12127,6 @@ namespace PetFosterTest {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EMPLOYEE_LABORRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class OWNERSHIPRowChangeEvent : global::System.EventArgs {
-            
-            private OWNERSHIPRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OWNERSHIPRowChangeEvent(OWNERSHIPRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OWNERSHIPRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class ROOM_AVAIABLERowChangeEvent : global::System.EventArgs {
-            
-            private ROOM_AVAIABLERow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ROOM_AVAIABLERowChangeEvent(ROOM_AVAIABLERow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ROOM_AVAIABLERow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class USER_PROFILERowChangeEvent : global::System.EventArgs {
-            
-            private USER_PROFILERow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER_PROFILERowChangeEvent(USER_PROFILERow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public USER_PROFILERow Row {
                 get {
                     return this.eventRow;
                 }
@@ -12668,7 +12176,7 @@ namespace PetFosterTest {
         }
     }
 }
-namespace PetFosterTest.DataSet1TableAdapters {
+namespace PetFoster.Model.PetDataTableAdapters {
     
     
     /// <summary>
@@ -12792,19 +12300,36 @@ namespace PetFosterTest.DataSet1TableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ACCOMMODATE";
+            tableMapping.ColumnMappings.Add("OWNER_ID", "OWNER_ID");
             tableMapping.ColumnMappings.Add("PET_ID", "PET_ID");
             tableMapping.ColumnMappings.Add("STOREY", "STOREY");
             tableMapping.ColumnMappings.Add("COMPARTMENT", "COMPARTMENT");
-            tableMapping.ColumnMappings.Add("DURATION", "DURATION");
-            tableMapping.ColumnMappings.Add("START_YEAR", "START_YEAR");
-            tableMapping.ColumnMappings.Add("START_MONTH", "START_MONTH");
-            tableMapping.ColumnMappings.Add("START_DAY", "START_DAY");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""ACCOMMODATE"" WHERE ((""PET_ID"" = :Original_PET_ID) AND (""STOREY"" = :Original_STOREY) AND (""COMPARTMENT"" = :Original_COMPARTMENT) AND ((:IsNull_DURATION = 1 AND ""DURATION"" IS NULL) OR (""DURATION"" = :Original_DURATION)) AND (""START_YEAR"" = :Original_START_YEAR) AND (""START_MONTH"" = :Original_START_MONTH) AND (""START_DAY"" = :Original_START_DAY))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"C##PET\".\"ACCOMMODATE\" WHERE (((:IsNull_OWNER_ID = 1 AND \"OWNER_ID\" I" +
+                "S NULL) OR (\"OWNER_ID\" = :Original_OWNER_ID)) AND (\"PET_ID\" = :Original_PET_ID) " +
+                "AND (\"STOREY\" = :Original_STOREY) AND (\"COMPARTMENT\" = :Original_COMPARTMENT))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_OWNER_ID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "OWNER_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_OWNER_ID";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "OWNER_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_PET_ID";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
             param.Size = 20;
@@ -12828,60 +12353,20 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "COMPARTMENT";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "IsNull_DURATION";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "DURATION";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_DURATION";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "DURATION";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_START_YEAR";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_YEAR";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_START_MONTH";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_MONTH";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_START_DAY";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_DAY";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"C##PET\".\"ACCOMMODATE\" (\"PET_ID\", \"STOREY\", \"COMPARTMENT\", \"DURATION\"" +
-                ", \"START_YEAR\", \"START_MONTH\", \"START_DAY\") VALUES (:PET_ID, :STOREY, :COMPARTME" +
-                "NT, :DURATION, :START_YEAR, :START_MONTH, :START_DAY)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"C##PET\".\"ACCOMMODATE\" (\"OWNER_ID\", \"PET_ID\", \"STOREY\", \"COMPARTMENT\"" +
+                ") VALUES (:OWNER_ID, :PET_ID, :STOREY, :COMPARTMENT)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "OWNER_ID";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "OWNER_ID";
+            this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "PET_ID";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
@@ -12904,43 +12389,18 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "COMPARTMENT";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "DURATION";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "DURATION";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "START_YEAR";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_YEAR";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "START_MONTH";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_MONTH";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "START_DAY";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_DAY";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""ACCOMMODATE"" SET ""PET_ID"" = :PET_ID, ""STOREY"" = :STOREY, ""COMPARTMENT"" = :COMPARTMENT, ""DURATION"" = :DURATION, ""START_YEAR"" = :START_YEAR, ""START_MONTH"" = :START_MONTH, ""START_DAY"" = :START_DAY WHERE ((""PET_ID"" = :Original_PET_ID) AND (""STOREY"" = :Original_STOREY) AND (""COMPARTMENT"" = :Original_COMPARTMENT) AND ((:IsNull_DURATION = 1 AND ""DURATION"" IS NULL) OR (""DURATION"" = :Original_DURATION)) AND (""START_YEAR"" = :Original_START_YEAR) AND (""START_MONTH"" = :Original_START_MONTH) AND (""START_DAY"" = :Original_START_DAY))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""ACCOMMODATE"" SET ""OWNER_ID"" = :OWNER_ID, ""PET_ID"" = :PET_ID, ""STOREY"" = :STOREY, ""COMPARTMENT"" = :COMPARTMENT WHERE (((:IsNull_OWNER_ID = 1 AND ""OWNER_ID"" IS NULL) OR (""OWNER_ID"" = :Original_OWNER_ID)) AND (""PET_ID"" = :Original_PET_ID) AND (""STOREY"" = :Original_STOREY) AND (""COMPARTMENT"" = :Original_COMPARTMENT))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "OWNER_ID";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "OWNER_ID";
+            this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "PET_ID";
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
@@ -12965,36 +12425,22 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "COMPARTMENT";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "DURATION";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
-            param.Size = 22;
+            param.ParameterName = "IsNull_OWNER_ID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 20;
             param.IsNullable = true;
-            param.SourceColumn = "DURATION";
+            param.SourceColumn = "OWNER_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "START_YEAR";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.ParameterName = "Original_OWNER_ID";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
-            param.SourceColumn = "START_YEAR";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "START_MONTH";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_MONTH";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "START_DAY";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_DAY";
+            param.SourceColumn = "OWNER_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_PET_ID";
@@ -13020,52 +12466,6 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "COMPARTMENT";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "IsNull_DURATION";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "DURATION";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_DURATION";
-            param.DbType = global::System.Data.DbType.Decimal;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Decimal;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "DURATION";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_START_YEAR";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_YEAR";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_START_MONTH";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_MONTH";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_START_DAY";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
-            param.IsNullable = true;
-            param.SourceColumn = "START_DAY";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -13074,7 +12474,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13083,8 +12484,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PET_ID, STOREY, COMPARTMENT, \"DURATION\", START_YEAR, START_MONTH, START_DA" +
-                "Y FROM \"C##PET\".ACCOMMODATE";
+            this._commandCollection[0].CommandText = "SELECT OWNER_ID, PET_ID, STOREY, COMPARTMENT FROM \"C##PET\".ACCOMMODATE";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -13092,7 +12492,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.ACCOMMODATEDataTable dataTable) {
+        public virtual int Fill(PetData.ACCOMMODATEDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -13105,9 +12505,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.ACCOMMODATEDataTable GetData() {
+        public virtual PetData.ACCOMMODATEDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.ACCOMMODATEDataTable dataTable = new DataSet1.ACCOMMODATEDataTable();
+            PetData.ACCOMMODATEDataTable dataTable = new PetData.ACCOMMODATEDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -13115,14 +12515,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.ACCOMMODATEDataTable dataTable) {
+        public virtual int Update(PetData.ACCOMMODATEDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "ACCOMMODATE");
         }
         
@@ -13145,26 +12545,23 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_PET_ID, short Original_STOREY, short Original_COMPARTMENT, global::System.Nullable<decimal> Original_DURATION, short Original_START_YEAR, short Original_START_MONTH, short Original_START_DAY) {
+        public virtual int Delete(string Original_OWNER_ID, string Original_PET_ID, short Original_STOREY, short Original_COMPARTMENT) {
+            if ((Original_OWNER_ID == null)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_OWNER_ID));
+            }
             if ((Original_PET_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_PET_ID");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_PET_ID));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_PET_ID));
             }
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((short)(Original_STOREY));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((short)(Original_COMPARTMENT));
-            if ((Original_DURATION.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_DURATION.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((short)(Original_START_YEAR));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((short)(Original_START_MONTH));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((short)(Original_START_DAY));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((short)(Original_STOREY));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((short)(Original_COMPARTMENT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13185,24 +12582,21 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string PET_ID, short STOREY, short COMPARTMENT, global::System.Nullable<decimal> DURATION, short START_YEAR, short START_MONTH, short START_DAY) {
+        public virtual int Insert(string OWNER_ID, string PET_ID, short STOREY, short COMPARTMENT) {
+            if ((OWNER_ID == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(OWNER_ID));
+            }
             if ((PET_ID == null)) {
                 throw new global::System.ArgumentNullException("PET_ID");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(PET_ID));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(PET_ID));
             }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(STOREY));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((short)(COMPARTMENT));
-            if ((DURATION.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(DURATION.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((short)(START_YEAR));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((short)(START_MONTH));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((short)(START_DAY));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((short)(STOREY));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((short)(COMPARTMENT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13223,43 +12617,37 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string PET_ID, short STOREY, short COMPARTMENT, global::System.Nullable<decimal> DURATION, short START_YEAR, short START_MONTH, short START_DAY, string Original_PET_ID, short Original_STOREY, short Original_COMPARTMENT, global::System.Nullable<decimal> Original_DURATION, short Original_START_YEAR, short Original_START_MONTH, short Original_START_DAY) {
+        public virtual int Update(string OWNER_ID, string PET_ID, short STOREY, short COMPARTMENT, string Original_OWNER_ID, string Original_PET_ID, short Original_STOREY, short Original_COMPARTMENT) {
+            if ((OWNER_ID == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(OWNER_ID));
+            }
             if ((PET_ID == null)) {
                 throw new global::System.ArgumentNullException("PET_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(PET_ID));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(PET_ID));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((short)(STOREY));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((short)(COMPARTMENT));
-            if ((DURATION.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(DURATION.Value));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((short)(STOREY));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((short)(COMPARTMENT));
+            if ((Original_OWNER_ID == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_OWNER_ID));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((short)(START_YEAR));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((short)(START_MONTH));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((short)(START_DAY));
             if ((Original_PET_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_PET_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_PET_ID));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_PET_ID));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((short)(Original_STOREY));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((short)(Original_COMPARTMENT));
-            if ((Original_DURATION.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_DURATION.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_START_YEAR));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(Original_START_MONTH));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((short)(Original_START_DAY));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((short)(Original_STOREY));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((short)(Original_COMPARTMENT));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13280,8 +12668,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<decimal> DURATION, string Original_PET_ID, short Original_STOREY, short Original_COMPARTMENT, global::System.Nullable<decimal> Original_DURATION, short Original_START_YEAR, short Original_START_MONTH, short Original_START_DAY) {
-            return this.Update(Original_PET_ID, Original_STOREY, Original_COMPARTMENT, DURATION, Original_START_YEAR, Original_START_MONTH, Original_START_DAY, Original_PET_ID, Original_STOREY, Original_COMPARTMENT, Original_DURATION, Original_START_YEAR, Original_START_MONTH, Original_START_DAY);
+        public virtual int Update(string OWNER_ID, string Original_OWNER_ID, string Original_PET_ID, short Original_STOREY, short Original_COMPARTMENT) {
+            return this.Update(OWNER_ID, Original_PET_ID, Original_STOREY, Original_COMPARTMENT, Original_OWNER_ID, Original_PET_ID, Original_STOREY, Original_COMPARTMENT);
         }
     }
     
@@ -13545,7 +12933,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13562,7 +12951,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.ADOPTDataTable dataTable) {
+        public virtual int Fill(PetData.ADOPTDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -13575,9 +12964,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.ADOPTDataTable GetData() {
+        public virtual PetData.ADOPTDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.ADOPTDataTable dataTable = new DataSet1.ADOPTDataTable();
+            PetData.ADOPTDataTable dataTable = new PetData.ADOPTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -13585,14 +12974,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.ADOPTDataTable dataTable) {
+        public virtual int Update(PetData.ADOPTDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "ADOPT");
         }
         
@@ -14079,7 +13468,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14096,7 +13486,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.APPLICATIONDataTable dataTable) {
+        public virtual int Fill(PetData.APPLICATIONDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -14109,9 +13499,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.APPLICATIONDataTable GetData() {
+        public virtual PetData.APPLICATIONDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.APPLICATIONDataTable dataTable = new DataSet1.APPLICATIONDataTable();
+            PetData.APPLICATIONDataTable dataTable = new PetData.APPLICATIONDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -14119,14 +13509,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.APPLICATIONDataTable dataTable) {
+        public virtual int Update(PetData.APPLICATIONDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "APPLICATION");
         }
         
@@ -14737,7 +14127,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14755,7 +14146,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.BULLETINDataTable dataTable) {
+        public virtual int Fill(PetData.BULLETINDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -14768,9 +14159,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.BULLETINDataTable GetData() {
+        public virtual PetData.BULLETINDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.BULLETINDataTable dataTable = new DataSet1.BULLETINDataTable();
+            PetData.BULLETINDataTable dataTable = new PetData.BULLETINDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -14778,14 +14169,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.BULLETINDataTable dataTable) {
+        public virtual int Update(PetData.BULLETINDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "BULLETIN");
         }
         
@@ -15277,7 +14668,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15294,7 +14686,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.COLLECT_PET_INFODataTable dataTable) {
+        public virtual int Fill(PetData.COLLECT_PET_INFODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -15307,9 +14699,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.COLLECT_PET_INFODataTable GetData() {
+        public virtual PetData.COLLECT_PET_INFODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.COLLECT_PET_INFODataTable dataTable = new DataSet1.COLLECT_PET_INFODataTable();
+            PetData.COLLECT_PET_INFODataTable dataTable = new PetData.COLLECT_PET_INFODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -15317,14 +14709,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.COLLECT_PET_INFODataTable dataTable) {
+        public virtual int Update(PetData.COLLECT_PET_INFODataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "COLLECT_PET_INFO");
         }
         
@@ -15738,7 +15130,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15755,7 +15148,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.COMMENT_PETDataTable dataTable) {
+        public virtual int Fill(PetData.COMMENT_PETDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -15768,9 +15161,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.COMMENT_PETDataTable GetData() {
+        public virtual PetData.COMMENT_PETDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.COMMENT_PETDataTable dataTable = new DataSet1.COMMENT_PETDataTable();
+            PetData.COMMENT_PETDataTable dataTable = new PetData.COMMENT_PETDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -15778,14 +15171,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.COMMENT_PETDataTable dataTable) {
+        public virtual int Update(PetData.COMMENT_PETDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "COMMENT_PET");
         }
         
@@ -16223,7 +15616,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16241,7 +15635,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.COMMENT_POSTDataTable dataTable) {
+        public virtual int Fill(PetData.COMMENT_POSTDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -16254,9 +15648,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.COMMENT_POSTDataTable GetData() {
+        public virtual PetData.COMMENT_POSTDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.COMMENT_POSTDataTable dataTable = new DataSet1.COMMENT_POSTDataTable();
+            PetData.COMMENT_POSTDataTable dataTable = new PetData.COMMENT_POSTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -16264,14 +15658,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.COMMENT_POSTDataTable dataTable) {
+        public virtual int Update(PetData.COMMENT_POSTDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "COMMENT_POST");
         }
         
@@ -16562,12 +15956,11 @@ namespace PetFosterTest.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("DONOR_ID", "DONOR_ID");
             tableMapping.ColumnMappings.Add("DONATION_AMOUNT", "DONATION_AMOUNT");
             tableMapping.ColumnMappings.Add("DONATION_TIME", "DONATION_TIME");
+            tableMapping.ColumnMappings.Add("CENSOR_STATE", "CENSOR_STATE");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"C##PET\".\"DONATION\" WHERE ((\"DONOR_ID\" = :Original_DONOR_ID) AND (\"DO" +
-                "NATION_AMOUNT\" = :Original_DONATION_AMOUNT) AND (\"DONATION_TIME\" = :Original_DON" +
-                "ATION_TIME))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""DONATION"" WHERE ((""DONOR_ID"" = :Original_DONOR_ID) AND (""DONATION_AMOUNT"" = :Original_DONATION_AMOUNT) AND (""DONATION_TIME"" = :Original_DONATION_TIME) AND ((:IsNull_CENSOR_STATE = 1 AND ""CENSOR_STATE"" IS NULL) OR (""CENSOR_STATE"" = :Original_CENSOR_STATE)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_DONOR_ID";
@@ -16595,10 +15988,29 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "DONATION_TIME";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_CENSOR_STATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_CENSOR_STATE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"C##PET\".\"DONATION\" (\"DONOR_ID\", \"DONATION_AMOUNT\", \"DONATION_TIME\") " +
-                "VALUES (:DONOR_ID, :DONATION_AMOUNT, :DONATION_TIME)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"C##PET\".\"DONATION\" (\"DONOR_ID\", \"DONATION_AMOUNT\", \"DONATION_TIME\", " +
+                "\"CENSOR_STATE\") VALUES (:DONOR_ID, :DONATION_AMOUNT, :DONATION_TIME, :CENSOR_STA" +
+                "TE)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "DONOR_ID";
@@ -16623,9 +16035,16 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "DONATION_TIME";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "CENSOR_STATE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""DONATION"" SET ""DONOR_ID"" = :DONOR_ID, ""DONATION_AMOUNT"" = :DONATION_AMOUNT, ""DONATION_TIME"" = :DONATION_TIME WHERE ((""DONOR_ID"" = :Original_DONOR_ID) AND (""DONATION_AMOUNT"" = :Original_DONATION_AMOUNT) AND (""DONATION_TIME"" = :Original_DONATION_TIME))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""DONATION"" SET ""DONOR_ID"" = :DONOR_ID, ""DONATION_AMOUNT"" = :DONATION_AMOUNT, ""DONATION_TIME"" = :DONATION_TIME, ""CENSOR_STATE"" = :CENSOR_STATE WHERE ((""DONOR_ID"" = :Original_DONOR_ID) AND (""DONATION_AMOUNT"" = :Original_DONATION_AMOUNT) AND (""DONATION_TIME"" = :Original_DONATION_TIME) AND ((:IsNull_CENSOR_STATE = 1 AND ""CENSOR_STATE"" IS NULL) OR (""CENSOR_STATE"" = :Original_CENSOR_STATE)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "DONOR_ID";
@@ -16649,6 +16068,13 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.Size = 11;
             param.IsNullable = true;
             param.SourceColumn = "DONATION_TIME";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "CENSOR_STATE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_DONOR_ID";
@@ -16676,13 +16102,32 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "DONATION_TIME";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_CENSOR_STATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_CENSOR_STATE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16691,7 +16136,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DONOR_ID, DONATION_AMOUNT, DONATION_TIME FROM \"C##PET\".DONATION";
+            this._commandCollection[0].CommandText = "SELECT DONOR_ID, DONATION_AMOUNT, DONATION_TIME, CENSOR_STATE FROM \"C##PET\".DONAT" +
+                "ION";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -16699,7 +16145,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.DONATIONDataTable dataTable) {
+        public virtual int Fill(PetData.DONATIONDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -16712,9 +16158,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.DONATIONDataTable GetData() {
+        public virtual PetData.DONATIONDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.DONATIONDataTable dataTable = new DataSet1.DONATIONDataTable();
+            PetData.DONATIONDataTable dataTable = new PetData.DONATIONDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -16722,14 +16168,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.DONATIONDataTable dataTable) {
+        public virtual int Update(PetData.DONATIONDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "DONATION");
         }
         
@@ -16752,7 +16198,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_DONOR_ID, decimal Original_DONATION_AMOUNT, System.DateTime Original_DONATION_TIME) {
+        public virtual int Delete(string Original_DONOR_ID, decimal Original_DONATION_AMOUNT, System.DateTime Original_DONATION_TIME, string Original_CENSOR_STATE) {
             if ((Original_DONOR_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_DONOR_ID");
             }
@@ -16761,6 +16207,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
             }
             this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_DONATION_AMOUNT));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_DONATION_TIME));
+            if ((Original_CENSOR_STATE == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_CENSOR_STATE));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -16781,7 +16235,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string DONOR_ID, decimal DONATION_AMOUNT, System.DateTime DONATION_TIME) {
+        public virtual int Insert(string DONOR_ID, decimal DONATION_AMOUNT, System.DateTime DONATION_TIME, string CENSOR_STATE) {
             if ((DONOR_ID == null)) {
                 throw new global::System.ArgumentNullException("DONOR_ID");
             }
@@ -16790,6 +16244,12 @@ namespace PetFosterTest.DataSet1TableAdapters {
             }
             this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(DONATION_AMOUNT));
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DONATION_TIME));
+            if ((CENSOR_STATE == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(CENSOR_STATE));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -16810,7 +16270,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string DONOR_ID, decimal DONATION_AMOUNT, System.DateTime DONATION_TIME, string Original_DONOR_ID, decimal Original_DONATION_AMOUNT, System.DateTime Original_DONATION_TIME) {
+        public virtual int Update(string DONOR_ID, decimal DONATION_AMOUNT, System.DateTime DONATION_TIME, string CENSOR_STATE, string Original_DONOR_ID, decimal Original_DONATION_AMOUNT, System.DateTime Original_DONATION_TIME, string Original_CENSOR_STATE) {
             if ((DONOR_ID == null)) {
                 throw new global::System.ArgumentNullException("DONOR_ID");
             }
@@ -16819,14 +16279,28 @@ namespace PetFosterTest.DataSet1TableAdapters {
             }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(DONATION_AMOUNT));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DONATION_TIME));
+            if ((CENSOR_STATE == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(CENSOR_STATE));
+            }
             if ((Original_DONOR_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_DONOR_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_DONOR_ID));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_DONOR_ID));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(Original_DONATION_AMOUNT));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_DONATION_TIME));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Original_DONATION_AMOUNT));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_DONATION_TIME));
+            if ((Original_CENSOR_STATE == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_CENSOR_STATE));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -16847,8 +16321,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Original_DONOR_ID, decimal Original_DONATION_AMOUNT, System.DateTime Original_DONATION_TIME) {
-            return this.Update(Original_DONOR_ID, Original_DONATION_AMOUNT, Original_DONATION_TIME, Original_DONOR_ID, Original_DONATION_AMOUNT, Original_DONATION_TIME);
+        public virtual int Update(string CENSOR_STATE, string Original_DONOR_ID, decimal Original_DONATION_AMOUNT, System.DateTime Original_DONATION_TIME, string Original_CENSOR_STATE) {
+            return this.Update(Original_DONOR_ID, Original_DONATION_AMOUNT, Original_DONATION_TIME, CENSOR_STATE, Original_DONOR_ID, Original_DONATION_AMOUNT, Original_DONATION_TIME, Original_CENSOR_STATE);
         }
     }
     
@@ -17451,7 +16925,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17469,7 +16944,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.EMPLOYEEDataTable dataTable) {
+        public virtual int Fill(PetData.EMPLOYEEDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -17482,9 +16957,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.EMPLOYEEDataTable GetData() {
+        public virtual PetData.EMPLOYEEDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.EMPLOYEEDataTable dataTable = new DataSet1.EMPLOYEEDataTable();
+            PetData.EMPLOYEEDataTable dataTable = new PetData.EMPLOYEEDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -17492,14 +16967,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.EMPLOYEEDataTable dataTable) {
+        public virtual int Update(PetData.EMPLOYEEDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "EMPLOYEE");
         }
         
@@ -18000,11 +17475,12 @@ namespace PetFosterTest.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("READ_COUNT", "READ_COUNT");
             tableMapping.ColumnMappings.Add("LIKE_NUM", "LIKE_NUM");
             tableMapping.ColumnMappings.Add("COMMENT_NUM", "COMMENT_NUM");
+            tableMapping.ColumnMappings.Add("CENSORED", "CENSORED");
             tableMapping.ColumnMappings.Add("POST_TIME", "POST_TIME");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""FORUM_POSTS"" WHERE ((""POST_ID"" = :Original_POST_ID) AND ((:IsNull_USER_ID = 1 AND ""USER_ID"" IS NULL) OR (""USER_ID"" = :Original_USER_ID)) AND (""POST_CONTENTS"" = :Original_POST_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND ""READ_COUNT"" IS NULL) OR (""READ_COUNT"" = :Original_READ_COUNT)) AND ((:IsNull_LIKE_NUM = 1 AND ""LIKE_NUM"" IS NULL) OR (""LIKE_NUM"" = :Original_LIKE_NUM)) AND ((:IsNull_COMMENT_NUM = 1 AND ""COMMENT_NUM"" IS NULL) OR (""COMMENT_NUM"" = :Original_COMMENT_NUM)) AND ((:IsNull_POST_TIME = 1 AND ""POST_TIME"" IS NULL) OR (""POST_TIME"" = :Original_POST_TIME)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""FORUM_POSTS"" WHERE ((""POST_ID"" = :Original_POST_ID) AND ((:IsNull_USER_ID = 1 AND ""USER_ID"" IS NULL) OR (""USER_ID"" = :Original_USER_ID)) AND (""POST_CONTENTS"" = :Original_POST_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND ""READ_COUNT"" IS NULL) OR (""READ_COUNT"" = :Original_READ_COUNT)) AND ((:IsNull_LIKE_NUM = 1 AND ""LIKE_NUM"" IS NULL) OR (""LIKE_NUM"" = :Original_LIKE_NUM)) AND ((:IsNull_COMMENT_NUM = 1 AND ""COMMENT_NUM"" IS NULL) OR (""COMMENT_NUM"" = :Original_COMMENT_NUM)) AND ((:IsNull_CENSORED = 1 AND ""CENSORED"" IS NULL) OR (""CENSORED"" = :Original_CENSORED)) AND ((:IsNull_POST_TIME = 1 AND ""POST_TIME"" IS NULL) OR (""POST_TIME"" = :Original_POST_TIME)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_POST_ID";
@@ -18098,6 +17574,25 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_CENSORED";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 1;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSORED";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_CENSORED";
+            param.DbType = global::System.Data.DbType.StringFixedLength;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Char;
+            param.Size = 1;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSORED";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "IsNull_POST_TIME";
             param.DbType = global::System.Data.DbType.Int32;
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
@@ -18119,8 +17614,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO \"C##PET\".\"FORUM_POSTS\" (\"POST_ID\", \"USER_ID\", \"POST_CONTENTS\", \"READ_" +
-                "COUNT\", \"LIKE_NUM\", \"COMMENT_NUM\", \"POST_TIME\") VALUES (:POST_ID, :USER_ID, :POS" +
-                "T_CONTENTS, :READ_COUNT, :LIKE_NUM, :COMMENT_NUM, :POST_TIME)";
+                "COUNT\", \"LIKE_NUM\", \"COMMENT_NUM\", \"CENSORED\", \"POST_TIME\") VALUES (:POST_ID, :U" +
+                "SER_ID, :POST_CONTENTS, :READ_COUNT, :LIKE_NUM, :COMMENT_NUM, :CENSORED, :POST_T" +
+                "IME)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "POST_ID";
@@ -18168,6 +17664,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "COMMENT_NUM";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "CENSORED";
+            param.DbType = global::System.Data.DbType.StringFixedLength;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Char;
+            param.Size = 1;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSORED";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "POST_TIME";
             param.DbType = global::System.Data.DbType.DateTime;
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.TimeStamp;
@@ -18177,7 +17681,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""FORUM_POSTS"" SET ""POST_ID"" = :POST_ID, ""USER_ID"" = :USER_ID, ""POST_CONTENTS"" = :POST_CONTENTS, ""READ_COUNT"" = :READ_COUNT, ""LIKE_NUM"" = :LIKE_NUM, ""COMMENT_NUM"" = :COMMENT_NUM, ""POST_TIME"" = :POST_TIME WHERE ((""POST_ID"" = :Original_POST_ID) AND ((:IsNull_USER_ID = 1 AND ""USER_ID"" IS NULL) OR (""USER_ID"" = :Original_USER_ID)) AND (""POST_CONTENTS"" = :Original_POST_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND ""READ_COUNT"" IS NULL) OR (""READ_COUNT"" = :Original_READ_COUNT)) AND ((:IsNull_LIKE_NUM = 1 AND ""LIKE_NUM"" IS NULL) OR (""LIKE_NUM"" = :Original_LIKE_NUM)) AND ((:IsNull_COMMENT_NUM = 1 AND ""COMMENT_NUM"" IS NULL) OR (""COMMENT_NUM"" = :Original_COMMENT_NUM)) AND ((:IsNull_POST_TIME = 1 AND ""POST_TIME"" IS NULL) OR (""POST_TIME"" = :Original_POST_TIME)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""FORUM_POSTS"" SET ""POST_ID"" = :POST_ID, ""USER_ID"" = :USER_ID, ""POST_CONTENTS"" = :POST_CONTENTS, ""READ_COUNT"" = :READ_COUNT, ""LIKE_NUM"" = :LIKE_NUM, ""COMMENT_NUM"" = :COMMENT_NUM, ""CENSORED"" = :CENSORED, ""POST_TIME"" = :POST_TIME WHERE ((""POST_ID"" = :Original_POST_ID) AND ((:IsNull_USER_ID = 1 AND ""USER_ID"" IS NULL) OR (""USER_ID"" = :Original_USER_ID)) AND (""POST_CONTENTS"" = :Original_POST_CONTENTS) AND ((:IsNull_READ_COUNT = 1 AND ""READ_COUNT"" IS NULL) OR (""READ_COUNT"" = :Original_READ_COUNT)) AND ((:IsNull_LIKE_NUM = 1 AND ""LIKE_NUM"" IS NULL) OR (""LIKE_NUM"" = :Original_LIKE_NUM)) AND ((:IsNull_COMMENT_NUM = 1 AND ""COMMENT_NUM"" IS NULL) OR (""COMMENT_NUM"" = :Original_COMMENT_NUM)) AND ((:IsNull_CENSORED = 1 AND ""CENSORED"" IS NULL) OR (""CENSORED"" = :Original_CENSORED)) AND ((:IsNull_POST_TIME = 1 AND ""POST_TIME"" IS NULL) OR (""POST_TIME"" = :Original_POST_TIME)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "POST_ID";
@@ -18223,6 +17727,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "COMMENT_NUM";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "CENSORED";
+            param.DbType = global::System.Data.DbType.StringFixedLength;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Char;
+            param.Size = 1;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSORED";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "POST_TIME";
@@ -18324,6 +17836,25 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_CENSORED";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 1;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSORED";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_CENSORED";
+            param.DbType = global::System.Data.DbType.StringFixedLength;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Char;
+            param.Size = 1;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSORED";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "IsNull_POST_TIME";
             param.DbType = global::System.Data.DbType.Int32;
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
@@ -18348,7 +17879,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18357,8 +17889,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT POST_ID, USER_ID, POST_CONTENTS, READ_COUNT, LIKE_NUM, COMMENT_NUM, POST_T" +
-                "IME FROM \"C##PET\".FORUM_POSTS";
+            this._commandCollection[0].CommandText = "SELECT POST_ID, USER_ID, POST_CONTENTS, READ_COUNT, LIKE_NUM, COMMENT_NUM, CENSOR" +
+                "ED, POST_TIME FROM \"C##PET\".FORUM_POSTS";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -18366,7 +17898,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.FORUM_POSTSDataTable dataTable) {
+        public virtual int Fill(PetData.FORUM_POSTSDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -18379,9 +17911,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.FORUM_POSTSDataTable GetData() {
+        public virtual PetData.FORUM_POSTSDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.FORUM_POSTSDataTable dataTable = new DataSet1.FORUM_POSTSDataTable();
+            PetData.FORUM_POSTSDataTable dataTable = new PetData.FORUM_POSTSDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -18389,14 +17921,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.FORUM_POSTSDataTable dataTable) {
+        public virtual int Update(PetData.FORUM_POSTSDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "FORUM_POSTS");
         }
         
@@ -18419,7 +17951,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_POST_ID, string Original_USER_ID, string Original_POST_CONTENTS, global::System.Nullable<decimal> Original_READ_COUNT, global::System.Nullable<decimal> Original_LIKE_NUM, global::System.Nullable<decimal> Original_COMMENT_NUM, global::System.Nullable<global::System.DateTime> Original_POST_TIME) {
+        public virtual int Delete(string Original_POST_ID, string Original_USER_ID, string Original_POST_CONTENTS, global::System.Nullable<decimal> Original_READ_COUNT, global::System.Nullable<decimal> Original_LIKE_NUM, global::System.Nullable<decimal> Original_COMMENT_NUM, string Original_CENSORED, global::System.Nullable<global::System.DateTime> Original_POST_TIME) {
             if ((Original_POST_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_POST_ID");
             }
@@ -18464,13 +17996,21 @@ namespace PetFosterTest.DataSet1TableAdapters {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_POST_TIME.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((System.DateTime)(Original_POST_TIME.Value));
-            }
-            else {
+            if ((Original_CENSORED == null)) {
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_CENSORED));
+            }
+            if ((Original_POST_TIME.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((System.DateTime)(Original_POST_TIME.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -18492,7 +18032,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string POST_ID, string USER_ID, string POST_CONTENTS, global::System.Nullable<decimal> READ_COUNT, global::System.Nullable<decimal> LIKE_NUM, global::System.Nullable<decimal> COMMENT_NUM, global::System.Nullable<global::System.DateTime> POST_TIME) {
+        public virtual int Insert(string POST_ID, string USER_ID, string POST_CONTENTS, global::System.Nullable<decimal> READ_COUNT, global::System.Nullable<decimal> LIKE_NUM, global::System.Nullable<decimal> COMMENT_NUM, string CENSORED, global::System.Nullable<global::System.DateTime> POST_TIME) {
             if ((POST_ID == null)) {
                 throw new global::System.ArgumentNullException("POST_ID");
             }
@@ -18529,11 +18069,17 @@ namespace PetFosterTest.DataSet1TableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((POST_TIME.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(POST_TIME.Value));
+            if ((CENSORED == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(CENSORED));
+            }
+            if ((POST_TIME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(POST_TIME.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -18555,7 +18101,23 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string POST_ID, string USER_ID, string POST_CONTENTS, global::System.Nullable<decimal> READ_COUNT, global::System.Nullable<decimal> LIKE_NUM, global::System.Nullable<decimal> COMMENT_NUM, global::System.Nullable<global::System.DateTime> POST_TIME, string Original_POST_ID, string Original_USER_ID, string Original_POST_CONTENTS, global::System.Nullable<decimal> Original_READ_COUNT, global::System.Nullable<decimal> Original_LIKE_NUM, global::System.Nullable<decimal> Original_COMMENT_NUM, global::System.Nullable<global::System.DateTime> Original_POST_TIME) {
+        public virtual int Update(
+                    string POST_ID, 
+                    string USER_ID, 
+                    string POST_CONTENTS, 
+                    global::System.Nullable<decimal> READ_COUNT, 
+                    global::System.Nullable<decimal> LIKE_NUM, 
+                    global::System.Nullable<decimal> COMMENT_NUM, 
+                    string CENSORED, 
+                    global::System.Nullable<global::System.DateTime> POST_TIME, 
+                    string Original_POST_ID, 
+                    string Original_USER_ID, 
+                    string Original_POST_CONTENTS, 
+                    global::System.Nullable<decimal> Original_READ_COUNT, 
+                    global::System.Nullable<decimal> Original_LIKE_NUM, 
+                    global::System.Nullable<decimal> Original_COMMENT_NUM, 
+                    string Original_CENSORED, 
+                    global::System.Nullable<global::System.DateTime> Original_POST_TIME) {
             if ((POST_ID == null)) {
                 throw new global::System.ArgumentNullException("POST_ID");
             }
@@ -18592,63 +18154,77 @@ namespace PetFosterTest.DataSet1TableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((POST_TIME.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(POST_TIME.Value));
+            if ((CENSORED == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(CENSORED));
+            }
+            if ((POST_TIME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(POST_TIME.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             if ((Original_POST_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_POST_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_POST_ID));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_POST_ID));
             }
             if ((Original_USER_ID == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_USER_ID));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_USER_ID));
             }
             if ((Original_POST_CONTENTS == null)) {
                 throw new global::System.ArgumentNullException("Original_POST_CONTENTS");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_POST_CONTENTS));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_POST_CONTENTS));
             }
             if ((Original_READ_COUNT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_READ_COUNT.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_READ_COUNT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             if ((Original_LIKE_NUM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_LIKE_NUM.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(Original_LIKE_NUM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_COMMENT_NUM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(Original_COMMENT_NUM.Value));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(Original_COMMENT_NUM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((Original_CENSORED == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_CENSORED));
             }
             if ((Original_POST_TIME.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_POST_TIME.Value));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_POST_TIME.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -18670,8 +18246,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string USER_ID, string POST_CONTENTS, global::System.Nullable<decimal> READ_COUNT, global::System.Nullable<decimal> LIKE_NUM, global::System.Nullable<decimal> COMMENT_NUM, global::System.Nullable<global::System.DateTime> POST_TIME, string Original_POST_ID, string Original_USER_ID, string Original_POST_CONTENTS, global::System.Nullable<decimal> Original_READ_COUNT, global::System.Nullable<decimal> Original_LIKE_NUM, global::System.Nullable<decimal> Original_COMMENT_NUM, global::System.Nullable<global::System.DateTime> Original_POST_TIME) {
-            return this.Update(Original_POST_ID, USER_ID, POST_CONTENTS, READ_COUNT, LIKE_NUM, COMMENT_NUM, POST_TIME, Original_POST_ID, Original_USER_ID, Original_POST_CONTENTS, Original_READ_COUNT, Original_LIKE_NUM, Original_COMMENT_NUM, Original_POST_TIME);
+        public virtual int Update(string USER_ID, string POST_CONTENTS, global::System.Nullable<decimal> READ_COUNT, global::System.Nullable<decimal> LIKE_NUM, global::System.Nullable<decimal> COMMENT_NUM, string CENSORED, global::System.Nullable<global::System.DateTime> POST_TIME, string Original_POST_ID, string Original_USER_ID, string Original_POST_CONTENTS, global::System.Nullable<decimal> Original_READ_COUNT, global::System.Nullable<decimal> Original_LIKE_NUM, global::System.Nullable<decimal> Original_COMMENT_NUM, string Original_CENSORED, global::System.Nullable<global::System.DateTime> Original_POST_TIME) {
+            return this.Update(Original_POST_ID, USER_ID, POST_CONTENTS, READ_COUNT, LIKE_NUM, COMMENT_NUM, CENSORED, POST_TIME, Original_POST_ID, Original_USER_ID, Original_POST_CONTENTS, Original_READ_COUNT, Original_LIKE_NUM, Original_COMMENT_NUM, Original_CENSORED, Original_POST_TIME);
         }
     }
     
@@ -18802,10 +18378,12 @@ namespace PetFosterTest.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("START_YEAR", "START_YEAR");
             tableMapping.ColumnMappings.Add("START_MONTH", "START_MONTH");
             tableMapping.ColumnMappings.Add("START_DAY", "START_DAY");
+            tableMapping.ColumnMappings.Add("CENSOR_STATE", "CENSOR_STATE");
+            tableMapping.ColumnMappings.Add("REMARK", "REMARK");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""FOSTER"" WHERE (((:IsNull_DURATION = 1 AND ""DURATION"" IS NULL) OR (""DURATION"" = :Original_DURATION)) AND (""FOSTERER"" = :Original_FOSTERER) AND (""PET_ID"" = :Original_PET_ID) AND (""START_YEAR"" = :Original_START_YEAR) AND (""START_MONTH"" = :Original_START_MONTH) AND (""START_DAY"" = :Original_START_DAY))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""FOSTER"" WHERE (((:IsNull_DURATION = 1 AND ""DURATION"" IS NULL) OR (""DURATION"" = :Original_DURATION)) AND (""FOSTERER"" = :Original_FOSTERER) AND (""PET_ID"" = :Original_PET_ID) AND (""START_YEAR"" = :Original_START_YEAR) AND (""START_MONTH"" = :Original_START_MONTH) AND (""START_DAY"" = :Original_START_DAY) AND ((:IsNull_CENSOR_STATE = 1 AND ""CENSOR_STATE"" IS NULL) OR (""CENSOR_STATE"" = :Original_CENSOR_STATE)) AND ((:IsNull_REMARK = 1 AND ""REMARK"" IS NULL) OR (""REMARK"" = :Original_REMARK)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "IsNull_DURATION";
@@ -18869,11 +18447,47 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "START_DAY";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_CENSOR_STATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_CENSOR_STATE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_REMARK";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 100;
+            param.IsNullable = true;
+            param.SourceColumn = "REMARK";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_REMARK";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 100;
+            param.IsNullable = true;
+            param.SourceColumn = "REMARK";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO \"C##PET\".\"FOSTER\" (\"DURATION\", \"FOSTERER\", \"PET_ID\", \"START_YEAR\", \"S" +
-                "TART_MONTH\", \"START_DAY\") VALUES (:DURATION, :FOSTERER, :PET_ID, :START_YEAR, :S" +
-                "TART_MONTH, :START_DAY)";
+                "TART_MONTH\", \"START_DAY\", \"CENSOR_STATE\", \"REMARK\") VALUES (:DURATION, :FOSTERER" +
+                ", :PET_ID, :START_YEAR, :START_MONTH, :START_DAY, :CENSOR_STATE, :REMARK)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "DURATION";
@@ -18921,9 +18535,23 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "START_DAY";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "CENSOR_STATE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "REMARK";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 100;
+            param.IsNullable = true;
+            param.SourceColumn = "REMARK";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""FOSTER"" SET ""DURATION"" = :DURATION, ""FOSTERER"" = :FOSTERER, ""PET_ID"" = :PET_ID, ""START_YEAR"" = :START_YEAR, ""START_MONTH"" = :START_MONTH, ""START_DAY"" = :START_DAY WHERE (((:IsNull_DURATION = 1 AND ""DURATION"" IS NULL) OR (""DURATION"" = :Original_DURATION)) AND (""FOSTERER"" = :Original_FOSTERER) AND (""PET_ID"" = :Original_PET_ID) AND (""START_YEAR"" = :Original_START_YEAR) AND (""START_MONTH"" = :Original_START_MONTH) AND (""START_DAY"" = :Original_START_DAY))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""FOSTER"" SET ""DURATION"" = :DURATION, ""FOSTERER"" = :FOSTERER, ""PET_ID"" = :PET_ID, ""START_YEAR"" = :START_YEAR, ""START_MONTH"" = :START_MONTH, ""START_DAY"" = :START_DAY, ""CENSOR_STATE"" = :CENSOR_STATE, ""REMARK"" = :REMARK WHERE (((:IsNull_DURATION = 1 AND ""DURATION"" IS NULL) OR (""DURATION"" = :Original_DURATION)) AND (""FOSTERER"" = :Original_FOSTERER) AND (""PET_ID"" = :Original_PET_ID) AND (""START_YEAR"" = :Original_START_YEAR) AND (""START_MONTH"" = :Original_START_MONTH) AND (""START_DAY"" = :Original_START_DAY) AND ((:IsNull_CENSOR_STATE = 1 AND ""CENSOR_STATE"" IS NULL) OR (""CENSOR_STATE"" = :Original_CENSOR_STATE)) AND ((:IsNull_REMARK = 1 AND ""REMARK"" IS NULL) OR (""REMARK"" = :Original_REMARK)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "DURATION";
@@ -18970,6 +18598,20 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.Size = 22;
             param.IsNullable = true;
             param.SourceColumn = "START_DAY";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "CENSOR_STATE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "REMARK";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 100;
+            param.IsNullable = true;
+            param.SourceColumn = "REMARK";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "IsNull_DURATION";
@@ -19033,13 +18675,50 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "START_DAY";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_CENSOR_STATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_CENSOR_STATE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "CENSOR_STATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_REMARK";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 100;
+            param.IsNullable = true;
+            param.SourceColumn = "REMARK";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_REMARK";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 100;
+            param.IsNullable = true;
+            param.SourceColumn = "REMARK";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19048,8 +18727,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT \"DURATION\", FOSTERER, PET_ID, START_YEAR, START_MONTH, START_DAY FROM \"C##" +
-                "PET\".FOSTER";
+            this._commandCollection[0].CommandText = "SELECT \"DURATION\", FOSTERER, PET_ID, START_YEAR, START_MONTH, START_DAY, CENSOR_S" +
+                "TATE, REMARK FROM \"C##PET\".FOSTER";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -19057,7 +18736,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.FOSTERDataTable dataTable) {
+        public virtual int Fill(PetData.FOSTERDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -19070,9 +18749,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.FOSTERDataTable GetData() {
+        public virtual PetData.FOSTERDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.FOSTERDataTable dataTable = new DataSet1.FOSTERDataTable();
+            PetData.FOSTERDataTable dataTable = new PetData.FOSTERDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -19080,14 +18759,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.FOSTERDataTable dataTable) {
+        public virtual int Update(PetData.FOSTERDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "FOSTER");
         }
         
@@ -19110,7 +18789,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(global::System.Nullable<decimal> Original_DURATION, string Original_FOSTERER, string Original_PET_ID, short Original_START_YEAR, short Original_START_MONTH, short Original_START_DAY) {
+        public virtual int Delete(global::System.Nullable<decimal> Original_DURATION, string Original_FOSTERER, string Original_PET_ID, short Original_START_YEAR, short Original_START_MONTH, short Original_START_DAY, string Original_CENSOR_STATE, string Original_REMARK) {
             if ((Original_DURATION.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_DURATION.Value));
@@ -19134,6 +18813,22 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this.Adapter.DeleteCommand.Parameters[4].Value = ((short)(Original_START_YEAR));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((short)(Original_START_MONTH));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((short)(Original_START_DAY));
+            if ((Original_CENSOR_STATE == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_CENSOR_STATE));
+            }
+            if ((Original_REMARK == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_REMARK));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -19154,7 +18849,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<decimal> DURATION, string FOSTERER, string PET_ID, short START_YEAR, short START_MONTH, short START_DAY) {
+        public virtual int Insert(global::System.Nullable<decimal> DURATION, string FOSTERER, string PET_ID, short START_YEAR, short START_MONTH, short START_DAY, string CENSOR_STATE, string REMARK) {
             if ((DURATION.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((decimal)(DURATION.Value));
             }
@@ -19176,6 +18871,18 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this.Adapter.InsertCommand.Parameters[3].Value = ((short)(START_YEAR));
             this.Adapter.InsertCommand.Parameters[4].Value = ((short)(START_MONTH));
             this.Adapter.InsertCommand.Parameters[5].Value = ((short)(START_DAY));
+            if ((CENSOR_STATE == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(CENSOR_STATE));
+            }
+            if ((REMARK == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(REMARK));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -19196,7 +18903,23 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<decimal> DURATION, string FOSTERER, string PET_ID, short START_YEAR, short START_MONTH, short START_DAY, global::System.Nullable<decimal> Original_DURATION, string Original_FOSTERER, string Original_PET_ID, short Original_START_YEAR, short Original_START_MONTH, short Original_START_DAY) {
+        public virtual int Update(
+                    global::System.Nullable<decimal> DURATION, 
+                    string FOSTERER, 
+                    string PET_ID, 
+                    short START_YEAR, 
+                    short START_MONTH, 
+                    short START_DAY, 
+                    string CENSOR_STATE, 
+                    string REMARK, 
+                    global::System.Nullable<decimal> Original_DURATION, 
+                    string Original_FOSTERER, 
+                    string Original_PET_ID, 
+                    short Original_START_YEAR, 
+                    short Original_START_MONTH, 
+                    short Original_START_DAY, 
+                    string Original_CENSOR_STATE, 
+                    string Original_REMARK) {
             if ((DURATION.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((decimal)(DURATION.Value));
             }
@@ -19218,29 +18941,57 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this.Adapter.UpdateCommand.Parameters[3].Value = ((short)(START_YEAR));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((short)(START_MONTH));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((short)(START_DAY));
-            if ((Original_DURATION.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_DURATION.Value));
+            if ((CENSOR_STATE == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(CENSOR_STATE));
+            }
+            if ((REMARK == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(REMARK));
+            }
+            if ((Original_DURATION.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(Original_DURATION.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             if ((Original_FOSTERER == null)) {
                 throw new global::System.ArgumentNullException("Original_FOSTERER");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_FOSTERER));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_FOSTERER));
             }
             if ((Original_PET_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_PET_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_PET_ID));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_PET_ID));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((short)(Original_START_YEAR));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((short)(Original_START_MONTH));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_START_DAY));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((short)(Original_START_YEAR));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((short)(Original_START_MONTH));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((short)(Original_START_DAY));
+            if ((Original_CENSOR_STATE == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_CENSOR_STATE));
+            }
+            if ((Original_REMARK == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_REMARK));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -19261,8 +19012,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<decimal> DURATION, global::System.Nullable<decimal> Original_DURATION, string Original_FOSTERER, string Original_PET_ID, short Original_START_YEAR, short Original_START_MONTH, short Original_START_DAY) {
-            return this.Update(DURATION, Original_FOSTERER, Original_PET_ID, Original_START_YEAR, Original_START_MONTH, Original_START_DAY, Original_DURATION, Original_FOSTERER, Original_PET_ID, Original_START_YEAR, Original_START_MONTH, Original_START_DAY);
+        public virtual int Update(global::System.Nullable<decimal> DURATION, string CENSOR_STATE, string REMARK, global::System.Nullable<decimal> Original_DURATION, string Original_FOSTERER, string Original_PET_ID, short Original_START_YEAR, short Original_START_MONTH, short Original_START_DAY, string Original_CENSOR_STATE, string Original_REMARK) {
+            return this.Update(DURATION, Original_FOSTERER, Original_PET_ID, Original_START_YEAR, Original_START_MONTH, Original_START_DAY, CENSOR_STATE, REMARK, Original_DURATION, Original_FOSTERER, Original_PET_ID, Original_START_YEAR, Original_START_MONTH, Original_START_DAY, Original_CENSOR_STATE, Original_REMARK);
         }
     }
     
@@ -19507,7 +19258,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19524,7 +19276,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.LIKE_PETDataTable dataTable) {
+        public virtual int Fill(PetData.LIKE_PETDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -19537,9 +19289,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.LIKE_PETDataTable GetData() {
+        public virtual PetData.LIKE_PETDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.LIKE_PETDataTable dataTable = new DataSet1.LIKE_PETDataTable();
+            PetData.LIKE_PETDataTable dataTable = new PetData.LIKE_PETDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -19547,14 +19299,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.LIKE_PETDataTable dataTable) {
+        public virtual int Update(PetData.LIKE_PETDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "LIKE_PET");
         }
         
@@ -19938,7 +19690,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19955,7 +19708,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.LIKE_POSTDataTable dataTable) {
+        public virtual int Fill(PetData.LIKE_POSTDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -19968,9 +19721,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.LIKE_POSTDataTable GetData() {
+        public virtual PetData.LIKE_POSTDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.LIKE_POSTDataTable dataTable = new DataSet1.LIKE_POSTDataTable();
+            PetData.LIKE_POSTDataTable dataTable = new PetData.LIKE_POSTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -19978,14 +19731,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.LIKE_POSTDataTable dataTable) {
+        public virtual int Update(PetData.LIKE_POSTDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "LIKE_POST");
         }
         
@@ -20252,7 +20005,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("PET_ID", "PET_ID");
             tableMapping.ColumnMappings.Add("PET_NAME", "PET_NAME");
             tableMapping.ColumnMappings.Add("BREED", "BREED");
-            tableMapping.ColumnMappings.Add("AGE", "AGE");
+            tableMapping.ColumnMappings.Add("PSIZE", "PSIZE");
+            tableMapping.ColumnMappings.Add("BIRTHDATE", "BIRTHDATE");
             tableMapping.ColumnMappings.Add("AVATAR", "AVATAR");
             tableMapping.ColumnMappings.Add("HEALTH_STATE", "HEALTH_STATE");
             tableMapping.ColumnMappings.Add("VACCINE", "VACCINE");
@@ -20262,7 +20016,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""PET"" WHERE ((""PET_ID"" = :Original_PET_ID) AND ((:IsNull_PET_NAME = 1 AND ""PET_NAME"" IS NULL) OR (""PET_NAME"" = :Original_PET_NAME)) AND ((:IsNull_BREED = 1 AND ""BREED"" IS NULL) OR (""BREED"" = :Original_BREED)) AND ((:IsNull_AGE = 1 AND ""AGE"" IS NULL) OR (""AGE"" = :Original_AGE)) AND ((:IsNull_HEALTH_STATE = 1 AND ""HEALTH_STATE"" IS NULL) OR (""HEALTH_STATE"" = :Original_HEALTH_STATE)) AND ((:IsNull_VACCINE = 1 AND ""VACCINE"" IS NULL) OR (""VACCINE"" = :Original_VACCINE)) AND ((:IsNull_READ_NUM = 1 AND ""READ_NUM"" IS NULL) OR (""READ_NUM"" = :Original_READ_NUM)) AND ((:IsNull_LIKE_NUM = 1 AND ""LIKE_NUM"" IS NULL) OR (""LIKE_NUM"" = :Original_LIKE_NUM)) AND ((:IsNull_COLLECT_NUM = 1 AND ""COLLECT_NUM"" IS NULL) OR (""COLLECT_NUM"" = :Original_COLLECT_NUM)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""PET"" WHERE ((""PET_ID"" = :Original_PET_ID) AND ((:IsNull_PET_NAME = 1 AND ""PET_NAME"" IS NULL) OR (""PET_NAME"" = :Original_PET_NAME)) AND ((:IsNull_BREED = 1 AND ""BREED"" IS NULL) OR (""BREED"" = :Original_BREED)) AND ((:IsNull_PSIZE = 1 AND ""PSIZE"" IS NULL) OR (""PSIZE"" = :Original_PSIZE)) AND ((:IsNull_BIRTHDATE = 1 AND ""BIRTHDATE"" IS NULL) OR (""BIRTHDATE"" = :Original_BIRTHDATE)) AND ((:IsNull_HEALTH_STATE = 1 AND ""HEALTH_STATE"" IS NULL) OR (""HEALTH_STATE"" = :Original_HEALTH_STATE)) AND ((:IsNull_VACCINE = 1 AND ""VACCINE"" IS NULL) OR (""VACCINE"" = :Original_VACCINE)) AND ((:IsNull_READ_NUM = 1 AND ""READ_NUM"" IS NULL) OR (""READ_NUM"" = :Original_READ_NUM)) AND ((:IsNull_LIKE_NUM = 1 AND ""LIKE_NUM"" IS NULL) OR (""LIKE_NUM"" = :Original_LIKE_NUM)) AND ((:IsNull_COLLECT_NUM = 1 AND ""COLLECT_NUM"" IS NULL) OR (""COLLECT_NUM"" = :Original_COLLECT_NUM)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_PET_ID";
@@ -20309,22 +20063,40 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "IsNull_AGE";
+            param.ParameterName = "IsNull_PSIZE";
             param.DbType = global::System.Data.DbType.Int32;
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
-            param.Size = 22;
+            param.Size = 20;
             param.IsNullable = true;
-            param.SourceColumn = "AGE";
+            param.SourceColumn = "PSIZE";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_AGE";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.ParameterName = "Original_PSIZE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
-            param.SourceColumn = "AGE";
+            param.SourceColumn = "PSIZE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_BIRTHDATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "BIRTHDATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_BIRTHDATE";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "BIRTHDATE";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
@@ -20423,10 +20195,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"C##PET\".\"PET\" (\"PET_ID\", \"PET_NAME\", \"BREED\", \"AGE\", \"AVATAR\", \"HEAL" +
-                "TH_STATE\", \"VACCINE\", \"READ_NUM\", \"LIKE_NUM\", \"COLLECT_NUM\") VALUES (:PET_ID, :P" +
-                "ET_NAME, :BREED, :AGE, :AVATAR, :HEALTH_STATE, :VACCINE, :READ_NUM, :LIKE_NUM, :" +
-                "COLLECT_NUM)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""C##PET"".""PET"" (""PET_ID"", ""PET_NAME"", ""BREED"", ""PSIZE"", ""BIRTHDATE"", ""AVATAR"", ""HEALTH_STATE"", ""VACCINE"", ""READ_NUM"", ""LIKE_NUM"", ""COLLECT_NUM"") VALUES (:PET_ID, :PET_NAME, :BREED, :PSIZE, :BIRTHDATE, :AVATAR, :HEALTH_STATE, :VACCINE, :READ_NUM, :LIKE_NUM, :COLLECT_NUM)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "PET_ID";
@@ -20450,12 +20219,19 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "BREED";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "AGE";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.ParameterName = "PSIZE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
-            param.SourceColumn = "AGE";
+            param.SourceColumn = "PSIZE";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "BIRTHDATE";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "BIRTHDATE";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "AVATAR";
@@ -20506,7 +20282,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""PET"" SET ""PET_ID"" = :PET_ID, ""PET_NAME"" = :PET_NAME, ""BREED"" = :BREED, ""AGE"" = :AGE, ""AVATAR"" = :AVATAR, ""HEALTH_STATE"" = :HEALTH_STATE, ""VACCINE"" = :VACCINE, ""READ_NUM"" = :READ_NUM, ""LIKE_NUM"" = :LIKE_NUM, ""COLLECT_NUM"" = :COLLECT_NUM WHERE ((""PET_ID"" = :Original_PET_ID) AND ((:IsNull_PET_NAME = 1 AND ""PET_NAME"" IS NULL) OR (""PET_NAME"" = :Original_PET_NAME)) AND ((:IsNull_BREED = 1 AND ""BREED"" IS NULL) OR (""BREED"" = :Original_BREED)) AND ((:IsNull_AGE = 1 AND ""AGE"" IS NULL) OR (""AGE"" = :Original_AGE)) AND ((:IsNull_HEALTH_STATE = 1 AND ""HEALTH_STATE"" IS NULL) OR (""HEALTH_STATE"" = :Original_HEALTH_STATE)) AND ((:IsNull_VACCINE = 1 AND ""VACCINE"" IS NULL) OR (""VACCINE"" = :Original_VACCINE)) AND ((:IsNull_READ_NUM = 1 AND ""READ_NUM"" IS NULL) OR (""READ_NUM"" = :Original_READ_NUM)) AND ((:IsNull_LIKE_NUM = 1 AND ""LIKE_NUM"" IS NULL) OR (""LIKE_NUM"" = :Original_LIKE_NUM)) AND ((:IsNull_COLLECT_NUM = 1 AND ""COLLECT_NUM"" IS NULL) OR (""COLLECT_NUM"" = :Original_COLLECT_NUM)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""PET"" SET ""PET_ID"" = :PET_ID, ""PET_NAME"" = :PET_NAME, ""BREED"" = :BREED, ""PSIZE"" = :PSIZE, ""BIRTHDATE"" = :BIRTHDATE, ""AVATAR"" = :AVATAR, ""HEALTH_STATE"" = :HEALTH_STATE, ""VACCINE"" = :VACCINE, ""READ_NUM"" = :READ_NUM, ""LIKE_NUM"" = :LIKE_NUM, ""COLLECT_NUM"" = :COLLECT_NUM WHERE ((""PET_ID"" = :Original_PET_ID) AND ((:IsNull_PET_NAME = 1 AND ""PET_NAME"" IS NULL) OR (""PET_NAME"" = :Original_PET_NAME)) AND ((:IsNull_BREED = 1 AND ""BREED"" IS NULL) OR (""BREED"" = :Original_BREED)) AND ((:IsNull_PSIZE = 1 AND ""PSIZE"" IS NULL) OR (""PSIZE"" = :Original_PSIZE)) AND ((:IsNull_BIRTHDATE = 1 AND ""BIRTHDATE"" IS NULL) OR (""BIRTHDATE"" = :Original_BIRTHDATE)) AND ((:IsNull_HEALTH_STATE = 1 AND ""HEALTH_STATE"" IS NULL) OR (""HEALTH_STATE"" = :Original_HEALTH_STATE)) AND ((:IsNull_VACCINE = 1 AND ""VACCINE"" IS NULL) OR (""VACCINE"" = :Original_VACCINE)) AND ((:IsNull_READ_NUM = 1 AND ""READ_NUM"" IS NULL) OR (""READ_NUM"" = :Original_READ_NUM)) AND ((:IsNull_LIKE_NUM = 1 AND ""LIKE_NUM"" IS NULL) OR (""LIKE_NUM"" = :Original_LIKE_NUM)) AND ((:IsNull_COLLECT_NUM = 1 AND ""COLLECT_NUM"" IS NULL) OR (""COLLECT_NUM"" = :Original_COLLECT_NUM)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "PET_ID";
@@ -20530,12 +20306,19 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "BREED";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "AGE";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.ParameterName = "PSIZE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
-            param.SourceColumn = "AGE";
+            param.SourceColumn = "PSIZE";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "BIRTHDATE";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "BIRTHDATE";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "AVATAR";
@@ -20629,22 +20412,40 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "IsNull_AGE";
+            param.ParameterName = "IsNull_PSIZE";
             param.DbType = global::System.Data.DbType.Int32;
             param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
-            param.Size = 22;
+            param.Size = 20;
             param.IsNullable = true;
-            param.SourceColumn = "AGE";
+            param.SourceColumn = "PSIZE";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
-            param.ParameterName = "Original_AGE";
-            param.DbType = global::System.Data.DbType.Int16;
-            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int16;
-            param.Size = 22;
+            param.ParameterName = "Original_PSIZE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 20;
             param.IsNullable = true;
-            param.SourceColumn = "AGE";
+            param.SourceColumn = "PSIZE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_BIRTHDATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "BIRTHDATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_BIRTHDATE";
+            param.DbType = global::System.Data.DbType.Date;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Date;
+            param.Size = 7;
+            param.IsNullable = true;
+            param.SourceColumn = "BIRTHDATE";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
@@ -20747,7 +20548,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20756,8 +20558,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PET_ID, PET_NAME, BREED, AGE, AVATAR, HEALTH_STATE, VACCINE, READ_NUM, LIK" +
-                "E_NUM, COLLECT_NUM FROM \"C##PET\".PET";
+            this._commandCollection[0].CommandText = "SELECT PET_ID, PET_NAME, BREED, PSIZE, BIRTHDATE, AVATAR, HEALTH_STATE, VACCINE, " +
+                "READ_NUM, LIKE_NUM, COLLECT_NUM FROM \"C##PET\".PET";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -20765,7 +20567,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.PETDataTable dataTable) {
+        public virtual int Fill(PetData.PETDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -20778,9 +20580,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.PETDataTable GetData() {
+        public virtual PetData.PETDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.PETDataTable dataTable = new DataSet1.PETDataTable();
+            PetData.PETDataTable dataTable = new PetData.PETDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -20788,14 +20590,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.PETDataTable dataTable) {
+        public virtual int Update(PetData.PETDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "PET");
         }
         
@@ -20818,7 +20620,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_PET_ID, string Original_PET_NAME, string Original_BREED, global::System.Nullable<short> Original_AGE, string Original_HEALTH_STATE, string Original_VACCINE, global::System.Nullable<decimal> Original_READ_NUM, global::System.Nullable<decimal> Original_LIKE_NUM, global::System.Nullable<decimal> Original_COLLECT_NUM) {
+        public virtual int Delete(string Original_PET_ID, string Original_PET_NAME, string Original_BREED, string Original_PSIZE, global::System.Nullable<global::System.DateTime> Original_BIRTHDATE, string Original_HEALTH_STATE, string Original_VACCINE, global::System.Nullable<decimal> Original_READ_NUM, global::System.Nullable<decimal> Original_LIKE_NUM, global::System.Nullable<decimal> Original_COLLECT_NUM) {
             if ((Original_PET_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_PET_ID");
             }
@@ -20841,53 +20643,61 @@ namespace PetFosterTest.DataSet1TableAdapters {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_BREED));
             }
-            if ((Original_AGE.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((short)(Original_AGE.Value));
-            }
-            else {
+            if ((Original_PSIZE == null)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_HEALTH_STATE == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_PSIZE));
+            }
+            if ((Original_BIRTHDATE.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_BIRTHDATE.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_HEALTH_STATE));
-            }
-            if ((Original_VACCINE == null)) {
+            if ((Original_HEALTH_STATE == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_VACCINE));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_HEALTH_STATE));
             }
-            if ((Original_READ_NUM.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_READ_NUM.Value));
-            }
-            else {
+            if ((Original_VACCINE == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Original_LIKE_NUM.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_VACCINE));
+            }
+            if ((Original_READ_NUM.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((decimal)(Original_LIKE_NUM.Value));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((decimal)(Original_READ_NUM.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((Original_COLLECT_NUM.HasValue == true)) {
+            if ((Original_LIKE_NUM.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((decimal)(Original_COLLECT_NUM.Value));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((decimal)(Original_LIKE_NUM.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((Original_COLLECT_NUM.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((decimal)(Original_COLLECT_NUM.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -20909,7 +20719,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string PET_ID, string PET_NAME, string BREED, global::System.Nullable<short> AGE, object AVATAR, string HEALTH_STATE, string VACCINE, global::System.Nullable<decimal> READ_NUM, global::System.Nullable<decimal> LIKE_NUM, global::System.Nullable<decimal> COLLECT_NUM) {
+        public virtual int Insert(string PET_ID, string PET_NAME, string BREED, string PSIZE, global::System.Nullable<global::System.DateTime> BIRTHDATE, object AVATAR, string HEALTH_STATE, string VACCINE, global::System.Nullable<decimal> READ_NUM, global::System.Nullable<decimal> LIKE_NUM, global::System.Nullable<decimal> COLLECT_NUM) {
             if ((PET_ID == null)) {
                 throw new global::System.ArgumentNullException("PET_ID");
             }
@@ -20928,47 +20738,53 @@ namespace PetFosterTest.DataSet1TableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(BREED));
             }
-            if ((AGE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((short)(AGE.Value));
-            }
-            else {
+            if ((PSIZE == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((AVATAR == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(PSIZE));
+            }
+            if ((BIRTHDATE.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(BIRTHDATE.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((object)(AVATAR));
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((HEALTH_STATE == null)) {
+            if ((AVATAR == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(HEALTH_STATE));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((object)(AVATAR));
             }
-            if ((VACCINE == null)) {
+            if ((HEALTH_STATE == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(VACCINE));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(HEALTH_STATE));
             }
-            if ((READ_NUM.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(READ_NUM.Value));
-            }
-            else {
+            if ((VACCINE == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((LIKE_NUM.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(LIKE_NUM.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(VACCINE));
+            }
+            if ((READ_NUM.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(READ_NUM.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((COLLECT_NUM.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(COLLECT_NUM.Value));
+            if ((LIKE_NUM.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(LIKE_NUM.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((COLLECT_NUM.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(COLLECT_NUM.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -20994,7 +20810,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
                     string PET_ID, 
                     string PET_NAME, 
                     string BREED, 
-                    global::System.Nullable<short> AGE, 
+                    string PSIZE, 
+                    global::System.Nullable<global::System.DateTime> BIRTHDATE, 
                     object AVATAR, 
                     string HEALTH_STATE, 
                     string VACCINE, 
@@ -21004,7 +20821,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
                     string Original_PET_ID, 
                     string Original_PET_NAME, 
                     string Original_BREED, 
-                    global::System.Nullable<short> Original_AGE, 
+                    string Original_PSIZE, 
+                    global::System.Nullable<global::System.DateTime> Original_BIRTHDATE, 
                     string Original_HEALTH_STATE, 
                     string Original_VACCINE, 
                     global::System.Nullable<decimal> Original_READ_NUM, 
@@ -21028,117 +20846,131 @@ namespace PetFosterTest.DataSet1TableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(BREED));
             }
-            if ((AGE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((short)(AGE.Value));
-            }
-            else {
+            if ((PSIZE == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((AVATAR == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(PSIZE));
+            }
+            if ((BIRTHDATE.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(BIRTHDATE.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(AVATAR));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((HEALTH_STATE == null)) {
+            if ((AVATAR == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(HEALTH_STATE));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(AVATAR));
             }
-            if ((VACCINE == null)) {
+            if ((HEALTH_STATE == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(VACCINE));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(HEALTH_STATE));
             }
-            if ((READ_NUM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(READ_NUM.Value));
-            }
-            else {
+            if ((VACCINE == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((LIKE_NUM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(LIKE_NUM.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(VACCINE));
+            }
+            if ((READ_NUM.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(READ_NUM.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((COLLECT_NUM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(COLLECT_NUM.Value));
+            if ((LIKE_NUM.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(LIKE_NUM.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((COLLECT_NUM.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(COLLECT_NUM.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_PET_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_PET_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_PET_ID));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_PET_ID));
             }
             if ((Original_PET_NAME == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_PET_NAME));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_PET_NAME));
             }
             if ((Original_BREED == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_BREED));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_BREED));
             }
-            if ((Original_AGE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((short)(Original_AGE.Value));
+            if ((Original_PSIZE == null)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_PSIZE));
+            }
+            if ((Original_BIRTHDATE.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_BIRTHDATE.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             if ((Original_HEALTH_STATE == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_HEALTH_STATE));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_HEALTH_STATE));
             }
             if ((Original_VACCINE == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_VACCINE));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_VACCINE));
             }
             if ((Original_READ_NUM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(Original_READ_NUM.Value));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((decimal)(Original_READ_NUM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             if ((Original_LIKE_NUM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(Original_LIKE_NUM.Value));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(Original_LIKE_NUM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             if ((Original_COLLECT_NUM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(Original_COLLECT_NUM.Value));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(Original_COLLECT_NUM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -21163,7 +20995,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         public virtual int Update(
                     string PET_NAME, 
                     string BREED, 
-                    global::System.Nullable<short> AGE, 
+                    string PSIZE, 
+                    global::System.Nullable<global::System.DateTime> BIRTHDATE, 
                     object AVATAR, 
                     string HEALTH_STATE, 
                     string VACCINE, 
@@ -21173,13 +21006,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
                     string Original_PET_ID, 
                     string Original_PET_NAME, 
                     string Original_BREED, 
-                    global::System.Nullable<short> Original_AGE, 
+                    string Original_PSIZE, 
+                    global::System.Nullable<global::System.DateTime> Original_BIRTHDATE, 
                     string Original_HEALTH_STATE, 
                     string Original_VACCINE, 
                     global::System.Nullable<decimal> Original_READ_NUM, 
                     global::System.Nullable<decimal> Original_LIKE_NUM, 
                     global::System.Nullable<decimal> Original_COLLECT_NUM) {
-            return this.Update(Original_PET_ID, PET_NAME, BREED, AGE, AVATAR, HEALTH_STATE, VACCINE, READ_NUM, LIKE_NUM, COLLECT_NUM, Original_PET_ID, Original_PET_NAME, Original_BREED, Original_AGE, Original_HEALTH_STATE, Original_VACCINE, Original_READ_NUM, Original_LIKE_NUM, Original_COLLECT_NUM);
+            return this.Update(Original_PET_ID, PET_NAME, BREED, PSIZE, BIRTHDATE, AVATAR, HEALTH_STATE, VACCINE, READ_NUM, LIKE_NUM, COLLECT_NUM, Original_PET_ID, Original_PET_NAME, Original_BREED, Original_PSIZE, Original_BIRTHDATE, Original_HEALTH_STATE, Original_VACCINE, Original_READ_NUM, Original_LIKE_NUM, Original_COLLECT_NUM);
         }
     }
     
@@ -21556,7 +21390,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21574,7 +21409,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.ROOMDataTable dataTable) {
+        public virtual int Fill(PetData.ROOMDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -21587,9 +21422,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.ROOMDataTable GetData() {
+        public virtual PetData.ROOMDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.ROOMDataTable dataTable = new DataSet1.ROOMDataTable();
+            PetData.ROOMDataTable dataTable = new PetData.ROOMDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -21597,14 +21432,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.ROOMDataTable dataTable) {
+        public virtual int Update(PetData.ROOMDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "ROOM");
         }
         
@@ -22078,7 +21913,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22095,7 +21931,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.TREATMENTDataTable dataTable) {
+        public virtual int Fill(PetData.TREATMENTDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -22108,9 +21944,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.TREATMENTDataTable GetData() {
+        public virtual PetData.TREATMENTDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.TREATMENTDataTable dataTable = new DataSet1.TREATMENTDataTable();
+            PetData.TREATMENTDataTable dataTable = new PetData.TREATMENTDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -22118,14 +21954,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.TREATMENTDataTable dataTable) {
+        public virtual int Update(PetData.TREATMENTDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "TREATMENT");
         }
         
@@ -22423,10 +22259,11 @@ namespace PetFosterTest.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("PHONE_NUMBER", "PHONE_NUMBER");
             tableMapping.ColumnMappings.Add("ACCOUNT_STATUS", "ACCOUNT_STATUS");
             tableMapping.ColumnMappings.Add("ADDRESS", "ADDRESS");
+            tableMapping.ColumnMappings.Add("ROLE", "ROLE");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""USER2"" WHERE ((""USER_ID"" = :Original_USER_ID) AND ((:IsNull_USER_NAME = 1 AND ""USER_NAME"" IS NULL) OR (""USER_NAME"" = :Original_USER_NAME)) AND ((:IsNull_PASSWORD = 1 AND ""PASSWORD"" IS NULL) OR (""PASSWORD"" = :Original_PASSWORD)) AND ((:IsNull_PHONE_NUMBER = 1 AND ""PHONE_NUMBER"" IS NULL) OR (""PHONE_NUMBER"" = :Original_PHONE_NUMBER)) AND ((:IsNull_ACCOUNT_STATUS = 1 AND ""ACCOUNT_STATUS"" IS NULL) OR (""ACCOUNT_STATUS"" = :Original_ACCOUNT_STATUS)) AND ((:IsNull_ADDRESS = 1 AND ""ADDRESS"" IS NULL) OR (""ADDRESS"" = :Original_ADDRESS)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""C##PET"".""USER2"" WHERE ((""USER_ID"" = :Original_USER_ID) AND ((:IsNull_USER_NAME = 1 AND ""USER_NAME"" IS NULL) OR (""USER_NAME"" = :Original_USER_NAME)) AND ((:IsNull_PASSWORD = 1 AND ""PASSWORD"" IS NULL) OR (""PASSWORD"" = :Original_PASSWORD)) AND ((:IsNull_PHONE_NUMBER = 1 AND ""PHONE_NUMBER"" IS NULL) OR (""PHONE_NUMBER"" = :Original_PHONE_NUMBER)) AND ((:IsNull_ACCOUNT_STATUS = 1 AND ""ACCOUNT_STATUS"" IS NULL) OR (""ACCOUNT_STATUS"" = :Original_ACCOUNT_STATUS)) AND ((:IsNull_ADDRESS = 1 AND ""ADDRESS"" IS NULL) OR (""ADDRESS"" = :Original_ADDRESS)) AND ((:IsNull_ROLE = 1 AND ""ROLE"" IS NULL) OR (""ROLE"" = :Original_ROLE)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Oracle.ManagedDataAccess.Client.OracleParameter param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_USER_ID";
@@ -22526,11 +22363,29 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "ADDRESS";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_ROLE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "ROLE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ROLE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "ROLE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO \"C##PET\".\"USER2\" (\"USER_ID\", \"USER_NAME\", \"PASSWORD\", \"PHONE_NUMBER\"," +
-                " \"ACCOUNT_STATUS\", \"ADDRESS\") VALUES (:USER_ID, :USER_NAME, :PASSWORD, :PHONE_NU" +
-                "MBER, :ACCOUNT_STATUS, :ADDRESS)";
+                " \"ACCOUNT_STATUS\", \"ADDRESS\", \"ROLE\") VALUES (:USER_ID, :USER_NAME, :PASSWORD, :" +
+                "PHONE_NUMBER, :ACCOUNT_STATUS, :ADDRESS, :ROLE)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "USER_ID";
@@ -22574,9 +22429,16 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "ADDRESS";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ROLE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "ROLE";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""USER2"" SET ""USER_ID"" = :USER_ID, ""USER_NAME"" = :USER_NAME, ""PASSWORD"" = :PASSWORD, ""PHONE_NUMBER"" = :PHONE_NUMBER, ""ACCOUNT_STATUS"" = :ACCOUNT_STATUS, ""ADDRESS"" = :ADDRESS WHERE ((""USER_ID"" = :Original_USER_ID) AND ((:IsNull_USER_NAME = 1 AND ""USER_NAME"" IS NULL) OR (""USER_NAME"" = :Original_USER_NAME)) AND ((:IsNull_PASSWORD = 1 AND ""PASSWORD"" IS NULL) OR (""PASSWORD"" = :Original_PASSWORD)) AND ((:IsNull_PHONE_NUMBER = 1 AND ""PHONE_NUMBER"" IS NULL) OR (""PHONE_NUMBER"" = :Original_PHONE_NUMBER)) AND ((:IsNull_ACCOUNT_STATUS = 1 AND ""ACCOUNT_STATUS"" IS NULL) OR (""ACCOUNT_STATUS"" = :Original_ACCOUNT_STATUS)) AND ((:IsNull_ADDRESS = 1 AND ""ADDRESS"" IS NULL) OR (""ADDRESS"" = :Original_ADDRESS)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""C##PET"".""USER2"" SET ""USER_ID"" = :USER_ID, ""USER_NAME"" = :USER_NAME, ""PASSWORD"" = :PASSWORD, ""PHONE_NUMBER"" = :PHONE_NUMBER, ""ACCOUNT_STATUS"" = :ACCOUNT_STATUS, ""ADDRESS"" = :ADDRESS, ""ROLE"" = :ROLE WHERE ((""USER_ID"" = :Original_USER_ID) AND ((:IsNull_USER_NAME = 1 AND ""USER_NAME"" IS NULL) OR (""USER_NAME"" = :Original_USER_NAME)) AND ((:IsNull_PASSWORD = 1 AND ""PASSWORD"" IS NULL) OR (""PASSWORD"" = :Original_PASSWORD)) AND ((:IsNull_PHONE_NUMBER = 1 AND ""PHONE_NUMBER"" IS NULL) OR (""PHONE_NUMBER"" = :Original_PHONE_NUMBER)) AND ((:IsNull_ACCOUNT_STATUS = 1 AND ""ACCOUNT_STATUS"" IS NULL) OR (""ACCOUNT_STATUS"" = :Original_ACCOUNT_STATUS)) AND ((:IsNull_ADDRESS = 1 AND ""ADDRESS"" IS NULL) OR (""ADDRESS"" = :Original_ADDRESS)) AND ((:IsNull_ROLE = 1 AND ""ROLE"" IS NULL) OR (""ROLE"" = :Original_ROLE)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "USER_ID";
@@ -22619,6 +22481,13 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.Size = 100;
             param.IsNullable = true;
             param.SourceColumn = "ADDRESS";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "ROLE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "ROLE";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
             param.ParameterName = "Original_USER_ID";
@@ -22718,13 +22587,32 @@ namespace PetFosterTest.DataSet1TableAdapters {
             param.SourceColumn = "ADDRESS";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "IsNull_ROLE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Int32;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "ROLE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Oracle.ManagedDataAccess.Client.OracleParameter();
+            param.ParameterName = "Original_ROLE";
+            param.OracleDbTypeEx = global::Oracle.ManagedDataAccess.Client.OracleDbType.Varchar2;
+            param.Size = 10;
+            param.IsNullable = true;
+            param.SourceColumn = "ROLE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22733,8 +22621,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
             this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
             this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT USER_ID, USER_NAME, PASSWORD, PHONE_NUMBER, ACCOUNT_STATUS, ADDRESS FROM \"" +
-                "C##PET\".USER2";
+            this._commandCollection[0].CommandText = "SELECT USER_ID, USER_NAME, PASSWORD, PHONE_NUMBER, ACCOUNT_STATUS, ADDRESS, ROLE " +
+                "FROM \"C##PET\".USER2";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -22742,7 +22630,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.USER2DataTable dataTable) {
+        public virtual int Fill(PetData.USER2DataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -22755,9 +22643,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.USER2DataTable GetData() {
+        public virtual PetData.USER2DataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.USER2DataTable dataTable = new DataSet1.USER2DataTable();
+            PetData.USER2DataTable dataTable = new PetData.USER2DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -22765,14 +22653,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.USER2DataTable dataTable) {
+        public virtual int Update(PetData.USER2DataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "USER2");
         }
         
@@ -22795,7 +22683,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_USER_ID, string Original_USER_NAME, string Original_PASSWORD, string Original_PHONE_NUMBER, string Original_ACCOUNT_STATUS, string Original_ADDRESS) {
+        public virtual int Delete(string Original_USER_ID, string Original_USER_NAME, string Original_PASSWORD, string Original_PHONE_NUMBER, string Original_ACCOUNT_STATUS, string Original_ADDRESS, string Original_ROLE) {
             if ((Original_USER_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_USER_ID");
             }
@@ -22842,6 +22730,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_ADDRESS));
             }
+            if ((Original_ROLE == null)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_ROLE));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22862,7 +22758,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string USER_ID, string USER_NAME, string PASSWORD, string PHONE_NUMBER, string ACCOUNT_STATUS, string ADDRESS) {
+        public virtual int Insert(string USER_ID, string USER_NAME, string PASSWORD, string PHONE_NUMBER, string ACCOUNT_STATUS, string ADDRESS, string ROLE) {
             if ((USER_ID == null)) {
                 throw new global::System.ArgumentNullException("USER_ID");
             }
@@ -22899,6 +22795,12 @@ namespace PetFosterTest.DataSet1TableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ADDRESS));
             }
+            if ((ROLE == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(ROLE));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22919,7 +22821,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string USER_ID, string USER_NAME, string PASSWORD, string PHONE_NUMBER, string ACCOUNT_STATUS, string ADDRESS, string Original_USER_ID, string Original_USER_NAME, string Original_PASSWORD, string Original_PHONE_NUMBER, string Original_ACCOUNT_STATUS, string Original_ADDRESS) {
+        public virtual int Update(string USER_ID, string USER_NAME, string PASSWORD, string PHONE_NUMBER, string ACCOUNT_STATUS, string ADDRESS, string ROLE, string Original_USER_ID, string Original_USER_NAME, string Original_PASSWORD, string Original_PHONE_NUMBER, string Original_ACCOUNT_STATUS, string Original_ADDRESS, string Original_ROLE) {
             if ((USER_ID == null)) {
                 throw new global::System.ArgumentNullException("USER_ID");
             }
@@ -22956,51 +22858,65 @@ namespace PetFosterTest.DataSet1TableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ADDRESS));
             }
+            if ((ROLE == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(ROLE));
+            }
             if ((Original_USER_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_USER_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_USER_ID));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_USER_ID));
             }
             if ((Original_USER_NAME == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_USER_NAME));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_USER_NAME));
             }
             if ((Original_PASSWORD == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_PASSWORD));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_PASSWORD));
             }
             if ((Original_PHONE_NUMBER == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_PHONE_NUMBER));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_PHONE_NUMBER));
             }
             if ((Original_ACCOUNT_STATUS == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_ACCOUNT_STATUS));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_ACCOUNT_STATUS));
             }
             if ((Original_ADDRESS == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_ADDRESS));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_ADDRESS));
+            }
+            if ((Original_ROLE == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_ROLE));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -23022,8 +22938,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string USER_NAME, string PASSWORD, string PHONE_NUMBER, string ACCOUNT_STATUS, string ADDRESS, string Original_USER_ID, string Original_USER_NAME, string Original_PASSWORD, string Original_PHONE_NUMBER, string Original_ACCOUNT_STATUS, string Original_ADDRESS) {
-            return this.Update(Original_USER_ID, USER_NAME, PASSWORD, PHONE_NUMBER, ACCOUNT_STATUS, ADDRESS, Original_USER_ID, Original_USER_NAME, Original_PASSWORD, Original_PHONE_NUMBER, Original_ACCOUNT_STATUS, Original_ADDRESS);
+        public virtual int Update(string USER_NAME, string PASSWORD, string PHONE_NUMBER, string ACCOUNT_STATUS, string ADDRESS, string ROLE, string Original_USER_ID, string Original_USER_NAME, string Original_PASSWORD, string Original_PHONE_NUMBER, string Original_ACCOUNT_STATUS, string Original_ADDRESS, string Original_ROLE) {
+            return this.Update(Original_USER_ID, USER_NAME, PASSWORD, PHONE_NUMBER, ACCOUNT_STATUS, ADDRESS, ROLE, Original_USER_ID, Original_USER_NAME, Original_PASSWORD, Original_PHONE_NUMBER, Original_ACCOUNT_STATUS, Original_ADDRESS, Original_ROLE);
         }
     }
     
@@ -23575,7 +23491,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23593,7 +23510,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.VETDataTable dataTable) {
+        public virtual int Fill(PetData.VETDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -23606,9 +23523,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.VETDataTable GetData() {
+        public virtual PetData.VETDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.VETDataTable dataTable = new DataSet1.VETDataTable();
+            PetData.VETDataTable dataTable = new PetData.VETDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -23616,14 +23533,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.VETDataTable dataTable) {
+        public virtual int Update(PetData.VETDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
+        public virtual int Update(PetData dataSet) {
             return this.Adapter.Update(dataSet, "VET");
         }
         
@@ -23959,6 +23876,187 @@ namespace PetFosterTest.DataSet1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class FOSTER_WINDOWTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleConnection _connection;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleTransaction _transaction;
+        
+        private global::Oracle.ManagedDataAccess.Client.OracleCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public FOSTER_WINDOWTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::Oracle.ManagedDataAccess.Client.OracleDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::Oracle.ManagedDataAccess.Client.OracleConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::Oracle.ManagedDataAccess.Client.OracleTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::Oracle.ManagedDataAccess.Client.OracleCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "FOSTER_WINDOW";
+            tableMapping.ColumnMappings.Add("USER_ID", "USER_ID");
+            tableMapping.ColumnMappings.Add("OWNER", "OWNER");
+            tableMapping.ColumnMappings.Add("PET_ID", "PET_ID");
+            tableMapping.ColumnMappings.Add("PET_NAME", "PET_NAME");
+            tableMapping.ColumnMappings.Add("BREED", "BREED");
+            tableMapping.ColumnMappings.Add("PSIZE", "PSIZE");
+            tableMapping.ColumnMappings.Add("DURATION", "DURATION");
+            tableMapping.ColumnMappings.Add("FOSTER_START_DATE", "FOSTER_START_DATE");
+            tableMapping.ColumnMappings.Add("FOSTER_END_DATE", "FOSTER_END_DATE");
+            tableMapping.ColumnMappings.Add("ROOM_ID", "ROOM_ID");
+            tableMapping.ColumnMappings.Add("ROOM_SIZE", "ROOM_SIZE");
+            tableMapping.ColumnMappings.Add("CENSOR_STATE", "CENSOR_STATE");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
+            this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT USER_ID, OWNER, PET_ID, PET_NAME, BREED, PSIZE, \"DURATION\", FOSTER_START_D" +
+                "ATE, FOSTER_END_DATE, ROOM_ID, ROOM_SIZE, CENSOR_STATE FROM \"C##PET\".FOSTER_WIND" +
+                "OW";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(PetData.FOSTER_WINDOWDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual PetData.FOSTER_WINDOWDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            PetData.FOSTER_WINDOWDataTable dataTable = new PetData.FOSTER_WINDOWDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class EMPLOYEE_LABORTableAdapter : global::System.ComponentModel.Component {
         
         private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
@@ -24083,7 +24181,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24101,7 +24200,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.EMPLOYEE_LABORDataTable dataTable) {
+        public virtual int Fill(PetData.EMPLOYEE_LABORDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -24114,522 +24213,9 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.EMPLOYEE_LABORDataTable GetData() {
+        public virtual PetData.EMPLOYEE_LABORDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.EMPLOYEE_LABORDataTable dataTable = new DataSet1.EMPLOYEE_LABORDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class OWNERSHIPTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleConnection _connection;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleTransaction _transaction;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public OWNERSHIPTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::Oracle.ManagedDataAccess.Client.OracleDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Oracle.ManagedDataAccess.Client.OracleConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Oracle.ManagedDataAccess.Client.OracleTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::Oracle.ManagedDataAccess.Client.OracleCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "OWNERSHIP";
-            tableMapping.ColumnMappings.Add("PET_ID", "PET_ID");
-            tableMapping.ColumnMappings.Add("PET_NAME", "PET_NAME");
-            tableMapping.ColumnMappings.Add("STATUS", "STATUS");
-            tableMapping.ColumnMappings.Add("START_TIME", "START_TIME");
-            tableMapping.ColumnMappings.Add("END_TIME", "END_TIME");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
-            this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PET_ID, PET_NAME, STATUS, START_TIME, END_TIME FROM \"C##PET\".OWNERSHIP";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.OWNERSHIPDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.OWNERSHIPDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.OWNERSHIPDataTable dataTable = new DataSet1.OWNERSHIPDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ROOM_AVAIABLETableAdapter : global::System.ComponentModel.Component {
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleConnection _connection;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleTransaction _transaction;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public ROOM_AVAIABLETableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::Oracle.ManagedDataAccess.Client.OracleDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Oracle.ManagedDataAccess.Client.OracleConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Oracle.ManagedDataAccess.Client.OracleTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::Oracle.ManagedDataAccess.Client.OracleCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ROOM_AVAIABLE";
-            tableMapping.ColumnMappings.Add("STOREY", "STOREY");
-            tableMapping.ColumnMappings.Add("CAPACITY", "CAPACITY");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
-            this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT STOREY, CAPACITY FROM \"C##PET\".ROOM_AVAIABLE";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.ROOM_AVAIABLEDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.ROOM_AVAIABLEDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.ROOM_AVAIABLEDataTable dataTable = new DataSet1.ROOM_AVAIABLEDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class USER_PROFILETableAdapter : global::System.ComponentModel.Component {
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleConnection _connection;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleTransaction _transaction;
-        
-        private global::Oracle.ManagedDataAccess.Client.OracleCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public USER_PROFILETableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::Oracle.ManagedDataAccess.Client.OracleDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Oracle.ManagedDataAccess.Client.OracleConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Oracle.ManagedDataAccess.Client.OracleTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::Oracle.ManagedDataAccess.Client.OracleCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "USER_PROFILE";
-            tableMapping.ColumnMappings.Add("USER_ID", "USER_ID");
-            tableMapping.ColumnMappings.Add("USER_NAME", "USER_NAME");
-            tableMapping.ColumnMappings.Add("TOTAL_POSTS", "TOTAL_POSTS");
-            tableMapping.ColumnMappings.Add("TOTAL_READS", "TOTAL_READS");
-            tableMapping.ColumnMappings.Add("TOTAL_POST_LIKES", "TOTAL_POST_LIKES");
-            tableMapping.ColumnMappings.Add("TOTAL_POST_COMMENTS", "TOTAL_POST_COMMENTS");
-            tableMapping.ColumnMappings.Add("DONATION_TOTOL_AMOUNTS", "DONATION_TOTOL_AMOUNTS");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::Oracle.ManagedDataAccess.Client.OracleCommand[1];
-            this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT USER_ID, USER_NAME, TOTAL_POSTS, TOTAL_READS, TOTAL_POST_LIKES, TOTAL_POST" +
-                "_COMMENTS, DONATION_TOTOL_AMOUNTS FROM \"C##PET\".USER_PROFILE";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.USER_PROFILEDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.USER_PROFILEDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.USER_PROFILEDataTable dataTable = new DataSet1.USER_PROFILEDataTable();
+            PetData.EMPLOYEE_LABORDataTable dataTable = new PetData.EMPLOYEE_LABORDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -24767,7 +24353,8 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::PetFosterTest.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = "DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\\Users\\Victor\\Oracle\\network\\admin;PA" +
+                "SSWORD=campus;USER ID=\'\"C##PET\"\'";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24784,7 +24371,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.VET_LABORDataTable dataTable) {
+        public virtual int Fill(PetData.VET_LABORDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -24797,94 +24384,11 @@ namespace PetFosterTest.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.VET_LABORDataTable GetData() {
+        public virtual PetData.VET_LABORDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.VET_LABORDataTable dataTable = new DataSet1.VET_LABORDataTable();
+            PetData.VET_LABORDataTable dataTable = new PetData.VET_LABORDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class QueriesTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.IDbCommand[] _commandCollection;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.IDbCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.IDbCommand[2];
-            this._commandCollection[0] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
-            ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this._commandCollection[0])).Connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection(global::PetFosterTest.Properties.Settings.Default.ConnectionString);
-            ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this._commandCollection[0])).CommandText = "\"C##PET\".INSERT_FILE";
-            ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this._commandCollection[0])).CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[1] = new global::Oracle.ManagedDataAccess.Client.OracleCommand();
-            ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this._commandCollection[1])).Connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection(global::PetFosterTest.Properties.Settings.Default.ConnectionString);
-            ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this._commandCollection[1])).CommandText = "\"C##PET\".MOVE_OLD_PARTITIONS";
-            ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this._commandCollection[1])).CommandType = global::System.Data.CommandType.StoredProcedure;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int INSERT_FILE() {
-            global::Oracle.ManagedDataAccess.Client.OracleCommand command = ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[0]));
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int MOVE_OLD_PARTITIONS() {
-            global::Oracle.ManagedDataAccess.Client.OracleCommand command = ((global::Oracle.ManagedDataAccess.Client.OracleCommand)(this.CommandCollection[1]));
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
         }
     }
     
@@ -25370,7 +24874,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(PetData dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._uSER2TableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.USER2.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -25399,6 +24903,15 @@ namespace PetFosterTest.DataSet1TableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._pETTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PET.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._pETTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._eMPLOYEETableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.EMPLOYEE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -25414,15 +24927,6 @@ namespace PetFosterTest.DataSet1TableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._fORUM_POSTSTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._pETTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PET.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pETTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -25542,7 +25046,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(PetData dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._uSER2TableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.USER2.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -25568,6 +25072,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._pETTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PET.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._pETTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._eMPLOYEETableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.EMPLOYEE.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -25581,14 +25093,6 @@ namespace PetFosterTest.DataSet1TableAdapters {
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._fORUM_POSTSTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._pETTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PET.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pETTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -25696,7 +25200,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(PetData dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._aDOPTTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ADOPT.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -25794,14 +25298,6 @@ namespace PetFosterTest.DataSet1TableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._pETTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PET.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._pETTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._fORUM_POSTSTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.FORUM_POSTS.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -25815,6 +25311,14 @@ namespace PetFosterTest.DataSet1TableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._eMPLOYEETableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._pETTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PET.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._pETTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -25874,7 +25378,7 @@ namespace PetFosterTest.DataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(DataSet1 dataSet) {
+        public virtual int UpdateAll(PetData dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
