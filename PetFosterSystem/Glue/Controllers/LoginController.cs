@@ -80,7 +80,15 @@ namespace WebApplicationTest1
             Console.WriteLine(message);
             if (status == 4)
             {
-                return Ok(message);
+                return Ok("您好，" + username);
+            }
+            else if(status == 3)
+            {
+                return Unauthorized("密码错误，请重新输入");
+            }
+            else if(status == 1)
+            {
+                return Unauthorized("账号已被封禁，请等待解禁");
             }
             else
             {

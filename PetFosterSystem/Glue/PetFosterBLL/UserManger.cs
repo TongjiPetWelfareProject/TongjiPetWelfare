@@ -71,7 +71,7 @@ namespace PetFoster.BLL
         /// 登录
         /// </summary>
         /// <param name="user">用户信息</param>
-        /// <returns>返回错误码，在JSON中指定,4为管理员，5为用户</returns>
+        /// <returns>返回错误码，在JSON中指定,4为用户，5为管理员</returns>
         public static int Login(string UID, string Pwd)
         {
             bool con = false;

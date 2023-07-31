@@ -67,7 +67,7 @@ namespace PetFoster.DAL
             return dataTable;
         }
         /// <summary>
-        /// 查看宠物信息或宠物是否存在
+        /// 用户登录时匹配用户信息，如果为0，说明密码错误,否则密码正确
         /// </summary>
         /// <param name="user">用户行</param>
         /// <returns></returns>
@@ -165,7 +165,7 @@ namespace PetFoster.DAL
         /// <param name="Avatar">图像，用BLOB存储</param>
         /// <param name="Health_State">健康状态</param>
         /// <param name="HaveVaccinated">是否接种疫苗</param>
-        public static string InsertPet(string Petname, string Breed ,string Psize,DateTime birthDate,byte[]Avatar=null, string Health_State= "Vibrant", bool HaveVaccinated=false)
+        public static void InsertPet(string Petname, string Breed, DateTime birthDate, byte[] Avatar = null, string Health_State = "充满活力", bool HaveVaccinated = false)
         {
             string vaccine = "";
             if (HaveVaccinated)
@@ -179,8 +179,7 @@ namespace PetFoster.DAL
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     command.CommandText = "INSERT INTO pet (pet_id,pet_name, breed, birthdate, avatar, health_state, vaccine) " +
-                        "VALUES (pet_id_seq.NEXTVAL,:pet_name,:breed, :birthdate, :avatar, :health_state, :vaccine)"
-                        ;
+                        "VALUES (pet_id_seq.NEXTVAL,:pet_name,:breed, :birthdate, :avatar, :health_state, :vaccine)";
                     command.Parameters.Clear();
                     command.Parameters.Add("pet_name", OracleDbType.Varchar2, Petname, ParameterDirection.Input);
                     command.Parameters.Add("breed", OracleDbType.Varchar2, Breed, ParameterDirection.Input);
@@ -188,19 +187,15 @@ namespace PetFoster.DAL
                     command.Parameters.Add("avatar", OracleDbType.Blob, Avatar, ParameterDirection.Input);
                     command.Parameters.Add("health_state", OracleDbType.Varchar2, Health_State, ParameterDirection.Input);
                     command.Parameters.Add("vaccine", OracleDbType.Varchar2, vaccine, ParameterDirection.Input);
-                    //command.Parameters.Add("new_pet_id", OracleDbType.Int32, ParameterDirection.Output);
                     try
                     {
                         command.ExecuteNonQuery();
-                        command.CommandText = "SELECT pet_id_seq.CURRVAL FROM DUAL";
-                        int currentPetId = Convert.ToInt32(command.ExecuteScalar());
-                        string newPetId = currentPetId.ToString();
-                        return newPetId;
                     }
                     catch (OracleException ex)
                     {
                         Console.WriteLine("错误码" + ex.ErrorCode.ToString());
-                        return "-1";
+
+                        throw;
                     }
                 }
             }
@@ -209,7 +204,6 @@ namespace PetFoster.DAL
                 // 处理异常
                 Console.WriteLine(ex.ToString());
             }
-            return "-1";
         }
     }
 }

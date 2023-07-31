@@ -10,13 +10,5 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">DATA SOURCE=localhost:1521/orcl;TNS_ADMIN=C:\Users\Victor\Oracle\network\admin;PASSWORD=campus;USER ID='"C##PET"'</Value>
     </Setting>
-    <Setting Name="ConnectionString1" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=orcl;User ID=c##pet;Password=campus;Unicode=True&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.OracleClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=orcl;User ID=c##pet;Password=campus;Unicode=True</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

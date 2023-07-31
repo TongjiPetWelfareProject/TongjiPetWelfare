@@ -109,11 +109,13 @@ namespace PetFoster.DAL
                     }
                     else
                     {
-                        command.Parameters.Clear();
                         command.CommandText = "UPDATE room SET room_status='Y' " +
-                        $"where compartment={compartment} and storey={storey}";
-                        
+                        "where compartment=:compartment and storey=:storey";
+                        command.Parameters.Clear();
                     }
+                    
+                    command.Parameters.Add("storey", OracleDbType.Int16, storey, ParameterDirection.Input);
+                    command.Parameters.Add("compartment", OracleDbType.Int16, compartment, ParameterDirection.Input);
                     try
                     {
                         PetData petData = new PetData();
@@ -132,47 +134,6 @@ namespace PetFoster.DAL
             {
                 // 处理异常
                 Console.WriteLine(ex.ToString());
-            }
-        }
-        /// <summary>
-        /// 随机分配空闲的房间
-        /// </summary>
-        /// <param name="storey"></param>
-        /// <param name="compartment"></param>
-        public static void AllocateRoom(out short storey,out short compartment)
-        {
-            bool con = false;
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                // 连接对象将在 using 块结束时自动关闭和释放资源
-                connection.Open();
-                Random random = new Random();
-                OracleCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = "select * from room where room_status='N'"; 
-                try
-                {
-                    OracleDataReader reader = command.ExecuteReader();
-                    
-                    while (reader.Read())
-                    {
-                        double randomDouble = random.NextDouble();
-                        storey = reader.GetInt16(2);
-                        compartment = reader.GetInt16(3);
-                        if (randomDouble > 0.5)
-                            continue;
-                        return;
-
-                    }
-                    storey = -1;
-                    compartment = -1;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    throw;
-                }
-                connection.Close();
             }
         }
     }
