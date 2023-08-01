@@ -1,4 +1,4 @@
-﻿using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using PetFoster.DAL;
 using PetFoster.Model;
 using System;
@@ -71,8 +71,8 @@ namespace PetFoster.BLL
         /// 登录
         /// </summary>
         /// <param name="user">用户信息</param>
-        /// <returns>返回错误码，在JSON中指定,4为管理员，5为用户</returns>
-        public static int Login(string UID, string Pwd)
+        /// <returns>返回错误码，在JSON中指定,4为用户，5为管理员</returns>
+        public static User Login(string UID, string Pwd)
         {
             bool con = false;
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -83,31 +83,12 @@ namespace PetFoster.BLL
                 OracleCommand command = connection.CreateCommand();
                 User Candidate = UserServer.GetUser(UID, Pwd);
                 connection.Close();
-                if (Candidate.Account_Status == "Banned")
-                    return 1;
-                else if (Candidate.User_ID == "-1")
-                    return 2;
-                else if (Candidate.Password != Pwd)
-                    return 3;
-                else
-                {
-                    if (Candidate.Role == "Admin")
-                    {
-                        Console.WriteLine($"你好，管理员{Candidate.User_Name}已经登陆成功");
-                        return 5;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"你好，用户{Candidate.User_Name}已经登陆成功");
-                        return 4;
-                    }
-                }
-
+                return Candidate;
             }
         }
         private static bool ValidatePhoneNumber(string phoneNumber)
         {
-            string pattern = @"^\d{3}-\d{4}-\d{4}$|^\d{11}$|^\d{3} \d{4} \d{4}$";
+            string pattern = @"^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$";
             bool isValid = Regex.IsMatch(phoneNumber, pattern);
             return isValid;
         }
@@ -117,14 +98,15 @@ namespace PetFoster.BLL
             bool hasDigit = Regex.IsMatch(password, @"\d");
             bool hasLowerCase = Regex.IsMatch(password, @"[a-z]");
             bool hasUpperCase = Regex.IsMatch(password, @"[A-Z]");
-            bool hasSpecialCharacter = Regex.IsMatch(password, @"[!@#$%^&*()]");
+            bool hasSpecialCharacter = Regex.IsMatch(password, @"[,./!@#$%^&*()]");
 
             bool isValid = hasMinimumLength && hasDigit && hasLowerCase && hasUpperCase && hasSpecialCharacter;
             return isValid;
         }
         public static bool IsValidAddress(string address)
         {
-            string res = JsonHelper.TranslateAddr(address);
+            //string res = JsonHelper.TranslateAddr(address);
+            string res = address;
             return res != null;
         }
         private static int ValidRegistration(string Username, string pwd, string phoneNumber, string Address = "Beijing")
@@ -163,7 +145,7 @@ namespace PetFoster.BLL
             UID = null;
             int code = ValidRegistration(Username, pwd, phoneNumber, Address);
             if (code != 4) { return code; }
-            Address = JsonHelper.TranslateAddr(Address);
+            //Address = JsonHelper.TranslateAddr(Address);
             UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
             //注册时的其他操作，如验证码等等.....
             return code;
@@ -239,7 +221,7 @@ namespace PetFoster.BLL
             {
                 if (!ValidatePassword(NewPassword))
                 {
-                    return "密码长度必须为8~16位，同时包含大小写，数字，特殊字符！";
+                    return "密码长度必须为8~16位，同时包含大小写，数字，特殊字符（,./!@#$%^&*()）！";
                 }
                 UserServer.UpdateUser(UID.ToString(), candidate.User_Name, NewPassword, candidate.Phone_Number, candidate.Address, candidate.Account_Status);
                 return $"{candidate.User_Name},你好！密码已成功修改，请不要忘记密码";
