@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace PetFoster.DAL
 {
     public class UserServer
     {
-        public static string user = "\"C##PET\"";
+        public static string user = "C##PET";
         public static string pwd = "campus";
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
@@ -66,14 +66,10 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                if (!IsAdmin)
-                    command.CommandText = "select *from user2 where User_ID=:user_id and password=:pwd";
-                else
-                    command.CommandText = "select *from user2 where User_ID=:user_id";
+ 
+                command.CommandText = "select *from user2 where User_ID=:user_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                if (!IsAdmin)
-                    command.Parameters.Add("pwd", OracleDbType.Varchar2, pwd, ParameterDirection.Input);
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
@@ -154,7 +150,6 @@ namespace PetFoster.DAL
         /// <param name="Address">地址</param>
         public static string InsertUser(string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
-            // 添加新行
             string UID = "-1";
             try
             {
@@ -175,14 +170,11 @@ namespace PetFoster.DAL
                     try
                     {
                         command.ExecuteNonQuery();
-                        command.CommandText = "select max(cast(user_id as integer)) from user2";
-                        command.Parameters.Clear();
-                        return command.ExecuteScalar().ToString();
+                        UID = command.Parameters["user_id"].Value.ToString(); // 获取插入后的用户ID
                     }
                     catch (OracleException ex)
                     {
                         Console.WriteLine("错误码" + ex.ErrorCode.ToString());
-
                         throw;
                     }
                     connection.Close();
@@ -195,6 +187,7 @@ namespace PetFoster.DAL
             }
             return UID;
         }
+
         public static bool DeleteUser(string UID)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -259,4 +252,3 @@ namespace PetFoster.DAL
         }
     }
 }
-
