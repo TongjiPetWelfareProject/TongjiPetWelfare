@@ -102,12 +102,13 @@ namespace PetFoster.Test
             //CommentPetManager.GiveAComment("5", "7","Hello,I'm 5 I'll give 7 a comment");
             // FosterManager.ApplyFoster("1", "somedog", "Dachshund", "large", DateTime.UtcNow.AddDays(-90).AddMinutes(1), 90, "Hello,I want to rent a room!");
             // FosterManager.Censorship("1",64, DateTime.UtcNow.AddDays(-90).AddMinutes(1), 4);
-            List<string> paths= new List<string> { "D:\\Desktop\\Picture\\pic4.png", "D:\\Desktop\\Picture\\pic5.png" };
+            //List<string> paths= new List<string> { "D:\\Desktop\\Picture\\pic4.png", "D:\\Desktop\\Picture\\pic5.png" };
             //ForumPostManager.PublishPost("2", "Self-intro", "Hello,Im paul!", paths);
-            // ForumPostManager.GetPosts("2");
-            //CommentPostManager.GiveACommentPost("5", "11", "但是!");
-            ForumPostManager.ShowForumProfile();
-
+            //ForumPostManager.GetPosts("2");
+            //CommentPostManager.GiveACommentPost("5", "22", "但是!");
+            //AdoptApplyServer.InsertAdoptApply("2", true, true, true, true, 20, "Taylor", 4, true, false);
+            int err = 0;
+            AdoptApplyManager.ApplyAdopt("2", out err);
 
         }
     }
