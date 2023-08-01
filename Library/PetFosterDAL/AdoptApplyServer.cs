@@ -51,7 +51,7 @@ namespace PetFoster.DAL
             return dataTable;
         }
         //选择不在申请寄养或领养中并排除已经被寄养或领养的宠物
-        public static int GetRandomPet()
+        public static int GetRandomPet(string species)
         {
             int? exist = 0;
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -60,7 +60,7 @@ namespace PetFoster.DAL
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
                 command.CommandText = $"SELECT pet_id FROM ( SELECT *  FROM pet  " +
-                    $"WHERE breed = 'Boxer'  ORDER BY DBMS_RANDOM.VALUE) WHERE pet_id " +
+                    $"WHERE species = '{species}'  ORDER BY DBMS_RANDOM.VALUE) WHERE pet_id " +
                     $"NOT IN(SELECT adopter_id FROM adopt) AND  pet_id NOT IN "+
                     $"(SELECT pet_id FROM foster where censor_state = 'legitimate' or censor_state = " +
                     $"'to be censored') AND ROWNUM <= 1";
@@ -71,7 +71,7 @@ namespace PetFoster.DAL
                     if (exist == null)
                         return -1;//宠物都没空
                     else
-                        return exist as int;
+                        return Convert.ToInt32(exist);
                 }
                 catch (Exception ex)
                 {
@@ -105,7 +105,7 @@ namespace PetFoster.DAL
                 connection.Close();
             }
         }
-        public static void InsertAdoptApply(string UID,bool gender,bool pet_exp,bool long_term_care,
+        public static void InsertAdoptApply(string UID,string species,bool gender,bool pet_exp,bool long_term_care,
             bool w_to_treat,decimal d_care_h,string P_Caregiver,decimal f_popul,bool be_children,bool accept_vis)
         {
             // 添加新行
@@ -116,9 +116,9 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO adopt_apply (adopter_id, adopter_gender,pet_experience" +
+                    command.CommandText = "INSERT INTO adopt_apply (adopter_id, species,adopter_gender,pet_experience" +
                        ",long_term_care,willing_to_treat,daily_care_hours,primary_caregiver,family_population,has_children,accept_visits) " +
-                       $"VALUES ({UID},:gender,:p_exp,:lt_care,:w_t_treat,{d_care_h},'{P_Caregiver}',{f_popul},:h_child,:a_vis)";
+                       $"VALUES ({UID},'{species}',:gender,:p_exp,:lt_care,:w_t_treat,{d_care_h},'{P_Caregiver}',{f_popul},:h_child,:a_vis)";
                     command.Parameters.Add("gender", OracleDbType.Varchar2, gender?'M':'F', ParameterDirection.Input);
                     command.Parameters.Add("p_exp", OracleDbType.Varchar2, pet_exp?'Y':'N', ParameterDirection.Input);;
                     command.Parameters.Add("lt_care", OracleDbType.Varchar2, long_term_care?'Y':'N', ParameterDirection.Input);

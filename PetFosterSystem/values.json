@@ -544,17 +544,13 @@
     "救援运输员": "Rescue Transporter",
     "动物护理专家": "Animal Care Specialist"
   },
-  "breed": {
-    "德国牧羊犬": "German Shepherd",
-    "拉布拉多猎犬": "Labrador Retriever",
-    "金毛猎犬": "Golden Retriever",
-    "斗牛犬": "Bulldog",
-    "比格犬": "Beagle",
-    "贵宾犬": "Poodle",
-    "罗威纳犬": "Rottweiler",
-    "约克夏梗": "Yorkshire Terrier",
-    "拳师犬": "Boxer",
-    "腊肠犬": "Dachshund"
+  "species": {
+    "狗": "dog",
+    "鹦鹉": "parrot",
+    "熊": "bear",
+    "蛇": "snake",
+    "猫": "cat",
+    "金鱼": "goldfish"
   },
   "health_state": {
     "充满活力": "Vibrant",

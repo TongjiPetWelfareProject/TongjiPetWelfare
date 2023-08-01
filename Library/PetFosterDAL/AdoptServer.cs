@@ -14,6 +14,31 @@ namespace PetFoster.DAL
         public static string pwd = "campus";
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static DataTable PetInfo(decimal Limitrows = -1, string Orderby = null)
+        {
+            DataTable dataTable = new DataTable();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM pet_profile";
+                if (Limitrows > 0)
+                    query += $" where rownum<={Limitrows} ";
+                if ((Orderby) != null)
+                    query += $" order by {Orderby} desc";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(command);
+
+                adapter.Fill(dataTable);
+
+                connection.Close();
+            }
+
+            Console.ReadLine();
+            return dataTable;
+        }
         public static void InsertAdopt(string UID,string PID,out int errcode)
         {
             // 添加新行
