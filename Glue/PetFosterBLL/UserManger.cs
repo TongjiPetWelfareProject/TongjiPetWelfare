@@ -98,7 +98,7 @@ namespace PetFoster.BLL
             bool hasDigit = Regex.IsMatch(password, @"\d");
             bool hasLowerCase = Regex.IsMatch(password, @"[a-z]");
             bool hasUpperCase = Regex.IsMatch(password, @"[A-Z]");
-            bool hasSpecialCharacter = Regex.IsMatch(password, @"[,./!@#$%^&*()]");
+            bool hasSpecialCharacter = Regex.IsMatch(password, @"[/!@#$%^&*()]");
 
             bool isValid = hasMinimumLength && hasDigit && hasLowerCase && hasUpperCase && hasSpecialCharacter;
             return isValid;
@@ -221,7 +221,7 @@ namespace PetFoster.BLL
             {
                 if (!ValidatePassword(NewPassword))
                 {
-                    return "密码长度必须为8~16位，同时包含大小写，数字，特殊字符（,./!@#$%^&*()）！";
+                    return "密码长度必须为8~16位，同时包含大小写，数字，特殊字符（/!@#$%^&*()）！";
                 }
                 UserServer.UpdateUser(UID.ToString(), candidate.User_Name, NewPassword, candidate.Phone_Number, candidate.Address, candidate.Account_Status);
                 return $"{candidate.User_Name},你好！密码已成功修改，请不要忘记密码";
