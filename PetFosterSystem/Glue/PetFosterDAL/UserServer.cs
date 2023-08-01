@@ -150,7 +150,6 @@ namespace PetFoster.DAL
         /// <param name="Address">地址</param>
         public static string InsertUser(string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
-            // 添加新行
             string UID = "-1";
             try
             {
@@ -171,14 +170,11 @@ namespace PetFoster.DAL
                     try
                     {
                         command.ExecuteNonQuery();
-                        command.CommandText = "select max(cast(user_id as integer)) from user2";
-                        command.Parameters.Clear();
-                        return command.ExecuteScalar().ToString();
+                        UID = command.Parameters["user_id"].Value.ToString(); // 获取插入后的用户ID
                     }
                     catch (OracleException ex)
                     {
                         Console.WriteLine("错误码" + ex.ErrorCode.ToString());
-
                         throw;
                     }
                     connection.Close();
@@ -191,6 +187,7 @@ namespace PetFoster.DAL
             }
             return UID;
         }
+
         public static bool DeleteUser(string UID)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
