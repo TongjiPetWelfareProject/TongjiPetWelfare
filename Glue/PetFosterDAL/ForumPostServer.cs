@@ -51,6 +51,39 @@ namespace PetFoster.DAL
             Console.ReadLine();
             return dataTable;
         }
+        public static int InsertPost(string UID, string contents)
+        {
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "INSERT INTO forum_posts (post_id, user_id, post_contents)" +
+                        $"VALUES (post_id_seq.NEXTVAL,{UID},'{contents}')";
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        command.CommandText = "SELECT post_id_seq.CURRVAL FROM DUAL";
+                        int PostID = Convert.ToInt32(command.ExecuteScalar());
+                        return PostID;
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+                        return -1;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+                return -1;
+            }
+        }
         /// <summary>
         /// 
         /// </summary>

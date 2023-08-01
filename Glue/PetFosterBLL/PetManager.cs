@@ -74,7 +74,7 @@ namespace PetFoster.BLL
         {
             DateTime birthDate = DateTime.Now.AddYears(-Age);
             // 读取图像文件
-            byte[] BinImage = DAL.PetServer.ConvertImageToByteArray(Petname);
+            byte[] BinImage = DAL.PetServer.ConvertImageToByteArray(Path);
 
             DAL.PetServer.InsertPet(Petname, Breed, Psize, birthDate, BinImage, Health_State, HaveVaccinated);
 

@@ -62,5 +62,20 @@ namespace PetFoster.BLL
                 Console.WriteLine("FID is not a valid numeric value.");
             }
         }
+        /// <summary>
+        /// 发布帖子待审阅
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <param name="contents"></param>
+        /// <param name="paths"></param>
+        public static void PublishPost(string UID,string contents,List<string> paths)
+        {
+            int FID = ForumPostServer.InsertPost(UID, contents);
+            foreach(var path in paths)
+            {
+                PostImagesServer.InsertImage(FID.ToString(), path);
+            }
+        }
+       
     }
 }
