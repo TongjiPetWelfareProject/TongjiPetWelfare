@@ -30,18 +30,18 @@ namespace PetFoster.BLL
                 Console.WriteLine();
             }
         }
-        public static int ApplyAdopt(string UID, bool gender, bool pet_exp, bool long_term_care,
+        public static int ApplyAdopt(string UID, string species,bool gender, bool pet_exp, bool long_term_care,
             bool w_to_treat, decimal d_care_h, string P_Caregiver, decimal f_popul, bool be_children, bool accept_vis)
         {
-            AdoptApplyServer.InsertAdoptApply(UID,gender,pet_exp,long_term_care,w_to_treat,
+            AdoptApplyServer.InsertAdoptApply(UID,species,gender,pet_exp,long_term_care,w_to_treat,
             d_care_h, P_Caregiver,f_popul,be_children,accept_vis);
             return 0;
         }
         //审核通过并随机分配一个有空的宠物
-        public static int CensorAdopt(string UID,out int errcode)
+        public static int CensorAdopt(string UID,string species,out int errcode)
         {
             //1.随机选择一个宠物（不被占用）
-            int pid = AdoptApplyServer.GetRandomPet();
+            int pid = AdoptApplyServer.GetRandomPet(species);
             if (pid == -1)
             {
                 Console.WriteLine($"宠物已经全被领养或寄养（正在申请寄养）走了!");
