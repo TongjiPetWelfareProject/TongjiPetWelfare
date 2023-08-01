@@ -25,7 +25,7 @@ namespace PetFoster.BLL
     {
         public static void ShowForumProfile(int Limitrow = -1, string Orderby = null)
         {
-            DataTable dt = ForumPostServer.UncensoredForum(Limitrow, Orderby);
+            DataTable dt = ForumPostServer.UncensoredForum(Limitrow, Orderby,beingcensored:false);
             //调试用
             foreach (DataColumn column in dt.Columns)
             {

@@ -106,7 +106,7 @@ namespace PetFoster.Test
             //ForumPostManager.PublishPost("2", "Self-intro", "Hello,Im paul!", paths);
             // ForumPostManager.GetPosts("2");
             //CommentPostManager.GiveACommentPost("5", "11", "但是!");
-            ForumPostManager.ShowPost(11);
+            ForumPostManager.ShowForumProfile();
 
 
         }
