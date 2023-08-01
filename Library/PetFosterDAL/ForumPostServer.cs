@@ -175,5 +175,43 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static string GetContent(string FID)
+        {
+            string getContentQuery = $"SELECT post_contents FROM forum_posts WHERE Post_ID = {FID}";
+
+            // 获取对应的帖子内容
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                using (OracleCommand getContentCommand = new OracleCommand(getContentQuery, connection))
+                {
+                    connection.Open();
+                    return getContentCommand.ExecuteScalar()?.ToString();
+                }
+            }
+        }
+        public static List<string> GetPosts(string UID)
+        {
+            List<string> postIDs = new List<string>();
+            string getUserIdQuery = $"SELECT Post_ID FROM forum_posts WHERE User_ID = {UID}";
+
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                using (OracleCommand getUserIdCommand = new OracleCommand(getUserIdQuery, connection))
+                {
+                    connection.Open();
+
+                    using (OracleDataReader reader = getUserIdCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string postID = reader["Post_ID"].ToString();
+                            postIDs.Add(postID);
+                        }
+                    }
+                }
+            }
+
+            return postIDs;
+        }
     }
 }
