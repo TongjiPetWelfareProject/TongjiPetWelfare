@@ -1,5 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using PetFoster.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,6 +16,27 @@ namespace PetFoster.DAL
         public static string pwd = "campus";
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static DataTable SelectPost(string PID)
+        {
+            DataTable dataTable = new DataTable();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+
+                string query = $"SELECT * from verbosepost where post_id={PID}";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(command);
+
+                adapter.Fill(dataTable);
+
+                connection.Close();
+            }
+
+            return dataTable;
+        }
         /// <summary>
         /// 展示所有帖子的详细信息，通过Named Param.（问ChatGPT）实现
         /// </summary>
@@ -51,7 +74,7 @@ namespace PetFoster.DAL
             Console.ReadLine();
             return dataTable;
         }
-        public static int InsertPost(string UID, string contents)
+        public static int InsertPost(string UID, string heading,string contents)
         {
             try
             {
@@ -60,8 +83,8 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO forum_posts (post_id, user_id, post_contents)" +
-                        $"VALUES (post_id_seq.NEXTVAL,{UID},'{contents}')";
+                    command.CommandText = "INSERT INTO forum_posts (post_id, user_id,heading, post_contents)" +
+                        $"VALUES (post_id_seq.NEXTVAL,{UID},'{heading}','{contents}')";
                     try
                     {
                         command.ExecuteNonQuery();

@@ -42,6 +42,29 @@ namespace PetFoster.BLL
                 Console.WriteLine();
             }
         }
+        /// <summary>
+        /// 展示帖子界面
+        /// </summary>
+        /// <param name="PID"></param>
+        public static void ShowPost(int PID)
+        {
+            DataTable dt = ForumPostServer.SelectPost(PID.ToString());
+            //调试用
+            foreach (DataColumn column in dt.Columns)
+            {
+                Console.Write("{0,-15}", column.ColumnName);
+            }
+            Console.WriteLine();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                foreach (var item in row.ItemArray)
+                {
+                    Console.Write("{0,-15}", item);
+                }
+                Console.WriteLine();
+            }
+        }
         public static void UpdateForumProfile(string FID)
         {
             int id;
@@ -81,10 +104,10 @@ namespace PetFoster.BLL
         /// <param name="UID"></param>
         /// <param name="contents"></param>
         /// <param name="paths">图片路径</param>
-        public static void PublishPost(string UID,string contents,List<string> paths)
+        public static void PublishPost(string UID,string heading,string contents,List<string> paths)
         {
             //更新帖子
-            int FID = ForumPostServer.InsertPost(UID, contents);
+            int FID = ForumPostServer.InsertPost(UID, heading,contents);
             //上传图片（最多五张）
             foreach(var path in paths)
             {

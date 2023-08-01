@@ -103,7 +103,10 @@ namespace PetFoster.Test
             // FosterManager.ApplyFoster("1", "somedog", "Dachshund", "large", DateTime.UtcNow.AddDays(-90).AddMinutes(1), 90, "Hello,I want to rent a room!");
             // FosterManager.Censorship("1",64, DateTime.UtcNow.AddDays(-90).AddMinutes(1), 4);
             List<string> paths= new List<string> { "D:\\Desktop\\Picture\\pic4.png", "D:\\Desktop\\Picture\\pic5.png" };
-            ForumPostManager.GetPosts("2");
+            //ForumPostManager.PublishPost("2", "Self-intro", "Hello,Im paul!", paths);
+            // ForumPostManager.GetPosts("2");
+            //CommentPostManager.GiveACommentPost("5", "11", "但是!");
+            ForumPostManager.ShowPost(11);
 
 
         }
