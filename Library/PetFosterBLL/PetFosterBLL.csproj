@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccommodateManager.cs" />
+    <Compile Include="AdoptApplyManager.cs" />
     <Compile Include="AdoptManager.cs" />
     <Compile Include="ApplicationManager.cs" />
     <Compile Include="BulletinManager.cs" />

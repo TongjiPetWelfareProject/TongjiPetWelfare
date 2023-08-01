@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccommodateServer.cs" />
+    <Compile Include="AdoptApplyServer.cs" />
     <Compile Include="AdoptServer.cs" />
     <Compile Include="ApplicationServer.cs" />
     <Compile Include="BulletinServer.cs" />
