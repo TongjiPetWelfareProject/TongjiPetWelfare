@@ -63,5 +63,29 @@ namespace PetFoster.DAL
             }
             return -1;
         }
+        public static List<byte[]> GetImages(int FID)
+        {
+            List<byte[]> Imgs = new List<byte[]>();
+            string getImageQuery = $"SELECT image_data FROM post_images WHERE Post_ID = {FID}";
+
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                using (OracleCommand getImagesCommand = new OracleCommand(getImageQuery, connection))
+                {
+                    connection.Open();
+
+                    using (OracleDataReader reader = getImagesCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            byte[] postID = (byte[])reader["Image_data"];
+                            Imgs.Add(postID);
+                        }
+                    }
+                }
+            }
+
+            return Imgs;
+        }
     }
 }

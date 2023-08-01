@@ -5,9 +5,22 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PetFoster.BLL
 {
+    public class Posts
+    {
+        string contents;
+        List<byte[]> images;
+        public Posts(string s, List<byte[]> imgs)
+        {
+            contents = s;
+             images= imgs ;
+        }
+    };
     public class ForumPostManager
     {
         public static void ShowForumProfile(int Limitrow = -1, string Orderby = null)
@@ -67,15 +80,35 @@ namespace PetFoster.BLL
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="contents"></param>
-        /// <param name="paths"></param>
+        /// <param name="paths">图片路径</param>
         public static void PublishPost(string UID,string contents,List<string> paths)
         {
+            //更新帖子
             int FID = ForumPostServer.InsertPost(UID, contents);
+            //上传图片（最多五张）
             foreach(var path in paths)
             {
                 PostImagesServer.InsertImage(FID.ToString(), path);
             }
         }
-       
+        /// <summary>
+        /// 获得帖子的图片和内容，图片以二进制形式存储，需要类型转换
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <returns></returns>
+        public static List<Posts> GetPosts(string UID)
+        {
+            List<string> FID = ForumPostServer.GetPosts(UID);
+            List<Posts> posts = new List<Posts>();
+            foreach (var sFID in FID)
+            {
+                //获得图片与帖子内容
+                string content=ForumPostServer.GetContent(sFID);
+                List<byte[]> image = PostImagesServer.GetImages(Convert.ToInt32(sFID));
+                Posts tmp = new Posts(content,image);
+                posts.Add(tmp);
+            }
+            return posts;
+        }
     }
 }
