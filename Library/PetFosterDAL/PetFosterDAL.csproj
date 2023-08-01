@@ -89,6 +89,7 @@
     <Compile Include="LikePetServer.cs" />
     <Compile Include="LikePostServer.cs" />
     <Compile Include="PetServer.cs" />
+    <Compile Include="PostImagesServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomServer.cs" />
     <Compile Include="TreatmentServer.cs" />

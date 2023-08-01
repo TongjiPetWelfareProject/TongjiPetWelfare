@@ -89,6 +89,7 @@
     <Compile Include="LikePetManager.cs" />
     <Compile Include="LikePostManager.cs" />
     <Compile Include="PetManager.cs" />
+    <Compile Include="PostImagesManager.cs" />
     <Compile Include="RoomManager.cs" />
     <Compile Include="UserManger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

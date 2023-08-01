@@ -9,7 +9,7 @@ using PetFoster.BLL;
 using System.Drawing;
 using System.IO;
 using System.Globalization;
-
+using System.Collections.Generic;
 namespace PetFoster.Test
 {
     public partial class Form1 : Form
@@ -100,9 +100,11 @@ namespace PetFoster.Test
 
             //CommentPetManager.ShowCommentPet(UID:"6",PID: "47");
             //CommentPetManager.GiveAComment("5", "7","Hello,I'm 5 I'll give 7 a comment");
-           // FosterManager.ApplyFoster("1", "somedog", "Dachshund", "large", DateTime.UtcNow.AddDays(-90).AddMinutes(1), 90, "Hello,I want to rent a room!");
-           // FosterManager.Censorship("1",64, DateTime.UtcNow.AddDays(-90).AddMinutes(1), 4);
-            FosterManager.CensorFoster(0,verbose: false);
+            // FosterManager.ApplyFoster("1", "somedog", "Dachshund", "large", DateTime.UtcNow.AddDays(-90).AddMinutes(1), 90, "Hello,I want to rent a room!");
+            // FosterManager.Censorship("1",64, DateTime.UtcNow.AddDays(-90).AddMinutes(1), 4);
+            List<string> paths= new List<string> { "D:\\Desktop\\Picture\\pic4.png", "D:\\Desktop\\Picture\\pic5.png" };
+            ForumPostManager.PublishPost("2", "Hello,this is my 1st post!yoroshiku!",paths);
+
 
         }
     }
