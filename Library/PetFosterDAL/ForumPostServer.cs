@@ -51,7 +51,8 @@ namespace PetFoster.DAL
             {
                 connection.Open();
 
-                string query = "SELECT * FROM forum_posts ";
+                string query = "SELECT heading,user_name as writer,read_count,comment_num,like_num,post_time FROM forum_posts" +
+                    " natural join user2 ";
                 if (Limitrows > 0)
                     query += $" where rownum<={Limitrows} ";
                 else if (beingcensored)
