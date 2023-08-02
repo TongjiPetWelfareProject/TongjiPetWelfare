@@ -153,6 +153,38 @@ namespace PetFoster.DAL
                 Console.WriteLine(ex.ToString());
             }
         }
+        public static void ReadForum(string FID)
+        {
+            // 更改信息
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "UPDATE forum_posts SET read_count=read_count+1" +
+                            $" where post_id={FID}";
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        Console.WriteLine($"{FID}的阅读量+1!");
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+
+                        throw;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
+        }
         /// <summary>
         /// 注意在删除后，还需要用UserManager.Banned函数将相应用户“Warning Issued”，
         /// UID可以通过本类的GetUID获取

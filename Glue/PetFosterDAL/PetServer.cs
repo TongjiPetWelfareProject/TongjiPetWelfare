@@ -81,9 +81,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select *from pet where Pet_ID=:PID";
-                command.Parameters.Clear();
-                command.Parameters.Add("user_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                command.CommandText = $"select *from pet where Pet_ID={PID}";
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
@@ -94,7 +92,7 @@ namespace PetFoster.DAL
                         // 其他列..
                         pet.Pet_ID = reader["Pet_ID"].ToString();
                         pet.Pet_Name = reader["Pet_Name"].ToString();
-                        pet.Breed = reader["Breed"].ToString();
+                        pet.Species = reader["Species"].ToString();
                         pet.birthdate = Convert.ToDateTime(reader["BIRTHDATE"]);
                         pet.Avatar = (byte[])(reader["Avatar"]);
                         pet.Read_Num = Convert.ToDecimal(reader["Read_Num"]);
@@ -115,6 +113,38 @@ namespace PetFoster.DAL
             }
 
             return pet;
+        }
+        public static void ReadPet(string PID)
+        {
+            // 更改信息
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "UPDATE pet SET read_num=read_num+1" +
+                            $" where pet_id={PID}";
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        Console.WriteLine($"宠物{PID}的阅读量+1!");
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+
+                        throw;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
         }
         public static byte[] SerializeObject(object obj)
         {

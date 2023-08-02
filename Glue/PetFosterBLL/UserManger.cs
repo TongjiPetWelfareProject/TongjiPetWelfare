@@ -123,6 +123,11 @@ namespace PetFoster.BLL
             string res = address;
             return res != null;
         }
+        public static Profile GetStatistics(int UID)
+        {
+            int errcode=0;
+            return UserServer.GetStatistics(UID,out errcode);
+        }
         private static int ValidRegistration(string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
             if (!IsValidAddress(Address))
@@ -153,7 +158,7 @@ namespace PetFoster.BLL
         /// <param name="phoneNumber">手机号</param>
         /// <param name="Address">地址</param>
         /// <returns>返回状态string</returns>
-        public static int Register(out string? UID, string Username, string pwd, string phoneNumber, string Address = "Beijing")
+        public static int Register(out string UID, string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
             // 添加新行
             UID = null;

@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace PetFoster.Model
 {
+    public class Profile
+    {
+        public int getlikes;//总点赞数
+        public int getclicks;//总阅读数
+        public Profile(int getlikes, int getclicks)
+        {
+            this.getlikes = getlikes;
+            this.getclicks = getclicks;
+        }
+    }
     public class User
     {
         public string User_ID;

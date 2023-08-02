@@ -61,10 +61,11 @@ namespace PetFoster.BLL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 Candidate = DAL.PetServer.SelectPet(PID);
+                DAL.PetServer.ReadPet(PID);
                 if (Candidate.Pet_ID == "-1")
                     Console.WriteLine("PID不存在！");
                 else
-                    Console.WriteLine($"宠物叫做{Candidate.Pet_Name}\n,品种是{Candidate.Breed}\n,年龄{Candidate.birthdate}\n!");
+                    Console.WriteLine($"宠物叫做{Candidate.Pet_Name}\n,品种是{Candidate.Species}\n,年龄{Candidate.birthdate}\n!");
                 connection.Close();
             }
 

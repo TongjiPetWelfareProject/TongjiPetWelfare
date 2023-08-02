@@ -126,12 +126,20 @@ namespace PetFoster.BLL
             foreach (var sFID in FID)
             {
                 //获得图片与帖子内容
-                string content=ForumPostServer.GetContent(sFID);
-                List<byte[]> image = PostImagesServer.GetImages(Convert.ToInt32(sFID));
-                Posts tmp = new Posts(content,image);
+                Posts tmp = GetPost(sFID);
                 posts.Add(tmp);
             }
             return posts;
+        }
+        public static Posts GetPost(string FID)
+        {
+            //获得图片与帖子内容
+            string content = ForumPostServer.GetContent(FID);
+            List<byte[]> image = PostImagesServer.GetImages(Convert.ToInt32(FID));
+            Posts tmp = new Posts(content, image);
+            //阅读量+1！
+            ForumPostServer.ReadForum(FID);
+            return tmp;
         }
     }
 }
