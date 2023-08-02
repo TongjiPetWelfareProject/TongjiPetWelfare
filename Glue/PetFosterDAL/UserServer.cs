@@ -66,7 +66,6 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
- 
                 command.CommandText = "select *from user2 where User_ID=:user_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
@@ -85,7 +84,46 @@ namespace PetFoster.DAL
                         user1.Phone_Number = reader["Phone_Number"].ToString();
                         user1.Role = reader["Role"].ToString();
                         // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
+                    }
+                    if (user1.User_ID == "-1")
+                        throw new Exception("不存在的用户，请注册新用户！");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                connection.Close();
+            }
 
+            return user1;
+        }
+        public static User GetUserByTel(string Tel, string pwd, bool IsAdmin = false)
+        {
+            bool con = false;
+            User user1 = new User();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = $"select *from user2 where Phone_Number={Tel}";
+                try
+                {
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        // 访问每一行的数据
+                        // 其他列..
+                        user1.User_ID = reader["User_ID"].ToString();
+                        user1.User_Name = reader["User_Name"].ToString();
+                        user1.Account_Status = reader["Account_Status"].ToString();
+                        user1.Address = reader["Address"].ToString();
+                        user1.Password = reader["Password"].ToString();
+                        user1.Phone_Number = reader["Phone_Number"].ToString();
+                        user1.Role = reader["Role"].ToString();
+                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
                     }
                     if (user1.User_ID == "-1")
                         throw new Exception("不存在的用户，请注册新用户！");

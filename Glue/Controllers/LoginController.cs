@@ -20,11 +20,13 @@ namespace WebApplicationTest1
         {
             public string Username { get; set; }
             public string Password { get; set; }
+            public string Tel { get; set; }
 
             public LoginModel()
             {
                 Username = string.Empty;
                 Password = string.Empty;
+                Tel = string.Empty;
             }
 
         }
@@ -88,7 +90,66 @@ namespace WebApplicationTest1
             }
 
             
-}
+        }
+        [HttpPost]
+        public IActionResult LoginByTel([FromBody] LoginModel loginModel)
+        {
+            string tel = loginModel.Tel;
+            string password = loginModel.Password;
+            Console.WriteLine(tel + " " + password);
+            User candidate = UserManager.LoginByTel(tel, password);
+            /*
+            using (OracleConnection oracle = new OracleConnection(conStr))
+            {
+                oracle.Open();
+                if (UserManager.Login(username, password))
+                {
+                    respond = Ok();
+                }
+                else
+                {
+                    respond = BadRequest();
+                }
+                oracle.Close();
+            }
+            */
+            //string message = JsonHelper.GetErrorMessage("login", status);
+            //Console.WriteLine(message);
+
+            if (candidate.Password != password)
+            {
+                return Unauthorized("密码错误，请重新输入");
+            }
+            else if (candidate.Account_Status == "Banned")
+            {
+                return Unauthorized("账号已被封禁，请等待解禁");
+            }
+            else if (candidate.User_ID == "-1")
+            {
+                return Unauthorized("用户不存在");
+            }
+            else
+            {
+
+                var responseData = new
+                {
+                    data = new
+                    {
+                        User_ID = candidate.User_ID,
+                        User_Name = candidate.User_Name,
+                        Password = candidate.Password,
+                        Phone_Number = candidate.Phone_Number,
+                        Address = candidate.Address,
+                        Role = candidate.Role,
+                        Account_Status = candidate.Account_Status
+                    }
+                };
+                string responseJson = JsonSerializer.Serialize(responseData);
+                return Ok(responseJson);
+            }
+
+
+        }
         // PUT api/<LoginController>/5
         /*
         [HttpPut("{id}")]

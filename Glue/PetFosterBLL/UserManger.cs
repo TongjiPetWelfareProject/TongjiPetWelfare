@@ -86,6 +86,20 @@ namespace PetFoster.BLL
                 return Candidate;
             }
         }
+        public static User LoginByTel(string Tel, string Pwd)
+        {
+            bool con = false;
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                // 在此块中执行数据操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                User Candidate = UserServer.GetUser(Tel, Pwd);
+                connection.Close();
+                return Candidate;
+            }
+        }
         private static bool ValidatePhoneNumber(string phoneNumber)
         {
             string pattern = @"^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$";
