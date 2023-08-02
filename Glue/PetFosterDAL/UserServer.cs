@@ -96,6 +96,47 @@ namespace PetFoster.DAL
 
             return user1;
         }
+        public static Profile GetStatistics(int UID, out int err)
+        {
+            bool con = false;
+            err = 0;
+            Profile profile = new Profile(-1, -1);
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                profile.getlikes = -1;
+                command.CommandText = $"select total_like,clicks from user_profile where User_ID={UID}";
+                try
+                {
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        // 访问每一行的数据
+                        // 其他列..
+                        profile.getlikes = Convert.ToInt32(reader["Total_Like"]);
+                        profile.getclicks = Convert.ToInt32(reader["Clicks"]);
+                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
+
+                    }
+                    if (profile.getlikes == -1)
+                    {
+                        err = -1;
+                        throw new Exception("你要查找的用户不存在！");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    err = -2;//查询过程异常
+                }
+                connection.Close();
+            }
+
+            return profile;
+        }
         public static string GetRole(string UID)
         {
             bool con = false;
