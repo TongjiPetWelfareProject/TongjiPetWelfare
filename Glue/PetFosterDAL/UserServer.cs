@@ -56,7 +56,7 @@ namespace PetFoster.DAL
         /// </summary>
         /// <param name="user">用户行</param>
         /// <returns></returns>
-        public static User GetUser(string UID, string pwd, bool IsAdmin = false)
+        public static User GetUser(string Tel, string pwd, bool IsAdmin = false)
         {
             bool con = false;
             User user1 = new User();
@@ -66,10 +66,8 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
- 
-                command.CommandText = "select *from user2 where User_ID=:user_id";
-                command.Parameters.Clear();
-                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+
+                command.CommandText = $"select *from user2 where Phone_Number={Tel}";
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
@@ -85,7 +83,6 @@ namespace PetFoster.DAL
                         user1.Phone_Number = reader["Phone_Number"].ToString();
                         user1.Role = reader["Role"].ToString();
                         // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
-
                     }
                     if (user1.User_ID == "-1")
                         throw new Exception("不存在的用户，请注册新用户！");

@@ -18,13 +18,13 @@ namespace WebApplicationTest1
     {
         public class LoginModel
         {
-            public string Username { get; set; }
+            public string Tel { get; set; }
             public string Password { get; set; }
 
             public LoginModel()
             {
-                Username = string.Empty;
                 Password = string.Empty;
+                Tel = string.Empty;
             }
 
         }
@@ -33,10 +33,10 @@ namespace WebApplicationTest1
         [HttpPost]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            string username = loginModel.Username;
+            string tel = loginModel.Tel;
             string password = loginModel.Password;
-            Console.WriteLine(username + " " + password);
-            User candidate = UserManager.Login(username, password);
+            Console.WriteLine(tel + " " + password);
+            User candidate = UserManager.Login(tel, password);
             /*
             using (OracleConnection oracle = new OracleConnection(conStr))
             {
@@ -87,8 +87,8 @@ namespace WebApplicationTest1
                 return Ok(responseJson);
             }
 
-            
-}
+
+        }
         // PUT api/<LoginController>/5
         /*
         [HttpPut("{id}")]
