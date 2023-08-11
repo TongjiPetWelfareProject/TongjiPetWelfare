@@ -72,7 +72,7 @@ namespace PetFoster.BLL
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>返回错误码，在JSON中指定,4为用户，5为管理员</returns>
-        public static User Login(string Tel, string Pwd)
+        public static User Login(string UID, string Pwd)
         {
             bool con = false;
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -81,7 +81,7 @@ namespace PetFoster.BLL
                 // 在此块中执行数据操作
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
-                User Candidate = UserServer.GetUser(Tel, Pwd);
+                User Candidate = UserServer.GetUser(UID, Pwd);
                 connection.Close();
                 return Candidate;
             }

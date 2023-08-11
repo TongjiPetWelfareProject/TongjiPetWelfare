@@ -18,13 +18,13 @@ namespace WebApplicationTest1
     {
         public class LoginModel
         {
-            public string Tel { get; set; }
+            public string UID { get; set; }
             public string Password { get; set; }
 
             public LoginModel()
             {
                 Password = string.Empty;
-                Tel = string.Empty;
+                UID = string.Empty;
             }
 
         }
@@ -33,10 +33,10 @@ namespace WebApplicationTest1
         [HttpPost]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            string tel = loginModel.Tel;
+            string uid = loginModel.UID;
             string password = loginModel.Password;
-            Console.WriteLine(tel + " " + password);
-            User candidate = UserManager.Login(tel, password);
+            Console.WriteLine(uid + " " + password);
+            User candidate = UserManager.Login(uid, password);
             /*
             using (OracleConnection oracle = new OracleConnection(conStr))
             {
