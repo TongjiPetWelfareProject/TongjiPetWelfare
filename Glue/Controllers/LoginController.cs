@@ -18,13 +18,13 @@ namespace WebApplicationTest1
     {
         public class LoginModel
         {
-            public string UID { get; set; }
+            public string Username { get; set; }
             public string Password { get; set; }
 
             public LoginModel()
             {
                 Password = string.Empty;
-                UID = string.Empty;
+                Username = string.Empty;
             }
 
         }
@@ -33,7 +33,7 @@ namespace WebApplicationTest1
         [HttpPost]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            string uid = loginModel.UID;
+            string uid = loginModel.Username;
             string password = loginModel.Password;
             Console.WriteLine(uid + " " + password);
             User candidate = UserManager.Login(uid, password);
