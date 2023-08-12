@@ -11,7 +11,7 @@ namespace PetFoster.DAL
 {
     internal class AdoptServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
         public static DataTable PetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();

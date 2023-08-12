@@ -15,7 +15,7 @@ namespace PetFoster.DAL
 {
     public class PetServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
         private static byte[] GetRandomAvatar(string imagePath)
         {
             // 获取随机的 avatar

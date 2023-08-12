@@ -14,7 +14,7 @@ namespace PetFoster.DAL
 {
     public class FosterServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看寄养信息
         /// </summary>

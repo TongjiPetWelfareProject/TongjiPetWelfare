@@ -15,7 +15,7 @@ namespace PetFoster.DAL
 {
     public class UserServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看用户信息，由ShowProfiles(DataTable dt)调用
         /// 注意用户的密码不能用明文存储，最起码的要求密码不能在客户端显示！！！

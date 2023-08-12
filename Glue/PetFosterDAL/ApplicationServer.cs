@@ -12,7 +12,7 @@ namespace PetFoster.DAL
 {
     public class ApplicationServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看申请信息，由ShowProfiles(DataTable dt)调用
         /// </summary>

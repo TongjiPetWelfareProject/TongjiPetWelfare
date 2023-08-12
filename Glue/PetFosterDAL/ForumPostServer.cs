@@ -13,7 +13,7 @@ namespace PetFoster.DAL
 {
     public class ForumPostServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
         public static DataTable SelectPost(string PID)
         {
             DataTable dataTable = new DataTable();

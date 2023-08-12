@@ -12,7 +12,7 @@ namespace PetFoster.DAL
 {
     public class PostImagesServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
 
         public static int InsertImage(string FID, string Path)
         {

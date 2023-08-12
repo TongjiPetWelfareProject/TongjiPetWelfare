@@ -13,7 +13,7 @@ namespace PetFoster.DAL
 {
     public class RoomServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看每层楼的房源信息，由ShowAvailable(DataTable dt)调用
         /// </summary>

@@ -11,7 +11,7 @@ namespace PetFoster.DAL
 {
     public class DonationServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 注意SQL中EXTRACT的用法，这是给管理员看的，个人点赞是GetLikePetEntry...
         /// </summary>

@@ -10,6 +10,5 @@ namespace PetFoster.DAL
 
     public class TreatmentServer
     {
-        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
+        public static string conStr = AccommodateServer.conStr;
     }
-}
