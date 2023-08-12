@@ -12,3 +12,4 @@ namespace PetFoster.DAL
     {
         public static string conStr = AccommodateServer.conStr;
     }
+}
