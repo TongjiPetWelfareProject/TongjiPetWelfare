@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Globalization;
+using System.Data;
+
 namespace Glue.Controllers
 {
     public class ConvertTools
     {
-        public static DateTime? ConvertToDate(string dateString)
+        public static DateTime? StringConvertToDate(string dateString)
         {
             if (DateTime.TryParseExact(dateString, "yyyy-MM-ddTHH:mm:ss.fffZ", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
             {

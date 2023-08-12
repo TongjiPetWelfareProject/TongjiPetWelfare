@@ -32,7 +32,7 @@ namespace PetFoster.DAL
             {
                 connection.Open();
 
-                string query = "SELECT fosterer,pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
+                string query = "SELECT duration,fosterer,pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
                     ",REMARK FROM foster ";
                 if (verbose)
                     query = "SELECT * from foster_window";
@@ -58,7 +58,7 @@ namespace PetFoster.DAL
 
             }
 
-            Console.ReadLine();
+            //Console.ReadLine();
             return dataTable;
         }
         public static void UpdateFosterEntry(string UID, string PID,DateTime date,string censor_status)

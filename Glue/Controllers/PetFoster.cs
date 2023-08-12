@@ -42,15 +42,15 @@ namespace Glue.Controllers
 
         // POST api/<PetFoster>
         [HttpPost("pet-foster")]
-        public IActionResult pet_foster([FromBody] FosterData foster_table)
+        public IActionResult FosterApply([FromBody] FosterData foster_table)
         {
-            DateTime? date = ConvertTools.ConvertToDate(foster_table.date);
+            DateTime? date = ConvertTools.StringConvertToDate(foster_table.date);
             if (date == null)
             {
                 return BadRequest("Failed to parse the date.");
             }
 
-            int status = FosterManager.ApplyFoster(foster_table.user, foster_table.name, foster_table.type, foster_table.size, date, foster_table.num, foster_table.remark);
+            int status = FosterManager.ApplyFoster(foster_table.user, foster_table.name, foster_table.type, foster_table.size, (DateTime)date, foster_table.num, foster_table.remark);
             if(status == 3)
             {
                 return Conflict("房间已满！");
