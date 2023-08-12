@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PetFoster.DAL
 {
-    public class LikePostServer
+    public class DonationServer
     {
         public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
         /// <summary>
@@ -19,14 +19,14 @@ namespace PetFoster.DAL
         /// <param name="Limitrows"></param>
         /// <param name="Orderby"></param>
         /// <returns></returns>
-        public static DataTable LikePostInfo(decimal Limitrows = -1, string Orderby = null)
+        public static DataTable DonationInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
             using (OracleConnection connection = new OracleConnection(conStr))
             {
                 connection.Open();
 
-                string query = "SELECT user_id,post_id,TO_CHAR(like_time,'YYYY-MM-DD') as liked_date, TO_CHAR(like_time,'HH24:MI:SS') as liked_time FROM like_post";
+                string query = "SELECT donor_id,donation_amount,TO_CHAR(donation_time,'YYYY-MM-DD') as donated_date, TO_CHAR(donation_time,'HH24:MI:SS') as donated_time FROM donation";
                 if (Limitrows > 0)
                     query += $" where rownum<={Limitrows} ";
                 if ((Orderby) != null)
@@ -44,13 +44,41 @@ namespace PetFoster.DAL
             Console.ReadLine();
             return dataTable;
         }
+        public static DataTable DonationAmount(decimal Limitrows = -1, string Orderby = null)
+        {
+            DataTable dataTable = new DataTable();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = "SELECT donor_id, SUM(donation_amount) AS total_donation, MAX(donation_amount) AS max_donation, COUNT(*) AS donation_count FROM donation";
+                if (Limitrows > 0)
+                    query += $" WHERE rownum <= {Limitrows} ";
+                query += " GROUP BY donor_id";
+                if (!string.IsNullOrEmpty(Orderby))
+                    query += $" ORDER BY {Orderby} DESC";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(command);
+
+                adapter.Fill(dataTable);
+
+                connection.Close();
+            }
+
+            Console.ReadLine();
+            return dataTable;
+        }
+
+
         /// <summary>
-        /// 获取点赞帖子条目
+        /// 获取点赞宠物条目
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="PID"></param>
         /// <returns>true表示有条目，则可以删除，false表示可以点赞</returns>
-        public static bool GetLikePostEntry(string UID, string PID)
+        public static bool GetLikePetEntry(string UID, string PID)
         {
             bool con = false;
             User user1 = new User();
@@ -60,10 +88,8 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"select *from like_post where Post_ID={PID} and User_ID={UID}";
+                command.CommandText = $"select *from like_pet where Pet_ID={PID} and User_ID={UID}";
                 command.Parameters.Clear();
-                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                command.Parameters.Add("post_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
@@ -88,7 +114,7 @@ namespace PetFoster.DAL
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="PID"></param>
-        public static void InsertLikePost(string UID, string PID)
+        public static void InsertLikePet(string UID, string PID)
         {
             // 添加新行
             try
@@ -98,11 +124,11 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO like_post (user_id, post_id) " +
-                        "VALUES (:user_id,:post_id)";
+                    command.CommandText = "INSERT INTO like_pet (user_id, pet_id) " +
+                        "VALUES (:user_id,:pet_id)";
                     command.Parameters.Clear();
                     command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                    command.Parameters.Add("post_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                    command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
 
                     try
                     {
@@ -129,7 +155,7 @@ namespace PetFoster.DAL
         /// <param name="UID"></param>
         /// <param name="PID"></param>
         /// <returns></returns>
-        public static void DeleteLikePost(string UID, string PID)
+        public static void DeleteLikePet(string UID, string PID)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
             {
@@ -137,9 +163,9 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "delete from like_post where Post_ID= :Post_ID and User_ID=:User_ID";
+                command.CommandText = "delete from like_pet where Pet_ID= :Pet_ID and User_ID=:User_ID";
                 command.Parameters.Clear();
-                command.Parameters.Add("Post_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                command.Parameters.Add("Pet_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 try
                 {

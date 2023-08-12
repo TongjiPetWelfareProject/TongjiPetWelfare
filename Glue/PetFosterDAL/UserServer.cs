@@ -9,15 +9,13 @@ using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using static PetFoster.Model.PetData;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace PetFoster.DAL
 {
     public class UserServer
     {
-        public static string user = "C##PET";
-        public static string pwd = "campus";
-        public static string db = "localhost:1521/orcl";
-        private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
         /// <summary>
         /// 查看用户信息，由ShowProfiles(DataTable dt)调用
         /// 注意用户的密码不能用明文存储，最起码的要求密码不能在客户端显示！！！
