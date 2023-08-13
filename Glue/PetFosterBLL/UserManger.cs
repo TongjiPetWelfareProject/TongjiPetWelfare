@@ -8,19 +8,15 @@ using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using static PetFoster.Model.PetData;
-
+using System.Security.Cryptography;
 namespace PetFoster.BLL
 {
     public class UserManager
     {
-        public static string user = "\"C##PET\"";
-        public static string pwd = "campus";
-        public static string db = "localhost:1521/orcl";
-        private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
-        public static string JSON;
         static public bool IsValidStatus(string status)
         {
             // 解析JSON字符串
@@ -67,6 +63,26 @@ namespace PetFoster.BLL
                 Console.WriteLine();
             }
         }
+        public static string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // 将输入字符串转换为字节数组
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+
+                // 计算哈希值
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
+
+                // 将字节数组转换为十六进制字符串
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    stringBuilder.Append(hashBytes[i].ToString("x2")); // 使用 "x2" 格式将字节转换为两位十六进制
+                }
+
+                return stringBuilder.ToString();
+            }
+        }
         /// <summary>
         /// 登录
         /// </summary>
@@ -74,31 +90,15 @@ namespace PetFoster.BLL
         /// <returns>返回错误码，在JSON中指定,4为用户，5为管理员</returns>
         public static User Login(string UID, string Pwd)
         {
-            bool con = false;
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                // 连接对象将在 using 块结束时自动关闭和释放资源
-                // 在此块中执行数据操作
-                connection.Open();
-                OracleCommand command = connection.CreateCommand();
-                User Candidate = UserServer.GetUser(UID, Pwd);
-                connection.Close();
-                return Candidate;
-            }
+            // 连接对象将在 using 块结束时自动关闭和释放资源
+            // 在此块中执行数据操作
+            User Candidate = UserServer.GetUser(UID, Pwd);
+            return Candidate;
         }
         public static User LoginByTel(string Tel, string Pwd)
         {
-            bool con = false;
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                // 连接对象将在 using 块结束时自动关闭和释放资源
-                // 在此块中执行数据操作
-                connection.Open();
-                OracleCommand command = connection.CreateCommand();
-                User Candidate = UserServer.GetUser(Tel, Pwd);
-                connection.Close();
-                return Candidate;
-            }
+            User Candidate = UserServer.GetUser(Tel, Pwd);
+            return Candidate;
         }
         private static bool ValidatePhoneNumber(string phoneNumber)
         {
@@ -125,8 +125,8 @@ namespace PetFoster.BLL
         }
         public static Profile GetStatistics(int UID)
         {
-            int errcode=0;
-            return UserServer.GetStatistics(UID,out errcode);
+            int errcode = 0;
+            return UserServer.GetStatistics(UID, out errcode);
         }
         private static int ValidRegistration(string Username, string pwd, string phoneNumber, string Address = "Beijing")
         {
@@ -165,7 +165,7 @@ namespace PetFoster.BLL
             int code = ValidRegistration(Username, pwd, phoneNumber, Address);
             if (code != 4) { return code; }
             //Address = JsonHelper.TranslateAddr(Address);
-            UID = UserServer.InsertUser(Username, pwd, phoneNumber, Address);
+            UID = UserServer.InsertUser(Username, ComputeSHA256Hash(pwd), phoneNumber, Address);
             //注册时的其他操作，如验证码等等.....
             return code;
         }
