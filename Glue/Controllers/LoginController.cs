@@ -8,7 +8,8 @@ using System.Data.OracleClient;
 using PetFoster.DAL;
 using PetFoster.Model;
 using System.Text.Json;
-
+using System.Text;
+using System.Security.Cryptography;
 namespace WebApplicationTest1
 {
 
@@ -29,32 +30,34 @@ namespace WebApplicationTest1
 
         }
 
+        static string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // 将输入字符串转换为字节数组
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
 
+                // 计算哈希值
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
+
+                // 将字节数组转换为十六进制字符串
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    stringBuilder.Append(hashBytes[i].ToString("x2")); // 使用 "x2" 格式将字节转换为两位十六进制
+                }
+
+                return stringBuilder.ToString();
+            }
+        }
         [HttpPost]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            string username = loginModel.Username;
+            string uid = loginModel.Username;
             string password = loginModel.Password;
-            Console.WriteLine(username + " " + password);
-            User candidate = UserManager.Login(username, password);
-            /*
-            using (OracleConnection oracle = new OracleConnection(conStr))
-            {
-                oracle.Open();
-                if (UserManager.Login(username, password))
-                {
-                    respond = Ok();
-                }
-                else
-                {
-                    respond = BadRequest();
-                }
-                oracle.Close();
-            }
-            */
-            //string message = JsonHelper.GetErrorMessage("login", status);
-            //Console.WriteLine(message);
-
+            Console.WriteLine(uid + " " + password);
+            User candidate = UserManager.Login(uid, password);
+            candidate.Password=ComputeSHA256Hash(candidate.Password);
             if (candidate.Password != password)
             {
                 return Unauthorized("密码错误，请重新输入");

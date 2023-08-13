@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Microsoft.Extensions.Configuration;
+using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,7 @@ namespace PetFoster.DAL
 {
     public class ApplicationServer
     {
-        public static string user = "\"C##PET\"";
-        public static string pwd = "campus";
-        public static string db = "localhost:1521/orcl";
-        private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看申请信息，由ShowProfiles(DataTable dt)调用
         /// </summary>

@@ -9,15 +9,13 @@ using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using static PetFoster.Model.PetData;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace PetFoster.DAL
 {
     public class UserServer
     {
-        public static string user = "C##PET";
-        public static string pwd = "campus";
-        public static string db = "localhost:1521/orcl";
-        private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看用户信息，由ShowProfiles(DataTable dt)调用
         /// 注意用户的密码不能用明文存储，最起码的要求密码不能在客户端显示！！！
@@ -67,7 +65,9 @@ namespace PetFoster.DAL
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = $"select *from user2 where user_id={UID}";
+                command.CommandText = "select *from user2 where User_ID=:user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
@@ -83,6 +83,7 @@ namespace PetFoster.DAL
                         user1.Phone_Number = reader["Phone_Number"].ToString();
                         user1.Role = reader["Role"].ToString();
                         // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
+
                     }
                     if (user1.User_ID == "-1")
                         throw new Exception("不存在的用户，请注册新用户！");
@@ -136,6 +137,47 @@ namespace PetFoster.DAL
             }
 
             return profile;
+        }
+        public static User GetUserByTel(string Tel, string pwd, bool IsAdmin = false)
+        {
+            bool con = false;
+            User user1 = new User();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = $"select *from user2 where Phone_Number={Tel}";
+                try
+                {
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        // 访问每一行的数据
+                        // 其他列..
+                        user1.User_ID = reader["User_ID"].ToString();
+                        user1.User_Name = reader["User_Name"].ToString();
+                        user1.Account_Status = reader["Account_Status"].ToString();
+                        user1.Address = reader["Address"].ToString();
+                        user1.Password = reader["Password"].ToString();
+                        user1.Phone_Number = reader["Phone_Number"].ToString();
+                        user1.Role = reader["Role"].ToString();
+                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
+
+                    }
+                    if (user1.User_ID == "-1")
+                        throw new Exception("不存在的用户，请注册新用户！");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                connection.Close();
+            }
+
+            return user1;
         }
         public static string GetRole(string UID)
         {
@@ -208,7 +250,8 @@ namespace PetFoster.DAL
                     try
                     {
                         command.ExecuteNonQuery();
-                        UID = command.Parameters["user_id"].Value.ToString(); // 获取插入后的用户ID
+                        command.CommandText = "select user_id_seq.CURRVAL from dual";
+                        UID = command.ExecuteScalar().ToString();
                     }
                     catch (OracleException ex)
                     {

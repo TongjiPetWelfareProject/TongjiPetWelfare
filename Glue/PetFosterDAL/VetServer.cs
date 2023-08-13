@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using System.Security.Cryptography;
+using Microsoft.Extensions.Configuration;
 
 namespace PetFoster.DAL
 {
     public class VetServer
     {
-        public static string user = "\"C##PET\"";
-        public static string pwd = "campus";
-        public static string db = "localhost:1521/orcl";
-        private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看兽医信息，由ShowProfiles(DataTable dt)调用
         /// </summary>
@@ -225,7 +223,7 @@ namespace PetFoster.DAL
                         "working_start_hr=:working_start_hr, working_start_min=:working_start_min,working_end_hr=:working_end_hr,working_end_min=:working_end_min";
                     command.Parameters.Clear();
                     command.Parameters.Add("vet_name", OracleDbType.Varchar2, vetname, ParameterDirection.Input);
-                    command.Parameters.Add("salary", OracleDbType.Double, pwd, ParameterDirection.Input);
+                    command.Parameters.Add("salary", OracleDbType.Double, Salary, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);
                     command.Parameters.Add("working_start_hr", OracleDbType.Decimal, wsh, ParameterDirection.Input);
                     command.Parameters.Add("working_start_min", OracleDbType.Decimal, wsm, ParameterDirection.Input);

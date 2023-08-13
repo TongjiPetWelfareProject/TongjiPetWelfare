@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Microsoft.Extensions.Configuration;
+using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,7 @@ namespace PetFoster.DAL
 {
     public class FosterServer
     {
-        public static string user = "\"C##PET\"";
-        public static string pwd = "campus";
-        public static string db = "localhost:1521/orcl";
-        private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看寄养信息
         /// </summary>
@@ -179,7 +177,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"select count(*) from foster where User_ID='{UID}' and password='{pwd}' " +
+                command.CommandText = $"select count(*) from foster where User_ID='{UID}' and fosterer='{PID}' " +
                     $" and start_year={date.Year} and start_month={date.Month} and start_day={date.Day} and " +
                     $"(censor_state='at capacity' or censor_state='invalid')";
                 try

@@ -1,19 +1,18 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Microsoft.Extensions.Configuration;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace PetFoster.DAL
 {
     internal class AccommodateServer
     {
-        public static string user = "\"C##PET\"";
-        public static string pwd = "campus";
-        public static string db = "localhost:1521/orcl";
-        private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static string conStr = Environment.GetEnvironmentVariable("MYDATABASE");
         public static void InsertAccommodate(string UID, string PID,short storey,short compartment)
         {
             // 添加新行

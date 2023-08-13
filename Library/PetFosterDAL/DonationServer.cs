@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Microsoft.Extensions.Configuration;
+using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace PetFoster.DAL
 {
     public class DonationServer
     {
-        public static string conStr = AccommodateServer.conStr;
+        public static string conStr = AccommodateServer.conf.GetConnectionString("MyDatabase");
         /// <summary>
         /// 注意SQL中EXTRACT的用法，这是给管理员看的，个人点赞是GetLikePetEntry...
         /// </summary>

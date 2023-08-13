@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Microsoft.Extensions.Configuration;
+using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,7 @@ namespace PetFoster.DAL
 {
     public class EmployeeServer
     {
-        public static string user = "\"C##PET\"";
-        public static string pwd = "campus";
-        public static string db = "localhost:1521/orcl";
-        private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+        public static string conStr = AccommodateServer.conStr;
         /// <summary>
         /// 查看雇员信息，由ShowProfiles(DataTable dt)调用
         /// </summary>
@@ -222,7 +220,7 @@ namespace PetFoster.DAL
                         "duty=:duty,working_start_hr=:working_start_hr, working_start_min=:working_start_min,working_end_hr=:working_end_hr,working_end_min=:working_end_min";
                     command.Parameters.Clear();
                     command.Parameters.Add("employee_name", OracleDbType.Varchar2, employee_name, ParameterDirection.Input);
-                    command.Parameters.Add("salary", OracleDbType.Double, pwd, ParameterDirection.Input);
+                    command.Parameters.Add("salary", OracleDbType.Double, Salary, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);
                     command.Parameters.Add("duty", OracleDbType.Varchar2, duty, ParameterDirection.Input);
                     command.Parameters.Add("working_start_hr", OracleDbType.Decimal, wsh, ParameterDirection.Input);
