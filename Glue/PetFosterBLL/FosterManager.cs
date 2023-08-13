@@ -16,9 +16,9 @@ namespace PetFoster.BLL
         /// <param name="censorstate">0为未审核，1为未通过审核，2为通过审核</param>
         /// <param name="Limitrow"></param>
         /// <param name="Orderby"></param>
-        public static void CensorFoster(int censorstate=0,int Limitrow = -1, string Orderby = null,bool verbose=false)
+        public static DataTable CensorFoster(out string censorStr,int censorstate=0,int Limitrow = -1, string Orderby = null,bool verbose=false)
         {
-            string censorStr=JsonHelper.GetErrorMessage("censor_state",censorstate);
+            censorStr=JsonHelper.GetErrorMessage("censor_state",censorstate);
 
             DataTable dt = FosterServer.FosterInfo(censorStr,Limitrow, Orderby,verbose);
             //调试用
@@ -36,6 +36,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;
         }
         /// <summary>
         /// 

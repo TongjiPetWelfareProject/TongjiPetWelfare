@@ -24,8 +24,8 @@ namespace WebApplicationTest1
 
             public LoginModel()
             {
-                Password = string.Empty;
                 Username = string.Empty;
+                Password = string.Empty;
             }
 
         }
@@ -90,8 +90,8 @@ namespace WebApplicationTest1
                 return Ok(responseJson);
             }
 
-
-        }
+            
+}
         // PUT api/<LoginController>/5
         /*
         [HttpPut("{id}")]
