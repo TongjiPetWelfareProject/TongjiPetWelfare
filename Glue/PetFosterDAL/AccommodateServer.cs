@@ -12,8 +12,7 @@ namespace PetFoster.DAL
 {
     internal class AccommodateServer
     {
-        public static IConfiguration conf= Environment.GetEnvironmentVariable("MYDATABASE");
-        public static string conStr = conf.GetConnectionString("MyDatabase");
+        public static string conStr = Environment.GetEnvironmentVariable("MYDATABASE");
         public static void InsertAccommodate(string UID, string PID,short storey,short compartment)
         {
             // 添加新行
