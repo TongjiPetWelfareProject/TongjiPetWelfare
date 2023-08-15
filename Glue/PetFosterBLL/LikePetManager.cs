@@ -15,7 +15,7 @@ namespace PetFoster.BLL
         /// </summary>
         /// <param name="Limitrow"></param>
         /// <param name="Orderby"></param>
-        public static void ShowLikePet(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowLikePet(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = LikePetServer.LikePetInfo(Limitrow, Orderby);
             //调试用
@@ -33,6 +33,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;
         }
         public static void GiveALike(string UID, string PID)
         {

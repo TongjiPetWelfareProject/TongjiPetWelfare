@@ -9,7 +9,7 @@ namespace Glue.Controllers
 {
     [Route("api")]
     [ApiController]
-    public class PetFoster : ControllerBase
+    public class PetFosterController : ControllerBase
     {
         public class FosterData
         {

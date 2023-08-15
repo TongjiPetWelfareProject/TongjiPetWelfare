@@ -10,7 +10,7 @@ namespace PetFoster.BLL
 {
     public class CollectPetInfoManager
     {
-        public static void ShowCollectPetInfo(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowCollectPetInfo(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = CollectPetInfoServer.CollectPetInfo(Limitrow, Orderby);
             //调试用
@@ -28,6 +28,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace PetFoster.BLL
 {
     public class CommentPetManager
     {
-        public static void ShowCommentPet(int Limitrow = -1, string Orderby = null, string UID = "-1", string PID = "-1")
+        public static DataTable ShowCommentPet(int Limitrow = -1, string Orderby = null, string UID = "-1", string PID = "-1")
         {
             DataTable dt = CommentPetServer.CommentPetInfo(Limitrow, Orderby, UID, PID);
             //调试用
@@ -28,6 +28,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;
         }
         public static void GiveAComment(string UID, string PID,string content)
         {

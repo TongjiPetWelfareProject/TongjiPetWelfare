@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
 using System.Data;
+using System.Text.Json;
+//using Microsoft.AspNetCore.JsonPatch;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,16 +14,14 @@ namespace Glue.Controllers
     {
         public class FosterRecord
         {
-            public string date;
-            public string id;
-            public string petId;
-            public string userId;
-            public int days;
-            public string censor_status;
+            public string date { get; set; }
+            public string petId { get; set; }
+            public string userId { get; set; }
+            public int days { get; set; }
+            public string censor_status { get; set; }
             public FosterRecord()
             {
                 date = "";
-                id = "";
                 petId = "";
                 userId = "";
                 days = 0;
@@ -36,7 +36,6 @@ namespace Glue.Controllers
         {
             string censorStr;
             DataTable dt = FosterManager.CensorFoster(out censorStr);
-
             List<FosterRecord> RecordList = new List<FosterRecord>();
 
             for(int i=0; i < dt.Rows.Count; i++)
@@ -64,10 +63,25 @@ namespace Glue.Controllers
                 RecordItem.censor_status = censorStr;
                 RecordList.Add(RecordItem);
             }
-            
-            return Ok(RecordList);
+            /*
+            foreach (FosterRecord Record in RecordList)
+            {
+                Console.WriteLine(Record.date+Record.petId+Record.userId+Record.days.ToString()+Record.censor_status);
+            }
+            */
+            string jsondata = JsonSerializer.Serialize(RecordList);
+            Console.WriteLine(jsondata);
+
+            return Ok(jsondata);
         }
-        
+        /*
+        // PATCH: api/<ManageFosterController>
+        [HttpPatch("manage-foster-update")]
+        public IActionResult PatchFosterRecord([FromBody] JsonPatchDocument<FosterRecord> patchDoc)
+        {
+
+        }
+
         /*
 
         // GET api/<ManageFosterController>/5
