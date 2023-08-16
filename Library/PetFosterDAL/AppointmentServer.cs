@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PetFoster.DAL
 {
-    public class ApplicationServer
+    public class AppointmentServer
     {
         public static string conStr = AccommodateServer.conStr;
         /// <summary>

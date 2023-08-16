@@ -13,7 +13,7 @@ namespace PetFoster.BLL
         {
             string censorStr = JsonHelper.GetErrorMessage("censor_state", censorstate);
 
-            DataTable dt =AdoptApplyServer.FosterInfo(censorStr, Limitrow, Orderby);
+            DataTable dt =AdoptApplyServer.AdoptInfo(censorStr, Limitrow, Orderby);
             //调试用
             foreach (DataColumn column in dt.Columns)
             {

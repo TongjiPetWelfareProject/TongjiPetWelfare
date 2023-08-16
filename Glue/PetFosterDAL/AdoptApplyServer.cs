@@ -12,7 +12,7 @@ namespace PetFoster.DAL
     public class AdoptApplyServer
     {
         public static string conStr = AccommodateServer.conStr;
-        public static DataTable FosterInfo(string censorStr = "", decimal Limitrows = -1, string Orderby = null)
+        public static DataTable AdoptInfo(string censorStr = "", decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -20,7 +20,7 @@ namespace PetFoster.DAL
                 connection.Open();
 
                 string query = "SELECT *" +
-                    "FROM adopt_apply ";
+                    "FROM adopt_view ";
                 if (Limitrows > 0)
                 {
                     if (censorStr != "")
