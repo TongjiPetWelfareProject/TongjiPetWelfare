@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Microsoft.Extensions.Configuration;
+using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using System;
 using System.Collections.Generic;
@@ -109,11 +110,12 @@ namespace PetFoster.DAL
             }
         }
         /// <summary>
-        /// 点赞
+        /// 用户想要捐赠,捐赠ID空出来，没必要写
         /// </summary>
-        /// <param name="UID"></param>
-        /// <param name="PID"></param>
-        public static void InsertLikePet(string UID, string PID)
+        /// <param name="DID"></param>
+        /// <param name="Amount"></param>
+        /// <param name="censor_state"></param>
+        public static void TryDonote(string DID, decimal Amount)
         {
             // 添加新行
             try
@@ -123,21 +125,17 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO like_pet (user_id, pet_id) " +
-                        "VALUES (:user_id,:pet_id)";
-                    command.Parameters.Clear();
-                    command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                    command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
-
+                    command.CommandText = $"INSERT INTO donation (donor_id, donation_amount) " +
+                        $"VALUES ({DID},{Amount})";
                     try
                     {
                         command.ExecuteNonQuery();
-                        Console.WriteLine($"{UID}给{PID}在{DateTime.Now}点赞");
+                        Console.WriteLine($"{DID}想捐{Amount}元");
 
                     }
                     catch (OracleException ex)
                     {
-                        Console.WriteLine("不存在的用户或宠物");
+                        Console.WriteLine("不存在的用户或数额非法");
                     }
                     connection.Close();
                 }
