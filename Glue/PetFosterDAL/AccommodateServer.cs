@@ -12,7 +12,8 @@ namespace PetFoster.DAL
 {
     internal class AccommodateServer
     {
-        public static string conStr = Environment.GetEnvironmentVariable("MYDATABASE");
+        public static string conStr = "User Id=C##PET;Password=campus;Data Source=8.130.34.218:1521/orcl";
+        //public static string conStr = Environment.GetEnvironmentVariable("MYDATABASE");
         public static void InsertAccommodate(string UID, string PID,short storey,short compartment)
         {
             // 添加新行
