@@ -13,7 +13,7 @@ namespace PetFoster.BLL
         {
             string censorStr = JsonHelper.GetErrorMessage("censor_state", censorstate);
 
-            DataTable dt =AdoptApplyServer.AdoptInfo(censorStr, Limitrow, Orderby);
+            DataTable dt = AdoptApplyServer.AdoptInfo(censorStr, Limitrow, Orderby);
             //调试用
             foreach (DataColumn column in dt.Columns)
             {
@@ -30,22 +30,23 @@ namespace PetFoster.BLL
                 Console.WriteLine();
             }
         }
-        public static int ApplyAdopt(string UID, string PID,bool gender, bool pet_exp, bool long_term_care,
+        public static int ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,
             bool w_to_treat, decimal d_care_h, string P_Caregiver, decimal f_popul, bool be_children, bool accept_vis)
         {
-            AdoptApplyServer.InsertAdoptApply(UID,PID,gender,pet_exp,long_term_care,w_to_treat,
-            d_care_h, P_Caregiver,f_popul,be_children,accept_vis);
+            AdoptApplyServer.InsertAdoptApply(UID, PID, gender, pet_exp, long_term_care, w_to_treat,
+            d_care_h, P_Caregiver, f_popul, be_children, accept_vis);
             return 0;
         }
         //审核通过
-        public static int CensorAdopt(string UID,int pid,DateTime dt,out int errcode)
+        public static int CensorAdopt(string UID, int pid, DateTime dt, out int errcode)
         {
             if (pid == -1)
             {
                 Console.WriteLine($"宠物已经全被领养或寄养（正在申请寄养）走了!");
                 errcode = 1;//如上
                 return -1;
-            }else if (pid == -2)
+            }
+            else if (pid == -2)
             {
                 Console.WriteLine($"审核过程异常!");
                 errcode = 2;
@@ -53,7 +54,7 @@ namespace PetFoster.BLL
             }
             //2.将此宠物交给主人领养
             int err = 0;
-            AdoptServer.InsertAdopt(UID, pid.ToString(),dt,out err);
+            AdoptServer.InsertAdopt(UID, pid.ToString(), dt, out err);
             if (err == -1)
             {
                 Console.WriteLine($"不存在该申请人!");

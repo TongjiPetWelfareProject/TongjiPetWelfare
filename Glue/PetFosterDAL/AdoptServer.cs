@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PetFoster.DAL
 {
-    internal class AdoptServer
+    public class AdoptServer
     {
         public static string conStr = AccommodateServer.conStr;
         public static DataTable PetInfo(decimal Limitrows = -1, string Orderby = null)
@@ -37,7 +37,7 @@ namespace PetFoster.DAL
             Console.ReadLine();
             return dataTable;
         }
-        public static void InsertAdopt(string UID,string PID,DateTime dt,out int errcode)
+        public static void InsertAdopt(string UID, string PID, DateTime dt, out int errcode)
         {
             // 添加新行
             try
@@ -67,7 +67,7 @@ namespace PetFoster.DAL
             catch (Exception ex)
             {
                 // 处理异常
-                errcode= -2;
+                errcode = -2;
                 Console.WriteLine(ex.ToString());
             }
         }
