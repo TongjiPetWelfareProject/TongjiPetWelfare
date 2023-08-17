@@ -9,7 +9,7 @@ namespace PetFoster.BLL
 {
     public class AdoptApplyManager
     {
-        public static void ShowCensorAdopt(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowCensorAdopt(int Limitrow = -1, string Orderby = null)
         {
 
             DataTable dt = AdoptApplyServer.AdoptInfo(Limitrow, Orderby);
@@ -28,6 +28,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;
         }
         public static int ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,
             bool w_to_treat, decimal d_care_h, string P_Caregiver, decimal f_popul, bool be_children, bool accept_vis)

@@ -27,6 +27,14 @@ namespace Glue.Controllers
                 days = 0;
                 censor_status = "";
             }
+            public void print()
+            {
+                Console.WriteLine("date:" + date + "\n");
+                Console.WriteLine("petId:" + petId + "\n");
+                Console.WriteLine("userId:" + userId + "\n");
+                Console.WriteLine("days:" + days + "\n");
+                Console.WriteLine("censor_status:" + censor_status + "\n");
+            }
         }
 
         // GET: api/<ManageFosterController>
@@ -35,51 +43,76 @@ namespace Glue.Controllers
         public IActionResult Get()
         {
             string censorStr;
-            DataTable dt = FosterManager.CensorFoster(out censorStr);
-            List<FosterRecord> RecordList = new List<FosterRecord>();
-
-            for(int i=0; i < dt.Rows.Count; i++)
+            try
             {
-                FosterRecord RecordItem = new FosterRecord();
-                for (int j = 0; j < dt.Columns.Count; j++)
+                DataTable dt = FosterManager.CensorFoster(out censorStr);
+                List<FosterRecord> RecordList = new List<FosterRecord>();
+
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    if (dt.Columns[j].ColumnName.ToLower() == "duration")
+                    FosterRecord RecordItem = new FosterRecord();
+                    for (int j = 0; j < dt.Columns.Count; j++)
                     {
-                        RecordItem.days = Convert.ToInt32(dt.Rows[i][j]);
+                        if (dt.Columns[j].ColumnName.ToLower() == "duration")
+                        {
+                            RecordItem.days = Convert.ToInt32(dt.Rows[i][j]);
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "fosterer")
+                        {
+                            RecordItem.userId = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
+                        {
+                            RecordItem.petId = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "startdate")
+                        {
+                            RecordItem.date = dt.Rows[i][j].ToString();
+                        }
                     }
-                    else if (dt.Columns[j].ColumnName.ToLower() == "fosterer")
-                    {
-                        RecordItem.userId = dt.Rows[i][j].ToString();
-                    }
-                    else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
-                    {
-                        RecordItem.petId = dt.Rows[i][j].ToString();
-                    }
-                    else if (dt.Columns[j].ColumnName.ToLower() == "startdate")
-                    {
-                        RecordItem.date = dt.Rows[i][j].ToString();
-                    }
+                    RecordItem.censor_status = censorStr;
+                    RecordList.Add(RecordItem);
                 }
-                RecordItem.censor_status = censorStr;
-                RecordList.Add(RecordItem);
-            }
-            /*
-            foreach (FosterRecord Record in RecordList)
-            {
-                Console.WriteLine(Record.date+Record.petId+Record.userId+Record.days.ToString()+Record.censor_status);
-            }
-            */
-            string jsondata = JsonSerializer.Serialize(RecordList);
-            Console.WriteLine(jsondata);
+                /*
+                foreach (FosterRecord Record in RecordList)
+                {
+                    Console.WriteLine(Record.date+Record.petId+Record.userId+Record.days.ToString()+Record.censor_status);
+                }
+                */
+                string jsondata = JsonSerializer.Serialize(RecordList);
+                Console.WriteLine(jsondata);
 
-            return Ok(jsondata);
+                return Ok(jsondata);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-        /*
+        
         // PATCH: api/<ManageFosterController>
         [HttpPatch("manage-foster-update")]
-        public IActionResult PatchFosterRecord([FromBody] JsonPatchDocument<FosterRecord> patchDoc)
+        public IActionResult UpdateFosterRecord([FromBody] FosterRecord record)
         {
-
+            if (record == null)
+            {
+                return BadRequest("Invalid data.");
+            }
+            //record.print();
+            DateTime? date = ConvertTools.StringConvertToDate(record.date);
+            if (date == null)
+            {
+                return BadRequest("Failed to parse the date.");
+            }
+            try
+            {
+                FosterManager.Censorship(record.userId, record.petId, (DateTime)date, record.censor_status);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         /*

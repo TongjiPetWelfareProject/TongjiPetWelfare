@@ -106,6 +106,11 @@ namespace PetFoster.BLL
             string msg = JsonHelper.GetErrorMessage("censor_state", censorcode);
             FosterServer.UpdateFosterEntry(UID, PID.ToString(), date,msg);
         }
+        public static void Censorship(string UID, string PID, DateTime date, string censor_state)
+        {
+            //string msg = JsonHelper.GetErrorMessage("censor_state", censorcode);
+            FosterServer.UpdateFosterEntry(UID, PID.ToString(), date, censor_state);
+        }
         public static int ReapplyFoster(string UID, int PID, DateTime dateTime)
         {
             //0. 是否存在该条目（必须为invalid或at capacity）

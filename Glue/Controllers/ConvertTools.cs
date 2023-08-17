@@ -8,7 +8,8 @@ namespace Glue.Controllers
     {
         public static DateTime? StringConvertToDate(string dateString)
         {
-            if (DateTime.TryParseExact(dateString, "yyyy-MM-ddTHH:mm:ss.fffZ", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+            string[] formats = { "yyyy-M-d", "yyyy-MM-dd", "yyyy-MM-ddTHH:mm:ss.fffZ", "yyyy-M-dTHH:mm:ss.fffZ" };
+            if (DateTime.TryParseExact(dateString, formats, null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
             {
                 // 'parsedDate' now holds the DateTime value
                 //Console.WriteLine(parsedDate.ToString()); // Print the parsed date

@@ -39,7 +39,7 @@ namespace PetFoster.DAL
 
             }
 
-            Console.ReadLine();
+            //Console.ReadLine();
             return dataTable;
         }
         //选择不在申请寄养或领养中并排除已经被寄养或领养的宠物
