@@ -9,11 +9,10 @@ namespace PetFoster.BLL
 {
     public class AdoptApplyManager
     {
-        public static void ShowCensorAdopt(int censorstate = 0, int Limitrow = -1, string Orderby = null)
+        public static void ShowCensorAdopt(int Limitrow = -1, string Orderby = null)
         {
-            string censorStr = JsonHelper.GetErrorMessage("censor_state", censorstate);
 
-            DataTable dt = AdoptApplyServer.AdoptInfo(censorStr, Limitrow, Orderby);
+            DataTable dt = AdoptApplyServer.AdoptInfo(Limitrow, Orderby);
             //调试用
             foreach (DataColumn column in dt.Columns)
             {
