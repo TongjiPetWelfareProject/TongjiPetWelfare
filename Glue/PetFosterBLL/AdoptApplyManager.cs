@@ -38,7 +38,7 @@ namespace PetFoster.BLL
             return 0;
         }
         //审核通过
-        public static int CensorAdopt(string UID,int pid,out int errcode)
+        public static int CensorAdopt(string UID,int pid,DateTime dt,out int errcode)
         {
             if (pid == -1)
             {
@@ -53,7 +53,7 @@ namespace PetFoster.BLL
             }
             //2.将此宠物交给主人领养
             int err = 0;
-            AdoptServer.InsertAdopt(UID, pid.ToString(),out err);
+            AdoptServer.InsertAdopt(UID, pid.ToString(),dt,out err);
             if (err == -1)
             {
                 Console.WriteLine($"不存在该申请人!");

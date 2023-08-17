@@ -37,7 +37,7 @@ namespace PetFoster.DAL
             Console.ReadLine();
             return dataTable;
         }
-        public static void InsertAdopt(string UID,string PID,out int errcode)
+        public static void InsertAdopt(string UID,string PID,DateTime dt,out int errcode)
         {
             // 添加新行
             try
@@ -47,8 +47,9 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO adopt (adopter_id, pet_id)" +
-                    $"VALUES ({UID},{PID})";
+                    command.CommandText = "INSERT INTO adopt (adopter_id, pet_id,apply_date)" +
+                    $"VALUES ({UID},{PID},:dt)";
+                    command.Parameters.Add("dt", OracleDbType.Date, dt, ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();
