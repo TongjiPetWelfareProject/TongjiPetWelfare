@@ -153,23 +153,31 @@ namespace PetFoster.DAL
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
+                    reader.Read();
                     pet.Pet_ID = reader["Pet_ID"].ToString();
                     pet.Pet_Name = reader["Pet_Name"].ToString();
                     pet.Species = reader["Species"].ToString();
                     pet.birthdate = Convert.ToDateTime(reader["BIRTHDATE"]);
-                    pet.Avatar = (byte[])(reader["Avatar"]);
+                    if (reader["Avatar"] != DBNull.Value)
+                        pet.Avatar = (byte[])reader["Avatar"];
+                    else
+                        pet.Avatar = null;
                     pet.Read_Num = Convert.ToDecimal(reader["Read_Num"]);
                     pet.Like_Num = Convert.ToDecimal(reader["Like_Num"]);
                     pet.Collect_Num = Convert.ToDecimal(reader["Collect_Num"]);
                     petoverall.original_pet = pet;
+                    petoverall.original_pet.Vaccine = reader["Health_State"].ToString();
+                    petoverall.original_pet.Health_State = reader["Health_State"].ToString();
                     petoverall.Comment_Num = Convert.ToInt32(reader["comment_num"]);
                     petoverall.sex = Convert.ToChar(reader["sex"]) == 'M' ? true : false;
                     petoverall.Psize = reader["psize"].ToString();
-                    while (reader.Read())
+                    petoverall.Popularity = Convert.ToInt32(reader["popularity"]);
+                    petoverall.comments = new Pet2.Comment[petoverall.Comment_Num];
+                    for (int k = 0; k < petoverall.Comment_Num; k++)
                     {
-                        petoverall.comments[0].comment_time = Convert.ToDateTime(reader["comment_time"]);
-                        petoverall.comments[0].comment_contents = reader["comment_contents"].ToString();
-                        break;
+                        petoverall.comments[k] = new Pet2.Comment("", DateTime.Now);
+                        petoverall.comments[k].comment_time = Convert.ToDateTime(reader["comment_time"]);
+                        petoverall.comments[k].comment_contents = reader["comment_contents"].ToString();
                     }
                     if (pet.Pet_ID == "-1")
                         throw new Exception("不存在的宠物！");

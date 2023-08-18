@@ -14,6 +14,11 @@ namespace PetFoster.Model
         {
             public string comment_contents;
             public DateTime comment_time;
+            public Comment(string co, DateTime comdt)
+            {
+                comment_contents = co;
+                comment_time = comdt;
+            }
         }
         public Pet2()
         {
