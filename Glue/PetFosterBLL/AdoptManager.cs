@@ -10,7 +10,7 @@ namespace PetFoster.BLL
 {
     public class AdoptManager
     {
-        public static void ShowPetProfile(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowPetProfile(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = AdoptServer.PetInfo(Limitrow, Orderby);
             //调试用
@@ -28,6 +28,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;
         }
     }
 }

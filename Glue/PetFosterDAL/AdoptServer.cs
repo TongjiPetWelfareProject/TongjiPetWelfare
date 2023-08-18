@@ -34,7 +34,7 @@ namespace PetFoster.DAL
                 connection.Close();
             }
 
-            Console.ReadLine();
+            //Console.ReadLine();
             return dataTable;
         }
         public static void InsertAdopt(string UID, string PID, DateTime dt, out int errcode)

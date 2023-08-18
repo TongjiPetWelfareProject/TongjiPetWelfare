@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.Model;
+using System.Data;
+using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,14 +27,55 @@ namespace Glue.Controllers
             public string? accept_vis { get; set; }
         }
 
-        /*
         // GET: api/<PetAdoptController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("pet-list")]
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            DataTable dt = AdoptManager.ShowPetProfile();
+            List<Dictionary<string, object>> dataRows = new List<Dictionary<string, object>>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                Dictionary<string, object> rowData = new Dictionary<string, object>();
+                foreach (DataColumn column in dt.Columns)
+                {
+                    if (column.ColumnName != "AVARTAR")
+                    {
+                        rowData[column.ColumnName] = row[column];
+                    }
+                }
+                byte[] avatarBytes = (byte[])row["AVATAR"];
+                string base64Avatar = Convert.ToBase64String(avatarBytes);
+                rowData["AVATAR"] = base64Avatar;
+                dataRows.Add(rowData);
+            }
+            string jsonData = JsonSerializer.Serialize(dataRows);
+            return Ok(jsonData);
+            /*
+            try
+            {
+                DataTable dt = AdoptManager.ShowPetProfile();
+                List<Pet> PetList = new List<Pet>();
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Pet PetItem = new Pet((PetData.PETRow);
+                    
+                    PetList.Add(PetItem);
+                }
+
+                string jsondata = JsonSerializer.Serialize(PetList);
+
+                return Ok(jsondata);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            */
         }
 
+        /*
         // GET api/<PetAdoptController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -41,7 +85,7 @@ namespace Glue.Controllers
         */
 
         // POST api/<PetAdoptController>
-        [HttpPost]
+        [HttpPost("pet-adopt")]
         public IActionResult Post([FromBody] AdoptData adopt_table)
         {
             if (adopt_table == null)
