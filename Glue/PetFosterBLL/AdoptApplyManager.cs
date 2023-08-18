@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PetFoster.Model;
 using PetFoster.DAL;
 namespace PetFoster.BLL
 {
@@ -65,6 +66,12 @@ namespace PetFoster.BLL
             AdoptApplyServer.UpdateAdoptEntry(UID, "legitimate");
             errcode = 0;//正常运行
             return pid;
+        }
+        public static Pet2 RetrievePet(int PID)
+        {
+            Pet2 pet = new Pet2();
+            pet = AdoptApplyServer.SelectPet(PID.ToString());
+            return pet;
         }
     }
 }

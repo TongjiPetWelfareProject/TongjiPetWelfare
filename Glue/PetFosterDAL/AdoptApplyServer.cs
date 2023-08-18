@@ -7,6 +7,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using PetFoster.Model;
+
 namespace PetFoster.DAL
 {
     public class AdoptApplyServer
@@ -135,6 +137,52 @@ namespace PetFoster.DAL
                 // 处理异常
                 Console.WriteLine(ex.ToString());
             }
+        }
+        public static Pet2 SelectPet(string PID)
+        {
+            bool con = false;
+            Pet2 petoverall = new Pet2();
+            Pet pet = new Pet();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"select *from pet_profile where Pet_ID={PID}";
+                try
+                {
+                    OracleDataReader reader = command.ExecuteReader();
+                    pet.Pet_ID = reader["Pet_ID"].ToString();
+                    pet.Pet_Name = reader["Pet_Name"].ToString();
+                    pet.Species = reader["Species"].ToString();
+                    pet.birthdate = Convert.ToDateTime(reader["BIRTHDATE"]);
+                    pet.Avatar = (byte[])(reader["Avatar"]);
+                    pet.Read_Num = Convert.ToDecimal(reader["Read_Num"]);
+                    pet.Like_Num = Convert.ToDecimal(reader["Like_Num"]);
+                    pet.Collect_Num = Convert.ToDecimal(reader["Collect_Num"]);
+                    petoverall.original_pet = pet;
+                    petoverall.Comment_Num = Convert.ToInt32(reader["comment_num"]);
+                    petoverall.sex = Convert.ToChar(reader["sex"]) == 'M' ? true : false;
+                    petoverall.Psize = reader["psize"].ToString();
+                    while (reader.Read())
+                    {
+                        petoverall.comments[0].comment_time = Convert.ToDateTime(reader["comment_time"]);
+                        petoverall.comments[0].comment_contents = reader["comment_contents"].ToString();
+                        break;
+                    }
+                    if (pet.Pet_ID == "-1")
+                        throw new Exception("不存在的宠物！");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    throw;
+                }
+                connection.Close();
+            }
+
+            return petoverall;
         }
     }
 }
