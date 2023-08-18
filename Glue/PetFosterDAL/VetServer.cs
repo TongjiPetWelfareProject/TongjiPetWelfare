@@ -16,13 +16,58 @@ namespace PetFoster.DAL
     public class VetServer
     {
         public static string conStr = AccommodateServer.conStr;
-        /// <summary>
-        /// 查看兽医信息，由ShowProfiles(DataTable dt)调用
-        /// </summary>
-        /// <param name="Limitrows">最多显示的行数</param>
-        /// <param name="Orderby">排序的依据（降序）</param>
-        /// <returns>返回数据表</returns>
-        public static DataTable VetInfo(decimal Limitrows=-1,string Orderby=null)
+        //用户选择医生，需要展示
+        public static DataTable VetInfoForApmt(decimal Limitrows = -1, string Orderby = null)
+        {
+            string query = "SELECT vet_id,vet_name FROM vet ";
+            if (Limitrows > 0)
+                query += $" where rownum<={Limitrows} ";
+            if ((Orderby) != null)
+                query += $" order by {Orderby} desc";
+            DataTable dataTable = DBHelper.ShowInfo(query, Limitrows, Orderby);
+            return dataTable;
+        }
+        //获取医生的图片
+        public static Vet GetPortrait(string VID)
+        {
+            bool con = false;
+            Vet vet = new Vet();
+            vet.vet_id = "-1"; ;
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select vet_id,portrait from vet where Vet_ID=:vet_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("vet_id", OracleDbType.Varchar2, VID, ParameterDirection.Input);
+                try
+                {
+                    OracleDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        // 访问每一行的数据
+                        // 其他列..
+                        vet.vet_id = reader["Vet_ID"].ToString();
+                        vet.portrait = (byte[])reader["Portrait"];
+                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
+
+                    }
+                    if (vet.vet_id == "-1")
+                        throw new Exception("不存在的用户，请注册新用户！");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                connection.Close();
+            }
+
+            return vet;
+        }
+        // 管理员端，查看兽医信息，由ShowProfiles(DataTable dt)调用
+        public static DataTable VetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -34,16 +79,16 @@ namespace PetFoster.DAL
                     query += $" where rownum<={Limitrows} ";
                 if ((Orderby) != null)
                     query += $" order by {Orderby} desc";
-                
+
                 OracleCommand command = new OracleCommand(query, connection);
 
                 OracleDataAdapter adapter = new OracleDataAdapter(command);
-                
+
                 adapter.Fill(dataTable);
 
                 connection.Close();
 
-                
+
             }
 
             Console.ReadLine();
@@ -65,7 +110,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                    command.CommandText = "select *from vet where Vet_ID=:vet_id";
+                command.CommandText = "select *from vet where Vet_ID=:vet_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("vet_id", OracleDbType.Varchar2, VID, ParameterDirection.Input);
                 try
@@ -123,7 +168,7 @@ namespace PetFoster.DAL
         /// <param name="weh">Working_End_Hour 工作结束时间(时)</param>
         /// <param name="wem">Working_End_Min 工作结束时间(分钟)</param>
         /// <returns>新入职的兽医的ID</returns>
-        public static int InsertVet(string vetname,decimal Salary, string PhoneNumber,decimal wsh,decimal wsm,decimal weh,decimal wem)
+        public static int InsertVet(string vetname, decimal Salary, string PhoneNumber, decimal wsh, decimal wsm, decimal weh, decimal wem)
         {
             // 添加新行
             int PID = -1;
@@ -150,7 +195,7 @@ namespace PetFoster.DAL
                         command.ExecuteNonQuery();
                         command.CommandText = "select max(cast(user_id as integer)) from user2";
                         command.Parameters.Clear();
-                        PID=Convert.ToInt32(command.ExecuteScalar());
+                        PID = Convert.ToInt32(command.ExecuteScalar());
                         connection.Close();
                         return PID;
                     }
@@ -159,7 +204,7 @@ namespace PetFoster.DAL
                         Console.WriteLine("错误码" + ex.ErrorCode.ToString());
                         return -1;
                     }
-                    
+
                 }
             }
             catch (Exception ex)

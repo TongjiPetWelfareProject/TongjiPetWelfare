@@ -19,7 +19,7 @@ namespace PetFoster.DAL
         /// <param name="Limitrows">最多显示的行数</param>
         /// <param name="Orderby">排序的依据（降序）</param>
         /// <returns>返回数据表</returns>
-        public static DataTable ApplyInfo(string UID=null,string PID=null,string Categories=null)
+        public static DataTable ApplyInfo(string UID = null, string PID = null, string Categories = null)
         {
             DataTable dataTable = new DataTable();
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -27,11 +27,11 @@ namespace PetFoster.DAL
                 connection.Open();
 
                 string query = "SELECT category,pet_name,breed,age,user_name,reason,apply_time,phone_number FROM appoointment join user2 on user2.user_id=application.user_id join pet on application.pet_id=pet.pet_id";
-                if (UID!=null&&PID==null)
+                if (UID != null && PID == null)
                     query += $" where User_ID={UID} ";
-                else if (PID != null&&UID==null)
+                else if (PID != null && UID == null)
                     query += $" where Pet_ID={PID}";
-                if(UID!=null&&PID!=null)
+                if (UID != null && PID != null)
                     query += $" where User_ID={UID} and Pet_ID={PID}";
                 if (Categories != null)
                     query += $" where category='{Categories}'";
@@ -55,7 +55,7 @@ namespace PetFoster.DAL
         /// <param name="UID"></param>
         /// <param name="PID"></param>
         /// <returns></returns>
-        public static List<string> GetSpecies(string UID,string PID)
+        public static List<string> GetSpecies(string UID, string PID)
         {
             List<string> categories = new List<string>();
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -73,8 +73,8 @@ namespace PetFoster.DAL
                     OracleDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        categories.Add(reader.GetString(2));    
-                       
+                        categories.Add(reader.GetString(2));
+
                     }
                 }
                 catch (Exception ex)
@@ -86,7 +86,7 @@ namespace PetFoster.DAL
 
             return categories;
         }
-        public static string InsertAppointment(string UID,string PID,DateTime dt,string reason)
+        public static string InsertAppointment(string UID, string PID, string VID, DateTime dt, string reason)
         {
             try
             {
@@ -96,8 +96,8 @@ namespace PetFoster.DAL
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     string account_status = "In Good Standing";
-                    command.CommandText = "INSERT INTO appointment (user_id,pet_id,reason,custom_time ) " +
-                        $"VALUES ({UID},{PID},'{reason}',:dt)";
+                    command.CommandText = "INSERT INTO appointment (user_id,pet_id,vet_id,reason,custom_time ) " +
+                        $"VALUES ({UID},{PID},{VID},'{reason}',:dt)";
                     command.Parameters.Clear();
                     command.Parameters.Add("dt", OracleDbType.TimeStamp, dt, ParameterDirection.Input);
                     try
