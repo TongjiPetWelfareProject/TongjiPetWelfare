@@ -57,7 +57,7 @@ namespace WebApplicationTest1
             string password = loginModel.Password;
             Console.WriteLine(uid + " " + password);
             User candidate = UserManager.Login(uid, password);
-            candidate.Password=ComputeSHA256Hash(candidate.Password);
+            password = ComputeSHA256Hash(password);
             if (candidate.Password != password)
             {
                 return Unauthorized("密码错误，请重新输入");
