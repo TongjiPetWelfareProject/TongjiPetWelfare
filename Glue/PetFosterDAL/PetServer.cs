@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
+using PetFoster.BLL;
 using PetFoster.Model;
 using System;
 using System.Collections.Generic;
@@ -198,6 +199,7 @@ namespace PetFoster.DAL
             string vaccine = "";
             if (HaveVaccinated)
                 vaccine = HaveVaccinated ? "Y" : "N";
+            Breed = JsonHelper.TranslateToEn("猫", "species");
             // 添加新行
             try
             {
@@ -206,12 +208,12 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO pet (pet_id,pet_name, breed, birthdate, avatar, health_state, vaccine) " +
-                        "VALUES (pet_id_seq.NEXTVAL,:pet_name,:breed, :birthdate, :avatar, :health_state, :vaccine)"
+                    command.CommandText = "INSERT INTO pet (pet_id,pet_name, species, birthdate, avatar, health_state, vaccine) " +
+                        "VALUES (pet_id_seq.NEXTVAL,:pet_name,:species, :birthdate, :avatar, :health_state, :vaccine)"
                         ;
                     command.Parameters.Clear();
                     command.Parameters.Add("pet_name", OracleDbType.Varchar2, Petname, ParameterDirection.Input);
-                    command.Parameters.Add("breed", OracleDbType.Varchar2, Breed, ParameterDirection.Input);
+                    command.Parameters.Add("species", OracleDbType.Varchar2, Breed, ParameterDirection.Input);
                     command.Parameters.Add("birthdate", OracleDbType.Date, birthDate, ParameterDirection.Input);
                     command.Parameters.Add("avatar", OracleDbType.Blob, Avatar, ParameterDirection.Input);
                     command.Parameters.Add("health_state", OracleDbType.Varchar2, Health_State, ParameterDirection.Input);
