@@ -1,4 +1,5 @@
-﻿using PetFoster.DAL;
+using PetFoster.DAL;
+using PetFoster.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
-using static System.Net.Mime.MediaTypeNames;
+using Glue.PetFosterModel;
 
 namespace PetFoster.BLL
 {
@@ -140,6 +141,14 @@ namespace PetFoster.BLL
             //阅读量+1！
             ForumPostServer.ReadForum(FID);
             return tmp;
+        }
+
+        public static List<ForumPost> GetAllPosts()
+        {
+            List<ForumPost> PostList = new List<ForumPost>();
+
+            PostList = ForumPostServer.GetAllPosts();
+            return PostList;
         }
     }
 }
