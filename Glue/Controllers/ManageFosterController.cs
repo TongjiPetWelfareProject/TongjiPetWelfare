@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
 using System.Data;
 using System.Text.Json;
 //using Microsoft.AspNetCore.JsonPatch;
@@ -59,11 +60,11 @@ namespace Glue.Controllers
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "fosterer")
                         {
-                            RecordItem.userId = dt.Rows[i][j].ToString();
+                            RecordItem.userId = UserServer.GetName(dt.Rows[i][j].ToString());
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
                         {
-                            RecordItem.petId = dt.Rows[i][j].ToString();
+                            RecordItem.petId = PetServer.GetName(dt.Rows[i][j].ToString());
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "startdate")
                         {

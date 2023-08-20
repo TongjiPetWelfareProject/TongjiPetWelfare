@@ -185,6 +185,34 @@ namespace PetFoster.DAL
                 throw new Exception(status + "状态不合法！");
             }
         }
+        public static string GetName(string PID)
+        {
+            bool con = false;
+            User user1 = new User();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select pet_name from pet where Pet_ID=:pet_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                try
+                {
+                    string petname = command.ExecuteScalar() as string;
+                    if (petname == null)
+                        return "Pet"+PID;
+                    else
+                        return petname;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "Error";
+                }
+            }
+        }
         /// <summary>
         /// 插入宠物信息
         /// </summary>

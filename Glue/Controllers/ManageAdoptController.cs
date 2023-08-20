@@ -2,7 +2,7 @@
 using PetFoster.BLL;
 using System.Data;
 using System.Text.Json;
-
+using PetFoster.DAL;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Glue.Controllers
@@ -50,11 +50,11 @@ namespace Glue.Controllers
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
                         {
-                            RecordItem.petId = dt.Rows[i][j].ToString();
+                            RecordItem.petId = PetServer.GetName(dt.Rows[i][j].ToString());
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "adopter_id")
                         {
-                            RecordItem.userId = dt.Rows[i][j].ToString();
+                            RecordItem.userId = UserServer.GetName(dt.Rows[i][j].ToString());
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "reason")
                         {

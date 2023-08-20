@@ -189,7 +189,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select *from user2 where User_ID=:user_id";
+                command.CommandText = "select role from user2 where User_ID=:user_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 try
@@ -199,6 +199,34 @@ namespace PetFoster.DAL
                         return "Unknown";
                     else
                         return role;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "Error";
+                }
+            }
+        }
+        public static string GetName(string UID)
+        {
+            bool con = false;
+            User user1 = new User();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select user_name from user2 where User_ID=:user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    string username = command.ExecuteScalar() as string;
+                    if (username == null)
+                        return "User"+UID;
+                    else
+                        return username;
                 }
                 catch (Exception ex)
                 {

@@ -94,6 +94,34 @@ namespace PetFoster.DAL
             Console.ReadLine();
             return dataTable;
         }
+        public static string GetName(string VID)
+        {
+            bool con = false;
+            User user1 = new User();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select vet_name from user2 where Vet_ID=:vet_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("vet_id", OracleDbType.Varchar2, VID, ParameterDirection.Input);
+                try
+                {
+                    string username = command.ExecuteScalar() as string;
+                    if (username == null)
+                        return "Dr." + VID;
+                    else
+                        return "Dr."+username;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "Error";
+                }
+            }
+        }
         /// <summary>
         /// 获取兽医的信息
         /// </summary>
