@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using System;
@@ -85,6 +85,43 @@ namespace PetFoster.DAL
             }
 
             return btin;
+        }
+
+        public static List<Bulletin> GetAllBulletins()
+        {
+            List<Bulletin> bulletins = new List<Bulletin>();
+
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = "SELECT bulletin_id, heading, published_time, bulletin_contents, read_count " +
+                               "FROM bulletin " +
+                               "ORDER BY published_time DESC";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Bulletin bulletin = new Bulletin
+                        {
+                            Id = reader["bulletin_id"].ToString(),
+                            Heading = reader["heading"].ToString(),
+                            published_date = Convert.ToDateTime(reader["published_time"]),
+                            Content = reader["bulletin_contents"].ToString(),
+                            ReadCount = Convert.ToInt32(reader["read_count"])
+                        };
+
+                        bulletins.Add(bulletin);
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return bulletins;
         }
     }
 }
