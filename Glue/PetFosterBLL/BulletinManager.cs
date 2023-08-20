@@ -1,4 +1,5 @@
-﻿using PetFoster.DAL;
+using PetFoster.DAL;
+using PetFoster.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -34,6 +35,15 @@ namespace PetFoster.BLL
         public static void ShowBulletinVerbose(string BID)
         {
             PetFoster.Model.Bulletin target = BulletinServer.SelectBulletin(BID);
+        }
+
+        // 获取所有公告信息列表
+        public static List<Bulletin> GetAllBulletins()
+        {
+            List<Bulletin> bulletinList = new List<Bulletin>();
+
+            bulletinList = BulletinServer.GetAllBulletins(); // Empty string for all bulletins
+            return bulletinList;
         }
     }
 }
