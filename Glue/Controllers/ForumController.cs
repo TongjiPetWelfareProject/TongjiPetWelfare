@@ -11,7 +11,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System;
 using System.Numerics;
-using Glue.PetFosterModel;
+using Glue.PetFoster.Model;
 
 namespace Glue.Controllers
 {

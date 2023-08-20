@@ -26,10 +26,10 @@ namespace PetFoster.DAL
                     command.CommandText = "INSERT INTO accommodate (owner_id, pet_id,storey,compartment) " +
                         "VALUES (:user_id,:pet_id,:storey,:compartment)";
                     command.Parameters.Clear();
-                    command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                    command.Parameters.Add("owner_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                     command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
-                    command.Parameters.Add("user_id", OracleDbType.Int16, storey, ParameterDirection.Input);
-                    command.Parameters.Add("pet_id", OracleDbType.Int16, compartment, ParameterDirection.Input);
+                    command.Parameters.Add("storey", OracleDbType.Int16, storey, ParameterDirection.Input);
+                    command.Parameters.Add("compartment", OracleDbType.Int16, compartment, ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();

@@ -1,4 +1,4 @@
-using Glue.PetFosterModel;
+using Glue.PetFoster.Model;
 using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;

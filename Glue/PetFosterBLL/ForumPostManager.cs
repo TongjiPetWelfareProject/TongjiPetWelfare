@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
-using Glue.PetFosterModel;
+using Glue.PetFoster.Model;
 
 namespace PetFoster.BLL
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Glue.PetFosterModel
+namespace Glue.PetFoster.Model
 {
     public class ForumPost
     {
