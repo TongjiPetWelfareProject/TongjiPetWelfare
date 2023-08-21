@@ -25,17 +25,13 @@ namespace Glue.Controllers
             foreach(DataRow row in dataTable.Rows)
             {
                 // 使用PadLeft方法确保始终有两位数
-                string startHourString = (row["working_start_hr"]?.ToString() ?? string.Empty).PadLeft(2, '0');
-                string startMinuteString = (row["working_start_min"]?.ToString() ?? string.Empty).PadLeft(2, '0');
-                string endHourString = (row["working_end_hr"]?.ToString() ?? string.Empty).PadLeft(2, '0');
-                string endMinuteString = (row["working_end_min"]?.ToString() ?? string.Empty).PadLeft(2, '0');
 
                 var doctor = new Doctor
                 {
                     id = row["vet_id"].ToString(),
                     name = row["vet_name"].ToString(),
-                    phone = row["phone_number"].ToString(),
-                    workingHours = $"{startHourString}:{startMinuteString}-{endHourString}:{endMinuteString}",
+                    phone = row["tel"].ToString(),
+                    workingHours = row["working_hours"].ToString(),
                     salary = row["salary"].ToString()
                 };
                 vetList.Add(doctor);

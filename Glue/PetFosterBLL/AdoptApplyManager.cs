@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PetFoster.Model;
 using PetFoster.DAL;
+using Glue.PetFoster.BLL;
+
 namespace PetFoster.BLL
 {
     public class AdoptApplyManager
@@ -15,20 +17,7 @@ namespace PetFoster.BLL
 
             DataTable dt = AdoptApplyServer.AdoptInfo(Limitrow, Orderby);
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-15}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    Console.Write("{0,-15}", item);
-                }
-                Console.WriteLine();
-            }
+            Util.DebugTable(dt);
             return dt;
         }
         public static int ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,
