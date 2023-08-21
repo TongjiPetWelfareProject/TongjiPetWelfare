@@ -22,27 +22,8 @@ namespace PetFoster.DAL
         public static DataTable DonationInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT donor_id,donation_amount,TO_CHAR(donation_time,'YYYY-MM-DD') as donated_date, TO_CHAR(donation_time,'HH24:MI:SS') as donated_time FROM donation";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT donor_id,donation_amount,TO_CHAR(donation_time,'YYYY-MM-DD') as donated_date, TO_CHAR(donation_time,'HH24:MI:SS') as donated_time FROM donation";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         public static DataTable DonationAmount(decimal Limitrows = -1, string Orderby = null)
         {

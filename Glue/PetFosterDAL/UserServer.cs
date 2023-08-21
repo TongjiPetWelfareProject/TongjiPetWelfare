@@ -26,27 +26,8 @@ namespace PetFoster.DAL
         public static DataTable UserInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT user_id,user_name,phone_number,account_status,address FROM user2 where role='User'";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT user_id,user_name,phone_number,account_status,address FROM user2 where role='User'";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
 
         /// <summary>

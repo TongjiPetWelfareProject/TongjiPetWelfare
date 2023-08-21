@@ -22,27 +22,8 @@ namespace PetFoster.DAL
         public static DataTable LikePostInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT user_id,post_id,TO_CHAR(like_time,'YYYY-MM-DD') as liked_date, TO_CHAR(like_time,'HH24:MI:SS') as liked_time FROM like_post";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT user_id,post_id,TO_CHAR(like_time,'YYYY-MM-DD') as liked_date, TO_CHAR(like_time,'HH24:MI:SS') as liked_time FROM like_post";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
         /// 获取点赞帖子条目

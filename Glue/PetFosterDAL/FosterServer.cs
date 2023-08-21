@@ -26,38 +26,22 @@ namespace PetFoster.DAL
         public static DataTable FosterInfo(string censorStr="",decimal Limitrows = -1, string Orderby = null,bool verbose=false)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT duration,fosterer,pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
+            string query = "SELECT duration,fosterer,pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
                     ",REMARK FROM foster ";
-                if (verbose)
-                    query = "SELECT * from foster_window";
-                if (Limitrows > 0)
-                {
-                    if (censorStr != "")
-                        query += $" where rownum<={Limitrows} and censor_state='{censorStr}'";
-                    else
-                        query += $" where rownum<={Limitrows}";
-                }else
-                    query += $" where censor_state='{censorStr}'";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-                
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
+            if (verbose)
+                query = "SELECT * from foster_window";
+            if (Limitrows > 0)
+            {
+                if (censorStr != "")
+                    query += $" where rownum<={Limitrows} and censor_state='{censorStr}'";
+                else
+                    query += $" where rownum<={Limitrows}";
             }
-
-            //Console.ReadLine();
-            return dataTable;
+            else
+                query += $" where censor_state='{censorStr}'";
+            if ((Orderby) != null)
+                query += $" order by {Orderby} desc";
+            return DBHelper.ShowInfo(query);
         }
         public static void UpdateFosterEntry(string UID, string PID,DateTime date,string censor_status)
         {

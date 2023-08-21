@@ -16,32 +16,10 @@ namespace PetFoster.DAL
         public static string conStr = AccommodateServer.conStr;
         public static DataTable AdoptInfo(decimal Limitrows = -1, string Orderby = null)
         {
-            DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT *" +
+            
+            string query = "SELECT *" +
                     "FROM adopt_view ";
-                if (Limitrows > 0)
-                {
-                        query += $" where rownum<={Limitrows}";
-                }
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
-            }
-
-            //Console.ReadLine();
+            DataTable dataTable = DBHelper.ShowInfo(query, Limitrows, Orderby);
             return dataTable;
         }
         //选择不在申请寄养或领养中并排除已经被寄养或领养的宠物

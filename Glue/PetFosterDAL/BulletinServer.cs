@@ -18,32 +18,16 @@ namespace PetFoster.DAL
         {
             string[] keywords = text.Split(',', ' ', '和', '&', '或', '与', '是', '.', '\\', '/');
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT bulletin_id,heading,published_time " +
+            string query = "SELECT bulletin_id,heading,published_time " +
                     "from bulletin where ";
-                foreach (string keyword in keywords)
-                {
-                    query += $" heading like '%{keyword}%' or";
-                }
-                if (query.EndsWith("or"))
-                    query = query.Substring(0, query.Length - 2);
-                query += " order by published_time desc";
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
+            foreach (string keyword in keywords)
+            {
+                query += $" heading like '%{keyword}%' or";
             }
-
-            Console.ReadLine();
-            return dataTable;
+            if (query.EndsWith("or"))
+                query = query.Substring(0, query.Length - 2);
+            query += " order by published_time desc";
+            return DBHelper.ShowInfo(query);
         }
         public static Bulletin SelectBulletin(string BID)
         {
