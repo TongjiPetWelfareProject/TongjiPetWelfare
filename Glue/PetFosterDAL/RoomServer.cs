@@ -24,7 +24,7 @@ namespace PetFoster.DAL
         {
             DataTable dataTable = new DataTable();
             string query = "SELECT * FROM room_avaiable ";
-            return DBHelper.ShowInfo(query, Limitrows, Orderby);
+            return DBHelper.ShowInfo(query);
         }
         /// <summary>
         /// 查看房间信息，由ShowProfiles(DataTable dt)调用

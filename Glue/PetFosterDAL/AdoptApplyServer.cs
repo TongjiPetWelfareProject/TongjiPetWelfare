@@ -16,10 +16,11 @@ namespace PetFoster.DAL
         public static string conStr = AccommodateServer.conStr;
         public static DataTable AdoptInfo(decimal Limitrows = -1, string Orderby = null)
         {
-            DataTable dataTable = new DataTable();
+            
             string query = "SELECT *" +
                     "FROM adopt_view ";
-            return DBHelper.ShowInfo(query, Limitrows, Orderby);
+            DataTable dataTable = DBHelper.ShowInfo(query, Limitrows, Orderby);
+            return dataTable;
         }
         //选择不在申请寄养或领养中并排除已经被寄养或领养的宠物
         public static int GetRandomPet(string species)

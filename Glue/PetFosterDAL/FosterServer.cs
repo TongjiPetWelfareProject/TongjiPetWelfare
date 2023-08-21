@@ -41,7 +41,7 @@ namespace PetFoster.DAL
                 query += $" where censor_state='{censorStr}'";
             if ((Orderby) != null)
                 query += $" order by {Orderby} desc";
-            return DBHelper.ShowInfo(query, Limitrows, Orderby);
+            return DBHelper.ShowInfo(query);
         }
         public static void UpdateFosterEntry(string UID, string PID,DateTime date,string censor_status)
         {

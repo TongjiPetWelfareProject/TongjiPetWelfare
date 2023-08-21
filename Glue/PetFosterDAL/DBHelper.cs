@@ -33,8 +33,6 @@ namespace PetFoster.DAL
 
                 connection.Close();
             }
-
-            Console.ReadLine();
             return dataTable;
         }
     }
