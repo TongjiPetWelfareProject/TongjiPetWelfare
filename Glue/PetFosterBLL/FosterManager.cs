@@ -1,4 +1,5 @@
-﻿using PetFoster.DAL;
+﻿using Glue.PetFoster.BLL;
+using PetFoster.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;

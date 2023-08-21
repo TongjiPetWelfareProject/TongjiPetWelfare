@@ -34,34 +34,16 @@ namespace PetFoster.DAL
         /// <returns>返回数据表</returns>
         public static DataTable RoomInfo(decimal Limitrows = -1, string Orderby = null,bool OnlyAvailable=false)
         {
-            DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT * FROM room ";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                else if (OnlyAvailable)
-                    query += $"where room_status='N'";
-                if (Limitrows > 0&&OnlyAvailable)
-                    query += "and room_status='N' ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT compartment,room_status,storey,cleaning_time FROM room ";
+            if (Limitrows > 0)
+                query += $" where rownum<={Limitrows} ";
+            else if (OnlyAvailable)
+                query += $"where room_status='N'";
+            if (Limitrows > 0 && OnlyAvailable)
+                query += "and room_status='N' ";
+            if ((Orderby) != null)
+                query += $" order by {Orderby} desc";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
         /// 更改房间信息，由征用/归还房间函数RentARoom(int requiredsize)和打扫房间调用，需要满足

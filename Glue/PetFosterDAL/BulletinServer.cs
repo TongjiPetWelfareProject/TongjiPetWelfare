@@ -17,7 +17,6 @@ namespace PetFoster.DAL
         public static DataTable BulletinInfo(string text)
         {
             string[] keywords = text.Split(',', ' ', '和', '&', '或', '与', '是', '.', '\\', '/');
-            DataTable dataTable = new DataTable();
             string query = "SELECT bulletin_id,heading,published_time " +
                     "from bulletin where ";
             foreach (string keyword in keywords)
@@ -26,6 +25,14 @@ namespace PetFoster.DAL
             }
             if (query.EndsWith("or"))
                 query = query.Substring(0, query.Length - 2);
+            query += " order by published_time desc";
+            return DBHelper.ShowInfo(query);
+        }
+        //管理员端
+        public static DataTable BulletinInfoForAdmin()
+        {
+            string query = "SELECT bulletin_id,heading,published_time,employee_id " +
+                    "from bulletin ";
             query += " order by published_time desc";
             return DBHelper.ShowInfo(query);
         }
