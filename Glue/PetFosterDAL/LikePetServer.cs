@@ -22,27 +22,8 @@ namespace PetFoster.DAL
         public static DataTable LikePetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT user_id,pet_id,EXTRACT date from like_time as liked_date, EXTRACT time from like_time as liked_time FROM like_pet";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT user_id,pet_id,EXTRACT date from like_time as liked_date, EXTRACT time from like_time as liked_time FROM like_pet";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
         /// 获取点赞宠物条目

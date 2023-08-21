@@ -46,33 +46,17 @@ namespace PetFoster.DAL
         public static DataTable UncensoredForum(decimal Limitrows = -1, string Orderby = null,bool beingcensored=true)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT heading,user_name as writer,read_count,comment_num,like_num,post_time FROM forum_posts" +
+            string query = "SELECT heading,user_name as writer,read_count,comment_num,like_num,post_time FROM forum_posts" +
                     " natural join user2 ";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                else if (beingcensored)
-                    query += $" where censored='N'";
-                if (Limitrows >0&& beingcensored)
-                    query += $" and censored='N'";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            if (Limitrows > 0)
+                query += $" where rownum<={Limitrows} ";
+            else if (beingcensored)
+                query += $" where censored='N'";
+            if (Limitrows > 0 && beingcensored)
+                query += $" and censored='N'";
+            if ((Orderby) != null)
+                query += $" order by {Orderby} desc";
+            return DBHelper.ShowInfo(query);
         }
         public static int InsertPost(string UID, string heading,string contents)
         {

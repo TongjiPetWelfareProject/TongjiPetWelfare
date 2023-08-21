@@ -22,32 +22,16 @@ namespace PetFoster.DAL
         public static DataTable ApplyInfo(string UID = null, string PID = null, string Categories = null)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT category,pet_name,breed,age,user_name,reason,apply_time,phone_number FROM appoointment join user2 on user2.user_id=application.user_id join pet on application.pet_id=pet.pet_id";
-                if (UID != null && PID == null)
-                    query += $" where User_ID={UID} ";
-                else if (PID != null && UID == null)
-                    query += $" where Pet_ID={PID}";
-                if (UID != null && PID != null)
-                    query += $" where User_ID={UID} and Pet_ID={PID}";
-                if (Categories != null)
-                    query += $" where category='{Categories}'";
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT category,pet_name,breed,age,user_name,reason,apply_time,phone_number FROM appoointment join user2 on user2.user_id=application.user_id join pet on application.pet_id=pet.pet_id";
+            if (UID != null && PID == null)
+                query += $" where User_ID={UID} ";
+            else if (PID != null && UID == null)
+                query += $" where Pet_ID={PID}";
+            if (UID != null && PID != null)
+                query += $" where User_ID={UID} and Pet_ID={PID}";
+            if (Categories != null)
+                query += $" where category='{Categories}'";
+            return DBHelper.ShowInfo(query);
         }
         /// <summary>
         /// 获取某人对某宠物的申请种类

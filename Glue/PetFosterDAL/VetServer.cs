@@ -70,29 +70,8 @@ namespace PetFoster.DAL
         public static DataTable VetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT * FROM vet_labor ";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT * FROM vet_labor ";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         public static string GetName(string VID)
         {

@@ -23,25 +23,8 @@ namespace PetFoster.DAL
         public static DataTable StoreyInfo()
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT * FROM room_avaiable ";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-
-
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT * FROM room_avaiable ";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
         /// 查看房间信息，由ShowProfiles(DataTable dt)调用

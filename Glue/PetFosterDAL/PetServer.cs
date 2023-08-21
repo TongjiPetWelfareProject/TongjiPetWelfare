@@ -43,27 +43,8 @@ namespace PetFoster.DAL
         public static DataTable PetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT pet_id,pet_name,breed,TRUNC(MONTHS_BETWEEN(CURRENT_TIMESTAMP, birthdate) / 12) AS age,health_state,vaccine,read_num,like_num,collect_num FROM pet";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT pet_id,pet_name,breed,TRUNC(MONTHS_BETWEEN(CURRENT_TIMESTAMP, birthdate) / 12) AS age,health_state,vaccine,read_num,like_num,collect_num FROM pet";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
         /// 查看宠物信息或宠物是否存在
