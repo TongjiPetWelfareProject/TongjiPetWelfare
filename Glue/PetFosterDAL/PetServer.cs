@@ -173,7 +173,7 @@ namespace PetFoster.DAL
                 throw new Exception(status + "状态不合法！");
             }
         }
-        public static string GetName(string PID)
+        private static string GetAttr(string PID,string attribute)
         {
             bool con = false;
             User user1 = new User();
@@ -183,7 +183,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select pet_name from pet where Pet_ID=:pet_id";
+                command.CommandText = $"select {attribute} from pet where Pet_ID=:pet_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 try
@@ -200,6 +200,14 @@ namespace PetFoster.DAL
                     return "Error";
                 }
             }
+        }
+        public static string GetName(string PID)
+        {
+            return GetAttr(PID, "Pet_Name");
+        }
+        public static string GetHealthStatus(string PID)
+        {
+            return GetAttr(PID, "Health_Status");
         }
         /// <summary>
         /// 插入宠物信息

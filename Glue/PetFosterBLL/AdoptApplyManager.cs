@@ -34,8 +34,22 @@ namespace PetFoster.BLL
         public static int ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,
             bool w_to_treat, decimal d_care_h, string P_Caregiver, decimal f_popul, bool be_children, bool accept_vis)
         {
-            AdoptApplyServer.InsertAdoptApply(UID, PID, gender, pet_exp, long_term_care, w_to_treat,
-            d_care_h, P_Caregiver, f_popul, be_children, accept_vis);
+            //1.获取宠物的健康状况
+            try
+            {
+                string status = PetServer.GetHealthStatus(PID.ToString());
+                if (status == "Critical" || status == "Sicky" || status == "Unhealthy")
+                {
+                    throw new Exception("宠物健康情况危急，不能领养");
+                }
+
+                AdoptApplyServer.InsertAdoptApply(UID, PID, gender, pet_exp, long_term_care, w_to_treat,
+                d_care_h, P_Caregiver, f_popul, be_children, accept_vis);
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
             return 0;
         }
         //审核通过
