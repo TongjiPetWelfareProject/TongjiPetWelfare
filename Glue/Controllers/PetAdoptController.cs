@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
 using PetFoster.Model;
 using System.Data;
+using System.Text;
 using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -28,29 +29,29 @@ namespace Glue.Controllers
         }
 
         // GET: api/<PetAdoptController>
-        [HttpGet("pet-list")]
+        [HttpGet("petlist")]
         public IActionResult Get()
         {
             DataTable dt = AdoptManager.ShowPetProfile();
-            List<Dictionary<string, object>> dataRows = new List<Dictionary<string, object>>();
+            //List<Dictionary<string, object>> dataRows = new List<Dictionary<string, object>>();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                Dictionary<string, object> rowData = new Dictionary<string, object>();
-                foreach (DataColumn column in dt.Columns)
-                {
-                    if (column.ColumnName != "AVARTAR")
-                    {
-                        rowData[column.ColumnName] = row[column];
-                    }
-                }
-                byte[] avatarBytes = (byte[])row["AVATAR"];
-                string base64Avatar = Convert.ToBase64String(avatarBytes);
-                rowData["AVATAR"] = base64Avatar;
-                dataRows.Add(rowData);
-            }
-            string jsonData = JsonSerializer.Serialize(dataRows);
-            return Ok(jsonData);
+            //foreach (DataRow row in dt.Rows)
+            //{
+            //    Dictionary<string, object> rowData = new Dictionary<string, object>();
+            //    foreach (DataColumn column in dt.Columns)
+            //    {
+            //        if (column.ColumnName != "AVARTAR")
+            //        {
+            //            rowData[column.ColumnName] = row[column];
+            //        }
+            //    }
+            //    byte[] avatarBytes = (byte[])row["AVATAR"];
+            //    string base64Avatar = Convert.ToBase64String(avatarBytes);
+            //    rowData["AVATAR"] = base64Avatar;
+            //    dataRows.Add(rowData);
+            //}
+            string json = DataTableToJson(dt);
+            return Content(json, "application/json");
             /*
             try
             {
@@ -127,5 +128,41 @@ namespace Glue.Controllers
         {
         }
         */
+
+        private string DataTableToJson(DataTable table)
+        {
+            var jsonString = new StringBuilder();
+
+            if (table.Rows.Count > 0)
+            {
+                jsonString.Append("[");
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    jsonString.Append("{");
+
+                    for (int j = 0; j < table.Columns.Count; j++)
+                    {
+                        jsonString.AppendFormat("\"{0}\":\"{1}\"",
+                            table.Columns[j].ColumnName,
+                            table.Rows[i][j]);
+
+                        if (j < table.Columns.Count - 1)
+                        {
+                            jsonString.Append(",");
+                        }
+                    }
+
+                    jsonString.Append("}");
+                    if (i < table.Rows.Count - 1)
+                    {
+                        jsonString.Append(",");
+                    }
+                }
+                jsonString.Append("]");
+            }
+
+            return jsonString.ToString();
+        }
+
     }
 }
