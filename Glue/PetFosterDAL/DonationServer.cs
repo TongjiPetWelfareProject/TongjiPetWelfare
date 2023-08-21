@@ -67,7 +67,7 @@ namespace PetFoster.DAL
                 connection.Close();
             }
 
-            Console.ReadLine();
+            //Console.ReadLine();
             return dataTable;
         }
 
