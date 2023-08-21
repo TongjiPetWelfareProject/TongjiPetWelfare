@@ -1,4 +1,4 @@
-﻿using PetFoster.DAL;
+using PetFoster.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +10,7 @@ namespace PetFoster.BLL
 {
     public class DonationManager
     {
-        public static void ShowDonation(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowDonation(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = DonationServer.DonationInfo(Limitrow, Orderby);
             //调试用
@@ -28,6 +28,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;
         }
         //添加捐款信息（未审核）
         public static void Donate(string DID, decimal Amount)
