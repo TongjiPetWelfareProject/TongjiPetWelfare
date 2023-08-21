@@ -22,7 +22,8 @@ namespace PetFoster.DAL
         public static DataTable DonationInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT donor_id,donation_amount,TO_CHAR(donation_time,'YYYY-MM-DD') as donated_date, TO_CHAR(donation_time,'HH24:MI:SS') as donated_time FROM donation";
+            string query = "SELECT user_name,donation_amount,TO_CHAR(donation_time,'YYYY-MM-DD') as donated_date, TO_CHAR(donation_time,'HH24:MI:SS') as donated_time FROM donation" +
+                " left join user2 on donor_id=user_id";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         public static DataTable DonationAmount(decimal Limitrows = -1, string Orderby = null)
