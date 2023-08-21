@@ -1,4 +1,5 @@
-﻿using PetFoster.DAL;
+﻿using Glue.PetFoster.BLL;
+using PetFoster.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,20 +20,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = LikePetServer.LikePetInfo(Limitrow, Orderby);
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-15}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    Console.Write("{0,-15}", item);
-                }
-                Console.WriteLine();
-            }
+            Util.DebugTable(dt);
             return dt;
         }
         public static void GiveALike(string UID, string PID)

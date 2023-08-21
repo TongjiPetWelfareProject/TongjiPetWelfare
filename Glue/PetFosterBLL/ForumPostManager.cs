@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using Glue.PetFoster.Model;
+using Glue.PetFoster.BLL;
 
 namespace PetFoster.BLL
 {
@@ -28,20 +29,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = ForumPostServer.UncensoredForum(Limitrow, Orderby,beingcensored:false);
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-15}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    Console.Write("{0,-15}", item);
-                }
-                Console.WriteLine();
-            }
+            Util.DebugTable(dt);
         }
         /// <summary>
         /// 展示帖子界面
@@ -51,20 +39,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = ForumPostServer.SelectPost(PID.ToString());
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-15}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    Console.Write("{0,-15}", item);
-                }
-                Console.WriteLine();
-            }
+            Util.DebugTable(dt);
         }
         public static void UpdateForumProfile(string FID)
         {

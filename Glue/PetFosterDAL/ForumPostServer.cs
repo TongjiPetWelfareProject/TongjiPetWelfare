@@ -18,26 +18,11 @@ namespace PetFoster.DAL
         public static DataTable SelectPost(string PID)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                // 连接对象将在 using 块结束时自动关闭和释放资源
-                connection.Open();
-
-                string query = $"SELECT * from verbosepost where post_id={PID}";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-            }
-
-            return dataTable;
+            string query = $"SELECT * from verbosepost where post_id={PID}";
+            return DBHelper.ShowInfo(query);
         }
         /// <summary>
-        /// 展示所有帖子的详细信息，通过Named Param.（问ChatGPT）实现
+        /// 展示所有帖子的详细信息，用于管理员端审核,注意用post_id区分发帖者的ID，并进行相应的封号等操作，而不是user_name
         /// </summary>
         /// <param name="Limitrows"></param>
         /// <param name="Orderby"></param>
@@ -46,7 +31,7 @@ namespace PetFoster.DAL
         public static DataTable UncensoredForum(decimal Limitrows = -1, string Orderby = null,bool beingcensored=true)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT heading,user_name as writer,read_count,comment_num,like_num,post_time FROM forum_posts" +
+            string query = "SELECT post_id,user_name,post_contents,post_time FROM forum_posts" +
                     " natural join user2 ";
             if (Limitrows > 0)
                 query += $" where rownum<={Limitrows} ";

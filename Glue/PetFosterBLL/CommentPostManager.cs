@@ -1,4 +1,5 @@
-﻿using PetFoster.DAL;
+﻿using Glue.PetFoster.BLL;
+using PetFoster.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,20 +15,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = CommentPostServer.CommentPostInfo(Limitrow, Orderby);
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-15}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    Console.Write("{0,-15}", item);
-                }
-                Console.WriteLine();
-            }
+            Util.DebugTable(dt);
         }
         public static void GiveACommentPost(string UID, string PID, string content)
         {

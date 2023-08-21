@@ -11,6 +11,8 @@ using static PetFoster.Model.PetData;
 using static System.Net.Mime.MediaTypeNames;
 using System.Drawing;
 using System.Data;
+using Glue.PetFoster.BLL;
+
 namespace PetFoster.BLL
 {
     public class PetManager
@@ -49,6 +51,13 @@ namespace PetFoster.BLL
 
                 Console.WriteLine();
             }
+        }
+        //人气榜
+        public static void ShowBoards(int Limitrow = -1, string Orderby = null)
+        {
+            DataTable dt = PetServer.PetInfoForAdmin(Limitrow, Orderby);
+            //调试用
+            Util.DebugTable(dt);
         }
         public static bool ViewProfile(int PetID, out Pet Candidate)
         {
