@@ -22,20 +22,7 @@ namespace PetFoster.BLL
 
             DataTable dt = FosterServer.FosterInfo(censorStr,Limitrow, Orderby,verbose);
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-15}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    Console.Write("{0,-15}", item);
-                }
-                Console.WriteLine();
-            }
+            Util.DebugTable(dt);
             return dt;
         }
         /// <summary>

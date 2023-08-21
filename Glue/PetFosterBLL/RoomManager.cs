@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Glue.PetFoster.BLL;
+using Oracle.ManagedDataAccess.Client;
 using PetFoster.DAL;
 using System;
 using System.Collections.Generic;
@@ -18,20 +19,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = RoomServer.StoreyInfo();
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-20}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    Console.Write("{0,-20}", item);
-                }
-                Console.WriteLine();
-            }
+            Util.DebugTable(dt);
         }
         /// <summary>
         /// 展示房源
