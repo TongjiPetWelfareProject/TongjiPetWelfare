@@ -31,19 +31,20 @@ namespace PetFoster.BLL
             return dt;
         }
         //添加捐款信息（未审核）
-        public static void Donate(string DID, decimal Amount)
+        public static int Donate(string DID, decimal Amount)
         {
             if (Amount < 0)
             {
                 Console.WriteLine("请不要输入负数金额的捐款！");
-                return;
+                return -1;
             }
             else if (Amount > 100000000)
             {
                 Console.WriteLine("捐款数额过于巨大，请慎重考虑！");
-                return;
+                return -2;
             }
             DonationServer.TryDonote(DID, Amount);
+            return 0;
         }
         public static void ShowDonationAmount(int Limitrow = -1, string Orderby = null)
         {
