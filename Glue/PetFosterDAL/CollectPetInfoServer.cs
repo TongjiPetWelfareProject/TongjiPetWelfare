@@ -22,27 +22,12 @@ namespace PetFoster.DAL
         public static DataTable CollectPetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-
-                string query = "SELECT user_id,pet_id,TO_CHAR(collect_time,'YYYY-MM-DD') as collect_date, TO_CHAR(collect_time,'HH24:MI:SS')as collected_time FROM collect_pet_info";
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
-            }
-
-            Console.ReadLine();
-            return dataTable;
+            string query = "SELECT user_id,pet_id,TO_CHAR(collect_time,'YYYY-MM-DD') as collect_date, TO_CHAR(collect_time,'HH24:MI:SS')as collected_time FROM collect_pet_info";
+            if (Limitrows > 0)
+                query += $" where rownum<={Limitrows} ";
+            if ((Orderby) != null)
+                query += $" order by {Orderby} desc";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
         /// 获取收集宠物信息条目

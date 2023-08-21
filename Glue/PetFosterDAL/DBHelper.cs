@@ -18,6 +18,10 @@ namespace PetFoster.DAL
         public static DataTable ShowInfo(string query, decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
+            if (Limitrows > 0)
+                query += $" where rownum<={Limitrows} ";
+            if ((Orderby) != null)
+                query += $" order by {Orderby} desc";
             using (OracleConnection connection = new OracleConnection(conStr))
             {
                 connection.Open();

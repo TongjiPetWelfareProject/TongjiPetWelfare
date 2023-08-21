@@ -22,42 +22,24 @@ namespace PetFoster.DAL
         public static DataTable CommentPostInfo(decimal Limitrows = -1, string Orderby = null, string UID = "-1", string PID = "-1")
         {
             DataTable dataTable = new DataTable();
-            using (OracleConnection connection = new OracleConnection(conStr))
+            string query = "";
+            if (UID == "-1" && PID == "-1")
             {
-                connection.Open();
-                string query = "";
-                if (UID == "-1" && PID == "-1")
-                {
-                    query = "SELECT user_id,post_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_post";
-                }
-                else if (PID != "-1" && UID == "-1")
-                {
-                    query = $"SELECT user_id,post_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_post where Post_ID={PID}";
-                }
-                else if (PID == "-1" && UID != "-1")
-                {
-                    query = $"SELECT user_id,post_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_post where User_ID={UID}";
-                }
-                else
-                {
-                    query = $"SELECT user_id,post_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_post where Post_ID={PID} and User_ID={UID}";
-                }
-                if (Limitrows > 0)
-                    query += $" where rownum<={Limitrows} ";
-                if ((Orderby) != null)
-                    query += $" order by {Orderby} desc";
-
-                OracleCommand command = new OracleCommand(query, connection);
-
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
-
-                adapter.Fill(dataTable);
-
-                connection.Close();
+                query = "SELECT user_id,post_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_post";
             }
-
-            Console.ReadLine();
-            return dataTable;
+            else if (PID != "-1" && UID == "-1")
+            {
+                query = $"SELECT user_id,post_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_post where Post_ID={PID}";
+            }
+            else if (PID == "-1" && UID != "-1")
+            {
+                query = $"SELECT user_id,post_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_post where User_ID={UID}";
+            }
+            else
+            {
+                query = $"SELECT user_id,post_id,TO_CHAR(comment_time,'YYYY-MM-DD') as comment_date, TO_CHAR(comment_time,'HH24:MI:SS')as commented_time,comment_contents  FROM comment_post where Post_ID={PID} and User_ID={UID}";
+            }
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
         /// 点赞
