@@ -32,12 +32,43 @@ namespace PetFoster.BLL
                 Console.WriteLine();
             }
         }
+        //未注册宠物预约
         public static void Appointment(string UID, string Pname, string species, string VID, DateTime dt, string reason)
         {
-            //1.注册宠物信息
-            string PID = PetFoster.DAL.PetServer.InsertPet(Pname, species, "medium", DateTime.Now);
-            //2.挂号
-            AppointmentServer.InsertAppointment(UID, PID, VID, dt, reason);
+            string PID = PetServer.InsertPet(Pname, species, "medium", DateTime.Now);
+            _Appointment(UID,PID,species,VID,dt,reason);
+        }
+        //已注册宠物预约
+        public static void Appointment(string UID,string PID,string VID, DateTime dt, string reason)
+        {
+            string species=PetServer.GetSpecies(PID);
+            _Appointment(UID, PID, species, VID, dt, reason);
+        }
+        //展示预约时段有空的医生，医生经过预筛选后每天之能看8只宠物
+        private static void _Appointment(string UID, string PID, string species, string VID, DateTime dt, string reason)
+        {
+            
+            try
+            {
+                string hstatus = PetServer.GetHealthStatus(PID);
+                //0.让宠物先生病
+                if (hstatus != "Critical" || hstatus != "Unhealthy" || hstatus != "Critical")
+                    PetServer.UpdateStatus(PID,"Unhealthy");
+                //1.预约时间不能是周六周日
+                if (DayOfWeek.Saturday == dt.DayOfWeek || DayOfWeek.Sunday == dt.DayOfWeek)
+                {
+                    throw new Exception("医生周末休息，请选择工作日预约！");
+                }
+                //2.预约时间在一周内
+                if (dt.Subtract(DateTime.Now)>=TimeSpan.FromDays(7)|| dt.Subtract(DateTime.Now) <= TimeSpan.FromDays(0))
+                {
+                    throw new Exception("请在一周内预约,并且在今天后预约！");
+                }
+                //3.挂号
+                AppointmentServer.InsertAppointment(UID, PID, VID, dt, reason);
+            }catch (Exception ex){
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

@@ -103,6 +103,10 @@ namespace PetFoster.DAL
         }
         public static void ReadPet(string PID)
         {
+            UpdateAddr(PID, "read_num=read_num+1");
+        }
+        private static void UpdateAddr(string PID,string kv)
+        {
             // 更改信息
             try
             {
@@ -111,8 +115,7 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "UPDATE pet SET read_num=read_num+1" +
-                            $" where pet_id={PID}";
+                    command.CommandText = "UPDATE pet SET "+kv+ $" where pet_id={PID}";
                     try
                     {
                         command.ExecuteNonQuery();
@@ -132,6 +135,11 @@ namespace PetFoster.DAL
                 // 处理异常
                 Console.WriteLine(ex.ToString());
             }
+        }
+        public static void UpdateStatus(string PID,string hstatus)
+        {
+            // 更改信息
+            UpdateAddr(PID,$" health_status='{hstatus}' ");
         }
         public static byte[] SerializeObject(object obj)
         {
@@ -204,6 +212,10 @@ namespace PetFoster.DAL
         public static string GetName(string PID)
         {
             return GetAttr(PID, "Pet_Name");
+        }
+        public static string GetSpecies(string PID)
+        {
+            return GetAttr(PID, "Species");
         }
         public static string GetHealthStatus(string PID)
         {

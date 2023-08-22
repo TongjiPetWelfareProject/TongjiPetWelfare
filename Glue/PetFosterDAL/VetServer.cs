@@ -16,10 +16,13 @@ namespace PetFoster.DAL
     public class VetServer
     {
         public static string conStr = AccommodateServer.conStr;
-        //用户选择医生，需要展示
+        //用户选择医生，需要展示,一名医生每天只能看8只宠物
         public static DataTable VetInfoForApmt(decimal Limitrows = -1, string Orderby = null)
         {
-            string query = "SELECT vet_id,vet_name FROM vet ";
+            string query = "SELECT vet_id, vet_name FROM vet v "
+            +"WHERE 8 >= (" +
+            "SELECT count(*) FROM appointment ap " +
+            "WHERE custom_time > SYSTIMESTAMP and ap.vet_id = v.vet_id)";
             if (Limitrows > 0)
                 query += $" where rownum<={Limitrows} ";
             if ((Orderby) != null)
