@@ -27,7 +27,7 @@ namespace PetFoster.DAL
         {
             DataTable dataTable = new DataTable();
             string query = "SELECT duration,fosterer,pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
-                    " FROM foster ";
+                    ",REMARK FROM foster ";
             if (verbose)
                 query = "SELECT * from foster_window";
             if (Limitrows > 0)
