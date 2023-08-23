@@ -56,32 +56,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = DAL.PetServer.SelectPetInfo(Limitrow, Orderby);
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-20}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                for (int i = 0; i < row.ItemArray.Length; i++)
-                {
-                    if (i == 2)
-                    {
-                        Console.Write("{0,-30}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "breed"));
-                    }
-                    else if (i == 5)
-                    {
-                        Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "health_state"));
-                    }
-                    else if (i == 6)
-                        Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "vaccine"));
-                    else
-                        Console.Write("{0,-20}", row.ItemArray[i].ToString());
-                }
-
-                Console.WriteLine();
-            }
+            Util.DebugTable(dt);
             return dt;
         }
         //人气榜

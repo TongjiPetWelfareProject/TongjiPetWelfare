@@ -28,10 +28,12 @@ namespace Glue.Controllers
         {
             public string id { get; set; }
             public string name { get; set; }
-            public TreatedPetNames(string pet_id,string pet_name)
+            public string kind { get; set; }
+            public TreatedPetNames(string pet_id,string pet_name, string kind)
             {
                 id = pet_id;
                 name = pet_name;
+                this.kind = kind;
             }
         }
         
@@ -47,7 +49,7 @@ namespace Glue.Controllers
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    string pet_id = "", pet_name = "";
+                    string pet_id = "", pet_name = "",kind="";
                     for (int j = 0; j < dt.Columns.Count; j++)
                     {
                         if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
@@ -58,10 +60,15 @@ namespace Glue.Controllers
                         {
                             pet_name = dt.Rows[i][j].ToString();
                         }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "species")
+                        {
+                            kind = dt.Rows[i][j].ToString();
+                        }
                     }
                     pet_id = (pet_id == null ? "" : pet_id);
                     pet_name = (pet_name == null ? "" : pet_name);
-                    TreatedPetNames PetNameItem = new TreatedPetNames(pet_id, pet_name);
+                    kind = (kind == null ? "" : kind);
+                    TreatedPetNames PetNameItem = new TreatedPetNames(pet_id, pet_name,kind);
                     PetNamesList.Add(PetNameItem);
                 }
                 jsonstring = "{\"data\":"+JsonSerializer.Serialize(PetNamesList)+"}";

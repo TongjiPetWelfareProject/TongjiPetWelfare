@@ -184,7 +184,7 @@ namespace PetFoster.DAL
         public static DataTable SelectPetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT pet_id,pet_name FROM pet ";
+            string query = "SELECT pet_id,pet_name,species FROM pet ";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         private static string GetAttr(string PID,string attribute)
