@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
+using System.Data;
+using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,16 +19,62 @@ namespace Glue.Controllers
             public string? date1 { get; set; }
             public string? desc { get; set; }
             public string? selectedDoctorID { get; set; }
+            public string? isOld { get; set; }
+            public string? pet_kind { get; set; }
+            public string? petId { get; set; }
             public string? userId { get; set; }
         }
-        /*
-        // GET: api/<MedicalController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        public class TreatedPetNames
         {
-            return new string[] { "value1", "value2" };
+            public string id { get; set; }
+            public string name { get; set; }
+            public TreatedPetNames(string pet_id,string pet_name)
+            {
+                id = pet_id;
+                name = pet_name;
+            }
         }
+        
+        // GET: api/<ReservationController>
+        [HttpGet("getPetInfo")]
+        public IActionResult Get()
+        {
+            string jsonstring;
+            try
+            {
+                DataTable dt = PetManager.ShowPetNames();
+                List<TreatedPetNames> PetNamesList = new List<TreatedPetNames>();
 
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    string pet_id = "", pet_name = "";
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
+                        {
+                            pet_id = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "pet_name")
+                        {
+                            pet_name = dt.Rows[i][j].ToString();
+                        }
+                    }
+                    pet_id = (pet_id == null ? "" : pet_id);
+                    pet_name = (pet_name == null ? "" : pet_name);
+                    TreatedPetNames PetNameItem = new TreatedPetNames(pet_id, pet_name);
+                    PetNamesList.Add(PetNameItem);
+                }
+                jsonstring = "{\"data\":"+JsonSerializer.Serialize(PetNamesList)+"}";
+                Console.WriteLine(jsonstring);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            return Ok(jsonstring);
+        }
+        
+        /*
         // GET api/<MedicalController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -38,6 +87,7 @@ namespace Glue.Controllers
         [HttpPost("submitAppointment")]
         public IActionResult Post([FromBody] AppointmentData appointment_data)
         {
+            /* check data */
             if(appointment_data == null)
             {
                 return BadRequest("Invalid Data");
@@ -46,11 +96,11 @@ namespace Glue.Controllers
             {
                 return BadRequest("未登录");
             }
-            if(appointment_data.name == null)
+            if(appointment_data.isOld == null)
             {
-                return BadRequest("empty pet name");
+                return BadRequest("Empty isOld");
             }
-            if(appointment_data.selectedDoctorID == null)
+            if (appointment_data.selectedDoctorID == null)
             {
                 return BadRequest("empty doctor");
             }
@@ -60,7 +110,7 @@ namespace Glue.Controllers
                 return BadRequest("Failed to parse the date.");
             }
             string desc;
-            if(appointment_data.desc == null)
+            if (appointment_data.desc == null)
             {
                 desc = "";
             }
@@ -68,19 +118,57 @@ namespace Glue.Controllers
             {
                 desc = appointment_data.desc;
             }
-            try
+
+            if (appointment_data.isOld == "它未在此治疗过") // new pet
             {
-                AppointmentManager.Appointment(appointment_data.userId,
-                    appointment_data.name, "dog",
-                    appointment_data.selectedDoctorID,
-                    (DateTime)date,
-                    desc);
+                if (appointment_data.name == null)
+                {
+                    return BadRequest("Empty pet name for new pet");
+                }
+                if(appointment_data.pet_kind == null)
+                {
+                    return BadRequest("Empty pet species for new pet");
+                }
+                /* do the business */
+                Console.WriteLine("name="+appointment_data.name);
+                Console.WriteLine("pet_kind="+appointment_data.pet_kind);
+                try
+                {
+                    AppointmentManager.Appointment(appointment_data.userId,
+                        appointment_data.name,
+                        appointment_data.pet_kind,
+                        appointment_data.selectedDoctorID,
+                        (DateTime)date,
+                        desc);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, ex.Message);
+                }
+                return Ok();
             }
-            catch (Exception ex)
+            else // existing pet
             {
-                return StatusCode(500, ex.Message);
+                if(appointment_data.petId == null)
+                {
+                    return BadRequest("Empty petId for existing pet");
+                }
+                /* do the business */
+                Console.WriteLine("petId=" + appointment_data.petId);
+                try
+                {
+                    AppointmentManager.Appointment2(appointment_data.userId,
+                        appointment_data.petId,
+                        appointment_data.selectedDoctorID,
+                        (DateTime)date,
+                        desc);
+                }
+                catch(Exception ex)
+                {
+                    return StatusCode(500, ex.Message);
+                }
+                return Ok();
             }
-            return Ok();
         }
 
         /*
