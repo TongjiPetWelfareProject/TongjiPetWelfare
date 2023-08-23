@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PetFoster.DAL;
+using PetFoster.BLL;
 using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -8,7 +8,7 @@ namespace Glue.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DoctorsController : ControllerBase
+    public class DoctorController : ControllerBase
     {
         public class Doctor
         {
@@ -22,7 +22,7 @@ namespace Glue.Controllers
         {
             List<Doctor> vetList = new List<Doctor>();
 
-            foreach(DataRow row in dataTable.Rows)
+            foreach (DataRow row in dataTable.Rows)
             {
                 // 使用PadLeft方法确保始终有两位数
 
@@ -30,20 +30,20 @@ namespace Glue.Controllers
                 {
                     id = row["vet_id"].ToString(),
                     name = row["vet_name"].ToString(),
-                    phone = "",
-                    workingHours = "",
-                    salary = ""
+                    phone = row["tel"].ToString(),
+                    workingHours = row["working_hours"].ToString(),
+                    salary = row["salary"].ToString()
                 };
                 vetList.Add(doctor);
             }
             return vetList;
         }
-        
+
         // GET: api/<DoctorController>
         [HttpGet]
         public IEnumerable<Doctor> Get()
         {
-            DataTable vetProfiles = VetServer.VetInfoForApmt();
+            DataTable vetProfiles = VetManager.ShowVetProfile();
             List<Doctor> vets = ConvertDataTableToVetList(vetProfiles);
             return vets;
         }
