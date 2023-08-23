@@ -35,7 +35,7 @@ namespace PetFoster.DAL
         /// </summary>
         /// <param name="user">用户行</param>
         /// <returns></returns>
-        public static User GetUser(string Tel, string pwd, bool IsAdmin = false)
+        public static User GetUser(string UID, string pwd, bool IsAdmin = false)
         {
             bool con = false;
             User user1 = new User();
@@ -46,9 +46,9 @@ namespace PetFoster.DAL
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
 
-                command.CommandText = "select *from user2 where Phone_Number=:tel";
+                command.CommandText = "select *from user2 where User_ID=:user_id";
                 command.Parameters.Clear();
-                command.Parameters.Add("tel", OracleDbType.Varchar2, Tel, ParameterDirection.Input);
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();

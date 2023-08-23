@@ -19,12 +19,12 @@ namespace WebApplicationTest1
     {
         public class LoginModel
         {
-            public string Userphone { get; set; }
+            public string Username { get; set; }
             public string Password { get; set; }
 
             public LoginModel()
             {
-                Userphone = string.Empty;
+                Username = string.Empty;
                 Password = string.Empty;
             }
 
@@ -53,10 +53,10 @@ namespace WebApplicationTest1
         [HttpPost]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            string tel = loginModel.Userphone;
+            string uid = loginModel.Username;
             string password = loginModel.Password;
-            Console.WriteLine(tel + " " + password);
-            User candidate = UserManager.LoginByTel(tel, password);
+            Console.WriteLine(uid + " " + password);
+            User candidate = UserManager.Login(uid, password);
             password = ComputeSHA256Hash(password);
             if (candidate.Password != password)
             {
