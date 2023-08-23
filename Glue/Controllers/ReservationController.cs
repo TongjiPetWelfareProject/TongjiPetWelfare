@@ -75,12 +75,12 @@ namespace Glue.Controllers
                     appointment_data.selectedDoctorID,
                     (DateTime)date,
                     desc);
-                return Ok();
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
+            return Ok();
         }
 
         /*

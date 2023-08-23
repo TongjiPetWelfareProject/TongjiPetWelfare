@@ -68,6 +68,7 @@ namespace PetFoster.BLL
                 AppointmentServer.InsertAppointment(UID, PID, VID, dt, reason);
             }catch (Exception ex){
                 Console.WriteLine(ex.Message);
+                throw;
             }
         }
     }

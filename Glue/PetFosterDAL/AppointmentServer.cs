@@ -100,6 +100,7 @@ namespace PetFoster.DAL
             {
                 // 处理异常
                 Console.WriteLine(ex.ToString());
+                throw new Exception("数据库无法执行");
             }
             return UID;
         }
