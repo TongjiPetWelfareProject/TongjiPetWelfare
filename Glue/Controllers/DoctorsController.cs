@@ -8,7 +8,7 @@ namespace Glue.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DoctorController : ControllerBase
+    public class DoctorsController : ControllerBase
     {
         public class Doctor
         {
