@@ -54,34 +54,28 @@ namespace Glue.Controllers
                     FosterRecord RecordItem = new FosterRecord();
                     for (int j = 0; j < dt.Columns.Count; j++)
                     {
-                        if (dt.Columns[j].ColumnName.ToLower() == "duration")
+                        switch (j)
                         {
-                            RecordItem.days = Convert.ToInt32(dt.Rows[i][j]);
-                        }
-                        else if (dt.Columns[j].ColumnName.ToLower() == "fosterer")
-                        {
-                            RecordItem.userId = UserServer.GetName(dt.Rows[i][j].ToString());
-                        }
-                        else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
-                        {
-                            RecordItem.petId = PetServer.GetName(dt.Rows[i][j].ToString());
-                        }
-                        else if (dt.Columns[j].ColumnName.ToLower() == "startdate")
-                        {
-                            RecordItem.date = dt.Rows[i][j].ToString();
+                            case 0:
+                                RecordItem.days = Convert.ToInt32(dt.Rows[i][j]);
+                                break;
+                            case 1:
+                                RecordItem.userId = UserServer.GetName(dt.Rows[i][j].ToString());
+                                break;
+                            case 2:
+                                RecordItem.petId = PetServer.GetName(dt.Rows[i][j].ToString());
+                                break;
+                            case 3:
+                                RecordItem.date = dt.Rows[i][j].ToString();
+                                break;
+                            default:
+                                break;
                         }
                     }
                     RecordItem.censor_status = censorStr;
                     RecordList.Add(RecordItem);
                 }
-                /*
-                foreach (FosterRecord Record in RecordList)
-                {
-                    Console.WriteLine(Record.date+Record.petId+Record.userId+Record.days.ToString()+Record.censor_status);
-                }
-                */
                 string jsondata = JsonSerializer.Serialize(RecordList);
-                Console.WriteLine(jsondata);
 
                 return Ok(jsondata);
             }
