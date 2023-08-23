@@ -115,7 +115,7 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "UPDATE pet SET "+kv+ $" where pet_id={PID}";
+                    command.CommandText = "UPDATE pet SET "+kv+ $" where pet_id='{PID}'";
                     try
                     {
                         command.ExecuteNonQuery();
@@ -139,7 +139,7 @@ namespace PetFoster.DAL
         public static void UpdateStatus(string PID,string hstatus)
         {
             // 更改信息
-            UpdateAddr(PID,$" health_status='{hstatus}' ");
+            UpdateAddr(PID,$" health_state='{hstatus}' ");
         }
         public static byte[] SerializeObject(object obj)
         {
@@ -181,6 +181,12 @@ namespace PetFoster.DAL
                 throw new Exception(status + "状态不合法！");
             }
         }
+        public static DataTable SelectPetInfo(decimal Limitrows = -1, string Orderby = null)
+        {
+            DataTable dataTable = new DataTable();
+            string query = "SELECT pet_id,pet_name FROM pet ";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
+        }
         private static string GetAttr(string PID,string attribute)
         {
             bool con = false;
@@ -197,10 +203,7 @@ namespace PetFoster.DAL
                 try
                 {
                     string petname = command.ExecuteScalar() as string;
-                    if (petname == null)
-                        return "Pet"+PID;
-                    else
-                        return petname;
+                    return petname;
                 }
                 catch (Exception ex)
                 {
@@ -215,11 +218,13 @@ namespace PetFoster.DAL
         }
         public static string GetSpecies(string PID)
         {
-            return GetAttr(PID, "Species");
+            string species=GetAttr(PID, "Species") ;
+            const string defaultSpecies = "dog";
+            return species == null ? defaultSpecies : species;
         }
         public static string GetHealthStatus(string PID)
         {
-            return GetAttr(PID, "Health_Status");
+            return GetAttr(PID, "Health_State");
         }
         /// <summary>
         /// 插入宠物信息

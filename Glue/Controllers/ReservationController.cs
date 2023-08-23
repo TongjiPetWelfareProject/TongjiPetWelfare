@@ -71,7 +71,7 @@ namespace Glue.Controllers
             try
             {
                 AppointmentManager.Appointment(appointment_data.userId,
-                    appointment_data.name,
+                    appointment_data.name, "dog",
                     appointment_data.selectedDoctorID,
                     (DateTime)date,
                     desc);

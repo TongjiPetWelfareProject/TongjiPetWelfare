@@ -35,11 +35,11 @@ namespace PetFoster.BLL
         //未注册宠物预约
         public static void Appointment(string UID, string Pname, string species, string VID, DateTime dt, string reason)
         {
-            string PID = PetServer.InsertPet(Pname, species, "medium", DateTime.Now);
+            string PID = PetServer.InsertPet(Pname, "dog", "medium", DateTime.Now);
             _Appointment(UID,PID,species,VID,dt,reason);
         }
-        //已注册宠物预约
-        public static void Appointment(string UID,string PID,string VID, DateTime dt, string reason)
+        //已注册宠物预约DAL.PetServer.SelectPetInfo列举宠物ID与宠物名
+        public static void Appointment2(string UID,string PID,string VID, DateTime dt, string reason)
         {
             string species=PetServer.GetSpecies(PID);
             _Appointment(UID, PID, species, VID, dt, reason);
