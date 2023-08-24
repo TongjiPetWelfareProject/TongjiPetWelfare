@@ -237,7 +237,35 @@ namespace PetFoster.DAL
 
             return postIDs;
         }
-
+        private static void Censor(string FID, bool passed=false)
+        {
+            // 更改信息
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "UPDATE forum_posts SET censored='" + (passed?"Y":"N") + $"' where post_id='{FID}'";
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        Console.WriteLine($"帖子{FID}的阅读量+1!");
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
+        }
         public static List<ForumPost> GetAllPosts()
         {
             List<ForumPost> posts = new List<ForumPost>();
