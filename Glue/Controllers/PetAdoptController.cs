@@ -4,6 +4,7 @@ using PetFoster.Model;
 using System.Data;
 using System.Text;
 using System.Text.Json;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -128,7 +129,14 @@ namespace Glue.Controllers
                 Pet2 pet = AdoptApplyManager.RetrievePet(petId);
                 Pet2WithoutAvartar pet2_temp = new Pet2WithoutAvartar();
                 PetWithoutAvartar pet_temp = new PetWithoutAvartar();
-                pet2_temp.comments = pet.comments;
+                pet2_temp.comments = new Pet2.Comment[pet.comments.Length];
+                for (int i = 0; i < pet.comments.Length; i++)
+                {
+                    pet2_temp.comments[i] = new Pet2.Comment(
+                        pet.comments[i].comment_contents,
+                        pet.comments[i].comment_time
+                    );
+                }
                 pet2_temp.Comment_Num = pet.Comment_Num;
                 pet2_temp.Psize = pet.Psize;
                 pet2_temp.sex = pet.sex;
@@ -143,7 +151,18 @@ namespace Glue.Controllers
                 pet_temp.Like_Num = pet.original_pet.Like_Num;
                 pet_temp.Collect_Num = pet.original_pet.Collect_Num;
                 pet2_temp.original_pet = pet_temp;
-                return Ok(pet2_temp);
+                try
+                {
+                    string jsondata = Newtonsoft.Json.JsonConvert.SerializeObject(pet2_temp);
+                    Console.WriteLine(jsondata);
+                    return Ok(jsondata);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                return BadRequest();
+
             }
             catch (Exception ex)
             {
