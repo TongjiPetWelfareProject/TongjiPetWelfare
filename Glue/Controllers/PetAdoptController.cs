@@ -76,14 +76,20 @@ namespace Glue.Controllers
             */
         }
 
-        /*
-        // GET api/<PetAdoptController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET api/<PetAdoptController>
+        [HttpGet("pet-details")]
+        public IActionResult Get(int petId)
         {
-            return "value";
+            try
+            {
+                Pet2 pet = AdoptApplyManager.RetrievePet(petId);
+                return Ok(pet);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-        */
 
         // POST api/<PetAdoptController>
         [HttpPost("pet-adopt")]
