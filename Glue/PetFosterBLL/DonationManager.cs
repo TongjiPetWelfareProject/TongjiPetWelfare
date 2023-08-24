@@ -15,7 +15,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = DonationServer.DonationInfo(Limitrow, Orderby);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("开始显示捐款列表");
             return dt;
         }
         //添加捐款信息（未审核）

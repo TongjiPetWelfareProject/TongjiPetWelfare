@@ -15,7 +15,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = EmployeeServer.EmployeeInfo(Limitrow, Orderby);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("开始显示员工列表");
             return dt;
         }
     }

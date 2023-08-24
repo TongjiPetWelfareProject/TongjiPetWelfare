@@ -15,7 +15,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = AdoptServer.PetInfoForUser(Limitrow, Orderby);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("开始渲染用户可选择领养的宠物的界面");
             return dt;
         }
     }

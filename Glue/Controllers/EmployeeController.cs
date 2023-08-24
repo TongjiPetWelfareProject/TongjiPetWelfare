@@ -47,15 +47,16 @@ namespace Glue.Controllers
                         }
                         else if(dt.Columns[j].ColumnName.ToLower() == "duty")
                         {
-                            EmployeeItem.responsibility = dt.Rows[i][j].ToString();
+                            
+                            EmployeeItem.responsibility = JsonHelper.TranslateToCn(dt.Rows[i][j].ToString(), "duties");
                         }
                         else if(dt.Columns[j].ColumnName.ToLower() == "salary")
                         {
-                            EmployeeItem.salary = dt.Rows[i][j].ToString();
+                            EmployeeItem.salary = dt.Rows[i][j].ToString()+"￥";
                         }
                         else if(dt.Columns[j].ColumnName.ToLower() == "working_hours")
                         {
-                            EmployeeItem.workingHours = dt.Rows[i][j].ToString();
+                            EmployeeItem.workingHours = dt.Rows[i][j].ToString()+"小时";
                         }
                     }
                     EmployeesList.Add(EmployeeItem);

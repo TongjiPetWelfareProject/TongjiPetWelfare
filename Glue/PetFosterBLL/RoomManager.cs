@@ -30,7 +30,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = RoomServer.RoomInfo(Limitrows,Orderby,OnlyAvailable);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("开始显示10层楼300间房的使用情况");
             return dt;
         }
         public static void CleanRoom(short storey,short compartment)

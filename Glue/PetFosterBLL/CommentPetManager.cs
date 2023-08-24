@@ -15,7 +15,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = CommentPetServer.CommentPetInfo(Limitrow, Orderby, UID, PID);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("开始显示宠物的评论信息");
             return dt;
         }
         public static void GiveAComment(string UID, string PID,string content)

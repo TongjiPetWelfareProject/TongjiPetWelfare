@@ -56,15 +56,16 @@ namespace PetFoster.BLL
         {
             DataTable dt = DAL.PetServer.SelectPetInfo(Limitrow, Orderby);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("开始选择可治疗宠物！");
             return dt;
         }
         //人气榜
-        public static void ShowBoards(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowBoards(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = PetServer.PetInfoForAdmin(Limitrow, Orderby);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("开始选择人气榜！");
+            return dt;
         }
         public static bool ViewProfile(int PetID, out Pet Candidate)
         {

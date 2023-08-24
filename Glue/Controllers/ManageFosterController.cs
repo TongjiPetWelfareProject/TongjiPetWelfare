@@ -83,7 +83,7 @@ namespace Glue.Controllers
                 }
                 */
                 jsondata = JsonSerializer.Serialize(RecordList);
-                Console.WriteLine(jsondata);
+                Console.WriteLine("已成功Json序列化");
             }
             catch (Exception ex)
             {

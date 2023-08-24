@@ -17,7 +17,7 @@ namespace PetFoster.BLL
 
             DataTable dt = AdoptApplyServer.AdoptInfo(Limitrow, Orderby);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("显示收养请求列表");
             return dt;
         }
         public static int ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,

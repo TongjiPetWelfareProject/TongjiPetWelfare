@@ -23,7 +23,7 @@ namespace PetFoster.BLL
 
             DataTable dt = FosterServer.FosterInfo(censorStr,Limitrow, Orderby,verbose);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("显示寄养申请列表");
             return dt;
         }
         /// <summary>

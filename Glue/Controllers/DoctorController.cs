@@ -31,8 +31,8 @@ namespace Glue.Controllers
                     id = row["vet_id"].ToString(),
                     name = row["vet_name"].ToString(),
                     phone = row["tel"].ToString(),
-                    workingHours = row["working_hours"].ToString(),
-                    salary = row["salary"].ToString()
+                    workingHours = row["working_hours"].ToString()+"小时",
+                    salary = row["salary"].ToString()+"￥"
                 };
                 vetList.Add(doctor);
             }
