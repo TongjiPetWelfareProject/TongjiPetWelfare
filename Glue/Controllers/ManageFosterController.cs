@@ -44,6 +44,8 @@ namespace Glue.Controllers
         public IActionResult Get()
         {
             string censorStr;
+
+            string jsondata;
             try
             {
                 DataTable dt = FosterManager.CensorFoster(out censorStr);
@@ -80,15 +82,14 @@ namespace Glue.Controllers
                     Console.WriteLine(Record.date+Record.petId+Record.userId+Record.days.ToString()+Record.censor_status);
                 }
                 */
-                string jsondata = JsonSerializer.Serialize(RecordList);
+                jsondata = JsonSerializer.Serialize(RecordList);
                 Console.WriteLine(jsondata);
-
-                return Ok(jsondata);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
+            return Ok(jsondata);
         }
         
         // PATCH: api/<ManageFosterController>
@@ -108,12 +109,12 @@ namespace Glue.Controllers
             try
             {
                 FosterManager.Censorship(record.userId, record.petId, (DateTime)date, record.censor_status);
-                return Ok();
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
+            return Ok();
         }
 
         /*

@@ -34,6 +34,8 @@ namespace Glue.Controllers
         public IActionResult Get()
         {
             int censorstate = 0; //默认未审核
+
+            string jsondata;
             try
             {
                 DataTable dt = AdoptApplyManager.ShowCensorAdopt();
@@ -65,15 +67,61 @@ namespace Glue.Controllers
                     RecordList.Add(RecordItem);
                 }
 
-                string jsondata = JsonSerializer.Serialize(RecordList);
+                jsondata = JsonSerializer.Serialize(RecordList);
                 Console.WriteLine(jsondata);
-
-                return Ok(jsondata);
+                
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
+            return Ok(jsondata);
+        }
+
+        // PATCH: api/<ManageAdoptController>
+        [HttpPatch("manage-adopt-update")]
+        public IActionResult UpdateAdoptRecord([FromBody] AdoptionRecord record)
+        {
+            if (record == null)
+            {
+                return BadRequest("Invalid data.");
+            }
+            //record.print();
+            DateTime? date = ConvertTools.StringConvertToDate(record.date);
+            if (date == null)
+            {
+                return BadRequest("Failed to parse the date.");
+            }
+            int pid;
+            if (!int.TryParse(record.petId, out pid))
+            {
+                return BadRequest("Invalid petId");
+            }
+            try
+            {
+                AdoptApplyManager.CensorAdopt(record.userId, pid, (DateTime)date, out int err_code);
+                if(err_code == 1)
+                {
+                    return NotFound("宠物已经全被领养或寄养（正在申请寄养）走了!");
+                }
+                else if(err_code == 2)
+                {
+                    return StatusCode(500, "审核过程异常!");
+                }
+                else if(err_code == 3)
+                {
+                    return BadRequest("不存在该申请人!");
+                }
+                else if(err_code != 0)
+                {
+                    return StatusCode(500, "未知异常！");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            return Ok();
         }
 
         /*
