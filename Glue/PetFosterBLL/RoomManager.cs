@@ -26,11 +26,12 @@ namespace PetFoster.BLL
         /// </summary>
         /// <param name="Limitrows">展示的最大行数</param>
         /// <param name="Orderby">排序依据(降序)</param>
-        public static void ShowRooms(decimal Limitrows = -1, string Orderby = null,bool OnlyAvailable=false)
+        public static DataTable ShowRooms(decimal Limitrows = -1, string Orderby = null,bool OnlyAvailable=false)
         {
             DataTable dt = RoomServer.RoomInfo(Limitrows,Orderby,OnlyAvailable);
             //调试用
             Util.DebugTable(dt);
+            return dt;
         }
         public static void CleanRoom(short storey,short compartment)
         {
