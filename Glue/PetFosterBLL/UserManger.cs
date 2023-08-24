@@ -22,7 +22,7 @@ namespace PetFoster.BLL
             // 解析JSON字符串
             return JsonHelper.TranslateToEn(status, "status") != null;
         }
-        public static void ShowUserProfile(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowUserProfile(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = UserServer.UserInfo(Limitrow, Orderby);
             //调试用
@@ -62,6 +62,7 @@ namespace PetFoster.BLL
 
                 Console.WriteLine();
             }
+            return dt;
         }
         public static string ComputeSHA256Hash(string input)
         {

@@ -11,11 +11,12 @@ namespace PetFoster.BLL
 {
     public class EmployeeManager
     {
-        public static void ShowProfile(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowProfile(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = EmployeeServer.EmployeeInfo(Limitrow, Orderby);
             //调试用
             Util.DebugTable(dt);
+            return dt;
         }
     }
 }

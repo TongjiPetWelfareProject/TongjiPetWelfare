@@ -41,11 +41,11 @@ namespace Glue.Controllers
         
         // GET: api/<DoctorController>
         [HttpGet]
-        public IEnumerable<Doctor> Get()
+        public IActionResult Get()
         {
             DataTable vetProfiles = VetServer.VetInfoForApmt();
             List<Doctor> vets = ConvertDataTableToVetList(vetProfiles);
-            return vets;
+            return Ok(vets);
         }
         /*
         // GET api/<DoctorController>/5
