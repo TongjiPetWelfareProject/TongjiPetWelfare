@@ -125,5 +125,22 @@ namespace PetFoster.BLL
             PostList = ForumPostServer.GetAllPosts();
             return PostList;
         }
+        //需要转化为List<Comment>，Comment位于PetFoster.Model
+        public static DataTable GetAllComments(string PID)
+        {
+            return CommentPostServer.CommentPostInfo(PID: PID);
+        }
+        //获取帖子点赞数
+        public static DataTable GetLikeNums(string PID)
+        {
+            string query =$"select like_num from verbosepost where PID={PID}";
+            return DBHelper.ShowInfo(PID);
+        }
+        //获取帖子评论数
+        public static DataTable GetCommentNums(string PID)
+        {
+            string query = $"select comment_num from verbosepost where PID={PID}";
+            return DBHelper.ShowInfo(PID);
+        }
     }
 }
