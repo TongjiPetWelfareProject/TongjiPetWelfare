@@ -184,7 +184,9 @@ namespace PetFoster.DAL
         public static DataTable SelectPetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT pet_id,pet_name,species FROM pet ";
+            string query = "SELECT pet_id,pet_name,species FROM pet where" +
+                " pet_id not in (select pet_id from foster)" +
+                " and pet_id not in (select pet_id from adopt)";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         private static string GetAttr(string PID,string attribute)

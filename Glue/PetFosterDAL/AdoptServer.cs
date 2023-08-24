@@ -14,7 +14,17 @@ namespace PetFoster.DAL
         public static string conStr = AccommodateServer.conStr;
         public static DataTable PetInfo(decimal Limitrows = -1, string Orderby = null)
         {
-            string query = "SELECT * FROM pet_profile";
+            string query = "SELECT * FROM pet_profile" +
+                " where pet_id not in (select pet_id from foster)" +
+                " and pet_id not in (select pet_id from appointment)";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
+        }
+        public static DataTable PetInfoForUser(decimal Limitrows = -1, string Orderby = null)
+        {
+            string query = "SELECT * FROM pet_profile" +
+                " where pet_id not in (select pet_id from foster)" +
+                " and pet_id not in (select pet_id from adopt)" +
+                " and pet_id not in (select pet_id from appointment)";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         public static void InsertAdopt(string UID, string PID, DateTime dt, out int errcode)
