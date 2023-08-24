@@ -13,7 +13,7 @@ namespace PetFoster.BLL
     {
         public static DataTable ShowPetProfile(int Limitrow = -1, string Orderby = null)
         {
-            DataTable dt = AdoptServer.PetInfo(Limitrow, Orderby);
+            DataTable dt = AdoptServer.PetInfoForUser(Limitrow, Orderby);
             //调试用
             Util.DebugTable(dt);
             return dt;
