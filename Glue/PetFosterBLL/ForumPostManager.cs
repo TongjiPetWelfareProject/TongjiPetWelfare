@@ -29,7 +29,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = ForumPostServer.UncensoredForum(Limitrow, Orderby,beingcensored:false);
             //调试用
-            Util.DebugTable(dt);
+            Console.WriteLine("正在显示待审核的帖子");
             return dt;
         }
         public static void CensorPost(string FID, bool passed = false)

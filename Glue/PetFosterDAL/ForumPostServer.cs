@@ -32,7 +32,7 @@ namespace PetFoster.DAL
         {
             DataTable dataTable = new DataTable();
             string query = "SELECT post_id,user_name,post_contents,post_time FROM forum_posts" +
-                    " natural join user2 ";
+                    " natural join user2 where censored='N'";
             if (Limitrows > 0)
                 query += $" where rownum<={Limitrows} ";
             else if (beingcensored)
@@ -247,7 +247,7 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "UPDATE forum_posts SET censored='" + (passed?"Y":"N") + $"' where post_id='{FID}'";
+                    command.CommandText = "UPDATE forum_posts SET censored='" + (passed?"N":"Y") + $"' where post_id='{FID}'";
                     try
                     {
                         command.ExecuteNonQuery();
@@ -275,7 +275,7 @@ namespace PetFoster.DAL
             {
                 connection.Open();
 
-                string query = "SELECT * FROM forum_posts";
+                string query = "SELECT * FROM forum_posts where censored='Y'";
 
                 OracleCommand command = new OracleCommand(query, connection);
 
