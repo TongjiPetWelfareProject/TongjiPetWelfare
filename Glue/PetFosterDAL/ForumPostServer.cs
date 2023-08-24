@@ -237,7 +237,7 @@ namespace PetFoster.DAL
 
             return postIDs;
         }
-        private static void Censor(string FID, bool passed=false)
+        public static void Censor(string FID, bool passed=false)
         {
             // 更改信息
             try
@@ -264,6 +264,7 @@ namespace PetFoster.DAL
             {
                 // 处理异常
                 Console.WriteLine(ex.ToString());
+                throw new Exception("数据库执行错误");
             }
         }
         public static List<ForumPost> GetAllPosts()

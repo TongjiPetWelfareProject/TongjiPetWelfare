@@ -3,7 +3,6 @@ using PetFoster.BLL;
 using PetFoster.Model;
 using System.Data;
 using System.Text;
-using System.Text.Json;
 using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

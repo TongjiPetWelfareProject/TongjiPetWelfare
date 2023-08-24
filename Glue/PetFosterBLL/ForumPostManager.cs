@@ -25,11 +25,16 @@ namespace PetFoster.BLL
     };
     public class ForumPostManager
     {
-        public static void ShowForumProfile(int Limitrow = -1, string Orderby = null)
+        public static DataTable ShowForumProfile(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = ForumPostServer.UncensoredForum(Limitrow, Orderby,beingcensored:false);
             //调试用
             Util.DebugTable(dt);
+            return dt;
+        }
+        public static void CensorPost(string FID, bool passed = false)
+        {
+            ForumPostServer.Censor(FID, passed);
         }
         /// <summary>
         /// 展示帖子界面
