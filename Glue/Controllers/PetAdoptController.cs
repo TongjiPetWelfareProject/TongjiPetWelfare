@@ -76,14 +76,74 @@ namespace Glue.Controllers
             */
         }
 
+        public class PetWithoutAvartar
+        {
+            public string Pet_ID { get; set; }
+            public string Pet_Name { get; set; }
+            public string Species { get; set; }
+            public DateTime birthdate { get; set; }
+            public string Health_State { get; set; }
+            public string Vaccine { get; set; }
+            public decimal Read_Num { get; set; }
+            public decimal Like_Num { get; set; }
+            public decimal Collect_Num { get; set; }
+            public PetWithoutAvartar()
+            {
+                Pet_ID = "-1";
+                Pet_Name = "宠物已注销";
+            }
+            public PetWithoutAvartar(PetData.PETRow prow)
+            {
+                Pet_ID = prow.PET_ID;
+                Pet_Name = prow.PET_NAME;
+                Species = prow.BREED;
+                birthdate = prow.BIRTHDATE;
+                Health_State = prow.HEALTH_STATE;
+                Vaccine = prow.VACCINE;
+                Read_Num = prow.READ_NUM;
+                Like_Num = prow.LIKE_NUM;
+                Collect_Num = prow.COLLECT_NUM;
+            }
+        }
+        public class Pet2WithoutAvartar
+        {
+            public Pet2WithoutAvartar()
+            {
+
+            }
+            public PetWithoutAvartar original_pet;
+            public int Popularity;
+            public bool sex;
+            public string Psize;//宠物大小
+            public int Comment_Num;
+            public Pet2.Comment[] comments;
+        }
+
         // GET api/<PetAdoptController>
-        [HttpGet("pet-details")]
+        [HttpGet("pet-details/{petId}")]
         public IActionResult Get(int petId)
         {
             try
             {
                 Pet2 pet = AdoptApplyManager.RetrievePet(petId);
-                return Ok(pet);
+                Pet2WithoutAvartar pet2_temp = new Pet2WithoutAvartar();
+                PetWithoutAvartar pet_temp = new PetWithoutAvartar();
+                pet2_temp.comments = pet.comments;
+                pet2_temp.Comment_Num = pet.Comment_Num;
+                pet2_temp.Psize = pet.Psize;
+                pet2_temp.sex = pet.sex;
+                pet2_temp.Popularity = pet.Popularity;
+                pet_temp.Pet_ID = pet.original_pet.Pet_ID;
+                pet_temp.Pet_Name = pet.original_pet.Pet_Name;
+                pet_temp.Species = pet.original_pet.Species;
+                pet_temp.birthdate = pet.original_pet.birthdate;
+                pet_temp.Health_State = pet.original_pet.Health_State;
+                pet_temp.Vaccine = pet.original_pet.Vaccine;
+                pet_temp.Read_Num = pet.original_pet.Read_Num;
+                pet_temp.Like_Num = pet.original_pet.Like_Num;
+                pet_temp.Collect_Num = pet.original_pet.Collect_Num;
+                pet2_temp.original_pet = pet_temp;
+                return Ok(pet_temp);
             }
             catch (Exception ex)
             {
