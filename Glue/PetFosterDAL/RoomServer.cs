@@ -41,8 +41,7 @@ namespace PetFoster.DAL
                 query += $"where room_status='N'";
             if (Limitrows > 0 && OnlyAvailable)
                 query += "and room_status='N' ";
-            if ((Orderby) != null)
-                query += $" order by {Orderby} desc";
+                query += $" order by storey*30+compartment asc";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
