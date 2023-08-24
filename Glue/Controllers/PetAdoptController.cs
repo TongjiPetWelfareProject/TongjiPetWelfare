@@ -143,7 +143,7 @@ namespace Glue.Controllers
                 pet_temp.Like_Num = pet.original_pet.Like_Num;
                 pet_temp.Collect_Num = pet.original_pet.Collect_Num;
                 pet2_temp.original_pet = pet_temp;
-                return Ok(pet_temp);
+                return Ok(pet2_temp);
             }
             catch (Exception ex)
             {
