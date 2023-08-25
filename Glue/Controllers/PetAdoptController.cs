@@ -17,15 +17,15 @@ namespace Glue.Controllers
         {
             public string? user { get; set; }
             public string? pet { get; set; }
-            public string? gender { get; set; }
-            public string? pet_exp { get; set; }
-            public string? long_term_care { get; set; }
-            public string? w_to_treat { get; set; }
+            public bool gender { get; set; }
+            public decimal pet_exp { get; set; }
+            public bool long_term_care { get; set; }
+            public bool w_to_treat { get; set; }
             public decimal d_care_h { get; set; }
             public string? P_caregiver { get; set; }
             public decimal f_popul { get; set; }
-            public string? be_children { get; set; }
-            public string? accept_vis { get; set; }
+            public bool be_children { get; set; }
+            public bool accept_vis { get; set; }
         }
 
         // GET: api/<PetAdoptController>
@@ -178,19 +178,19 @@ namespace Glue.Controllers
                 return BadRequest("Invalid data.");
             }
 
-            bool gender = (adopt_table.gender == "M") ? true : false;
-            bool pet_exp = (adopt_table.pet_exp == "Y") ? true : false;
-            bool long_term_care = (adopt_table.long_term_care == "Y") ? true : false;
-            bool w_to_treat = (adopt_table.w_to_treat == "Y") ? true : false;
-            bool be_children = (adopt_table.be_children == "Y") ? true : false;
-            bool accept_vis = (adopt_table.accept_vis == "Y") ? true : false;
+            //bool gender = (adopt_table.gender == "M") ? true : false;
+            bool pet_exp = (adopt_table.pet_exp > 0) ? true : false;
+            //bool long_term_care = (adopt_table.long_term_care == "Y") ? true : false;
+            //bool w_to_treat = (adopt_table.w_to_treat == "Y") ? true : false;
+            //bool be_children = (adopt_table.be_children == "Y") ? true : false;
+            //bool accept_vis = (adopt_table.accept_vis == "Y") ? true : false;
 
             try
             {
                 AdoptApplyManager.ApplyAdopt(adopt_table.user, adopt_table.pet,
-                    gender, pet_exp, long_term_care,
-                    w_to_treat, adopt_table.d_care_h, adopt_table.P_caregiver,
-                    adopt_table.f_popul, be_children, accept_vis);
+                    adopt_table.gender, pet_exp, adopt_table.long_term_care,
+                    adopt_table.w_to_treat, adopt_table.d_care_h, adopt_table.P_caregiver,
+                    adopt_table.f_popul, adopt_table.be_children, adopt_table.accept_vis);
                 return Ok();
             }
             catch (Exception ex)
