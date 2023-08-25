@@ -267,6 +267,43 @@ namespace PetFoster.DAL
                 throw new Exception("数据库执行错误");
             }
         }
+        public static List<ForumPost> GetAllPostsForUser(string UID)
+        {
+            List<ForumPost> posts = new List<ForumPost>();
+
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = $"SELECT * FROM forum_posts where censored='Y' and user_id={UID}";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ForumPost forumpost = new ForumPost
+                        {
+                            PostId = reader["post_id"].ToString(),
+                            UserId = reader["user_id"].ToString(),
+                            Post_time = Convert.ToDateTime(reader["post_time"]),
+                            Content = reader["post_contents"].ToString(),
+                            ReadCount = Convert.ToInt32(reader["read_count"]),
+                            LikeNum = Convert.ToInt32(reader["like_num"]),
+                            CommentNum = Convert.ToInt32(reader["comment_num"]),
+                            Heading = reader["heading"].ToString()
+                        };
+
+                        posts.Add(forumpost);
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return posts;
+        }
         public static List<ForumPost> GetAllPosts()
         {
             List<ForumPost> posts = new List<ForumPost>();

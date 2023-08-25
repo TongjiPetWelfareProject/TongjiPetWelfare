@@ -130,6 +130,13 @@ namespace PetFoster.BLL
             PostList = ForumPostServer.GetAllPosts();
             return PostList;
         }
+        public static List<ForumPost> GetAllPostsForUser()
+        {
+            List<ForumPost> PostList = new List<ForumPost>();
+
+            PostList = ForumPostServer.GetAllPostsForUser();
+            return PostList;
+        }
         //需要转化为List<Comment>，Comment位于PetFoster.Model
         public static DataTable GetAllComments(string PID)
         {
@@ -139,13 +146,25 @@ namespace PetFoster.BLL
         public static DataTable GetLikeNums(string PID)
         {
             string query =$"select like_num from verbosepost where PID={PID}";
-            return DBHelper.ShowInfo(PID);
+            return DBHelper.ShowInfo(query);
         }
         //获取帖子评论数
         public static DataTable GetCommentNums(string PID)
         {
             string query = $"select comment_num from verbosepost where PID={PID}";
-            return DBHelper.ShowInfo(PID);
+            return DBHelper.ShowInfo(query);
+        }
+        //获取用户帖子点赞数
+        public static DataTable GetTotalLikeNums(string UID)
+        {
+            string query = $"select sum(like_num) from verbosepost where UID={UID}";
+            return DBHelper.ShowInfo(query);
+        }
+        //获取用户帖子评论数
+        public static DataTable GetTotalCommentNums(string UID)
+        {
+            string query = $"select sum(comment_num) from verbosepost where UID={UID}";
+            return DBHelper.ShowInfo(query);
         }
     }
 }
