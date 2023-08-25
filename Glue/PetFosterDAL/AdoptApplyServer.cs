@@ -144,7 +144,7 @@ namespace PetFoster.DAL
                     pet.Like_Num = Convert.ToDecimal(reader["Like_Num"]);
                     pet.Collect_Num = Convert.ToDecimal(reader["Collect_Num"]);
                     petoverall.original_pet = pet;
-                    petoverall.original_pet.Vaccine = reader["Health_State"].ToString();
+                    petoverall.original_pet.Vaccine = reader["Vaccine"].ToString();
                     petoverall.original_pet.Health_State = reader["Health_State"].ToString();
                     petoverall.Comment_Num = Convert.ToInt32(reader["comment_num"]);
                     petoverall.sex = Convert.ToChar(reader["sex"]) == 'M' ? true : false;

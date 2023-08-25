@@ -23,19 +23,31 @@ namespace PetFoster.BLL
             Util.DebugTable(dt);
             return dt;
         }
-        public static void GiveALike(string UID, string PID)
+        public static void GiveALike(string UID, string PID, bool is_give)
         {
             bool dt = LikePetServer.GetLikePetEntry(UID, PID);
             //调试用
-            if (!dt)
+            if (!dt && is_give)
             {
                 LikePetServer.InsertLikePet(UID, PID);
                 Console.WriteLine($"{UID} gives a like to {PID}."); // 输出点赞信息
             }
-            else
+            else if(dt && !is_give)
             {
                 LikePetServer.DeleteLikePet(UID, PID);
                 Console.WriteLine($"{UID} undo a like to {PID}."); // 输出点赞信息
+            }
+            else if (!dt && !is_give)
+            {
+                throw new Exception("无效操作：没有点赞过，无法取消");
+            }
+            else if (dt && is_give)
+            {
+                throw new Exception("无效操作：已经点赞了，不能再点赞");
+            }
+            else
+            {
+                throw new Exception("无效操作");
             }
         }
     }
