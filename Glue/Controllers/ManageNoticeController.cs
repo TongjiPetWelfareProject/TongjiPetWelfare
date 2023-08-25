@@ -20,12 +20,14 @@ namespace Glue.Controllers
     {
         public class NoticeModel
         {
-            public string employeeId { get; set; }
+            public string id { get; set; }
             public string title { get; set; }
             public string content { get; set; }
-            public DateTime time { get; set; }
+            public string time { get; set; }
+            public string employeeId { get; set; }
             public NoticeModel()
             {
+                id = "";
                 employeeId = "";
                 title = "";
                 content = "";
@@ -33,71 +35,53 @@ namespace Glue.Controllers
             }
         }
 
-
-        // GET: api/<ManageAdoptController>
-        /*[HttpGet("manage-adopt")]
-        public IActionResult Get()
-        {
-            int censorstate = 0; //默认未审核
-            try
-            {
-                DataTable dt = AdoptApplyManager.ShowCensorAdopt();
-                List<AdoptionRecord> RecordList = new List<AdoptionRecord>();
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    AdoptionRecord RecordItem = new AdoptionRecord();
-                    for (int j = 0; j < dt.Columns.Count; j++)
-                    {
-                        if (dt.Columns[j].ColumnName.ToLower() == "apply_date")
-                        {
-                            RecordItem.date = dt.Rows[i][j].ToString();
-                        }
-                        else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
-                        {
-                            RecordItem.petId = PetServer.GetName(dt.Rows[i][j].ToString());
-                        }
-                        else if (dt.Columns[j].ColumnName.ToLower() == "adopter_id")
-                        {
-                            RecordItem.userId = UserServer.GetName(dt.Rows[i][j].ToString());
-                        }
-                        else if (dt.Columns[j].ColumnName.ToLower() == "reason")
-                        {
-                            RecordItem.reason = dt.Rows[i][j].ToString();
-                        }
-                    }
-                    RecordItem.censor_status = JsonHelper.GetErrorMessage("censor_state", censorstate);
-                    RecordList.Add(RecordItem);
-                }
-
-                string jsondata = JsonSerializer.Serialize(RecordList);
-                Console.WriteLine(jsondata);
-
-                return Ok(jsondata);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }*/
-
         //added by rqx 8.24
         // 获取全部公告
-        /*[HttpGet]
-        [Route("notice")]
+        [HttpGet("notice")]
         public IActionResult getNotice()
         {
             try
             {
                 // 在这里编写获取全部公告的逻辑
                 // 返回公告数据
-                return Ok(noticeData);
+                DataTable dt = BulletinManager.ShowBulletinsForAdmin();
+                List<NoticeModel> NoticeList = new List<NoticeModel>();
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    NoticeModel NoticeItem = new NoticeModel();
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        if (dt.Columns[j].ColumnName.ToLower() == "bulletin_id")
+                        {
+                            NoticeItem.id = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "heading")
+                        {
+                            NoticeItem.title = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "bulletin_contents")
+                        {
+                            NoticeItem.content = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "published_time")
+                        {
+                            NoticeItem.time = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "employee_id")
+                        {
+                            NoticeItem.employeeId = dt.Rows[i][j].ToString();
+                        }
+                    }
+                    NoticeList.Add(NoticeItem);
+                }
+                return Ok(NoticeList);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
-        }*/
+        }
 
         // 获取捐赠记录
         /*[HttpGet]
@@ -115,7 +99,7 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }*/
-
+        /*
         // 发送新公告
         [HttpPost]
         [Route("send-notice")]
@@ -131,7 +115,7 @@ namespace Glue.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-        }
+        }*/
 
         // 获取公告内容
         /*[HttpGet]
@@ -149,7 +133,7 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }*/
-
+        /*
         // 发送编辑过的公告
         [HttpPost]
         [Route("send-edited-notice")]
@@ -166,7 +150,8 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
+        */
+        /*
         // 删除公告
         [HttpDelete]
         [Route("delete-notice/{noticeId}")]
@@ -183,6 +168,6 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        */
     }
-}
 }

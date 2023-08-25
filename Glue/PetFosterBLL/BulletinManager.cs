@@ -33,5 +33,20 @@ namespace PetFoster.BLL
             bulletinList = BulletinServer.GetAllBulletins(); // Empty string for all bulletins
             return bulletinList;
         }
+
+        public static DataTable ShowBulletinsForAdmin()
+        {
+            try
+            {
+                DataTable dt = BulletinServer.BulletinInfoForAdmin();
+                //调试用
+                Console.WriteLine("开始选择公告！");
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("数据库执行错误");
+            }
+        }
     }
 }
