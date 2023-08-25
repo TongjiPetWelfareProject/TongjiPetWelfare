@@ -40,11 +40,10 @@ namespace PetFoster.BLL
         /// 展示帖子界面
         /// </summary>
         /// <param name="PID"></param>
-        public static void ShowPost(int PID)
+        public static List<ForumPost> ShowPost(int PID)
         {
-            DataTable dt = ForumPostServer.SelectPost(PID.ToString());
-            //调试用
-            Util.DebugTable(dt);
+            List<ForumPost> dt = ForumPostServer.SelectPost(PID.ToString());
+            return dt;
         }
         public static void UpdateForumProfile(string FID)
         {
