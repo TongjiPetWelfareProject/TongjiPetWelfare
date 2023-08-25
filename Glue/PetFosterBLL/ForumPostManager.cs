@@ -40,9 +40,9 @@ namespace PetFoster.BLL
         /// 展示帖子界面
         /// </summary>
         /// <param name="PID"></param>
-        public static List<ForumPost> ShowPost(int PID)
+        public static List<ForumPost> ShowPost(string PID)
         {
-            List<ForumPost> dt = ForumPostServer.SelectPost(PID.ToString());
+            List<ForumPost> dt = ForumPostServer.SelectPost(PID);
             return dt;
         }
         public static void UpdateForumProfile(string FID)
@@ -84,15 +84,16 @@ namespace PetFoster.BLL
         /// <param name="UID"></param>
         /// <param name="contents"></param>
         /// <param name="paths">图片路径</param>
-        public static void PublishPost(string UID,string heading,string contents,List<string> paths)
+        public static int PublishPost(string UID,string heading,string contents)
         {
             //更新帖子
             int FID = ForumPostServer.InsertPost(UID, heading,contents);
             //上传图片（最多五张）
-            foreach(var path in paths)
-            {
-                PostImagesServer.InsertImage(FID.ToString(), path);
-            }
+            //foreach(var path in paths)
+            //{
+            //    PostImagesServer.InsertImage(FID.ToString(), path);
+            //}
+            return FID;
         }
         /// <summary>
         /// 获得帖子的图片和内容，图片以二进制形式存储，需要类型转换
