@@ -247,7 +247,7 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "UPDATE forum_posts SET censored='" + (passed?"N":"Y") + $"' where post_id='{FID}'";
+                    command.CommandText = "UPDATE forum_posts SET censored='" + (passed?"A":"Y") + $"' where post_id='{FID}'";
                     try
                     {
                         command.ExecuteNonQuery();
