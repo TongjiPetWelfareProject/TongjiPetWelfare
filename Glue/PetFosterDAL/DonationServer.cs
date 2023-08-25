@@ -26,6 +26,18 @@ namespace PetFoster.DAL
                 " left join user2 on donor_id=user_id";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
+        public static DataTable DonateIDInfo(string UID,decimal Limitrows = -1, string Orderby = null)
+        {
+            DataTable dataTable = new DataTable();
+            string query = $"SELECT * FROM donation where donor_id={UID}";
+            return DBHelper.ShowInfo(query, Limitrows, Orderby);
+        }
+        public static DataTable TotalAmount(string UID)
+        {
+            DataTable dataTable = new DataTable();
+            string query = $"SELECT sum(donation_amount) FROM donation where donor_id={UID}";
+            return DBHelper.ShowInfo(query);
+        }
         public static DataTable DonationAmount(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();

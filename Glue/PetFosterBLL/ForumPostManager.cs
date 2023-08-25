@@ -130,11 +130,11 @@ namespace PetFoster.BLL
             PostList = ForumPostServer.GetAllPosts();
             return PostList;
         }
-        public static List<ForumPost> GetAllPostsForUser()
+        public static List<ForumPost> GetAllPostsForUser(string UID)
         {
             List<ForumPost> PostList = new List<ForumPost>();
 
-            PostList = ForumPostServer.GetAllPostsForUser();
+            PostList = ForumPostServer.GetAllPostsForUser(UID);
             return PostList;
         }
         //需要转化为List<Comment>，Comment位于PetFoster.Model
