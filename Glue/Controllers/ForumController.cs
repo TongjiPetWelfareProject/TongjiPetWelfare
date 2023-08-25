@@ -22,7 +22,11 @@ namespace Glue.Controllers
     {
         public class PostModel
         {
-            public int post_id { get; set; }
+            public string? post_id { get; set; }
+            public string? user_id { get; set; }
+            public string? post_title { get; set; }
+            public string? post_content { get; set; }
+
         }
 
         [HttpGet("forum")]
@@ -40,5 +44,17 @@ namespace Glue.Controllers
             Console.WriteLine("收到帖子请求"+ postModel.post_id);
             return Ok(post);
         }
+
+        [HttpPost("postcontent")]
+        public IActionResult PostContent([FromBody] PostModel postModel)
+        {
+            int status = ForumPostManager.PublishPost(postModel.user_id,postModel.post_title,postModel.post_content);
+            Console.WriteLine("收到发帖请求" + postModel.post_id);
+            if(status!=-1)
+                return Ok(0);
+            else 
+                return BadRequest(-1);
+        }
+
     }
 }
