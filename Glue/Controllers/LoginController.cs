@@ -81,7 +81,7 @@ namespace WebApplicationTest1
                         User_Name = candidate.User_Name,
                         Password = candidate.Password,
                         Phone_Number = candidate.Phone_Number,
-                        Address = candidate.Address,
+                        Address = JsonHelper.TranslateBackToChinese(candidate.Address),
                         Role = candidate.Role,
                         Account_Status = candidate.Account_Status
                     }

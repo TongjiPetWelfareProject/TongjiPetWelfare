@@ -46,7 +46,7 @@ namespace Glue.Controllers
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "address")
                         {
-                            UserItem.address = dt.Rows[i][j].ToString();
+                            UserItem.address = JsonHelper.TranslateBackToChinese(dt.Rows[i][j].ToString());
                         }
                     }
                     UsersList.Add(UserItem);

@@ -118,6 +118,33 @@ namespace PetFoster.BLL
             }
             return res[0]+','+res[1];
         }
+        public static string TranslateBackToChinese(string translatedInput)
+        {
+            string[] parts = translatedInput.Split(',');
+            if (translatedInput == "Random Address")
+            {
+                return "上海市嘉定区";
+            }
+            if (parts.Length ==1)
+            {
+                
+                return TranslateToCn(parts[0], "provinces");
+            }
+
+            string translatedRegion = TranslateToCn(parts[1], "provinces");
+            if (translatedRegion == null)
+            {
+                return null;
+            }
+
+            string translatedCity = TranslateToCn(parts[0], parts[1]);
+            if (translatedCity == null)
+            {
+                return null;
+            }
+
+            return  translatedRegion+ translatedCity;
+        }
         public static string GetErrorMessage(string method,int code)
         {
             var directory = System.AppContext.BaseDirectory.Split(Path.DirectorySeparatorChar);
