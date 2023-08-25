@@ -40,7 +40,8 @@ namespace PetFoster.DAL
                             ReadCount = Convert.ToInt32(reader["read_count"]),
                             LikeNum = Convert.ToInt32(reader["like_num"]),
                             CommentNum = Convert.ToInt32(reader["comment_num"]),
-                            Heading = reader["heading"].ToString()
+                            Heading = reader["heading"].ToString(),
+                            UserName = UserServer.GetName(reader["user_id"].ToString())
                         };
 
                         posts.Add(forumpost);
@@ -360,7 +361,8 @@ namespace PetFoster.DAL
                             ReadCount = Convert.ToInt32(reader["read_count"]),
                             LikeNum = Convert.ToInt32(reader["like_num"]),
                             CommentNum = Convert.ToInt32(reader["comment_num"]),
-                            Heading = reader["heading"].ToString()
+                            Heading = reader["heading"].ToString(),
+                            UserName = UserServer.GetName(reader["user_id"].ToString())
                         };
 
                         posts.Add(forumpost);
