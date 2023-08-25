@@ -15,11 +15,42 @@ namespace PetFoster.DAL
     public class ForumPostServer
     {
         public static string conStr = AccommodateServer.conStr;
-        public static DataTable SelectPost(string PID)
+        public static List<ForumPost> SelectPost(string PID)
         {
-            DataTable dataTable = new DataTable();
-            string query = $"SELECT * from verbosepost where post_id={PID}";
-            return DBHelper.ShowInfo(query);
+            List<ForumPost> posts = new List<ForumPost>();
+
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = $"SELECT * from forum_posts where post_id={PID}";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ForumPost forumpost = new ForumPost
+                        {
+                            PostId = reader["post_id"].ToString(),
+                            UserId = reader["user_id"].ToString(),
+                            Post_time = Convert.ToDateTime(reader["post_time"]),
+                            Content = reader["post_contents"].ToString(),
+                            ReadCount = Convert.ToInt32(reader["read_count"]),
+                            LikeNum = Convert.ToInt32(reader["like_num"]),
+                            CommentNum = Convert.ToInt32(reader["comment_num"]),
+                            Heading = reader["heading"].ToString()
+                        };
+
+                        posts.Add(forumpost);
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return posts;
         }
         /// <summary>
         /// 展示所有帖子的详细信息，用于管理员端审核,注意用post_id区分发帖者的ID，并进行相应的封号等操作，而不是user_name
