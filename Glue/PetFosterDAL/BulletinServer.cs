@@ -31,7 +31,7 @@ namespace PetFoster.DAL
         //管理员端
         public static DataTable BulletinInfoForAdmin()
         {
-            string query = "SELECT bulletin_id,heading,published_time,employee_id " +
+            string query = "SELECT bulletin_id,heading,published_time,employee_id,bulletin_contents " +
                     "from bulletin ";
             query += " order by published_time desc";
             return DBHelper.ShowInfo(query);
