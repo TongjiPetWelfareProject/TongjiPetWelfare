@@ -2,6 +2,7 @@
 using System;
 using System.Globalization;
 using PetFoster.BLL;
+using Microsoft.AspNetCore.Routing;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -44,12 +45,16 @@ namespace Glue.Controllers
         [HttpPost("pet-foster")]
         public IActionResult FosterApply([FromBody] FosterData foster_table)
         {
-            DateTime? date = ConvertTools.StringConvertToDate(foster_table.date);
-            if (date == null)
+            DateTime? rdate = ConvertTools.StringConvertToDate(foster_table.date);
+            if (rdate == null)
             {
                 return BadRequest("Failed to parse the date.");
             }
-
+            DateTime date = rdate.Value;
+            if (date.Subtract(DateTime.Now) <= TimeSpan.FromDays(0) || date.Subtract(DateTime.Now) >= TimeSpan.FromDays(7))
+            {
+                throw new Exception("请从今天开始的一周内申请领养！");
+            }
             int status = FosterManager.ApplyFoster(foster_table.user, foster_table.name, foster_table.type, foster_table.size, (DateTime)date, foster_table.num, foster_table.remark);
             if(status == 3)
             {

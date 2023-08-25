@@ -3,6 +3,7 @@ using PetFoster.BLL;
 using System.Data;
 using System.Text.Json;
 using PetFoster.DAL;
+using Microsoft.AspNetCore.Routing;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Glue.Controllers
@@ -87,8 +88,8 @@ namespace Glue.Controllers
                 return BadRequest("Invalid data.");
             }
             //record.print();
-            DateTime? date = ConvertTools.StringConvertToDate(record.date);
-            if (date == null)
+            DateTime? rdate = ConvertTools.StringConvertToDate(record.date);
+            if (rdate == null)
             {
                 return BadRequest("Failed to parse the date.");
             }
@@ -96,6 +97,11 @@ namespace Glue.Controllers
             if (!int.TryParse(record.petId, out pid))
             {
                 return BadRequest("Invalid petId");
+            }
+            DateTime date = rdate.Value;
+            if (date.Subtract(DateTime.Now) <= TimeSpan.FromDays(0) || date.Subtract(DateTime.Now) >= TimeSpan.FromDays(7))
+            {
+                throw new Exception("请从今天开始的一周内申请领养！");
             }
             try
             {
