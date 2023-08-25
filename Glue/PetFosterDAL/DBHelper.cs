@@ -35,5 +35,29 @@ namespace PetFoster.DAL
             }
             return dataTable;
         }
+        public static string GetScalar(string query)
+        {
+            bool con = false;
+            User user1 = new User();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = query;
+                command.Parameters.Clear();
+                try
+                {
+                    string petname = command.ExecuteScalar() as string;
+                    return petname;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "Error";
+                }
+            }
+        }
     }
 }

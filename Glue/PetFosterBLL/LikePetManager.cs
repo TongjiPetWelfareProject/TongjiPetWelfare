@@ -50,5 +50,14 @@ namespace PetFoster.BLL
                 throw new Exception("无效操作");
             }
         }
+        public static int GetLikeNums(string PID)
+        {
+            return LikePetServer._GetLikeNums(PID);
+        }
+        //取消点赞，
+        public static void UndoALike(string UID, string PID)
+        {
+            LikePetServer.DeleteLikePet(UID, PID);
+        }
     }
 }

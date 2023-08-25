@@ -102,6 +102,12 @@ namespace PetFoster.DAL
                 Console.WriteLine(ex.ToString());
             }
         }
+        public static int _GetLikeNums(string PID)
+        {
+            string query = $"select count(*) from like_pet where pet_id={PID}";
+            string popul=DBHelper.GetScalar(query);
+            return Convert.ToInt32(popul);
+        }
         /// <summary>
         /// 只有存在条目才能删除
         /// </summary>

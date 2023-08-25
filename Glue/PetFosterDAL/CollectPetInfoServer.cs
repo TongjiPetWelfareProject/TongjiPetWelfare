@@ -26,6 +26,12 @@ namespace PetFoster.DAL
             
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
+        public static int _GetCollectNums(string PID)
+        {
+            string query = $"select count(*) from collect_pet_info where pet_id={PID}";
+            string popul = DBHelper.GetScalar(query);
+            return Convert.ToInt32(popul);
+        }
         /// <summary>
         /// 获取收集宠物信息条目
         /// </summary>

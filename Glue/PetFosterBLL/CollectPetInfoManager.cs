@@ -18,6 +18,10 @@ namespace PetFoster.BLL
             Util.DebugTable(dt);
             return dt;
         }
+        public static int GetCollectNums(string PID)
+        {
+            return CollectPetInfoServer._GetCollectNums(PID);
+        }
         public static void GiveACollect(string UID, string PID, bool is_give)
         {
             bool dt = CollectPetInfoServer.GetCollectPetInfoEntry(UID, PID);
