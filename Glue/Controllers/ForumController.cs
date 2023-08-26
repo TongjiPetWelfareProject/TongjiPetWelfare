@@ -75,7 +75,19 @@ namespace Glue.Controllers
                 return Ok("评论成功");
             return BadRequest(-1);
         }
-
-
+        [HttpPost("likepost")]
+        public IActionResult LikePost([FromBody] PostModel postModel)
+        {
+            Console.WriteLine("收到点赞帖子请求,帖子ID：" + postModel.post_id + "点赞人ID：" + postModel.user_id);
+            LikePostManager.GiveALike(postModel.user_id, postModel.post_id);
+            return Ok("点赞或取消成功");
+        }
+        [HttpPost("iflikepost")]
+        public IActionResult IfLikePost([FromBody] PostModel postModel)
+        {
+            Console.WriteLine("收到点赞帖子请求,帖子ID：" + postModel.post_id + "点赞人ID：" + postModel.user_id);
+            int status = LikePostManager.IfLike(postModel.user_id, postModel.post_id);
+            return Ok(status);
+        }
     }
 }
