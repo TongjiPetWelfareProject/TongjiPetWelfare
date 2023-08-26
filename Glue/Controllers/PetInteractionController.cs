@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,14 +10,72 @@ namespace Glue.Controllers
     [ApiController]
     public class PetInteractionController : ControllerBase
     {
-        /*
-        // GET: api/<PetInteractionController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        public class InteractionData
         {
-            return new string[] { "value1", "value2" };
+            public string? user { get; set; }
+            public string? pet { get; set; }
         }
-
+        public class CommentData : InteractionData
+        {
+            public string text { get; set; }
+            public string time { get; set; }
+            public CommentData()
+            {
+                text = "";
+                time = "";
+            }
+        }
+        
+        // GET: api/<PetInteractionController>
+        [HttpGet("comment-list")]
+        public IActionResult Get()
+        {
+            try
+            {
+                DataTable dt = CommentPetManager.ShowCommentPet();
+                List<CommentData> CommentsList = new List<CommentData>();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    CommentData CommentItem = new CommentData();
+                    string? date = null;
+                    string? time = null;
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        if (dt.Columns[j].ColumnName.ToLower() == "user_id")
+                        {
+                            CommentItem.user = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
+                        {
+                            CommentItem.pet = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "comment_contents")
+                        {
+                            CommentItem.text = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "comment_date")
+                        {
+                            date = dt.Rows[i][j].ToString();
+                        }
+                        else if(dt.Columns[j].ColumnName.ToLower() == "comment_time")
+                        {
+                            time = dt.Rows[i][j].ToString();
+                        }
+                    }
+                    if(!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(time))
+                    {
+                        CommentItem.time = date + time;
+                    }
+                    CommentsList.Add(CommentItem);
+                }
+                return Ok(CommentsList);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        /*
         // GET api/<PetInteractionController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -24,19 +83,7 @@ namespace Glue.Controllers
             return "value";
         }
         */
-        public class InteractionData
-        {
-            public string? user { get; set; }
-            public string? pet { get; set; }
-        }
-        public class CommentData:InteractionData
-        {
-            public string text { get; set; }
-            public CommentData()
-            {
-                text = "";
-            }
-        }
+
         // POST api/<PetInteractionController>
         [HttpPost("pet-submit-like")]
         public IActionResult PostLike([FromBody] InteractionData like_data)
@@ -168,7 +215,7 @@ namespace Glue.Controllers
             }
         }
         // POST api/<PetInteractionController>
-        [HttpPost("pet-ancel-comment")]
+        [HttpPost("pet-delete-comment")]
         public IActionResult PostUndoComment([FromBody] CommentData comment_data)
         {
             if (comment_data == null)
@@ -183,9 +230,14 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid Pet_Id");
             }
+            DateTime? time = ConvertTools.StringConvertToDate(comment_data.time);
+            if(time == null)
+            {
+                return BadRequest("Failed to parse the date.");
+            }
             try
             {
-                //CommentPetManager.UndoAComment(comment_data.user, comment_data.pet, comment_data.text);
+                CommentPetManager.UndoAComment(comment_data.user, comment_data.pet, (DateTime)time);
                 return Ok();
             }
             catch (Exception ex)
