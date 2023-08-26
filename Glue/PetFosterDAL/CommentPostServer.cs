@@ -125,7 +125,7 @@ namespace PetFoster.DAL
             {
                 connection.Open();
 
-                string query = $"select count(*) from comment_post where post_id={inPID}";
+                string query = $"select user_id, comment_time, comment_contents from comment_post where post_id={inPID}";
 
                 OracleCommand command = new OracleCommand(query, connection);
 
