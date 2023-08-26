@@ -43,8 +43,8 @@ namespace Glue.Controllers
         public IActionResult PostInfo([FromBody] PostModel postModel)
         {
             List<ForumPost> post = ForumPostManager.ShowPost(postModel.post_id);
-            //ForumPostServer.ReadForum(postModel.post_id);
-            Console.WriteLine("收到帖子请求"+ postModel.post_id);
+            ForumPostServer.ReadForum(postModel.post_id);
+            Console.WriteLine("收到帖子请求："+ postModel.post_id);
             return Ok(post);
         }
 
@@ -52,7 +52,7 @@ namespace Glue.Controllers
         public IActionResult PostContent([FromBody] PostModel postModel)
         {
             int status = ForumPostManager.PublishPost(postModel.user_id,postModel.post_title,postModel.post_content);
-            Console.WriteLine("收到发帖请求" + postModel.post_id);
+            Console.WriteLine("收到发帖请求：" + postModel.post_id);
             if(status!=-1)
                 return Ok(0);
             else 
@@ -63,7 +63,7 @@ namespace Glue.Controllers
         public IActionResult PostComment([FromBody] PostModel postModel)
         {
             List<PostComment> AllComment= CommentPostManager.ShowPIDPost(postModel.post_id);
-            Console.WriteLine("收到帖子评论请求" + postModel.post_id);
+            Console.WriteLine("收到帖子评论列表请求：" + postModel.post_id);
             return Ok(AllComment);
         }
 
@@ -96,6 +96,16 @@ namespace Glue.Controllers
             Console.WriteLine("收到获取点赞信息请求,帖子ID：" + postModel.post_id + "点赞人ID：" + postModel.user_id);
             CommentPostManager.UndoACommentPost(postModel.user_id, postModel.post_id,postModel.comment_time);
             return Ok();
+        }
+        [HttpPost("deletepost")]
+        public IActionResult DeletePost([FromBody] PostModel postModel)
+        {
+            bool status = ForumPostManager.DeleteForumProfile(postModel.post_id,postModel.user_id);
+            Console.WriteLine("收到删除帖子请求：" + postModel.post_id+"；用户id："+postModel.user_id);
+            if(status)
+                return Ok();
+            else
+                return BadRequest();
         }
     }
 }

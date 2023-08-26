@@ -59,15 +59,16 @@ namespace PetFoster.BLL
                 Console.WriteLine("FID is not a valid numeric value.");
             }
         }
-        public static void DeleteForumProfile(string FID)
+        public static bool DeleteForumProfile(string FID,string UID)
         {
             int id;
             int uid;
+            bool status=false;
             if (int.TryParse(FID, out id))
             {
                 // FID 全为数字，执行相应的逻辑
-                uid = Convert.ToInt32(ForumPostServer.GetUID(FID));
-                ForumPostServer.DeleteForum(FID);
+                uid = Convert.ToInt32(UID);
+                status = ForumPostServer.DeleteForum(FID);
                 UserManager.Ban(uid, "Warning Issued");
                 Console.WriteLine("Forum profile with FID " + FID + " has been deleted.");
                 Console.WriteLine("User with UID " + uid + " has been warned.");
@@ -76,7 +77,9 @@ namespace PetFoster.BLL
             {
                 // FID 不全为数字，执行相应的错误处理逻辑
                 Console.WriteLine("FID is not a valid numeric value.");
+                return false;
             }
+            return status;
         }
         /// <summary>
         /// 发布帖子待审阅
