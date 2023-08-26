@@ -1,6 +1,7 @@
 using Glue.PetFoster.Model;
 using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
+using PetFoster.BLL;
 using PetFoster.Model;
 using System;
 using System.Collections;
@@ -38,8 +39,8 @@ namespace PetFoster.DAL
                             Post_time = Convert.ToDateTime(reader["post_time"]),
                             Content = reader["post_contents"].ToString(),
                             ReadCount = Convert.ToInt32(reader["read_count"]),
-                            LikeNum = Convert.ToInt32(reader["like_num"]),
-                            CommentNum = Convert.ToInt32(reader["comment_num"]),
+                            LikeNum = LikePostServer.GetLikePostNums(PID),
+                            CommentNum = CommentPostServer.GetCommentPostNums(PID),
                             Heading = reader["heading"].ToString(),
                             UserName = UserServer.GetName(reader["user_id"].ToString())
                         };
@@ -359,8 +360,8 @@ namespace PetFoster.DAL
                             Post_time = Convert.ToDateTime(reader["post_time"]),
                             Content = reader["post_contents"].ToString(),
                             ReadCount = Convert.ToInt32(reader["read_count"]),
-                            LikeNum = Convert.ToInt32(reader["like_num"]),
-                            CommentNum = Convert.ToInt32(reader["comment_num"]),
+                            LikeNum = LikePostServer.GetLikePostNums(reader["post_id"].ToString()),
+                            CommentNum = CommentPostServer.GetCommentPostNums(reader["post_id"].ToString()),
                             Heading = reader["heading"].ToString(),
                             UserName = UserServer.GetName(reader["user_id"].ToString())
                         };

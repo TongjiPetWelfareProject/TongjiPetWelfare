@@ -114,7 +114,7 @@ namespace PetFoster.DAL
         public static int GetCommentPostNums(string PID)
         {
             string query = $"select count(*) from comment_post where post_id={PID}";
-            return Convert.ToInt32(DBHelper.GetScalar(query));
+            return DBHelper.GetScalarInt(query);
         }
 
         public static List<PostComment> GetAllComment(string inPID)
