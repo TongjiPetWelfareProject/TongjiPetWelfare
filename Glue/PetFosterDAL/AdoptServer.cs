@@ -37,9 +37,13 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO adopt (adopter_id, pet_id,apply_date)" +
+                    command.CommandText = "INSERT INTO adopt (adopter_id, pet_id,adoption_time)" +
                     $"VALUES ({UID},{PID},:dt)";
-                    command.Parameters.Add("dt", OracleDbType.Date, dt, ParameterDirection.Input);
+                    //延期了
+                    if(DateTime.Now.Subtract(dt).TotalDays<0)
+                        command.Parameters.Add("dt", OracleDbType.Date, DateTime.Now, ParameterDirection.Input);
+                    else
+                        command.Parameters.Add("dt", OracleDbType.Date, dt, ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();

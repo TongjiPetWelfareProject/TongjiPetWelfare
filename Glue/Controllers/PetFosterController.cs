@@ -61,7 +61,7 @@ namespace Glue.Controllers
                 return Conflict("房间已满！");
             }
             else if(status == 4)
-            {
+            {   
                 return StatusCode(500, "系统故障");
             }
             else

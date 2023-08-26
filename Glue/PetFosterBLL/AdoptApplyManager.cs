@@ -25,10 +25,12 @@ namespace PetFoster.BLL
             //1. 一个人不能重复申请领养
             try
             {
-                string query1 = $"select count(*) from adopt_apply where adopter_id={UID} and pet_id={PID}";
+                string query1 = $"select count(*) from adopt_apply where adopter_id={UID} and pet_id={PID} " +
+                    $"where censor_state='to be censored'";
                 bool repeat = DBHelper.GetScalarInt(query1) > 0;
                 //2. 一只宠物最多能被10个人申请领养
-                string query2 = $"select count(*) from adopt_apply where pet_id={PID}";
+                string query2 = $"select count(*) from adopt_apply where pet_id={PID} where" +
+                    $" censor_state='legitimate' or censor_state='to be censored'";
                 bool atcapacity = DBHelper.GetScalarInt(query1) > 10;
                 if (repeat)
                     throw new Exception("请不要重复申请领养宠物");
@@ -91,6 +93,9 @@ namespace PetFoster.BLL
                 }
                 //3.审核状态为通过
                 AdoptApplyServer.UpdateAdoptEntry(UID, pid.ToString(), "legitimate");
+                //4.其他申请人被淘汰
+                AdoptApplyServer.UpdateAdoptEntries(UID, pid.ToString(), "aborted");
+                
             }
             else
             {

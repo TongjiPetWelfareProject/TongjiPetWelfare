@@ -108,13 +108,13 @@ namespace Glue.Controllers
                 return BadRequest("Invalid userId");
             }
             bool pass;
-            if(record.censor_status == "aborted")
+            if(record.censor_status.StartsWith("abor"))
             {
-                pass = false;
+                pass = true;
             }
             else if(record.censor_status == "legitimate")
             {
-                pass = true;
+                pass = false;
             }
             else
             {
