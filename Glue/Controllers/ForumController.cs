@@ -27,6 +27,7 @@ namespace Glue.Controllers
             public string? post_title { get; set; }
             public string? post_content { get; set; }
             public string? added_comment { get; set; } 
+            public DateTime comment_time { get; set; }
 
         }
 
@@ -85,9 +86,16 @@ namespace Glue.Controllers
         [HttpPost("iflikepost")]
         public IActionResult IfLikePost([FromBody] PostModel postModel)
         {
-            Console.WriteLine("收到点赞帖子请求,帖子ID：" + postModel.post_id + "点赞人ID：" + postModel.user_id);
+            Console.WriteLine("收到获取点赞信息请求,帖子ID：" + postModel.post_id + "点赞人ID：" + postModel.user_id);
             int status = LikePostManager.IfLike(postModel.user_id, postModel.post_id);
             return Ok(status);
+        }
+        [HttpPost("deletecomment")]
+        public IActionResult DeleteComment([FromBody] PostModel postModel)
+        {
+            Console.WriteLine("收到获取点赞信息请求,帖子ID：" + postModel.post_id + "点赞人ID：" + postModel.user_id);
+            CommentPostManager.UndoACommentPost(postModel.user_id, postModel.post_id,postModel.comment_time);
+            return Ok();
         }
     }
 }

@@ -90,7 +90,7 @@ namespace PetFoster.DAL
         /// <param name="UID"></param>
         /// <param name="PID"></param>
         /// <returns></returns>
-        public static void DeleteCommentPost(string UID, string PID)
+        public static void DeleteCommentPost(string UID, string PID, DateTime dateTime)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
             {
@@ -98,10 +98,12 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "delete from comment_post where Post_ID= :Post_ID and User_ID=:User_ID";
+                command.CommandText = "delete from comment_post where Post_ID= :Post_ID and User_ID=:User_ID" +
+                    " and comment_time=:dt";
                 command.Parameters.Clear();
                 command.Parameters.Add("Post_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                command.Parameters.Add("dt", OracleDbType.TimeStamp, dateTime, ParameterDirection.Input);
                 try
                 {
                     command.ExecuteNonQuery();
