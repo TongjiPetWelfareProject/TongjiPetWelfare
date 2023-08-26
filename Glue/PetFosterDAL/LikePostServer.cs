@@ -104,6 +104,11 @@ namespace PetFoster.DAL
                 Console.WriteLine(ex.ToString());
             }
         }
+        public static void DeleteAllLikesForPost(string FID)
+        {
+            string query = $"delete like_post where post_id={FID}";
+            DBHelper.ExecuteNonScalar(query);
+        }
         /// <summary>
         /// 只有存在条目才能删除
         /// </summary>

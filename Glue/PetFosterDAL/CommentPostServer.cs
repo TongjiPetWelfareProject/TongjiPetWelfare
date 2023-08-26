@@ -120,7 +120,11 @@ namespace PetFoster.DAL
             string query = $"select count(*) from comment_post where post_id={PID}";
             return DBHelper.GetScalarInt(query);
         }
-
+        public static void DeleteAllCommentsForPost(string FID)
+        {
+            string query = $"delete comment_post where post_id={FID}";
+            DBHelper.ExecuteNonScalar(query);
+        }
         public static List<PostComment> GetAllComment(string inPID)
         {
             List<PostComment> postcomments = new List<PostComment>();

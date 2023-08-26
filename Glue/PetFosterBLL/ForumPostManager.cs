@@ -68,6 +68,11 @@ namespace PetFoster.BLL
             {
                 // FID 全为数字，执行相应的逻辑
                 uid = Convert.ToInt32(UID);
+                //删除评论
+                CommentPostServer.DeleteAllCommentsForPost(FID);
+                Console.WriteLine("All relative comments has been removed");
+                LikePostServer.DeleteAllLikesForPost(FID);
+                Console.WriteLine("All relative likes has been removed");
                 status = ForumPostServer.DeleteForum(FID);
                 UserManager.Ban(uid, "Warning Issued");
                 Console.WriteLine("Forum profile with FID " + FID + " has been deleted.");

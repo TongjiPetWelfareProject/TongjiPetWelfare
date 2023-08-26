@@ -17,6 +17,7 @@ namespace PetFoster.BLL
             //调试用
             Util.DebugTable(dt);
         }
+        
         public static void GiveALike(string UID, string PID)
         {
             bool dt = LikePostServer.GetLikePostEntry(UID, PID);

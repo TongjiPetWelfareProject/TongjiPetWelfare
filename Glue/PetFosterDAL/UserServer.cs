@@ -188,6 +188,31 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static string GetStatus(string UID)
+        {
+            bool con = false;
+            User user1 = new User();
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select account_status from user2 where User_ID=:user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    string status = command.ExecuteScalar() as string;
+                    return status;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "Banned";
+                }
+            }
+        }
         public static string GetName(string UID)
         {
             bool con = false;

@@ -15,6 +15,26 @@ namespace PetFoster.DAL
     public class DBHelper
     {
         public static string conStr = AccommodateServer.conStr;
+        public static void ExecuteNonScalar(string text)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = text;
+                try
+                {
+                    command.ExecuteNonQuery();
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
         public static DataTable ShowInfo(string query, decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
