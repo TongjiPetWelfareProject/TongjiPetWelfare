@@ -20,6 +20,28 @@ namespace PetFoster.BLL
             Console.WriteLine("显示收养请求列表");
             return dt;
         }
+        public static bool ApplyAbuseOrNot(string UID,string PID)
+        {
+            //1. 一个人不能重复申请领养
+            try
+            {
+                string query1 = $"select count(*) from adopt_apply where adopter_id={UID} and pet_id={PID}";
+                bool repeat = DBHelper.GetScalarInt(query1) > 0;
+                //2. 一只宠物最多能被10个人申请领养
+                string query2 = $"select count(*) from adopt_apply where pet_id={PID}";
+                bool atcapacity = DBHelper.GetScalarInt(query1) > 10;
+                if (repeat)
+                    throw new Exception("请不要重复申请领养宠物");
+                if (atcapacity)
+                    throw new Exception("当前宠物申请领养人数过多!");
+            }
+            catch(Exception e) 
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            return true;
+        }
         public static int ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,
             bool w_to_treat, decimal d_care_h, string P_Caregiver, decimal f_popul, bool be_children, bool accept_vis)
         {

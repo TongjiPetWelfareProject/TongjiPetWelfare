@@ -187,6 +187,8 @@ namespace Glue.Controllers
 
             try
             {
+                if (AdoptApplyManager.ApplyAbuseOrNot(adopt_table.user, adopt_table.pet))
+                    return BadRequest("重复申请领养该重复/该宠物领养热度过高");
                 AdoptApplyManager.ApplyAdopt(adopt_table.user, adopt_table.pet,
                     adopt_table.gender, pet_exp, adopt_table.long_term_care,
                     adopt_table.w_to_treat, adopt_table.d_care_h, adopt_table.P_caregiver,

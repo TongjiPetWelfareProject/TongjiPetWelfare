@@ -61,7 +61,8 @@ namespace Glue.Controllers
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "reason")
                         {
-                            RecordItem.reason = dt.Rows[i][j].ToString();
+                            RecordItem.reason = dt.Rows[i][j].ToString().Replace("Y","是").Replace("N","否")
+                                .Replace("M","男").Replace("F","女");
                         }
                     }
                     RecordItem.censor_status = JsonHelper.GetErrorMessage("censor_state", censorstate);
