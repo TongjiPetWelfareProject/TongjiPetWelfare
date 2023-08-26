@@ -31,10 +31,14 @@ namespace Glue.Controllers
         }
         public class CommentData:InteractionData
         {
-            public string? text { get; set; }
+            public string text { get; set; }
+            public CommentData()
+            {
+                text = "";
+            }
         }
         // POST api/<PetInteractionController>
-        [HttpPost("pet-like")]
+        [HttpPost("pet-submit-like")]
         public IActionResult PostLike([FromBody] InteractionData like_data)
         {
             if(like_data == null)
@@ -60,7 +64,33 @@ namespace Glue.Controllers
             }
         }
         // POST api/<PetInteractionController>
-        [HttpPost("pet-favorite")]
+        [HttpPost("pet-cancel-like")]
+        public IActionResult PostUndoLike([FromBody] InteractionData like_data)
+        {
+            if (like_data == null)
+            {
+                return BadRequest("Invalid Data");
+            }
+            if (like_data.user == null)
+            {
+                return BadRequest("Invalid User_Id");
+            }
+            if (like_data.pet == null)
+            {
+                return BadRequest("Invalid Pet_Id");
+            }
+            try
+            {
+                LikePetManager.GiveALike(like_data.user, like_data.pet, false);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        // POST api/<PetInteractionController>
+        [HttpPost("pet-submit-favorite")]
         public IActionResult PostFavorite([FromBody] InteractionData favorite_data)
         {
             if (favorite_data == null)
@@ -78,6 +108,84 @@ namespace Glue.Controllers
             try
             {
                 CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, true);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        // POST api/<PetInteractionController>
+        [HttpPost("pet-cancel-favorite")]
+        public IActionResult PostUndoFavorite([FromBody] InteractionData favorite_data)
+        {
+            if (favorite_data == null)
+            {
+                return BadRequest("Invalid Data");
+            }
+            if (favorite_data.user == null)
+            {
+                return BadRequest("Invalid User_Id");
+            }
+            if (favorite_data.pet == null)
+            {
+                return BadRequest("Invalid Pet_Id");
+            }
+            try
+            {
+                CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, false);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        // POST api/<PetInteractionController>
+        [HttpPost("pet-submit-comment")]
+        public IActionResult PostComment([FromBody] CommentData comment_data)
+        {
+            if (comment_data == null)
+            {
+                return BadRequest("Invalid Data");
+            }
+            if (comment_data.user == null)
+            {
+                return BadRequest("Invalid User_Id");
+            }
+            if (comment_data.pet == null)
+            {
+                return BadRequest("Invalid Pet_Id");
+            }
+            try
+            {
+                CommentPetManager.GiveAComment(comment_data.user, comment_data.pet, comment_data.text);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        // POST api/<PetInteractionController>
+        [HttpPost("pet-ancel-comment")]
+        public IActionResult PostUndoComment([FromBody] CommentData comment_data)
+        {
+            if (comment_data == null)
+            {
+                return BadRequest("Invalid Data");
+            }
+            if (comment_data.user == null)
+            {
+                return BadRequest("Invalid User_Id");
+            }
+            if (comment_data.pet == null)
+            {
+                return BadRequest("Invalid Pet_Id");
+            }
+            try
+            {
+                //CommentPetManager.UndoAComment(comment_data.user, comment_data.pet, comment_data.text);
                 return Ok();
             }
             catch (Exception ex)

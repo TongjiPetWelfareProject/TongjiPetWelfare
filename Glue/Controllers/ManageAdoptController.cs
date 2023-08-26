@@ -53,11 +53,13 @@ namespace Glue.Controllers
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
                         {
-                            RecordItem.petId = PetServer.GetName(dt.Rows[i][j].ToString());
+                            //RecordItem.petId = PetServer.GetName(dt.Rows[i][j].ToString());
+                            RecordItem.petId = dt.Rows[i][j].ToString();
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "adopter_id")
                         {
-                            RecordItem.userId = UserServer.GetName(dt.Rows[i][j].ToString());
+                            //RecordItem.userId = UserServer.GetName(dt.Rows[i][j].ToString());
+                            RecordItem.userId = dt.Rows[i][j].ToString();
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "reason")
                         {
@@ -88,25 +90,40 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid data.");
             }
-            //record.print();
+            // Console.WriteLine(record.date);
             DateTime? rdate = ConvertTools.StringConvertToDate(record.date);
             if (rdate == null)
             {
                 return BadRequest("Failed to parse the date.");
             }
+            //Console.WriteLine(record.userId);
+            //Console.WriteLine(record.petId);
             int pid;
             if (!int.TryParse(record.petId, out pid))
             {
                 return BadRequest("Invalid petId");
             }
-            DateTime date = rdate.Value;
-            if (date.Subtract(DateTime.Now) <= TimeSpan.FromDays(0) || date.Subtract(DateTime.Now) >= TimeSpan.FromDays(7))
+            if(record.userId == null)
             {
-                throw new Exception("请从今天开始的一周内申请领养！");
+                return BadRequest("Invalid userId");
             }
+            bool pass;
+            if(record.censor_status == "aborted")
+            {
+                pass = false;
+            }
+            else if(record.censor_status == "legitimate")
+            {
+                pass = true;
+            }
+            else
+            {
+                return BadRequest("Invalid censor_status");
+            }
+       
             try
             {
-                AdoptApplyManager.CensorAdopt(record.userId, pid, (DateTime)date, out int err_code);
+                AdoptApplyManager.CensorAdopt(record.userId, pid, (DateTime)rdate, pass, out int err_code);
                 if(err_code == 1)
                 {
                     return NotFound("宠物已经全被领养或寄养（正在申请寄养）走了!");
@@ -117,18 +134,18 @@ namespace Glue.Controllers
                 }
                 else if(err_code == 3)
                 {
-                    return BadRequest("不存在该申请人!");
+                    return NotFound("不存在该申请人!");
                 }
                 else if(err_code != 0)
                 {
                     return StatusCode(500, "未知异常！");
                 }
+                return Ok();
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
-            return Ok();
         }
 
         /*

@@ -63,8 +63,8 @@ namespace PetFoster.BLL
             }
             return 0;
         }
-        //审核通过
-        public static int CensorAdopt(string UID, int pid, DateTime dt, out int errcode)
+        //审核
+        public static int CensorAdopt(string UID, int pid, DateTime dt, bool pass, out int errcode)
         {
             if (pid == -1)
             {
@@ -78,17 +78,25 @@ namespace PetFoster.BLL
                 errcode = 2;
                 return -1;
             }
-            //2.将此宠物交给主人领养
-            int err = 0;
-            AdoptServer.InsertAdopt(UID, pid.ToString(), dt, out err);
-            if (err == -1)
+            if (pass)
             {
-                Console.WriteLine($"不存在该申请人!");
-                errcode = 3;
-                return -1;
+                //2.将此宠物交给主人领养
+                int err = 0;
+                AdoptServer.InsertAdopt(UID, pid.ToString(), dt, out err);
+                if (err == -1)
+                {
+                    Console.WriteLine($"不存在该申请人!");
+                    errcode = 3;
+                    return -1;
+                }
+                //3.审核状态为通过
+                AdoptApplyServer.UpdateAdoptEntry(UID, pid.ToString(), "legitimate");
             }
-            //3.审核状态为通过
-            AdoptApplyServer.UpdateAdoptEntry(UID,pid.ToString(), "legitimate");
+            else
+            {
+                // 审核拒绝
+                AdoptApplyServer.UpdateAdoptEntry(UID, pid.ToString(), "aborted");
+            }
             errcode = 0;//正常运行
             return pid;
         }

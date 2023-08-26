@@ -177,6 +177,14 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid data.");
             }
+            if(adopt_table.user == null)
+            {
+                return BadRequest("Invalid userId.");
+            }
+            if(adopt_table.pet == null)
+            {
+                return BadRequest("Invalid petId.");
+            }
 
             //bool gender = (adopt_table.gender == "M") ? true : false;
             bool pet_exp = (adopt_table.pet_exp > 0) ? true : false;
