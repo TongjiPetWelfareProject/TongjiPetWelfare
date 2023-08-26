@@ -41,6 +41,7 @@ namespace Glue.Controllers
         public IActionResult PostInfo([FromBody] PostModel postModel)
         {
             List<ForumPost> post = ForumPostManager.ShowPost(postModel.post_id);
+            ForumPostServer.ReadForum(postModel.post_id);
             Console.WriteLine("收到帖子请求"+ postModel.post_id);
             return Ok(post);
         }
