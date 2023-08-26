@@ -38,9 +38,9 @@ namespace PetFoster.BLL
             catch(Exception e) 
             {
                 Console.WriteLine(e.Message);
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
         public static int ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,
             bool w_to_treat, decimal d_care_h, string P_Caregiver, decimal f_popul, bool be_children, bool accept_vis)
@@ -88,7 +88,7 @@ namespace PetFoster.BLL
                 return -1;
             }
             //3.审核状态为通过
-            AdoptApplyServer.UpdateAdoptEntry(UID, "legitimate");
+            AdoptApplyServer.UpdateAdoptEntry(UID,pid.ToString(), "legitimate");
             errcode = 0;//正常运行
             return pid;
         }

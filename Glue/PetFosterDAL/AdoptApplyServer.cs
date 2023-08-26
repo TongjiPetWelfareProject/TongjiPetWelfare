@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using PetFoster.Model;
+using PetFoster.BLL;
 
 namespace PetFoster.DAL
 {
@@ -22,6 +23,8 @@ namespace PetFoster.DAL
             DataTable dataTable = DBHelper.ShowInfo(query, Limitrows, Orderby);
             return dataTable;
         }
+        //审核领养界面(没必要传理由，管理员已经看过了)
+        
         //选择不在申请寄养或领养中并排除已经被寄养或领养的宠物
         public static int GetRandomPet(string species)
         {
@@ -54,7 +57,7 @@ namespace PetFoster.DAL
 
             }
         }
-        public static void UpdateAdoptEntry(string UID,string censor_status)
+        public static void UpdateAdoptEntry(string UID,string PID,string censor_status)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
             {
@@ -62,11 +65,34 @@ namespace PetFoster.DAL
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
                 command.CommandText = $"UPDATE adopt_apply SET censor_state='{censor_status}'" +
-                    $" where adopter_id={UID}";
+                    $" where adopter_id={UID} and pet_id={PID}";
                 try
                 {
                     command.ExecuteNonQuery();
                     Console.WriteLine($"用户:{UID}的领养申请通过状态为{censor_status}");
+                }
+                catch (OracleException ex)
+                {
+                    Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+
+                    throw;
+                }
+                connection.Close();
+            }
+        }
+        public static void UpdateAdoptEntries(string UID, string PID, string censor_status)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"UPDATE adopt_apply SET censor_state='{censor_status}'" +
+                    $" where adopter_id<>{UID} and pet_id={PID}";
+                try
+                {
+                    command.ExecuteNonQuery();
+                    Console.WriteLine($"用户:{UID}的领养申请得以赦免");
                 }
                 catch (OracleException ex)
                 {

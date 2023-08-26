@@ -70,7 +70,7 @@ namespace Glue.Controllers
                 }
 
                 jsondata = JsonSerializer.Serialize(RecordList);
-                Console.WriteLine(jsondata);
+                Console.WriteLine("申请领养数据完成JSON序列化");
                 
             }
             catch (Exception ex)
