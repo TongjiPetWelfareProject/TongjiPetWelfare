@@ -17,14 +17,18 @@ namespace Glue.Controllers
         {
             public string date { get; set; }
             public string petId { get; set; }
+            public string petName { get; set; }
             public string userId { get; set; }
+            public string userName { get; set; }
             public string reason { get; set; }
             public string censor_status { get; set; }
             public AdoptionRecord()
             {
                 date = "";
                 petId = "";
+                petName = "";
                 userId = "";
+                userName = "";
                 reason = "";
                 censor_status = "";
             }
@@ -67,6 +71,8 @@ namespace Glue.Controllers
                                 .Replace("M","男").Replace("F","女");
                         }
                     }
+                    RecordItem.petName = PetServer.GetName(RecordItem.petId);
+                    RecordItem.userName = UserServer.GetName(RecordItem.userId);
                     RecordItem.censor_status = JsonHelper.GetErrorMessage("censor_state", censorstate);
                     RecordList.Add(RecordItem);
                 }
@@ -110,11 +116,11 @@ namespace Glue.Controllers
             bool pass;
             if(record.censor_status.StartsWith("abor"))
             {
-                pass = true;
+                pass = false;
             }
             else if(record.censor_status == "legitimate")
             {
-                pass = false;
+                pass = true;
             }
             else
             {
