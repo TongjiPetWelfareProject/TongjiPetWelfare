@@ -46,7 +46,7 @@ namespace PetFoster.DAL
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="PID"></param>
-        public static void InsertCommentPost(string UID, string PID, string content)
+        public static int InsertCommentPost(string UID, string PID, string content)
         {
             // 添加新行
             try
@@ -80,7 +80,9 @@ namespace PetFoster.DAL
             {
                 // 处理异常
                 Console.WriteLine(ex.ToString());
+                return -1;
             }
+            return 0;
         }
         /// <summary>
         /// 只有存在条目才能删除

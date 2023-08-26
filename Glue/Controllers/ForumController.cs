@@ -26,6 +26,7 @@ namespace Glue.Controllers
             public string? user_id { get; set; }
             public string? post_title { get; set; }
             public string? post_content { get; set; }
+            public string? added_comment { get; set; } 
 
         }
 
@@ -64,6 +65,17 @@ namespace Glue.Controllers
             Console.WriteLine("收到帖子评论请求" + postModel.post_id);
             return Ok(AllComment);
         }
+
+        [HttpPost("addcomment")]
+        public IActionResult AddComment([FromBody] PostModel postModel)
+        {
+            Console.WriteLine("收到帖子评论请求,帖子ID：" + postModel.post_id+ "评论内容："+postModel.added_comment+"评论人ID："+ postModel.user_id);
+            int status = CommentPostManager.GiveACommentPost(postModel.user_id,postModel.post_id,postModel.added_comment);
+            if(status!=-1) 
+                return Ok("评论成功");
+            return BadRequest(-1);
+        }
+
 
     }
 }
