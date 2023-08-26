@@ -1,5 +1,6 @@
 ﻿using Glue.PetFoster.BLL;
 using PetFoster.DAL;
+using PetFoster.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,13 +22,18 @@ namespace PetFoster.BLL
         {
             //调试用
             CommentPostServer.InsertCommentPost(UID, PID, content);
-            Console.WriteLine($"{UID} gives a comment that reads {content} to {PID}."); // 输出点赞信息
+            Console.WriteLine($"{UID} gives a comment that reads {content} to {PID}."); // 输出评论信息
         }
         public static void UndoACommentPost(string UID, string PID, DateTime dateTime)
         {
             //调试用
             //CommentPostServer.DeleteCommentPost(UID, PID, dateTime);
-            Console.WriteLine($"{UID} undo a like to {PID}."); // 输出点赞信息
+            Console.WriteLine($"{UID} undo a comment to {PID}."); // 输出评论信息
+        }
+        public static List<PostComment> ShowPIDPost(string PID)
+        {
+            List<PostComment> dt = CommentPostServer.GetAllComment(PID);
+            return dt;
         }
     }
 

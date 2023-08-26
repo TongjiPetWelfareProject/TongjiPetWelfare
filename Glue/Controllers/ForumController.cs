@@ -56,5 +56,13 @@ namespace Glue.Controllers
                 return BadRequest(-1);
         }
 
+        [HttpPost("postcomment")]
+        public IActionResult PostComment([FromBody] PostModel postModel)
+        {
+            List<PostComment> AllComment= CommentPostManager.ShowPIDPost(postModel.post_id);
+            Console.WriteLine("收到帖子评论请求" + postModel.post_id);
+            return Ok(AllComment);
+        }
+
     }
 }

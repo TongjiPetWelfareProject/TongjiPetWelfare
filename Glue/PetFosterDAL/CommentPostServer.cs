@@ -116,5 +116,39 @@ namespace PetFoster.DAL
             string query = $"select count(*) from comment_post where post_id={PID}";
             return Convert.ToInt32(DBHelper.GetScalar(query));
         }
+
+        public static List<PostComment> GetAllComment(string inPID)
+        {
+            List<PostComment> postcomments = new List<PostComment>();
+
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = $"select count(*) from comment_post where post_id={inPID}";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PostComment comment = new PostComment
+                        {
+                            PID = inPID,
+                            UID = reader["user_id"].ToString(),
+                            Comment_Time = Convert.ToDateTime(reader["comment_time"]),
+                            Content = reader["comment_contents"].ToString(),
+                            User_Name = UserServer.GetName(reader["user_id"].ToString()),
+                        };
+                        postcomments.Add(comment);
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return postcomments;
+        }
     }
 }
