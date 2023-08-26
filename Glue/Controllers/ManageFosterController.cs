@@ -62,11 +62,11 @@ namespace Glue.Controllers
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "fosterer")
                         {
-                            RecordItem.userId = UserServer.GetName(dt.Rows[i][j].ToString());
+                            RecordItem.userId = dt.Rows[i][j].ToString();
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "pet_id")
                         {
-                            RecordItem.petId = PetServer.GetName(dt.Rows[i][j].ToString());
+                            RecordItem.petId = dt.Rows[i][j].ToString();
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "startdate")
                         {
@@ -101,15 +101,10 @@ namespace Glue.Controllers
                 return BadRequest("Invalid data.");
             }
             //record.print();
-            DateTime? rdate = ConvertTools.StringConvertToDate(record.date);
-            if (rdate == null)
+            DateTime? date = ConvertTools.StringConvertToDate(record.date);
+            if (date == null)
             {
                 return BadRequest("Failed to parse the date.");
-            }
-            DateTime date = rdate.Value;
-            if (date.Subtract(DateTime.Now) <= TimeSpan.FromDays(0)|| date.Subtract(DateTime.Now) >= TimeSpan.FromDays(7))
-            {
-                throw new Exception("请从今天开始的一周内申请领养！");
             }
             try
             {
