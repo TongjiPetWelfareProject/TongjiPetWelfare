@@ -133,5 +133,10 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static int GetLikePostNums(string PID)
+        {
+            string query = $"select count(*) from like_post where post_id={PID}";
+            return Convert.ToInt32(DBHelper.GetScalar(query));
+        }
     }
 }

@@ -103,13 +103,18 @@ namespace PetFoster.DAL
                 try
                 {
                     command.ExecuteNonQuery();
-                    Console.WriteLine($"{UID}给{PID}的点赞已取消");
+                    Console.WriteLine($"{UID}给{PID}的评论已取消");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"不存在{UID}给{PID}的点赞");
+                    Console.WriteLine($"不存在{UID}给{PID}的评论");
                 }
             }
+        }
+        public static int GetCommentPostNums(string PID)
+        {
+            string query = $"select count(*) from comment_post where post_id={PID}";
+            return Convert.ToInt32(DBHelper.GetScalar(query));
         }
     }
 }
