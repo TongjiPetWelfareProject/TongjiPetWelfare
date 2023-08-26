@@ -32,6 +32,7 @@ namespace PetFoster.BLL
             Console.WriteLine("正在显示待审核的帖子");
             return dt;
         }
+
         public static void CensorPost(string FID, bool passed = false)
         {
             ForumPostServer.Censor(FID, passed);

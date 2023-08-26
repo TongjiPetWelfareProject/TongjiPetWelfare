@@ -52,10 +52,13 @@ namespace Glue.Controllers
         public IActionResult PostContent([FromBody] PostModel postModel)
         {
             string acstatus = UserServer.GetStatus(postModel.user_id);
+            string role = UserServer.GetRole(postModel.user_id);
             if(acstatus == "Warning Issued" || acstatus == "Banned" || acstatus == "Appealing"
                 || acstatus== "Probation")
                 return BadRequest("您的账号活动异常，无法发布帖子");
             int status = ForumPostManager.PublishPost(postModel.user_id,postModel.post_title,postModel.post_content);
+            if (role == "Admin")
+                ForumPostManager.CensorPost(status.ToString(), false);
             Console.WriteLine("收到发帖请求：" + postModel.post_id);
             if(status!=-1)
                 return Ok(0);
