@@ -197,6 +197,10 @@ namespace PetFoster.BLL
             {
                 throw new Exception($"用户{user.User_Name}已经处于{status}状态");
             }
+            if (status == "Under Review" && current_status == "Banned")
+            {
+                throw new Exception($"用户{user.User_Name}处于封禁状态，不能解除禁言");
+            }
 
             if (IsValidStatus(status))
             {

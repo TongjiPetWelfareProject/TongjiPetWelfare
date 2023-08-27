@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
 using System.Data;
+using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,6 +17,7 @@ namespace Glue.Controllers
             public string? username { get; set; }
             public string? phone { get; set; }
             public string? address { get; set; }
+            public string? account_status { get; set; }
         }
         
         // GET: api/<AdminUserController>
@@ -48,10 +50,16 @@ namespace Glue.Controllers
                         {
                             UserItem.address = JsonHelper.TranslateBackToChinese(dt.Rows[i][j].ToString());
                         }
+                        else if(dt.Columns[j].ColumnName.ToLower() == "account_status")
+                        {
+                            UserItem.account_status = JsonHelper.TranslateToCn(dt.Rows[i][j].ToString(),"status");
+                            //UserItem.account_status = dt.Rows[i][j].ToString();
+                        }
                     }
+                    //Console.WriteLine(UserItem.account_status);
                     UsersList.Add(UserItem);
                 }
-                //jsonstring = "{\"data\":" + JsonSerializer.Serialize(PetNamesList) + "}";
+                //string jsonstring = "{\"data\":" + JsonSerializer.Serialize(UsersList) + "}";
                 //Console.WriteLine(jsonstring);
                 return Ok(UsersList);
             }
