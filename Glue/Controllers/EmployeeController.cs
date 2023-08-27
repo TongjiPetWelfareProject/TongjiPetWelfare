@@ -20,7 +20,7 @@ namespace Glue.Controllers
             public string? salary { get; set; }
         }
         // GET: api/<EmployeeController>
-        [HttpGet]
+        [HttpGet("employee")]
         public IActionResult Get()
         {
             try
@@ -72,6 +72,14 @@ namespace Glue.Controllers
             }
 
         }
+
+        [HttpPost("addemployee")]
+        public IActionResult AddEmployee()
+        {
+            // 这个函数用来接受添加员工请求，由于前端输入的是工作时长，而后端需要的是工作起始时间，这个地方你们斟酌一下
+            return Ok();
+        }
+
         /*
         // GET api/<EmployeeController>/5
         [HttpGet("{id}")]

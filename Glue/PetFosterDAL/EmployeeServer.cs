@@ -88,15 +88,15 @@ namespace PetFoster.DAL
         /// <summary>
         /// 插入雇员的数据，由RecruitEmployee(Vet employee)调用
         /// </summary>
-        /// <param name="vetname">兽医名字</param>
+        /// <param name="vetname">雇员名字</param>
         /// <param name="Salary">工资</param>
         /// <param name="PhoneNumber">电话号码</param>
         /// <param name="wsh">Working_Start_Hour 工作开始时间(时)</param>
         /// <param name="wsm">Working_Start_Min 工作开始时间(分钟)</param>
         /// <param name="weh">Working_End_Hour 工作结束时间(时)</param>
         /// <param name="wem">Working_End_Min 工作结束时间(分钟)</param>
-        /// <returns>新入职的兽医的ID</returns>
-        public static int InsertVet(string vetname, decimal Salary, string PhoneNumber, string Duty,decimal wsh, decimal wsm, decimal weh, decimal wem)
+        /// <returns>新入职的雇员的ID</returns>
+        public static int InsertEmpolyee(string vetname, decimal Salary, string PhoneNumber, string Duty,decimal wsh, decimal wsm, decimal weh, decimal wem)
         {
             // 添加新行
             int EID = -1;
