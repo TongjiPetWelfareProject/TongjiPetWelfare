@@ -15,7 +15,7 @@ namespace Glue.Controllers
             public string? id { get; set; }
             public string? name { get; set; }
             public string? phone { get; set; }
-            public string? workingHours { get; set; }
+            public double workingHours { get; set; }
             public string? salary { get; set; }
         }
         private List<Doctor> ConvertDataTableToVetList(DataTable dataTable)
@@ -31,8 +31,8 @@ namespace Glue.Controllers
                     id = row["vet_id"].ToString(),
                     name = row["vet_name"].ToString(),
                     phone = row["tel"].ToString(),
-                    workingHours = row["working_hours"].ToString()+"小时",
-                    salary = row["salary"].ToString()+"￥"
+                    workingHours = Convert.ToDouble(row["working_hours"]),
+                    salary = row["salary"].ToString() + "￥"
                 };
                 vetList.Add(doctor);
             }
@@ -70,13 +70,14 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid Salary Format");
             }
+            /*
             if (!ConvertTools.ConvertHourStringToDouble(vet.workingHours, out double hours))
             {
                 return BadRequest("Invalid Working Hours Format.");
-            }
+            }*/
             try
             {
-                VetManager.RecruitVet(vet.name, (decimal)salary, vet.phone, hours);
+                VetManager.RecruitVet(vet.name, (decimal)salary, vet.phone, vet.workingHours);
                 return Ok();
             }
             catch (Exception ex)
@@ -118,15 +119,15 @@ namespace Glue.Controllers
             if (!ConvertTools.ConvertCurrencyStringToDouble(vet.salary, out double salary))
             {
                 return BadRequest("Invalid Salary Format");
-            }
+            }/*
             if (!ConvertTools.ConvertHourStringToDouble(vet.workingHours, out double hours))
             {
                 return BadRequest("Invalid Working Hours Format.");
-            }
+            }*/
             try
             {
                 VetManager.UpdateVet(vet.id, vet.name, salary,
-                    vet.phone, hours);
+                    vet.phone, vet.workingHours);
                 return Ok();
             }
             catch (Exception ex)

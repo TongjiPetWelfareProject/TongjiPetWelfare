@@ -119,6 +119,7 @@ namespace PetFoster.DAL
                     try
                     {
                         command.ExecuteNonQuery();
+
                         connection.Close();
                         return 0;
                     }
@@ -191,12 +192,11 @@ namespace PetFoster.DAL
                     command.CommandType = CommandType.Text;
                     command.CommandText = "UPDATE employee SET employee_name=:employee_name, salary=:salary,  " +
                         "duty=:duty,working_start_hr=:working_start_hr, working_start_min=:working_start_min,working_end_hr=:working_end_hr,working_end_min=:working_end_min" +
-                        " where employee_id=:EID";
+                        $" where employee_id={EID}";
                     command.Parameters.Clear();
-                    command.Parameters.Add("EID", OracleDbType.Varchar2, EID, ParameterDirection.Input);
+                    //command.Parameters.Add("EID", OracleDbType.Varchar2, EID, ParameterDirection.Input);
                     command.Parameters.Add("employee_name", OracleDbType.Varchar2, employee_name, ParameterDirection.Input);
                     command.Parameters.Add("salary", OracleDbType.Double, Salary, ParameterDirection.Input);
-                    //command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);
                     command.Parameters.Add("duty", OracleDbType.Varchar2, duty, ParameterDirection.Input);
                     command.Parameters.Add("working_start_hr", OracleDbType.Decimal, wsh, ParameterDirection.Input);
                     command.Parameters.Add("working_start_min", OracleDbType.Decimal, wsm, ParameterDirection.Input);

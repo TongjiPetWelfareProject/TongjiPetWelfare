@@ -189,13 +189,13 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO vet (vet_id, vet_name, salary,phone_number, working_start_hr,working_start_min," +
+                    command.CommandText = "INSERT INTO vet (vet_id, vet_name, phone_number,salary, working_start_hr,working_start_min," +
                         "working_end_hr,working_end_min) " +
                         "VALUES (vet_id_seq.NEXTVAL, :vet_name, :phone_number,:salary, :working_start_hr,:working_start_min,:working_end_hr,:working_end_min)";
                     command.Parameters.Clear();
                     command.Parameters.Add("vet_name", OracleDbType.Varchar2, vetname, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);
-                    command.Parameters.Add("salary", OracleDbType.Double, Salary, ParameterDirection.Input);
+                    command.Parameters.Add("salary", OracleDbType.Decimal, Salary, ParameterDirection.Input);
                     command.Parameters.Add("working_start_hr", OracleDbType.Decimal, wsh, ParameterDirection.Input);
                     command.Parameters.Add("working_start_min", OracleDbType.Decimal, wsm, ParameterDirection.Input);
                     command.Parameters.Add("working_end_hr", OracleDbType.Decimal, weh, ParameterDirection.Input);
@@ -277,9 +277,8 @@ namespace PetFoster.DAL
                     command.CommandText = "UPDATE vet SET vet_name=:vet_name, salary=:salary, phone_number=:phone_number, " +
                         "working_start_hr=:working_start_hr, working_start_min=:working_start_min,working_end_hr=:working_end_hr," +
                         " working_end_min=:working_end_min " +
-                        " where vet_id=:VID";
+                        $" where vet_id={VID}";
                     command.Parameters.Clear();
-                    command.Parameters.Add("VID", OracleDbType.Varchar2, VID, ParameterDirection.Input);
                     command.Parameters.Add("vet_name", OracleDbType.Varchar2, vetname, ParameterDirection.Input);
                     command.Parameters.Add("salary", OracleDbType.Double, Salary, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);

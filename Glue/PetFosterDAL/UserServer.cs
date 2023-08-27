@@ -390,11 +390,10 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "UPDATE user2 SET user_name=:user_name, password=:password, phone_number=:phone_number, " +
+                    command.CommandText = "UPDATE user2 SET user_name=:user_name, phone_number=:phone_number, " +
                         "account_status=:account_status, address=:address where user_id=:user_id";
                     command.Parameters.Clear();
                     command.Parameters.Add("user_name", OracleDbType.Varchar2, Username, ParameterDirection.Input);
-                    command.Parameters.Add("password", OracleDbType.Varchar2, pwd, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, phoneNumber, ParameterDirection.Input);
                     command.Parameters.Add("account_status", OracleDbType.Varchar2, account_status, ParameterDirection.Input);
                     command.Parameters.Add("address", OracleDbType.Varchar2, Address, ParameterDirection.Input);
