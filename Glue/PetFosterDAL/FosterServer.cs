@@ -152,6 +152,12 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static DataTable GetAllFosteredPets(string UID)
+        {
+            //过期\无效\通过\未通过\未审核5种 用不同颜色标注
+            string query = $"select * from foster where fosterer={UID}";
+            return DBHelper.ShowInfo(query);
+        }
         public static bool GetPendingUser(string UID, string PID, DateTime date)
         {
             bool exist = false;
