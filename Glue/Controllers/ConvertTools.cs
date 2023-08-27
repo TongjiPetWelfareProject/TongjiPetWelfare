@@ -72,6 +72,7 @@ namespace Glue.Controllers
 
             return jsonString.ToString();
         }
+        /* 以"￥"结尾（或没有）的字符串转换为double */
         public static bool ConvertCurrencyStringToDouble(string currencyString, out double result)
         {
             result = 0;
@@ -90,10 +91,12 @@ namespace Glue.Controllers
             }
             return false;
         }
+        /* 以"小时"/"时"/"h"/"H"结尾（或没有）的字符串转换为double */
         public static bool ConvertHourStringToDouble(string hourString, out double result)
         {
             result = 0;
-            string pattern = @"(\d+(?:\.\d+)?)(?:小时|时|h|H)$";
+            //匹配数字（整数或小数），可以有：小时/时/h/H结尾（也可以没有）
+            string pattern = @"^(\d+(?:\.\d+)?)(?:小时|时|h|H)?$";
 
             Match match = Regex.Match(hourString, pattern, RegexOptions.IgnoreCase);
 
