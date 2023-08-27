@@ -20,7 +20,7 @@ namespace PetFoster.BLL
         static public bool IsValidStatus(string status)
         {
             // 解析JSON字符串
-            return JsonHelper.TranslateToEn(status, "status") != null;
+            return JsonHelper.TranslateToCn(status, "status") != null;
         }
         public static DataTable ShowUserProfile(int Limitrow = -1, string Orderby = null)
         {
@@ -197,19 +197,10 @@ namespace PetFoster.BLL
             {
                 throw new Exception($"用户{user.User_Name}已经处于{status}状态");
             }
-            if(status == "Under Review" && current_status == "Banned")
-            {
-                throw new Exception($"用户{user.User_Name}处于封禁状态，不能解除禁言");
-            }
 
             if (IsValidStatus(status))
             {
                 UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, status);
-                return $"已将用户{user.User_Name}状态设置为{status}";
-            }
-            else if (IsValidStatus(JsonHelper.TranslateToEn(status, "status")))
-            {
-                UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, JsonHelper.TranslateToEn(status, "status"));
                 return $"已将用户{user.User_Name}状态设置为{status}";
             }
             else

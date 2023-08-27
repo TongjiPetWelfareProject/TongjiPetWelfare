@@ -80,7 +80,7 @@ namespace Glue.Controllers
             }
             try
             {
-                string message = UserManager.Ban(uid); // status change to banned
+                string message = UserManager.Ban(uid,"Banned"); // status change to banned
                 return Ok(message);
             }
             catch(Exception ex)

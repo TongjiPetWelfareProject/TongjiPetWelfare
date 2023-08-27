@@ -191,8 +191,6 @@ namespace PetFoster.DAL
         }
         public static string GetStatus(string UID)
         {
-            bool con = false;
-            User user1 = new User();
             using (OracleConnection connection = new OracleConnection(conStr))
             {
                 // 连接对象将在 using 块结束时自动关闭和释放资源
