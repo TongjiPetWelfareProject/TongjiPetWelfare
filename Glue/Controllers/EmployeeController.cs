@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Glue.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
@@ -20,7 +20,7 @@ namespace Glue.Controllers
             public string? salary { get; set; }
         }
         // GET: api/<EmployeeController>
-        [HttpGet]
+        [HttpGet("employee")]
         public IActionResult Get()
         {
             try

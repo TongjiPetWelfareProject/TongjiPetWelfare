@@ -71,5 +71,11 @@ namespace PetFoster.BLL
                 throw;
             }
         }
+        public static DataTable GetUserAppointment(string UID)
+        {
+            DataTable dt = new DataTable();
+            dt = AppointmentServer.GetUserAppointment(UID);
+            return dt;
+        }
     }
 }

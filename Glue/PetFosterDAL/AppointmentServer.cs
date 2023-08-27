@@ -104,5 +104,28 @@ namespace PetFoster.DAL
             }
             return UID;
         }
+        public static DataTable GetUserAppointment(string UID, decimal Limitrows = -1, string Orderby = null)
+        {
+            DataTable dataTable = new DataTable();
+            string query = $"SELECT * FROM appointment where user_id={UID}";
+            dataTable = DBHelper.ShowInfo(query, Limitrows, Orderby);
+
+            dataTable.Columns.Add("VET_NAME", typeof(string));
+            dataTable.Columns.Add("PET_NAME", typeof(string));
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string vetId = row["vet_id"].ToString();
+                string petId = row["pet_id"].ToString();
+
+                string vetName = VetServer.GetName(vetId);
+                string petName = PetServer.GetName(petId);
+
+                row["VET_NAME"] = vetName;
+                row["PET_NAME"] = petName;
+            }
+
+            return dataTable;
+        }
     }
 }

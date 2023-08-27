@@ -86,7 +86,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select vet_name from user2 where Vet_ID=:vet_id";
+                command.CommandText = "select vet_name from vet where Vet_ID=:vet_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("vet_id", OracleDbType.Varchar2, VID, ParameterDirection.Input);
                 try
