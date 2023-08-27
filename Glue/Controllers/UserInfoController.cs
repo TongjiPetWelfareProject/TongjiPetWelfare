@@ -46,7 +46,7 @@ namespace WebApplicationTest1
         [HttpPost("userpostcomment")]
         public IActionResult GetUserPostComment([FromBody] UserInfoModel userinfoModel)
         {
-            List<PostComment> usercomment = CommentPostManager.ShowUIDPost(userinfoModel.user_id);
+            List<PostComment> usercomment = CommentPostManager.ShowUIDComment(userinfoModel.user_id);
             return Ok(usercomment);
         }
     }

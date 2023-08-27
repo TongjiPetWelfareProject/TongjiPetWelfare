@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -374,6 +375,32 @@ namespace PetFoster.DAL
             }
 
             return posts;
+        }
+        public static string PIDtoPostTitle(string PID)
+        {
+            string Title="";
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select heading from forum_posts where post_id = :post_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("post_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
+                try
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        Title = Convert.ToString(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return Title;
         }
     }
 }

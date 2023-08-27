@@ -35,7 +35,7 @@ namespace PetFoster.BLL
             List<PostComment> dt = CommentPostServer.GetAllComment(PID);
             return dt;
         }
-        public static List<PostComment> ShowUIDPost(string UID)
+        public static List<PostComment> ShowUIDComment(string UID)
         {
             List<PostComment> dt = CommentPostServer.GetUserComment(UID);
             return dt;

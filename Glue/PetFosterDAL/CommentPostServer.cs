@@ -148,6 +148,7 @@ namespace PetFoster.DAL
                             Comment_Time = Convert.ToDateTime(reader["comment_time"]),
                             Content = reader["comment_contents"].ToString(),
                             User_Name = UserServer.GetName(reader["user_id"].ToString()),
+                            Post_Title = ForumPostServer.PIDtoPostTitle(inPID)
                         };
                         postcomments.Add(comment);
                     }
@@ -180,6 +181,7 @@ namespace PetFoster.DAL
                             UID = reader["user_id"].ToString(),
                             Comment_Time = Convert.ToDateTime(reader["comment_time"]),
                             Content = reader["comment_contents"].ToString(),
+                            Post_Title = ForumPostServer.PIDtoPostTitle(reader["post_id"].ToString())
                         };
                         postcomments.Add(comment);
                     }
