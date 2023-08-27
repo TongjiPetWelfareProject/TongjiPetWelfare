@@ -264,7 +264,7 @@ namespace PetFoster.DAL
         /// <param name="wsm">Working_Start_Min 工作开始时间(分钟)</param>
         /// <param name="weh">Working_End_Hour 工作结束时间(时)</param>
         /// <param name="wem">Working_End_Min 工作结束时间(分钟)</param>
-        public static void UpdateVet(string vetname, double Salary, string PhoneNumber, int wsh, int wsm, int weh, int wem)
+        public static void UpdateVet(string VID,string vetname, double Salary, string PhoneNumber, int wsh, int wsm, int weh, int wem)
         {
             // 更改信息
             try
@@ -275,8 +275,11 @@ namespace PetFoster.DAL
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     command.CommandText = "UPDATE vet SET vet_name=:vet_name, salary=:salary, phone_number=:phone_number, " +
-                        "working_start_hr=:working_start_hr, working_start_min=:working_start_min,working_end_hr=:working_end_hr,working_end_min=:working_end_min";
+                        "working_start_hr=:working_start_hr, working_start_min=:working_start_min,working_end_hr=:working_end_hr," +
+                        " working_end_min=:working_end_min " +
+                        " where vet_id=:VID";
                     command.Parameters.Clear();
+                    command.Parameters.Add("VID", OracleDbType.Varchar2, VID, ParameterDirection.Input);
                     command.Parameters.Add("vet_name", OracleDbType.Varchar2, vetname, ParameterDirection.Input);
                     command.Parameters.Add("salary", OracleDbType.Double, Salary, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);

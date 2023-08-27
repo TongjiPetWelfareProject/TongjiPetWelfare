@@ -31,9 +31,9 @@ namespace PetFoster.BLL
             return img;
         }
         
-        public static void UpdateVet(string vetname, double Salary, string PhoneNumber, double hours)
+        public static void UpdateVet(string VID,string vetname, double Salary, string PhoneNumber, double hours)
         {
-            VetServer.UpdateVet(vetname, Salary, PhoneNumber, 8, 0, Convert.ToInt32(8 + hours), Convert.ToInt32(60 * (hours - Math.Floor(hours))));
+            VetServer.UpdateVet(VID,vetname, Salary, PhoneNumber, 8, 0, Convert.ToInt32(8 + hours), Convert.ToInt32(60 * (hours - Math.Floor(hours))));
         }
         public static void RecruitVet(string vetname, decimal Salary, string PhoneNumber, double hours)
         {
