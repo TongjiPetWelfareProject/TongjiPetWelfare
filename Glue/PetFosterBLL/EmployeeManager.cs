@@ -20,11 +20,14 @@ namespace PetFoster.BLL
         }
         public static void UpdateEmployee(string EID,string employeename, double Salary, string PhoneNumber, string Duty, double hours)
         {
-            EmployeeServer.UpdateEmployee(EID,employeename, Salary, PhoneNumber, Duty, 8,0,Convert.ToInt32(8+hours), Convert.ToInt32(60 *(hours-Math.Floor(hours))));
+            EmployeeServer.UpdateEmployee(EID,employeename, Salary,Duty, 8,0,Convert.ToInt32(8+hours), Convert.ToInt32(60 *(hours-Math.Floor(hours))));
+            UserServer.UpdateUser(EID, employeename, "Password1!",PhoneNumber);
         }
         public static void RecruitEmployee(string employeename, decimal Salary, string PhoneNumber, string Duty, double hours)
         {
-            EmployeeServer.InsertEmpolyee(employeename, Salary, PhoneNumber, Duty,hours);
+            string EID = UserServer.InsertUser(employeename, "Password1!", PhoneNumber);
+            EmployeeServer.InsertEmpolyee(EID,employeename, Salary, PhoneNumber, Duty,hours);
+            
         }
     }
 }
