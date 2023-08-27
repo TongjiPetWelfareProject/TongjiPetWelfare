@@ -32,7 +32,7 @@ namespace Glue.Controllers
         [HttpGet("petlist")]
         public IActionResult Get()
         {
-            DataTable dt = PetManager.ShowPetProfile();
+            DataTable dt = AdoptManager.ShowPetProfile();
             //List<Dictionary<string, object>> dataRows = new List<Dictionary<string, object>>();
             foreach (DataRow row in dt.Rows)
             {
