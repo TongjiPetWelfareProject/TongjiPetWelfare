@@ -43,7 +43,10 @@ namespace PetFoster.DAL
         public static DataTable PetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT pet_id,pet_name,breed,TRUNC(MONTHS_BETWEEN(CURRENT_TIMESTAMP, birthdate) / 12) AS age,health_state,vaccine,read_num,like_num,collect_num FROM pet";
+            string query = "SELECT pet_profile.pet_id,pet_name,species,sex," +
+                "TRUNC(MONTHS_BETWEEN(CURRENT_TIMESTAMP, birthdate) / 12) AS age," +
+                "health_state,vaccine,popularity,status FROM pet_profile " +
+                "left join pet_source on pet_source.pet_id=pet_profile.pet_id";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         //管理员端——人气榜
