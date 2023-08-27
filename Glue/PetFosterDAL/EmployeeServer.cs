@@ -96,7 +96,7 @@ namespace PetFoster.DAL
         /// <param name="weh">Working_End_Hour 工作结束时间(时)</param>
         /// <param name="wem">Working_End_Min 工作结束时间(分钟)</param>
         /// <returns>新入职的雇员的ID</returns>
-        public static int InsertEmpolyee(string EID,string vetname, decimal Salary, string PhoneNumber, string Duty,double hours)
+        public static int InsertEmpolyee(string EID,string vetname, decimal Salary, string Duty,double hours)
         {
             // 添加新行
             try
@@ -106,22 +106,19 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO employee (employee_id, employee_name, salary,phone_number,duty, " +
-                        "working_end_hr,working_end_min) " +
-                        "VALUES (:EID, :employee_name, :salary,:phone_number,:duty, 8,0,:working_end_hr,:working_end_min)";
+                    command.CommandText = "INSERT INTO employee (employee_id, employee_name, salary,duty, " +
+                        "working_start_hr,working_start_min,working_end_hr,working_end_min) " +
+                        "VALUES (:EID, :employee_name, :salary,:duty, 8,0,:working_end_hr,:working_end_min)";
                     command.Parameters.Clear();
                     command.Parameters.Add("EID", OracleDbType.Varchar2, EID, ParameterDirection.Input);
                     command.Parameters.Add("employee_name", OracleDbType.Varchar2, vetname, ParameterDirection.Input);
-                    command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);
-                    command.Parameters.Add("salary", OracleDbType.Double, Salary, ParameterDirection.Input);
-                    command.Parameters.Add("duty", OracleDbType.Double, Duty, ParameterDirection.Input);
+                    command.Parameters.Add("salary", OracleDbType.Decimal, Salary, ParameterDirection.Input);
+                    command.Parameters.Add("duty", OracleDbType.Varchar2, Duty, ParameterDirection.Input);
                     command.Parameters.Add("working_end_hr", OracleDbType.Decimal, 8+Math.Floor(hours), ParameterDirection.Input);
                     command.Parameters.Add("working_end_min", OracleDbType.Decimal, Math.Floor(60 * (hours-Math.Floor(hours))), ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();
-                        command.CommandText = "select max(cast(user_id as integer)) from user2";
-                        command.Parameters.Clear();
                         connection.Close();
                         return 0;
                     }

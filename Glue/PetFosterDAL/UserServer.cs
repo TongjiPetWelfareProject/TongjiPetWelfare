@@ -314,7 +314,7 @@ namespace PetFoster.DAL
         /// <param name="pwd">密码</param>
         /// <param name="phoneNumber">手机号</param>
         /// <param name="Address">地址</param>
-        public static string InsertUser(string Username, string pwd, string phoneNumber, string Address = "Beijing")
+        public static string InsertUser(string Username, string pwd, string phoneNumber, string Address = "Beijing",string Role="User")
         {
             string UID = "-1";
             try
@@ -325,14 +325,15 @@ namespace PetFoster.DAL
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     string account_status = "In Good Standing";
-                    command.CommandText = "INSERT INTO user2 (user_id, user_name, password, phone_number, account_status, address) " +
-                        "VALUES (user_id_seq.NEXTVAL, :user_name, :password, :phone_number, :account_status, :address)";
+                    command.CommandText = "INSERT INTO user2 (user_id, user_name, password, phone_number, account_status, address,role) " +
+                        "VALUES (user_id_seq.NEXTVAL, :user_name, :password, :phone_number, :account_status, :address,:Role)";
                     command.Parameters.Clear();
                     command.Parameters.Add("user_name", OracleDbType.Varchar2, Username, ParameterDirection.Input);
                     command.Parameters.Add("password", OracleDbType.Varchar2, pwd, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, phoneNumber, ParameterDirection.Input);
                     command.Parameters.Add("account_status", OracleDbType.Varchar2, account_status, ParameterDirection.Input);
                     command.Parameters.Add("address", OracleDbType.Varchar2, Address, ParameterDirection.Input);
+                    command.Parameters.Add("Role", OracleDbType.Varchar2, Role, ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();

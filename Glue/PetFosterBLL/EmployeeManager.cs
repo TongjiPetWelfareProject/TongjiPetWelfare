@@ -1,4 +1,5 @@
 ﻿using Glue.PetFoster.BLL;
+using OracleInternal.Secure.Network;
 using PetFoster.DAL;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,8 @@ namespace PetFoster.BLL
         }
         public static void RecruitEmployee(string employeename, decimal Salary, string PhoneNumber, string Duty, double hours)
         {
-            string EID = UserServer.InsertUser(employeename, "Password1!", PhoneNumber);
-            EmployeeServer.InsertEmpolyee(EID,employeename, Salary, PhoneNumber, Duty,hours);
+            string EID = UserServer.InsertUser(employeename, UserManager.ComputeSHA256Hash("Password1!"), PhoneNumber,"Admin");
+            EmployeeServer.InsertEmpolyee(EID,employeename, Salary, JsonHelper.TranslateToEn(Duty,"duties"),hours);
             
         }
     }
