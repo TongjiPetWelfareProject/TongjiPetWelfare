@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Data;
+using System.Text;
 
 namespace Glue.Controllers
 {
@@ -36,5 +37,39 @@ namespace Glue.Controllers
             // return convertedDateTime.ToString();
         }
         */
+        public static string DataTableToJson(DataTable table)
+        {
+            var jsonString = new StringBuilder();
+
+            if (table.Rows.Count > 0)
+            {
+                jsonString.Append("[");
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    jsonString.Append("{");
+
+                    for (int j = 0; j < table.Columns.Count; j++)
+                    {
+                        jsonString.AppendFormat("\"{0}\":\"{1}\"",
+                            table.Columns[j].ColumnName,
+                            table.Rows[i][j]);
+
+                        if (j < table.Columns.Count - 1)
+                        {
+                            jsonString.Append(",");
+                        }
+                    }
+
+                    jsonString.Append("}");
+                    if (i < table.Rows.Count - 1)
+                    {
+                        jsonString.Append(",");
+                    }
+                }
+                jsonString.Append("]");
+            }
+
+            return jsonString.ToString();
+        }
     }
 }

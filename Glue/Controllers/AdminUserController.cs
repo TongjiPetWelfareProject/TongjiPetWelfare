@@ -70,59 +70,41 @@ namespace Glue.Controllers
             return "value";
         }
         */
-        // POST api/<AdminUserController>
-        [HttpPost("block")] // 封号
-        public IActionResult PostBlock([FromBody] string id)
+
+        private IActionResult _ChangeUserStatus(string id, string target_status)
         {
-            if(!int.TryParse(id, out int uid))
+            if (!int.TryParse(id, out int uid))
             {
                 return BadRequest("Invalid UID.");
             }
             try
             {
-                string message = UserManager.Ban(uid,"Banned"); // status change to banned
+                string message = UserManager.Ban(uid, "Banned"); // status change to banned
                 return Ok(message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
+        }
+
+        // POST api/<AdminUserController>
+        [HttpPost("block")] // 封号
+        public IActionResult PostBlock([FromBody] string id)
+        {
+            return _ChangeUserStatus(id, "Banned");
         }
         // POST api/<AdminUserController>
         [HttpPost("ban")] // 禁言
         public IActionResult PostBan([FromBody] string id)
         {
-            if (!int.TryParse(id, out int uid))
-            {
-                return BadRequest("Invalid UID.");
-            }
-            try
-            {
-                string message = UserManager.Ban(uid,"Under Review"); // status change to "under review"
-                return Ok(message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            return _ChangeUserStatus(id, "Under Review");
         }
         [HttpPost("remove-block")]
         [HttpPost("remove-ban")] // 解除禁言/解除封号，逻辑由UserManager.Ban实现，故在这里共用同一函数
         public IActionResult PostRemoveBan([FromBody] string id)
         {
-            if (!int.TryParse(id, out int uid))
-            {
-                return BadRequest("Invalid UID.");
-            }
-            try
-            {
-                string message = UserManager.Ban(uid, "In Good Standing"); // status change to "in good standing"
-                return Ok(message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            return _ChangeUserStatus(id, "In Good Standing");
         }
         /*
         // PUT api/<AdminUserController>/5

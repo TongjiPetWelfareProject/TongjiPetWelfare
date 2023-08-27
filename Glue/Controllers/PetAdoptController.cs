@@ -29,7 +29,7 @@ namespace Glue.Controllers
         }
 
         // GET: api/<PetAdoptController>
-        [HttpGet("petlist")]
+        [HttpGet("pet-adopt-list")]
         public IActionResult Get()
         {
             DataTable dt = AdoptManager.ShowPetProfile();
