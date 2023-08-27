@@ -16,7 +16,7 @@ namespace Glue.Controllers
             public string? name { get; set; }
             public string? phone {get; set; }
             public string? responsibility { get; set; }
-            public string? workingHours { get; set; }
+            public double workingHours { get; set; }
             public string? salary { get; set; }
         }
         // GET: api/<EmployeeController>
@@ -56,7 +56,8 @@ namespace Glue.Controllers
                         }
                         else if(dt.Columns[j].ColumnName.ToLower() == "working_hours")
                         {
-                            EmployeeItem.workingHours = dt.Rows[i][j].ToString()+"小时";
+                            //EmployeeItem.workingHours = dt.Rows[i][j].ToString()+"小时";
+                            EmployeeItem.workingHours = Convert.ToDouble(dt.Rows[i][j]);
                         }
                     }
                     EmployeesList.Add(EmployeeItem);
@@ -89,14 +90,15 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid Salary Format");
             }
+            /*
             if (!ConvertTools.ConvertHourStringToDouble(employee.workingHours, out double hours))
             {
                 return BadRequest("Invalid Working Hours Format.");
-            }
+            }*/
             try
             {
                 EmployeeManager.RecruitEmployee(employee.name, (decimal)salary, employee.phone,
-                    employee.responsibility, hours);
+                    employee.responsibility, employee.workingHours);
                 return Ok();
             }
             catch(Exception ex)
@@ -139,14 +141,16 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid Salary Format");
             }
+            /*
             if(!ConvertTools.ConvertHourStringToDouble(employee.workingHours,out double hours))
             {
                 return BadRequest("Invalid Working Hours Format.");
             }
+            */
             try
             {
                 EmployeeManager.UpdateEmployee(employee.id, employee.name, salary,
-                    employee.phone, employee.responsibility, hours);
+                    employee.phone, employee.responsibility, employee.workingHours);
                 return Ok();
             }
             catch(Exception ex)
