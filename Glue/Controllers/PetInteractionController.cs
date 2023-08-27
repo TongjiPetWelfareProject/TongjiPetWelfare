@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
 using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -102,7 +103,10 @@ namespace Glue.Controllers
             }
             try
             {
-                LikePetManager.GiveALike(like_data.user, like_data.pet, true);
+                if(!LikePetServer.GetLikePetEntry(like_data.user, like_data.pet))
+                    LikePetManager.GiveALike(like_data.user, like_data.pet, true);
+                else
+                    LikePetManager.GiveALike(like_data.user, like_data.pet, false);
                 return Ok();
             }
             catch (Exception ex)
@@ -154,7 +158,10 @@ namespace Glue.Controllers
             }
             try
             {
-                CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, true);
+                if(CollectPetInfoServer.GetCollectPetInfoEntry(favorite_data.user, favorite_data.pet))
+                    CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, true);
+                else
+                    CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, false);
                 return Ok();
             }
             catch (Exception ex)
