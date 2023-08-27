@@ -72,6 +72,7 @@ namespace PetFoster.DAL
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    throw;
                 }
                 connection.Close();
             }

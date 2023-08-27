@@ -184,12 +184,24 @@ namespace PetFoster.BLL
         //修改密码
         /// <summary>
         /// 封禁或解禁账户
+        /// 通过解除禁言，不能解除封禁状态
         /// </summary>
         /// <param name="UID"></param>
         /// <param name="status">设置用户相应的状态</param>
         public static string Ban(decimal UID, string status = "Banned")
         {
             User user = UserServer.GetUser(UID.ToString(), "0", true);
+            // 通过解除禁言，不能解除封禁状态
+            string current_status = UserServer.GetStatus(UID.ToString());
+            if(status == current_status)
+            {
+                throw new Exception($"用户{user.User_Name}已经处于{status}状态");
+            }
+            if(status == "Under Review" && current_status == "Banned")
+            {
+                throw new Exception($"用户{user.User_Name}处于封禁状态，不能解除禁言");
+            }
+
             if (IsValidStatus(status))
             {
                 UserServer.UpdateUser(UID.ToString(), user.User_Name, user.Password, user.Phone_Number, user.Address, status);
@@ -201,7 +213,7 @@ namespace PetFoster.BLL
                 return $"已将用户{user.User_Name}状态设置为{status}";
             }
             else
-                return $"不存在{status}这种状态";
+                throw new Exception($"不存在{status}这种状态");
         }
         static int RemainingTime = 5;
         static bool Waiting = false;
