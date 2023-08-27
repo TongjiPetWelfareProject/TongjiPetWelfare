@@ -96,7 +96,7 @@ namespace PetFoster.DAL
         /// <param name="weh">Working_End_Hour 工作结束时间(时)</param>
         /// <param name="wem">Working_End_Min 工作结束时间(分钟)</param>
         /// <returns>新入职的雇员的ID</returns>
-        public static int InsertEmpolyee(string vetname, decimal Salary, string PhoneNumber, string Duty,decimal wsh, decimal wsm, decimal weh, decimal wem)
+        public static int InsertEmpolyee(string vetname, decimal Salary, string PhoneNumber, string Duty,double hours)
         {
             // 添加新行
             int EID = -1;
@@ -107,18 +107,16 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO employee (employee_id, employee_name, salary,phone_number,duty, working_start_hr,working_start_min," +
+                    command.CommandText = "INSERT INTO employee (employee_id, employee_name, salary,phone_number,duty, " +
                         "working_end_hr,working_end_min) " +
-                        "VALUES (employee_id_seq.NEXTVAL, :employee_name, :salary,:phone_number,:duty, :working_start_hr,:working_start_min,:working_end_hr,:working_end_min)";
+                        "VALUES (employee_id_seq.NEXTVAL, :employee_name, :salary,:phone_number,:duty, 8,0,:working_end_hr,:working_end_min)";
                     command.Parameters.Clear();
                     command.Parameters.Add("employee_name", OracleDbType.Varchar2, vetname, ParameterDirection.Input);
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, PhoneNumber, ParameterDirection.Input);
                     command.Parameters.Add("salary", OracleDbType.Double, Salary, ParameterDirection.Input);
                     command.Parameters.Add("duty", OracleDbType.Double, Duty, ParameterDirection.Input);
-                    command.Parameters.Add("working_start_hr", OracleDbType.Decimal, wsh, ParameterDirection.Input);
-                    command.Parameters.Add("working_start_min", OracleDbType.Decimal, wsm, ParameterDirection.Input);
-                    command.Parameters.Add("working_end_hr", OracleDbType.Decimal, weh, ParameterDirection.Input);
-                    command.Parameters.Add("working_end_min", OracleDbType.Decimal, wem, ParameterDirection.Input);
+                    command.Parameters.Add("working_end_hr", OracleDbType.Decimal, 8+Math.Floor(hours), ParameterDirection.Input);
+                    command.Parameters.Add("working_end_min", OracleDbType.Decimal, Math.Floor(60 * (hours-Math.Floor(hours))), ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();
@@ -185,7 +183,7 @@ namespace PetFoster.DAL
         /// <param name="wsm">Working_Start_Min 工作开始时间(分钟)</param>
         /// <param name="weh">Working_End_Hour 工作结束时间(时)</param>
         /// <param name="wem">Working_End_Min 工作结束时间(分钟)</param>
-        public static void UpdateVet(string employee_name, double Salary, string PhoneNumber,string duty, decimal wsh, decimal wsm, decimal weh, decimal wem)
+        public static void UpdateEmployee(string employee_name, double Salary, string PhoneNumber,string duty, decimal wsh, decimal wsm, decimal weh, decimal wem)
         {
             // 更改信息
             try
@@ -195,7 +193,7 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "UPDATE employee SET employee_name=:vet_name, salary=:salary, phone_number=:phone_number, " +
+                    command.CommandText = "UPDATE employee SET employee_name=:employee_name, salary=:salary, phone_number=:phone_number, " +
                         "duty=:duty,working_start_hr=:working_start_hr, working_start_min=:working_start_min,working_end_hr=:working_end_hr,working_end_min=:working_end_min";
                     command.Parameters.Clear();
                     command.Parameters.Add("employee_name", OracleDbType.Varchar2, employee_name, ParameterDirection.Input);

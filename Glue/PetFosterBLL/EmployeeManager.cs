@@ -18,10 +18,13 @@ namespace PetFoster.BLL
             Console.WriteLine("开始显示员工列表");
             return dt;
         }
-
-        public static void InsertEmployee(string employeename, decimal Salary, string PhoneNumber, string Duty, decimal wsh, decimal wsm, decimal weh, decimal wem)
+        public static void UpdateEmployee(string employeename, double Salary, string PhoneNumber, string Duty, double hours)
         {
-            EmployeeServer.InsertEmpolyee(employeename, Salary, PhoneNumber, Duty, wsh, wsm, weh, wem);
+            EmployeeServer.UpdateEmployee(employeename, Salary, PhoneNumber, Duty, 8,0,Convert.ToInt32(8+hours), Convert.ToInt32(60 *(hours-Math.Floor(hours))));
+        }
+        public static void RecruitEmployee(string employeename, decimal Salary, string PhoneNumber, string Duty, double hours)
+        {
+            EmployeeServer.InsertEmpolyee(employeename, Salary, PhoneNumber, Duty,hours);
         }
     }
 }

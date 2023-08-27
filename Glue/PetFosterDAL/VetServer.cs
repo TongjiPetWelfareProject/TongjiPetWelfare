@@ -264,7 +264,7 @@ namespace PetFoster.DAL
         /// <param name="wsm">Working_Start_Min 工作开始时间(分钟)</param>
         /// <param name="weh">Working_End_Hour 工作结束时间(时)</param>
         /// <param name="wem">Working_End_Min 工作结束时间(分钟)</param>
-        public static void UpdateVet(string vetname, double Salary, string PhoneNumber, decimal wsh, decimal wsm, decimal weh, decimal wem)
+        public static void UpdateVet(string vetname, double Salary, string PhoneNumber, int wsh, int wsm, int weh, int wem)
         {
             // 更改信息
             try

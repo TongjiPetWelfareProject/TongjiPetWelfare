@@ -30,22 +30,14 @@ namespace PetFoster.BLL
             byte[] img=VetServer.GetPortrait(VID).portrait;
             return img;
         }
-        //
-        public static void SalaryManage(string VID,double sal)
+        
+        public static void UpdateVet(string vetname, double Salary, string PhoneNumber, double hours)
         {
-            if (sal < 2000 || sal > 15000)
-                Console.WriteLine("工资太高或太低！");
-            PetFoster.Model.Vet vet=VetServer.GetVet(VID);
-            VetServer.UpdateVet(vet.vet_name, sal, vet.phone_number, vet.working_start_hr, vet.working_start_min, vet.working_end_hr, vet.working_end_min);
-
+            VetServer.UpdateVet(vetname, Salary, PhoneNumber, 8, 0, Convert.ToInt32(8 + hours), Convert.ToInt32(60 * (hours - Math.Floor(hours))));
         }
-        //
-        public static void LabourManage(string VID, DateTime dtstart,DateTime dtend)
+        public static void RecruitVet(string vetname, decimal Salary, string PhoneNumber, double hours)
         {
-            if (dtstart.Hour<=8 ||dtend.Hour>=10||dtend.Hour-dtstart.Hour>8)
-                Console.WriteLine("违反《劳动法》！");
-            PetFoster.Model.Vet vet = VetServer.GetVet(VID);
-            VetServer.UpdateVet(vet.vet_name, vet.salary, vet.phone_number, dtstart.Hour, dtstart.Minute, dtend.Hour, dtend.Minute);
+            VetServer.InsertVet(vetname, Salary, PhoneNumber, 8, 0, Convert.ToInt32(8 + hours), Convert.ToInt32(60 * (hours - Math.Floor(hours))));
         }
     }
 }
