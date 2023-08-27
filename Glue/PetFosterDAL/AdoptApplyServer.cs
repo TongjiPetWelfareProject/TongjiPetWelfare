@@ -142,14 +142,6 @@ namespace PetFoster.DAL
                 Console.WriteLine(ex.ToString());
             }
         }
-        public static DataTable GetAllAdoptedPets(string UID)
-        {
-            //过期\无效\通过\未通过\未审核5种 用不同颜色标注
-            string query = $"select adopt_apply.pet_id,pet_name,apply_date from adopt_apply " +
-                $"left join pet on pet.pet_id=adopt_apply.pet_id " +
-                $"where adopter_id={UID}";
-            return DBHelper.ShowInfo(query);
-        }
         public static Pet2 SelectPet(string PID)
         {
             bool con = false;
