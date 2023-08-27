@@ -73,11 +73,36 @@ namespace Glue.Controllers
 
         }
 
-        [HttpPost("addemployee")]
-        public IActionResult AddEmployee()
+        [HttpPost("add-employee")]
+        public IActionResult AddEmployee([FromBody] EmployeeModel employee)
         {
             // 这个函数用来接受添加员工请求，由于前端输入的是工作时长，而后端需要的是工作起始时间，这个地方你们斟酌一下
-            return Ok();
+            if (employee == null)
+            {
+                return BadRequest("Empty Data.");
+            }
+            if (employee.name == null)
+            {
+                return BadRequest("Empty Employee Name.");
+            }
+            if (!ConvertTools.ConvertCurrencyStringToDouble(employee.salary, out double salary))
+            {
+                return BadRequest("Invalid Salary Format");
+            }
+            if (!ConvertTools.ConvertHourStringToDouble(employee.workingHours, out double hours))
+            {
+                return BadRequest("Invalid Working Hours Format.");
+            }
+            try
+            {
+                EmployeeManager.RecruitEmployee(employee.name, (decimal)salary, employee.phone,
+                    employee.responsibility, hours);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         /*
@@ -93,14 +118,43 @@ namespace Glue.Controllers
         public void Post([FromBody] string value)
         {
         }
-        
+        */
         // PUT api/<EmployeeController>/5
-        [HttpPut("{employeeid}")]
+        [HttpPut("edit-employee/{employeeId}")]
         public IActionResult Put(int employeeId, [FromBody] EmployeeModel employee)
         {
-
+            if(employee == null)
+            {
+                return BadRequest("Empty Data.");
+            }
+            if(employee.id == null || !int.TryParse(employee.id,out int eid))
+            {
+                return BadRequest("Invalid Employee Id.");
+            }
+            if(employee.name == null)
+            {
+                return BadRequest("Empty Employee Name.");
+            }
+            if(!ConvertTools.ConvertCurrencyStringToDouble(employee.salary,out double salary))
+            {
+                return BadRequest("Invalid Salary Format");
+            }
+            if(!ConvertTools.ConvertHourStringToDouble(employee.workingHours,out double hours))
+            {
+                return BadRequest("Invalid Working Hours Format.");
+            }
+            try
+            {
+                EmployeeManager.UpdateEmployee(employee.id, employee.name, salary,
+                    employee.phone, employee.responsibility, hours);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-
+        /*
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{employeeId}")]
         public IActionResult Delete(int employeeId)

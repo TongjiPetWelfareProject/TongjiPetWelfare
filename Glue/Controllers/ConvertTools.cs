@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Data;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Glue.Controllers
 {
@@ -70,6 +71,43 @@ namespace Glue.Controllers
             }
 
             return jsonString.ToString();
+        }
+        public static bool ConvertCurrencyStringToDouble(string currencyString, out double result)
+        {
+            result = 0;
+            if (double.TryParse(currencyString, out result))
+            {
+                return true;
+            }
+            int currencySymbolIndex = currencyString.IndexOf("￥");
+            if (currencySymbolIndex != -1 && currencySymbolIndex == currencyString.Length - 1)
+            {
+                currencyString = currencyString.Replace("￥", "");
+                if (double.TryParse(currencyString, out result))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static bool ConvertHourStringToDouble(string hourString, out double result)
+        {
+            result = 0;
+            string pattern = @"(\d+(?:\.\d+)?)(?:小时|时|h|H)$";
+
+            Match match = Regex.Match(hourString, pattern, RegexOptions.IgnoreCase);
+
+            if (match.Success)
+            {
+                string numericPart = match.Groups[1].Value;
+                if (double.TryParse(numericPart, out result))
+                {
+                    return true;
+                }
+            }
+
+            // If no match or conversion failed, return a default value (e.g., 0)
+            return false;
         }
     }
 }

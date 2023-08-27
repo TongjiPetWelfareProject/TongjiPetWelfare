@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Glue.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class DoctorController : ControllerBase
     {
@@ -40,12 +40,49 @@ namespace Glue.Controllers
         }
 
         // GET: api/<DoctorController>
-        [HttpGet]
-        public IEnumerable<Doctor> Get()
+        [HttpGet("doctor")]
+        public IActionResult Get()
         {
-            DataTable vetProfiles = VetManager.ShowVetProfile();
-            List<Doctor> vets = ConvertDataTableToVetList(vetProfiles);
-            return vets;
+            try
+            {
+                DataTable vetProfiles = VetManager.ShowVetProfile();
+                List<Doctor> vets = ConvertDataTableToVetList(vetProfiles);
+                return Ok(vets);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpPost("add-doctor")]
+        public IActionResult AddEmployee([FromBody] Doctor vet)
+        {
+            // 这个函数用来接受添加员工请求，由于前端输入的是工作时长，而后端需要的是工作起始时间，这个地方你们斟酌一下
+            if (vet == null)
+            {
+                return BadRequest("Empty Data.");
+            }
+            if (vet.name == null)
+            {
+                return BadRequest("Empty Employee Name.");
+            }
+            if (!ConvertTools.ConvertCurrencyStringToDouble(vet.salary, out double salary))
+            {
+                return BadRequest("Invalid Salary Format");
+            }
+            if (!ConvertTools.ConvertHourStringToDouble(vet.workingHours, out double hours))
+            {
+                return BadRequest("Invalid Working Hours Format.");
+            }
+            try
+            {
+                VetManager.RecruitVet(vet.name, (decimal)salary, vet.phone, hours);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
         /*
         // GET api/<DoctorController>/5
@@ -61,13 +98,43 @@ namespace Glue.Controllers
         {
             
         }
-        
+        */
         // PUT api/<DoctorController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("edit-doctor/{doctorId}")]
+        public IActionResult Put(int doctorId, [FromBody] Doctor vet)
         {
+            if (vet == null)
+            {
+                return BadRequest("Empty Data.");
+            }
+            if (vet.id == null || !int.TryParse(vet.id, out int vid))
+            {
+                return BadRequest("Invalid Vet Id.");
+            }
+            if (vet.name == null)
+            {
+                return BadRequest("Empty Vet Name.");
+            }
+            if (!ConvertTools.ConvertCurrencyStringToDouble(vet.salary, out double salary))
+            {
+                return BadRequest("Invalid Salary Format");
+            }
+            if (!ConvertTools.ConvertHourStringToDouble(vet.workingHours, out double hours))
+            {
+                return BadRequest("Invalid Working Hours Format.");
+            }
+            try
+            {
+                VetManager.UpdateVet(vet.id, vet.name, salary,
+                    vet.phone, hours);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-
+        /*
         // DELETE api/<DoctorController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
