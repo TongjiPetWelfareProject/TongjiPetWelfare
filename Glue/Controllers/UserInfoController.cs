@@ -35,15 +35,19 @@ namespace WebApplicationTest1
             int likenum = UserManager.GetLikeNum(userinfoModel.user_id);
             int readnum = UserManager.GetReadNum(userinfoModel.user_id);
 
-            // Create an anonymous object to hold the data
             var userInfo = new
             {
                 Likes = likenum,
                 Reads = readnum
             };
 
-            // Return the JSON response
             return Ok(userInfo);
+        }
+        [HttpPost("userpostcomment")]
+        public IActionResult GetUserPostComment([FromBody] UserInfoModel userinfoModel)
+        {
+            List<PostComment> usercomment = CommentPostManager.ShowUIDPost(userinfoModel.user_id);
+            return Ok(usercomment);
         }
     }
 }

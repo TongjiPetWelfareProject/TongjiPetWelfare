@@ -158,5 +158,37 @@ namespace PetFoster.DAL
 
             return postcomments;
         }
+        public static List<PostComment> GetUserComment(string UID)
+        {
+            List<PostComment> postcomments = new List<PostComment>();
+
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+
+                string query = $"select user_id, post_id, comment_time, comment_contents from comment_post where user_id={UID}";
+
+                OracleCommand command = new OracleCommand(query, connection);
+
+                using (OracleDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PostComment comment = new PostComment
+                        {
+                            PID = reader["post_id"].ToString(),
+                            UID = reader["user_id"].ToString(),
+                            Comment_Time = Convert.ToDateTime(reader["comment_time"]),
+                            Content = reader["comment_contents"].ToString(),
+                        };
+                        postcomments.Add(comment);
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return postcomments;
+        }
     }
 }
