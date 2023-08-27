@@ -241,6 +241,59 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static int GetTotalLikes(string UID)
+        {
+            int totalLikes = 0;
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select sum(like_num) from forum_posts where user_id = :user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        totalLikes = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return totalLikes;
+        }
+        public static int GetTotalReadCount(string UID)
+        {
+            int totalLikes = 0;
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select sum(read_count) from forum_posts where user_id = :user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        totalLikes = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return totalLikes;
+        }
+
         static bool IsValidAddress(string address)
         {
             // 读取配置文件并加载地址

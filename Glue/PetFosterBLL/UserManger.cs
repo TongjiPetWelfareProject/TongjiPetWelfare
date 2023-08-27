@@ -250,6 +250,16 @@ namespace PetFoster.BLL
             return $"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes, {timeRemaining.Seconds} seconds";
 
         }
+        public static int GetLikeNum(string UID)
+        {
+            int num = UserServer.GetTotalLikes(UID);
+            return num;
+        }
+        public static int GetReadNum(string UID)
+        {
+            int num = UserServer.GetTotalReadCount(UID);
+            return num;
+        }
     }
     public class CountdownTimer
     {
