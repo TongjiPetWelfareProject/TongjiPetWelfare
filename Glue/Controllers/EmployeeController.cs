@@ -20,7 +20,7 @@ namespace Glue.Controllers
             public string? salary { get; set; }
         }
         // GET: api/<EmployeeController>
-        [HttpGet("employee")]
+        [HttpGet]
         public IActionResult Get()
         {
             try
