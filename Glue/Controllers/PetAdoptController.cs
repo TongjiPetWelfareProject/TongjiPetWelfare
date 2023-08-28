@@ -123,10 +123,13 @@ namespace Glue.Controllers
             public bool have_liked;
             public bool have_collected;
         }
-
+        public class DetailsRequest
+        {
+            public int userId;
+        }
         // GET api/<PetAdoptController>
         [HttpGet("pet-details/{petId}")]
-        public IActionResult Get(int petId,[FromBody] int userId)
+        public IActionResult Get(int petId,[FromBody] DetailsRequest request)
         {
             try
             {
@@ -159,8 +162,8 @@ namespace Glue.Controllers
                 // newly added to show whether user has liked or collected this pet
                 try
                 {
-                    pet2_temp.have_liked = LikePetManager.HaveUserLiked(userId.ToString(), petId.ToString());
-                    pet2_temp.have_collected = CollectPetInfoManager.HaveUserCollected(userId.ToString(), petId.ToString());
+                    pet2_temp.have_liked = LikePetManager.HaveUserLiked(request.userId.ToString(), petId.ToString());
+                    pet2_temp.have_collected = CollectPetInfoManager.HaveUserCollected(request.userId.ToString(), petId.ToString());
                 }
                 catch (Exception ex)
                 {
