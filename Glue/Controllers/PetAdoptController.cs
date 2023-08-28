@@ -118,14 +118,20 @@ namespace Glue.Controllers
             public Pet2.Comment[] comments;
         }
 
+        public class Pet2WithHaveLiked: Pet2WithoutAvartar
+        {
+            public bool have_liked;
+            public bool have_collected;
+        }
+
         // GET api/<PetAdoptController>
         [HttpGet("pet-details/{petId}")]
-        public IActionResult Get(int petId)
+        public IActionResult Get(int petId,[FromBody] int userId)
         {
             try
             {
                 Pet2 pet = AdoptApplyManager.RetrievePet(petId);
-                Pet2WithoutAvartar pet2_temp = new Pet2WithoutAvartar();
+                Pet2WithHaveLiked pet2_temp = new Pet2WithHaveLiked();
                 PetWithoutAvartar pet_temp = new PetWithoutAvartar();
                 pet2_temp.comments = new Pet2.Comment[pet.comments.Length];
                 for (int i = 0; i < pet.comments.Length; i++)
@@ -149,6 +155,18 @@ namespace Glue.Controllers
                 pet_temp.Like_Num = pet.original_pet.Like_Num;
                 pet_temp.Collect_Num = pet.original_pet.Collect_Num;
                 pet2_temp.original_pet = pet_temp;
+
+                // newly added to show whether user has liked or collected this pet
+                try
+                {
+                    pet2_temp.have_liked = LikePetManager.HaveUserLiked(userId.ToString(), petId.ToString());
+                    pet2_temp.have_collected = CollectPetInfoManager.HaveUserCollected(userId.ToString(), petId.ToString());
+                }
+                catch (Exception ex)
+                {
+                    pet2_temp.have_liked = false;
+                    pet2_temp.have_collected = false;
+                }
                 try
                 {
                     string jsondata = Newtonsoft.Json.JsonConvert.SerializeObject(pet2_temp);
@@ -158,8 +176,8 @@ namespace Glue.Controllers
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    return BadRequest("无法转换为Json");
                 }
-                return BadRequest();
 
             }
             catch (Exception ex)

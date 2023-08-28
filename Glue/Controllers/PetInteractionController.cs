@@ -80,7 +80,7 @@ namespace Glue.Controllers
         // GET api/<PetInteractionController>/5
         //查询用户是否收藏过该宠物
         //url和参数为临时
-        [HttpGet("pet-favored/{petId}")]
+        [HttpGet("iffavoritepet/{petId}")]
         public IActionResult GetFavored(int petId, [FromBody] int userId)
         {
             try
@@ -93,7 +93,7 @@ namespace Glue.Controllers
             }
         }
 
-        [HttpGet("pet-liked/{petId}")]
+        [HttpGet("iflikepet/{petId}")]
         public IActionResult GetLiked(int petId, [FromBody] int userId)
         {
             try
