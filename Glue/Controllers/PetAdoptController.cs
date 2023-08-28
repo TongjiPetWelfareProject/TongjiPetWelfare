@@ -37,28 +37,7 @@ namespace Glue.Controllers
             foreach (DataRow row in dt.Rows)
             {
                 
-                foreach (DataColumn column in dt.Columns)
-                {
 
-                    if (column.ColumnName == "VACCINE")
-                    {
-                        row[column.ColumnName] = row[column.ColumnName].ToString()=="Y"?"已接种":"未接种";
-                    }else if(column.ColumnName == "HEALTH_STATE")
-                    {
-                        row[column.ColumnName] = JsonHelper.TranslateToCn(row[column.ColumnName].ToString(), "health_state");
-                    }
-                    else if (column.ColumnName == "SEX")
-                    {
-                        row[column.ColumnName] = row[column.ColumnName].ToString() == "F" ? "女" : "男";
-                    }
-                    else if (column.ColumnName == "SPECIES")
-                    {
-                        row[column.ColumnName] = row[column.ColumnName].ToString() == "dog" ? "狗" : "猫";
-                    }else if (column.ColumnName == "STATUS")
-                    {
-                        column.ColumnName = "SOURCE";
-                    }
-                }
             }
             //foreach (DataRow row in dt.Rows)
             //{
