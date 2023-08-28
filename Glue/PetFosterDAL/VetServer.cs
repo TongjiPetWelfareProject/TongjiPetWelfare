@@ -237,9 +237,8 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "delete from vet where Vet_ID= :Vet_ID";
+                command.CommandText = $"delete from vet where Vet_ID={VID}";
                 command.Parameters.Clear();
-                command.Parameters.Add("Vet_ID", OracleDbType.Varchar2, VID, ParameterDirection.Input);
                 try
                 {
                     command.ExecuteNonQuery();

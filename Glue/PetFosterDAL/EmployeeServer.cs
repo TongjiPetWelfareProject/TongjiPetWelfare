@@ -151,9 +151,8 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "delete from employee where employee_ID= :Employee_ID";
+                command.CommandText = $"delete from employee where employee_ID= {EID}";
                 command.Parameters.Clear();
-                command.Parameters.Add("Employee_ID", OracleDbType.Varchar2, EID, ParameterDirection.Input);
                 try
                 {
                     command.ExecuteNonQuery();
