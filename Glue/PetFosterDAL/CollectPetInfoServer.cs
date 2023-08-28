@@ -48,7 +48,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select *from comment_pet where Pet_ID=:pet_id and User_ID=:user_id";
+                command.CommandText = "select *from collect_pet_info where Pet_ID=:pet_id and User_ID=:user_id";
                 command.Parameters.Clear();
                 command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
