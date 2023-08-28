@@ -22,6 +22,10 @@ namespace PetFoster.BLL
         {
             return CollectPetInfoServer._GetCollectNums(PID);
         }
+        public static bool HaveUserCollected(string UID,string PID)
+        {
+            return CollectPetInfoServer.GetCollectPetInfoEntry(UID, PID);
+        }
         public static void GiveACollect(string UID, string PID, bool is_give)
         {
             bool dt = CollectPetInfoServer.GetCollectPetInfoEntry(UID, PID);

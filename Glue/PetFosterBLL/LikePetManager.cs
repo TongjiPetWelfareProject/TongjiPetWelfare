@@ -23,6 +23,10 @@ namespace PetFoster.BLL
             Util.DebugTable(dt);
             return dt;
         }
+        public static bool HaveUserLiked(string UID, string PID)
+        {
+            return LikePetServer.GetLikePetEntry(UID, PID);
+        }
         public static void GiveALike(string UID, string PID, bool is_give)
         {
             bool dt = LikePetServer.GetLikePetEntry(UID, PID);
