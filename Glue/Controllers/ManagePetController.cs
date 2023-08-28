@@ -80,7 +80,7 @@ namespace Glue.Controllers
             public string? sex { get; set; }
             public string? popularity { get; set; }
             public string? health { get; set; }
-            public bool vaccine { get; set; }
+            public string? vaccine { get; set; }
             public string? from { get; set; }
         }
         
@@ -121,6 +121,19 @@ namespace Glue.Controllers
                     return BadRequest("Invalid Health State.");
                 }
             }
+            bool vaccine;
+            if(pet.vaccine == "已经接种")
+            {
+                vaccine = true;
+            }
+            else if(pet.vaccine =="未接种")
+            {
+                vaccine = false;
+            }
+            else
+            {
+                return BadRequest("Invalid Vaccine Status.");
+            }
             /*
             if (!ConvertTools.ConvertHourStringToDouble(employee.workingHours, out double hours))
             {
@@ -128,7 +141,7 @@ namespace Glue.Controllers
             }*/
             try
             {
-                PetManager.RegisterPet(pet.petname, pet.breed, pet.size, pet.age, null, health, pet.vaccine);
+                PetManager.RegisterPet(pet.petname, pet.breed, pet.size, pet.age, null, health, vaccine);
                 return Ok();
             }
             catch (Exception ex)
@@ -137,8 +150,53 @@ namespace Glue.Controllers
             }
         }
 
-        // PUT api/<ManagePetController>/5
-        
+        // POST api/<ManagePetController>/5
+        [HttpPost("edited-pet")]
+        public IActionResult Post(int employeeId, [FromBody] PetModel pet)
+        {
+            if (pet == null)
+            {
+                return BadRequest("Empty Data.");
+            }
+            if (pet.id == null || !int.TryParse(pet.id, out int pid))
+            {
+                return BadRequest("Invalid Pet Id.");
+            }
+            string? health;
+            if(!string.IsNullOrEmpty(pet.health))
+            {
+                if ((health = PetManager.GetHealth(pet.health)) == null)
+                {
+                    return BadRequest("Invalid Health State.");
+                }
+            }
+            else
+            {
+                health = null;
+            }
+            bool? vaccine;
+            if (pet.vaccine == "已经接种")
+            {
+                vaccine = true;
+            }
+            else if (pet.vaccine == "未接种")
+            {
+                vaccine = false;
+            }
+            else
+            {
+                return BadRequest("Invalid Vaccine Status.");
+            }
+            try
+            {
+                PetManager.UpdatePetInfo(pet.id, health, vaccine);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
         /*
         // DELETE api/<ManagePetController>/5
         [HttpDelete("{id}")]

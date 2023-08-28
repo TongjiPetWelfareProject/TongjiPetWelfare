@@ -95,5 +95,17 @@ namespace PetFoster.BLL
             DAL.PetServer.InsertPet(Petname,Breed,Psize,birthDate,BinImage,Health_State,HaveVaccinated);
 
         }
+
+        public static void UpdatePetInfo(string PID, string? Health_State, bool? HaveVaccinated)
+        {
+            if (!string.IsNullOrEmpty(Health_State))
+            {
+                PetServer.UpdateStatus(PID, Health_State);
+            }
+            if(HaveVaccinated.HasValue)
+            {
+                //waiting for DAL's update pet vaccine status funcion
+            }
+        }
     }
 }
