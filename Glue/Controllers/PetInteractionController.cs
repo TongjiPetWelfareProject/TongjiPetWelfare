@@ -158,10 +158,10 @@ namespace Glue.Controllers
             }
             try
             {
-                if(CollectPetInfoServer.GetCollectPetInfoEntry(favorite_data.user, favorite_data.pet))
-                    CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, true);
+                if(!CollectPetInfoServer.GetCollectPetInfoEntry(favorite_data.user, favorite_data.pet))
+                    CollectPetInfoServer.InsertCollectPetInfo(favorite_data.user, favorite_data.pet);
                 else
-                    CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, false);
+                    CollectPetInfoServer.DeleteCollectPetInfo(favorite_data.user, favorite_data.pet);
                 return Ok();
             }
             catch (Exception ex)
