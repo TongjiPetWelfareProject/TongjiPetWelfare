@@ -205,9 +205,18 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        [HttpDelete("delete-pet/{uid}")]
-        public IActionResult Delete(int uid)
+        public class DeletePetRequest
         {
+            public string? pid { get; set; }
+        }
+        [HttpDelete("delete-pet")]
+        public IActionResult Delete([FromBody] DeletePetRequest request)
+        {
+            if (request.pid == null || !int.TryParse(request.pid, out int uid))
+            {
+                return BadRequest("Invalid Pet Id.");
+            }
+            
             try
             {
                 string source = DBHelper.GetScalar($"select status from pet_source where pet_id={uid}");
