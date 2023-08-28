@@ -69,19 +69,77 @@ namespace Glue.Controllers
         {
             return "value";
         }
-
-        // POST api/<ManagePetController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        */
+        public class PetModel
         {
+            public string? id { get; set; }
+            public string? petname { get; set; }
+            public string? breed { get; set; }
+            public string? size { get; set; }
+            public int age { get; set; }
+            public string? sex { get; set; }
+            public string? popularity { get; set; }
+            public string? health { get; set; }
+            public bool vaccine { get; set; }
+            public string? from { get; set; }
+        }
+        
+        // POST api/<ManagePetController>
+        [HttpPost("add-pet")]
+        public IActionResult AddPet([FromBody] PetModel pet)
+        {
+            // 这个函数用来接受添加员工请求，由于前端输入的是工作时长，而后端需要的是工作起始时间，这个地方你们斟酌一下
+            if (pet == null)
+            {
+                return BadRequest("Empty Data.");
+            }
+            if (pet.petname == null)
+            {
+                return BadRequest("Empty Pet Name.");
+            }
+            if(pet.breed == null)
+            {
+                return BadRequest("Empty Pet Specis.");
+            }
+            if(pet.size == null)
+            {
+                return BadRequest("Empty Pet Size.");
+            }
+            else
+            {
+                pet.size = pet.size.ToLower();
+                if(pet.size != "small" && pet.size != "medium" && pet.size != "large")
+                {
+                    return BadRequest("Invalid Pet Size.");
+                }
+            }
+            string health = "Vibrant";
+            if(!string.IsNullOrEmpty(pet.health))
+            {
+                if((health = PetManager.GetHealth(pet.health)) == null)
+                {
+                    return BadRequest("Invalid Health State.");
+                }
+            }
+            /*
+            if (!ConvertTools.ConvertHourStringToDouble(employee.workingHours, out double hours))
+            {
+                return BadRequest("Invalid Working Hours Format.");
+            }*/
+            try
+            {
+                PetManager.RegisterPet(pet.petname, pet.breed, pet.size, pet.age, null, health, pet.vaccine);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         // PUT api/<ManagePetController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
+        
+        /*
         // DELETE api/<ManagePetController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
