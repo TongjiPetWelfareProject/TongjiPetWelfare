@@ -70,7 +70,7 @@ namespace PetFoster.DAL
             //string query = "SELECT appointment.pet_id,pet_name,appointment.vet_id,vet_name,custom_time,reason FROM appointment" +
             //    " left join pet on pet.pet_id=appointment.pet_id left join vet on vet.vet_id=appointment.vet_id";
             string query = "SELECT appointment.pet_id as pet_id, appointment.vet_id as vet_id,pet_name,vet_name,custom_time as reserve_time," +
-                " '————' as treat_Time,  reason as category FROM appointment" +
+                " treat_Time,  reason as category FROM appointment" +
                 " left join pet on pet.pet_id=appointment.pet_id left join vet on vet.vet_id=appointment.vet_id";
             if (UID != null && PID == null)
                 query += $" where User_ID={UID} ";
