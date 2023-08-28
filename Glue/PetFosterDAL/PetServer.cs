@@ -6,6 +6,7 @@ using PetFoster.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -44,7 +45,7 @@ namespace PetFoster.DAL
         public static DataTable PetInfo(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT pet_profile.pet_id,pet_name,species,sex," +
+            string query = "SELECT pet_profile.pet_id,pet_name,species,sex,psize ," +
                 "TRUNC(MONTHS_BETWEEN(CURRENT_TIMESTAMP, birthdate) / 12) AS age," +
                 "health_state,vaccine,popularity,status FROM pet_profile " +
                 "left join pet_source on pet_source.pet_id=pet_profile.pet_id";
@@ -283,11 +284,13 @@ namespace PetFoster.DAL
         public static string InsertPet(string Petname, string Breed ,string Psize,DateTime birthDate,byte[]Avatar=null, string Health_State= "Vibrant", bool HaveVaccinated=false,string sex="M")
         {
             string vaccine = "";
-            if (HaveVaccinated)
-                vaccine = HaveVaccinated ? "Y" : "N";
+            vaccine = (HaveVaccinated==true ? "Y" : "N");
             Breed = JsonHelper.TranslateToEn(Breed, "species");
             if (Breed == "dog")
-                Psize = JsonHelper.TranslateToEn(Psize, "size");
+            {
+                if (Psize != "small" && Psize != "medium" && Psize != "large")
+                    Psize = JsonHelper.TranslateToEn(Psize, "size");
+            }
             else
                 Psize = "small";
             if (sex == "男") 

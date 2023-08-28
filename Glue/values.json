@@ -616,6 +616,12 @@
     "大型犬": "large",
     "中型犬": "medium",
     "小型犬": "small"
+  },
+  "source": {
+    "预约登记": "Appointment",
+    "寄养登记": "Foster",
+    "领养登记": "Adopt",
+    "流浪": "Wander"
   }
 }
   

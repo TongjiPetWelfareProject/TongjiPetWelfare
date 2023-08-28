@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
 using System.Data;
+using System.Data.Common;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -38,11 +39,17 @@ namespace Glue.Controllers
                     {
                         row[column.ColumnName] = row[column.ColumnName].ToString() == "dog" ? "狗" : "猫";
                     }
-                    else if (column.ColumnName == "STATUS")
+                    else if (column.ColumnName == "STATUS"||column.ColumnName=="SOURCE")
                     {
-                        column.ColumnName = "SOURCE";
+                        row[column.ColumnName] = JsonHelper.TranslateToCn(row[column.ColumnName].ToString(), "source");
+                        if(column.ColumnName == "STATUS")
+                        column.ColumnName = "SOURCE"; 
                     }
                 }
+                if (row["SPECIES"].ToString() == "狗")
+                    row["PSIZE"] = JsonHelper.TranslateToCn(row["PSIZE"].ToString(), "size");
+                else
+                    row["PSIZE"] = "-";
             }
             //foreach (DataRow row in dt.Rows)
             //{
@@ -113,7 +120,7 @@ namespace Glue.Controllers
                     return BadRequest("Invalid Pet Size.");
                 }
             }
-            string health = "Vibrant";
+            string health = JsonHelper.TranslateToEn(pet.health,"health_state");
             if(!string.IsNullOrEmpty(pet.health))
             {
                 if((health = PetManager.GetHealth(pet.health)) == null)
@@ -189,7 +196,7 @@ namespace Glue.Controllers
             }
             try
             {
-                PetManager.UpdatePet(pet.id,"name", pet.petname, vaccine.Value);
+                PetManager.UpdatePet(pet.id,pet.petname, pet.health, vaccine.Value);
                 return Ok();
             }
             catch (Exception ex)
