@@ -20,7 +20,7 @@ namespace Glue.Controllers
 
                 string jsondata = ConvertTools.DataTableToJson(dt);
                 Console.WriteLine(jsondata);
-                return Ok(jsondata);
+                return Content(jsondata, "application/json");
             }
             catch (Exception ex)
             {
