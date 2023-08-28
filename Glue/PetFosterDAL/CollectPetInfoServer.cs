@@ -48,19 +48,13 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select *from collect_pet_info where Pet_ID=:pet_id and User_ID=:user_id";
+                command.CommandText = $"select count(*) from collect_pet_info where Pet_ID={PID} and User_ID={UID}";
                 command.Parameters.Clear();
-                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                command.Parameters.Add("pet_id", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 try
                 {
-                    OracleDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        connection.Close();
+                    int islike=Convert.ToInt32(command.ExecuteScalar());
+                    if (islike>0)
                         return true;
-                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
-                    }
                     connection.Close();
                     return false;
                 }
@@ -95,7 +89,7 @@ namespace PetFoster.DAL
                     try
                     {
                         command.ExecuteNonQuery();
-                        Console.WriteLine($"{UID}给{PID}在{DateTime.Now}点赞");
+                        Console.WriteLine($"{UID}给{PID}在{DateTime.Now}收藏");
 
                     }
                     catch (OracleException ex)
@@ -125,18 +119,16 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "delete from collect_pet_info where Pet_ID= :Pet_ID and User_ID=:User_ID";
+                command.CommandText = $"delete from collect_pet_info where Pet_ID= {PID} and User_ID={UID}";
                 command.Parameters.Clear();
-                command.Parameters.Add("Pet_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
-                command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 try
                 {
                     command.ExecuteNonQuery();
-                    Console.WriteLine($"{UID}给{PID}的点赞已取消");
+                    Console.WriteLine($"{UID}给{PID}的收藏已取消");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"不存在{UID}给{PID}的点赞");
+                    Console.WriteLine($"不存在{UID}给{PID}的收藏");
                 }
             }
         }
