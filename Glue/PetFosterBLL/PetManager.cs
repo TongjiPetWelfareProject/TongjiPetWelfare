@@ -21,6 +21,20 @@ namespace PetFoster.BLL
         public static string pwd = "campus";
         public static string db = "localhost:1521/orcl";
         private static string conStr = "User Id=" + user + ";Password=" + pwd + ";Data Source=" + db + ";"; // 替换为实际的数据库连接字符串
+
+        public static string GetHealth(string health)
+        {
+            string result;
+            if (JsonHelper.TranslateToCn(health, "health_state") != null)
+            {
+                return health;
+            }
+            if((result = JsonHelper.TranslateToEn(health,"health_state")) != null)
+            {
+                return result;
+            }
+            return null;
+        }
         public static DataTable ShowPetProfile(int Limitrow = -1, string Orderby = null)
         {
             DataTable dt = DAL.PetServer.PetInfo(Limitrow, Orderby);
