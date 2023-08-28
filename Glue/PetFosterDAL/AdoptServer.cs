@@ -22,9 +22,10 @@ namespace PetFoster.DAL
         public static DataTable PetInfoForUser(decimal Limitrows = -1, string Orderby = null)
         {
             string query = "SELECT * FROM pet_profile" +
-                " where pet_id not in (select pet_id from foster)" +
-                " and pet_id not in (select pet_id from adopt)" +
-                " and pet_id not in (select pet_id from appointment)";
+                " left join pet_source on pet_source.pet_id=pet_profile.pet_id" +
+                " where status='Wander' and (health_state='Decent' or" +
+                " health_state='Healthy' or health_state='Well'" +
+                " or health_state='Vibrant')";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         public static void InsertAdopt(string UID, string PID, DateTime dt, out int errcode)
