@@ -30,12 +30,12 @@ namespace PetFoster.BLL
         {
             bool dt = CollectPetInfoServer.GetCollectPetInfoEntry(UID, PID);
             //调试用
-            if (!dt && is_give)
+            if (!dt)
             {
                 CollectPetInfoServer.InsertCollectPetInfo(UID, PID);
                 Console.WriteLine($"{UID} gives a collect to {PID}."); // 输出收藏信息
             }
-            else if (dt && !is_give)
+            else if (dt)
             {
                 CollectPetInfoServer.DeleteCollectPetInfo(UID, PID);
                 Console.WriteLine($"{UID} undo a collect to {PID}."); // 输出收藏信息

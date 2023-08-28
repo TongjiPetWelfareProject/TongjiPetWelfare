@@ -31,12 +31,12 @@ namespace PetFoster.BLL
         {
             bool dt = LikePetServer.GetLikePetEntry(UID, PID);
             //调试用
-            if (!dt && is_give)
+            if (!dt)
             {
                 LikePetServer.InsertLikePet(UID, PID);
                 Console.WriteLine($"{UID} gives a like to {PID}."); // 输出点赞信息
             }
-            else if (dt && !is_give)
+            else if (dt)
             {
                 LikePetServer.DeleteLikePet(UID, PID);
                 Console.WriteLine($"{UID} undo a like to {PID}."); // 输出点赞信息
