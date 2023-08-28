@@ -26,7 +26,7 @@ namespace PetFoster.BLL
         }
         public static void RecruitEmployee(string employeename, decimal Salary, string PhoneNumber, string Duty, double hours)
         {
-            string EID = UserServer.InsertUser(employeename, UserManager.ComputeSHA256Hash("Password1!"), PhoneNumber,"Admin");
+            string EID = UserServer.InsertUser(employeename, UserManager.ComputeSHA256Hash("Password1!"), PhoneNumber,Role:"Admin");
             EmployeeServer.InsertEmpolyee(EID,employeename, Salary, JsonHelper.TranslateToEn(Duty,"duties"),hours);
             
         }
