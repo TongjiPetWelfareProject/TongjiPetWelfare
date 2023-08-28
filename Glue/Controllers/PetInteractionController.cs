@@ -76,14 +76,35 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        /*
+        
         // GET api/<PetInteractionController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        //查询用户是否收藏过该宠物
+        //url和参数为临时
+        [HttpGet("pet-favored/{petId}")]
+        public IActionResult GetFavored(int petId, [FromBody] int userId)
         {
-            return "value";
+            try
+            {
+                return Ok(CollectPetInfoManager.HaveUserCollected(userId.ToString(), petId.ToString()));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-        */
+
+        [HttpGet("pet-liked/{petId}")]
+        public IActionResult GetLiked(int petId, [FromBody] int userId)
+        {
+            try
+            {
+                return Ok(LikePetManager.HaveUserLiked(userId.ToString(), petId.ToString()));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         // POST api/<PetInteractionController>
         [HttpPost("pet-submit-like")]
@@ -103,10 +124,7 @@ namespace Glue.Controllers
             }
             try
             {
-                if(!LikePetServer.GetLikePetEntry(like_data.user, like_data.pet))
-                    LikePetManager.GiveALike(like_data.user, like_data.pet, true);
-                else
-                    LikePetManager.GiveALike(like_data.user, like_data.pet, false);
+                LikePetManager.GiveALike(like_data.user, like_data.pet, true);
                 return Ok();
             }
             catch (Exception ex)
@@ -158,10 +176,7 @@ namespace Glue.Controllers
             }
             try
             {
-                if(!CollectPetInfoServer.GetCollectPetInfoEntry(favorite_data.user, favorite_data.pet))
-                    CollectPetInfoServer.InsertCollectPetInfo(favorite_data.user, favorite_data.pet);
-                else
-                    CollectPetInfoServer.DeleteCollectPetInfo(favorite_data.user, favorite_data.pet);
+                CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, true);
                 return Ok();
             }
             catch (Exception ex)
