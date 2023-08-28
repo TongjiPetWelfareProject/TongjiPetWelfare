@@ -17,14 +17,18 @@ namespace Glue.Controllers
         {
             public string date { get; set; }
             public string petId { get; set; }
+            public string petName { get; set; }
             public string userId { get; set; }
+            public string userName { get; set; }
             public int days { get; set; }
             public string censor_status { get; set; }
             public FosterRecord()
             {
                 date = "";
                 petId = "";
+                petName = "";
                 userId = "";
+                userName = "";
                 days = 0;
                 censor_status = "";
             }
@@ -32,7 +36,9 @@ namespace Glue.Controllers
             {
                 Console.WriteLine("date:" + date + "\n");
                 Console.WriteLine("petId:" + petId + "\n");
+                Console.WriteLine("petName:" + petName + "\n");
                 Console.WriteLine("userId:" + userId + "\n");
+                Console.WriteLine("userName:" + userName + "\n");
                 Console.WriteLine("days:" + days + "\n");
                 Console.WriteLine("censor_status:" + censor_status + "\n");
             }
@@ -73,6 +79,8 @@ namespace Glue.Controllers
                             RecordItem.date = dt.Rows[i][j].ToString();
                         }
                     }
+                    RecordItem.petName = PetServer.GetName(RecordItem.petId);
+                    RecordItem.userName = UserServer.GetName(RecordItem.userId);
                     RecordItem.censor_status = censorStr;
                     RecordList.Add(RecordItem);
                 }
@@ -105,6 +113,14 @@ namespace Glue.Controllers
             if (date == null)
             {
                 return BadRequest("Failed to parse the date.");
+            }
+            if (!int.TryParse(record.petId, out int pid))
+            {
+                return BadRequest("Invalid petId");
+            }
+            if (!int.TryParse(record.userId, out int uid))
+            {
+                return BadRequest("Invalid userId");
             }
             try
             {
