@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -81,6 +82,27 @@ namespace PetFoster.DAL
             {
                 // 处理异常
                 Console.WriteLine(ex.ToString());
+            }
+        }
+        public static void DeleteCommentPets(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "delete from comment_pet where User_ID=:User_ID";
+                command.Parameters.Clear();
+                command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
         /// <summary>

@@ -13,6 +13,27 @@ namespace PetFoster.DAL
     public class LikePostServer
     {
         public static string conStr = AccommodateServer.conStr;
+        public static void DeleteLikePosts(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "delete from like_post where User_ID=:User_ID";
+                command.Parameters.Clear();
+                command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
         /// <summary>
         /// 注意SQL中EXTRACT的用法，这是给管理员看的，个人点赞是GetLikePetEntry...
         /// </summary>

@@ -15,6 +15,29 @@ namespace PetFoster.DAL
     public class FosterServer
     {
         public static string conStr = AccommodateServer.conStr;
+        public static bool DeleteFosters(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"delete foster where Fosterer= {UID}";
+                command.Parameters.Clear();
+                try
+                {
+                    command.ExecuteNonQuery();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
         /// <summary>
         /// 查看寄养信息
         /// </summary>

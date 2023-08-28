@@ -32,6 +32,27 @@ namespace PetFoster.DAL
             string popul = DBHelper.GetScalar(query);
             return Convert.ToInt32(popul);
         }
+        public static void DeleteCollectPetInfos(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "delete from collect_pet_info where User_ID=:User_ID";
+                command.Parameters.Clear();
+                command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
         /// <summary>
         /// 获取收集宠物信息条目
         /// </summary>

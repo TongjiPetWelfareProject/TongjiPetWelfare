@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
 using System.Data;
 using System.Data.Common;
 
@@ -204,11 +205,23 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        /*
-        // DELETE api/<ManagePetController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("delete-pet/{uid}")]
+        public IActionResult Delete(int uid)
         {
-        }*/
+            try
+            {
+                string source = DBHelper.GetScalar($"select status from pet_source where pet_id={uid}");
+                if (source == "Wander")
+                {
+                    DBHelper.ExecuteNonScalar($"delete from pet where pet_id={uid}");
+                    return Ok();
+                }
+                else
+                    return BadRequest("与客户有关的宠物禁止删除！");
+            }catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

@@ -242,7 +242,6 @@ namespace PetFoster.DAL
                 try
                 {
                     command.ExecuteNonQuery();
-                    int rowsAffected = command.ExecuteNonQuery();
                     connection.Close();
                     return true;
                 }

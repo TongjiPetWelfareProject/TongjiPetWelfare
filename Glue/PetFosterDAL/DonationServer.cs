@@ -13,6 +13,29 @@ namespace PetFoster.DAL
     public class DonationServer
     {
         public static string conStr = AccommodateServer.conStr;
+        public static bool DeleteDonations(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"delete donation where Donor_ID= {UID}";
+                command.Parameters.Clear();
+                try
+                {
+                    command.ExecuteNonQuery();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
         /// <summary>
         /// 注意SQL中EXTRACT的用法，这是给管理员看的，个人点赞是GetLikePetEntry...
         /// </summary>

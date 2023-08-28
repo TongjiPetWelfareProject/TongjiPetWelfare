@@ -13,6 +13,29 @@ namespace PetFoster.DAL
     internal class AccommodateServer
     {
         public static string conStr = Environment.GetEnvironmentVariable("MYDATABASE");
+        public static bool DeleteAccommodates(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"delete accommodate where Owner_ID= {UID}";
+                command.Parameters.Clear();
+                try
+                {
+                    command.ExecuteNonQuery();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
         public static void InsertAccommodate(string UID, string PID,short storey,short compartment)
         {
             // 添加新行

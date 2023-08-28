@@ -17,6 +17,29 @@ namespace PetFoster.DAL
     public class ForumPostServer
     {
         public static string conStr = AccommodateServer.conStr;
+        public static bool DeletePosts(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"delete forum_posts where User_ID= {UID}";
+                command.Parameters.Clear();
+                try
+                {
+                    command.ExecuteNonQuery();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
         public static List<ForumPost> SelectPost(string PID)
         {
             List<ForumPost> posts = new List<ForumPost>();

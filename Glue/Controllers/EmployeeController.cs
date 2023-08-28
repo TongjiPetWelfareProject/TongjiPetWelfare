@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
+using PetFoster.Model;
 using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -158,13 +160,52 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        /*
+
         // DELETE api/<EmployeeController>/5
-        [HttpDelete("{employeeId}")]
+        [HttpDelete("delete-employee/{employeeId}")]
         public IActionResult Delete(int employeeId)
         {
-            return StatusCode(405, "Method Not Allowed");
+            if (employeeId<0)
+            {
+                return BadRequest("Invalid Employee Id.");
+            }
+            try
+            {
+                //BulletinServer.DeleteBulletins(employeeId.ToString());
+                Console.WriteLine("已删除雇员发布的公告");
+                EmployeeServer.DeleteEmployee(employeeId.ToString());
+                Console.WriteLine("已删除雇员的记录");
+                LikePetServer.DeleteLikePets(employeeId.ToString());
+                Console.WriteLine("已删除点赞宠物的记录");
+                CommentPetServer.DeleteCommentPets(employeeId.ToString());
+                Console.WriteLine("已删除评论宠物的记录");
+                CollectPetInfoServer.DeleteCollectPetInfos(employeeId.ToString());
+                Console.WriteLine("已删除收藏宠物的记录");
+                LikePostServer.DeleteLikePosts(employeeId.ToString());
+                Console.WriteLine("已转移点赞帖子的记录");
+                CommentPostServer.DeleteCommentPosts(employeeId.ToString());
+                Console.WriteLine("已转移评论帖子的记录");
+                AppointmentServer.DeleteAppointments(employeeId.ToString());
+                Console.WriteLine("已清除该雇员的预约记录");
+                AccommodateServer.DeleteAccommodates(employeeId.ToString());
+                Console.WriteLine("已清除该雇员的宠物的居住记录");
+                AdoptApplyServer.DeleteAdopts(employeeId.ToString());
+                Console.WriteLine("已清除该雇员全部寄养申请记录");
+                Console.WriteLine("已清除该雇员全部领养记录");
+                FosterServer.DeleteFosters(employeeId.ToString());
+                Console.WriteLine("已清除该雇员全部领养申请记录");
+                DonationServer.DeleteDonations(employeeId.ToString());
+                Console.WriteLine("已转移捐款记录");
+                ForumPostServer.DeletePosts(employeeId.ToString());
+                Console.WriteLine("已转移发布帖子的记录");
+                UserServer.DeleteUser(employeeId.ToString());
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-        */
+
     }
 }

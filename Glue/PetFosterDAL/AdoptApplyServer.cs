@@ -15,6 +15,30 @@ namespace PetFoster.DAL
     public class AdoptApplyServer
     {
         public static string conStr = AccommodateServer.conStr;
+        public static bool DeleteAdopts(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"delete adopt_apply where Adopter_ID= {UID}";
+                command.Parameters.Clear();
+                try
+                {
+                    command.ExecuteNonQuery();
+                    command.CommandText = $"delete adopt where Adopter_ID= {UID}";
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
         public static DataTable AdoptInfo(decimal Limitrows = -1, string Orderby = null)
         {
             

@@ -143,7 +143,7 @@ namespace PetFoster.DAL
         /// </summary>
         /// <param name="EID">员工的ID</param>
         /// <returns>是否开除成功</returns>
-        public static bool DeleteVet(string EID)
+        public static bool DeleteEmployee(string EID)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
             {

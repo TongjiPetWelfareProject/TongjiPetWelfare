@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
+using PetFoster.Model;
 using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -135,12 +137,28 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        /*
+        
         // DELETE api/<DoctorController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("delete-doctor/{id}")]
+        public IActionResult Delete(int id)
         {
+            if (id < 0)
+            {
+                return BadRequest("Invalid Employee Id.");
+            }
+            try
+            {
+                //1. 删除公告
+                AppointmentServer.DeleteAppointment(id.ToString());
+                TreatmentServer.DeleteTreatment(id.ToString());
+                VetServer.DeleteVet(id.ToString());
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-        */
+        
     }
 }
