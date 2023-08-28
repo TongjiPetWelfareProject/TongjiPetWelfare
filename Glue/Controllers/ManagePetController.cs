@@ -189,7 +189,7 @@ namespace Glue.Controllers
             }
             try
             {
-                PetManager.UpdatePetInfo(pet.id, health, vaccine);
+                PetManager.UpdatePet(pet.id,"name", pet.petname, vaccine.Value);
                 return Ok();
             }
             catch (Exception ex)
