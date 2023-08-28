@@ -103,10 +103,7 @@ namespace Glue.Controllers
             }
             try
             {
-                if(!LikePetServer.GetLikePetEntry(like_data.user, like_data.pet))
-                    LikePetManager.GiveALike(like_data.user, like_data.pet, true);
-                else
-                    LikePetManager.GiveALike(like_data.user, like_data.pet, false);
+                LikePetManager.GiveALike(like_data.user, like_data.pet, true);
                 return Ok();
             }
             catch (Exception ex)
@@ -158,10 +155,7 @@ namespace Glue.Controllers
             }
             try
             {
-                if(CollectPetInfoServer.GetCollectPetInfoEntry(favorite_data.user, favorite_data.pet))
-                    CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, true);
-                else
-                    CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, false);
+                CollectPetInfoManager.GiveACollect(favorite_data.user, favorite_data.pet, true);
                 return Ok();
             }
             catch (Exception ex)
