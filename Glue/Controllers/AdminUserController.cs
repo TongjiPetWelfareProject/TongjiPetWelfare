@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
 using System.Data;
 using System.Text.Json;
 
@@ -87,7 +88,7 @@ namespace Glue.Controllers
             }
             try
             {
-                string message = UserManager.Ban(uid, "Banned"); // status change to banned
+                string message = UserManager.Ban(uid, target_status); // status change to banned
                 return Ok(message);
             }
             catch (Exception ex)
@@ -106,6 +107,8 @@ namespace Glue.Controllers
         [HttpPost("ban")] // 禁言
         public IActionResult PostBan([FromBody] string id)
         {
+            if (UserServer.GetStatus(id) == "Banned")
+                return Ok();
             return _ChangeUserStatus(id, "Under Review");
         }
         [HttpPost("remove-block")]

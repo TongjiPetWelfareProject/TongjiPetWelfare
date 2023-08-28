@@ -13,6 +13,7 @@ using System;
 using System.Numerics;
 using Glue.PetFoster.Model;
 using static Glue.Controllers.RegisterController;
+using System.Net.NetworkInformation;
 
 namespace Glue.Controllers
 {
@@ -53,8 +54,7 @@ namespace Glue.Controllers
         {
             string acstatus = UserServer.GetStatus(postModel.user_id);
             string role = UserServer.GetRole(postModel.user_id);
-            if(acstatus == "Warning Issued" || acstatus == "Banned" || acstatus == "Appealing"
-                || acstatus== "Probation")
+            if(acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")
                 return BadRequest("您的账号活动异常，无法发布帖子");
             int status = ForumPostManager.PublishPost(postModel.user_id,postModel.post_title,postModel.post_content);
             if (role == "Admin")
@@ -77,6 +77,9 @@ namespace Glue.Controllers
         [HttpPost("addcomment")]
         public IActionResult AddComment([FromBody] PostModel postModel)
         {
+            string acstatus = UserServer.GetStatus(postModel.user_id);
+            if (acstatus == "Warning Issued" || acstatus == "Banned" || acstatus == "Under Review")
+                return BadRequest("您的账号活动异常，无法发布评论");
             Console.WriteLine("收到帖子评论请求,帖子ID：" + postModel.post_id+ "评论内容："+postModel.added_comment+"评论人ID："+ postModel.user_id);
             int status = CommentPostManager.GiveACommentPost(postModel.user_id,postModel.post_id,postModel.added_comment);
             if(status!=-1) 
