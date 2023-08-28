@@ -600,17 +600,22 @@
     "无此寄养记录或终身无效"
   ],
   "conditions": {
-    "皮肤问题":"Skin conditions",
-    "胃部问题":"Stomach issues",
-     "耳部感染":"Ear infections",
-    "眼部疾病":"Eye conditions",
-     "疼痛":"Pain",
-    "肿块":"Growths",
-    "泌尿道感染":"Urinary tract infections",
-    "过敏反应":"Allergies",
-    "十字韧带撕裂和手术":"Cruciate ligament tears and surgery",
-    "癌症":"Cancer",
-    "其他":"others"
+    "皮肤问题": "Skin conditions",
+    "胃部问题": "Stomach issues",
+    "耳部感染": "Ear infections",
+    "眼部疾病": "Eye conditions",
+    "疼痛": "Pain",
+    "肿块": "Growths",
+    "泌尿道感染": "Urinary tract infections",
+    "过敏反应": "Allergies",
+    "十字韧带撕裂和手术": "Cruciate ligament tears and surgery",
+    "癌症": "Cancer",
+    "其他": "others"
+  },
+  "size": {
+    "大型犬": "large",
+    "中型犬": "medium",
+    "小型犬": "small"
   }
 }
   

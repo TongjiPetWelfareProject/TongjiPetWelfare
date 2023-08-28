@@ -11,6 +11,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PetFoster.DAL
 {
@@ -231,6 +232,45 @@ namespace PetFoster.DAL
         {
             return GetAttr(PID, "Health_State");
         }
+        public static void UpdatePet(string PID, string Petname, string Health_State, bool Vaccine)
+        {
+            Health_State = JsonHelper.TranslateToEn(Health_State, "health_state");
+            string vaccine = "";
+            if (Vaccine)
+                vaccine = Vaccine == true ? "Y" : "N";
+            // 更改信息
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "UPDATE pet SET pet_name=:pname,health_state=:hs," +
+                        " vaccine=:vc" + $" where pet_id='{PID}'";
+                    command.Parameters.Add("pname", OracleDbType.Varchar2, Petname, ParameterDirection.Input);
+                    command.Parameters.Add("hs", OracleDbType.Varchar2, Health_State, ParameterDirection.Input);
+                    command.Parameters.Add("vc", OracleDbType.Varchar2, vaccine, ParameterDirection.Input);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        Console.WriteLine($"宠物{PID}的阅读量+1!");
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+
+                        throw;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
+        }
         /// <summary>
         /// 插入宠物信息
         /// </summary>
@@ -240,12 +280,20 @@ namespace PetFoster.DAL
         /// <param name="Avatar">图像，用BLOB存储</param>
         /// <param name="Health_State">健康状态</param>
         /// <param name="HaveVaccinated">是否接种疫苗</param>
-        public static string InsertPet(string Petname, string Breed ,string Psize,DateTime birthDate,byte[]Avatar=null, string Health_State= "Vibrant", bool HaveVaccinated=false)
+        public static string InsertPet(string Petname, string Breed ,string Psize,DateTime birthDate,byte[]Avatar=null, string Health_State= "Vibrant", bool HaveVaccinated=false,string sex="M")
         {
             string vaccine = "";
             if (HaveVaccinated)
                 vaccine = HaveVaccinated ? "Y" : "N";
-            Breed = JsonHelper.TranslateToEn("猫", "species");
+            Breed = JsonHelper.TranslateToEn(Breed, "species");
+            if (Breed == "dog")
+                Psize = JsonHelper.TranslateToEn(Psize, "size");
+            else
+                Psize = "small";
+            if (sex == "男") 
+                sex = "M";
+            else if (sex == "女") 
+                sex = "F";
             // 添加新行
             try
             {
@@ -271,6 +319,7 @@ namespace PetFoster.DAL
                         command.CommandText = "SELECT pet_id_seq.CURRVAL FROM DUAL";
                         int currentPetId = Convert.ToInt32(command.ExecuteScalar());
                         string newPetId = currentPetId.ToString();
+                        UpdateAddr(newPetId, $"psize='{Psize}',sex='{sex}'");
                         return newPetId;
                     }
                     catch (OracleException ex)

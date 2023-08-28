@@ -12,6 +12,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Drawing;
 using System.Data;
 using Glue.PetFoster.BLL;
+using System.Reflection.PortableExecutable;
 
 namespace PetFoster.BLL
 {
@@ -78,34 +79,26 @@ namespace PetFoster.BLL
 
             return con;
         }
-        public static void RegisterPet(string Petname, string Breed, string Psize,int Age, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
+        public static void RegisterPet(string Petname, string Breed, string Psize,int Age, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false, string gender = "男")
         {
             DateTime birthDate = DateTime.Now.AddYears(-Age);
             // 读取图像文件
             byte[] BinImage = DAL.PetServer.ConvertImageToByteArray(Path);
 
-            DAL.PetServer.InsertPet(Petname, Breed, Psize, birthDate, BinImage, Health_State, HaveVaccinated);
+            DAL.PetServer.InsertPet(Petname, Breed, Psize, birthDate, BinImage, Health_State, HaveVaccinated,sex:gender);
 
         }
-        public static void RegisterPet(string Petname, string Breed, string Psize,DateTime birthDate, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false)
+        public static void RegisterPet(string Petname, string Breed, string Psize,DateTime birthDate, string Path = null, string Health_State = "充满活力", bool HaveVaccinated = false,string gender="男")
         {
             // 读取图像文件
             byte[] BinImage = DAL.PetServer.ConvertImageToByteArray(Path);
 
-            DAL.PetServer.InsertPet(Petname,Breed,Psize,birthDate,BinImage,Health_State,HaveVaccinated);
+            DAL.PetServer.InsertPet(Petname,Breed,Psize,birthDate,BinImage,Health_State,HaveVaccinated,sex:gender);
 
         }
-
-        public static void UpdatePetInfo(string PID, string? Health_State, bool? HaveVaccinated)
+        public static void UpdatePet(string PID, string Petname, string Health_State, bool Vaccine)
         {
-            if (!string.IsNullOrEmpty(Health_State))
-            {
-                PetServer.UpdateStatus(PID, Health_State);
-            }
-            if(HaveVaccinated.HasValue)
-            {
-                //waiting for DAL's update pet vaccine status funcion
-            }
+            DAL.PetServer.UpdatePet(PID, Petname, Health_State, Vaccine);
         }
     }
 }
