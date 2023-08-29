@@ -90,7 +90,7 @@ namespace Glue.Controllers
             public int user;
             public int pet;
         }
-        [HttpGet("ifinteractpet")]
+        [HttpPost("ifinteractpet")]
         public IActionResult GetFavored([FromBody] HaveInteractRequest request)
         {
             HaveInteractModel result = new HaveInteractModel();
