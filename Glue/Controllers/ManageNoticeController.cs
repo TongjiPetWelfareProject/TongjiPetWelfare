@@ -38,16 +38,21 @@ namespace Glue.Controllers
         //added by rqx 8.24
         // 获取全部公告
         [HttpGet("notice")]
-        public IActionResult getNotice()
+        public IActionResult getNotice(int page = 1, int pageSize = 10)
         {
             try
             {
                 // 在这里编写获取全部公告的逻辑
                 // 返回公告数据
                 DataTable dt = BulletinManager.ShowBulletinsForAdmin();
+
+                int totalCount = dt.Rows.Count;
+                int startIndex = (page - 1) * pageSize;
+                int endIndex = Math.Min(startIndex + pageSize, totalCount);
+
                 List<NoticeModel> NoticeList = new List<NoticeModel>();
 
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int i = startIndex; i < endIndex; i++)
                 {
                     NoticeModel NoticeItem = new NoticeModel();
                     for (int j = 0; j < dt.Columns.Count; j++)
@@ -75,7 +80,7 @@ namespace Glue.Controllers
                     }
                     NoticeList.Add(NoticeItem);
                 }
-                return Ok(NoticeList);
+                return Ok(new { data = NoticeList, total = totalCount });
             }
             catch (Exception ex)
             {
