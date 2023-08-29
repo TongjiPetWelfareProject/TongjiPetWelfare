@@ -87,16 +87,16 @@ namespace Glue.Controllers
         }
         public class HaveInteractRequest
         {
-            public int userId;
-            public int petId;
+            public int user;
+            public int pet;
         }
         [HttpGet("ifinteractpet")]
-        public IActionResult GetFavored(int petId, [FromBody] HaveInteractRequest request)
+        public IActionResult GetFavored([FromBody] HaveInteractRequest request)
         {
             HaveInteractModel result = new HaveInteractModel();
             try
             {
-                result.is_collected = CollectPetInfoManager.HaveUserCollected(request.userId.ToString(), request.petId.ToString());
+                result.is_collected = CollectPetInfoManager.HaveUserCollected(request.user.ToString(), request.pet.ToString());
             }
             catch(Exception ex)
             {
@@ -104,7 +104,7 @@ namespace Glue.Controllers
             }
             try
             {
-                result.is_liked = LikePetManager.HaveUserLiked(request.userId.ToString(), request.petId.ToString());
+                result.is_liked = LikePetManager.HaveUserLiked(request.user.ToString(), request.pet.ToString());
             }
             catch
             {
