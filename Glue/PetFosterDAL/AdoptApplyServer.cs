@@ -210,6 +210,7 @@ namespace PetFoster.DAL
                         petoverall.comments[k].comment_contents = reader["comment_contents"].ToString();
                         petoverall.comments[k].commenter = reader["user_name"].ToString();
                         petoverall.comments[k].commenter_id = reader["commenter"].ToString();
+                        reader.Read();
                     }
                     if (pet.Pet_ID == "-1")
                         throw new Exception("不存在的宠物！");
