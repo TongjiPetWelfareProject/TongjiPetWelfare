@@ -177,7 +177,9 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"select *from pet_profile where Pet_ID={PID}";
+                command.CommandText = $"select pet_profile.*,user_name from pet_profile "+
+                    $"left join user2 on user_id=commenter where " +
+                $"Pet_ID={PID}";
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
@@ -203,9 +205,12 @@ namespace PetFoster.DAL
                     petoverall.comments = new Pet2.Comment[petoverall.Comment_Num];
                     for (int k = 0; k < petoverall.Comment_Num; k++)
                     {
-                        petoverall.comments[k] = new Pet2.Comment("", DateTime.Now);
+                        petoverall.comments[k] = new Pet2.Comment("", DateTime.Now,"","");
                         petoverall.comments[k].comment_time = Convert.ToDateTime(reader["comment_time"]);
                         petoverall.comments[k].comment_contents = reader["comment_contents"].ToString();
+                        petoverall.comments[k].commenter = reader["user_name"].ToString();
+                        petoverall.comments[k].commenter_id = reader["commenter"].ToString();
+                        reader.Read();
                     }
                     if (pet.Pet_ID == "-1")
                         throw new Exception("不存在的宠物！");

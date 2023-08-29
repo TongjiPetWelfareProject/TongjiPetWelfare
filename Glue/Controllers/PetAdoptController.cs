@@ -129,7 +129,7 @@ namespace Glue.Controllers
         }
         // GET api/<PetAdoptController>
         [HttpGet("pet-details/{petId}")]
-        public IActionResult Get(int petId,[FromBody] DetailsRequest request)
+        public IActionResult Get(int petId)
         {
             try
             {
@@ -141,7 +141,9 @@ namespace Glue.Controllers
                 {
                     pet2_temp.comments[i] = new Pet2.Comment(
                         pet.comments[i].comment_contents,
-                        pet.comments[i].comment_time
+                        pet.comments[i].comment_time,
+                        pet.comments[i].commenter,
+                        pet.comments[i].commenter_id
                     );
                 }
                 pet2_temp.Comment_Num = pet.Comment_Num;
@@ -158,7 +160,7 @@ namespace Glue.Controllers
                 pet_temp.Like_Num = pet.original_pet.Like_Num;
                 pet_temp.Collect_Num = pet.original_pet.Collect_Num;
                 pet2_temp.original_pet = pet_temp;
-
+                /*
                 // newly added to show whether user has liked or collected this pet
                 try
                 {
@@ -169,7 +171,7 @@ namespace Glue.Controllers
                 {
                     pet2_temp.have_liked = false;
                     pet2_temp.have_collected = false;
-                }
+                }*/
                 try
                 {
                     string jsondata = Newtonsoft.Json.JsonConvert.SerializeObject(pet2_temp);
