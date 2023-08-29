@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,15 @@ namespace PetFoster.Model
         {
             public string comment_contents;
             public DateTime comment_time;
-            public Comment(string co, DateTime comdt)
+            public string commenter;
+            public string commenter_id;
+            public Comment(string co, DateTime comdt,string cer,string cid)
             {
                 comment_contents = co;
                 comment_time = comdt;
+                commenter = cer;
+                commenter_id = cid;
+                
             }
         }
         public Pet2()
