@@ -28,7 +28,7 @@ namespace PetFoster.BLL
         {
             //调试用
             CommentPetServer.DeleteCommentPet(UID, PID, dateTime);
-            Console.WriteLine($"{UID} undo a like to {PID}."); // 输出点赞信息
+            Console.WriteLine($"{UID} undo a comment to {PID}."); // 输出点赞信息
         }
     }
 }

@@ -2,6 +2,7 @@
 using PetFoster.BLL;
 using PetFoster.DAL;
 using System.Data;
+using System.Globalization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,10 +21,12 @@ namespace Glue.Controllers
         {
             public string text { get; set; }
             public string time { get; set; }
+            public string commentText { get; set; }
             public CommentData()
             {
                 text = "";
                 time = "";
+                commentText= string.Empty;
             }
         }
         
@@ -235,7 +238,7 @@ namespace Glue.Controllers
             }
             try
             {
-                CommentPetManager.GiveAComment(comment_data.user, comment_data.pet, comment_data.text);
+                CommentPetManager.GiveAComment(comment_data.user, comment_data.pet, comment_data.commentText);
                 return Ok();
             }
             catch (Exception ex)
@@ -259,7 +262,16 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid Pet_Id");
             }
-            DateTime? time = ConvertTools.StringConvertToDate(comment_data.time);
+            string format = "yyyy-MM-ddTHH:mm:ss"; // 格式与输入字符串一致
+            DateTime? time = null;
+            try
+            {
+                time = DateTime.ParseExact(comment_data.time, format, CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                time= DateTime.ParseExact(comment_data.time, "yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
+            }
             if(time == null)
             {
                 return BadRequest("Failed to parse the date.");
