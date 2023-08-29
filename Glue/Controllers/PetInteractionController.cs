@@ -80,30 +80,37 @@ namespace Glue.Controllers
         // GET api/<PetInteractionController>/5
         //查询用户是否收藏过该宠物
         //url和参数为临时
-        [HttpGet("iffavoritepet/{petId}")]
-        public IActionResult GetFavored(int petId, [FromBody] int userId)
+        public class HaveInteractModel
         {
-            try
-            {
-                return Ok(CollectPetInfoManager.HaveUserCollected(userId.ToString(), petId.ToString()));
-            }
-            catch(Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            public bool is_liked;
+            public bool is_collected;
         }
-
-        [HttpGet("iflikepet/{petId}")]
-        public IActionResult GetLiked(int petId, [FromBody] int userId)
+        public class HaveInteractRequest
         {
+            public int userId;
+            public int petId;
+        }
+        [HttpGet("ifinteractpet")]
+        public IActionResult GetFavored(int petId, [FromBody] HaveInteractRequest request)
+        {
+            HaveInteractModel result = new HaveInteractModel();
             try
             {
-                return Ok(LikePetManager.HaveUserLiked(userId.ToString(), petId.ToString()));
+                result.is_collected = CollectPetInfoManager.HaveUserCollected(request.userId.ToString(), request.petId.ToString());
             }
             catch(Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                result.is_collected = false;
             }
+            try
+            {
+                result.is_liked = LikePetManager.HaveUserLiked(request.userId.ToString(), request.petId.ToString());
+            }
+            catch
+            {
+                result.is_liked = false;
+            }
+            return Ok(result);
         }
 
         // POST api/<PetInteractionController>
