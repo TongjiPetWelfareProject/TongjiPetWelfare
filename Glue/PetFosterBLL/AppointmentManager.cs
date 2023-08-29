@@ -13,7 +13,7 @@ namespace PetFoster.BLL
 {
     public class AppointmentManager
     {
-        public static void ShowApplies(string UID = null, string PID = null, string Categories = null)
+        public static DataTable ShowApplies(string UID = null, string PID = null, string Categories = null)
         {
             DataTable dt = AppointmentServer.ApplyInfo(UID, PID, Categories);
             //调试用
@@ -31,6 +31,7 @@ namespace PetFoster.BLL
                 }
                 Console.WriteLine();
             }
+            return dt;
         }
         //未注册宠物预约
         public static void Appointment(string UID, string Pname, string species, string VID, DateTime dt, string reason)

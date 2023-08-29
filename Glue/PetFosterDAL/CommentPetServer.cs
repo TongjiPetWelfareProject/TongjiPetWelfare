@@ -119,11 +119,11 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"delete from comment_pet where Pet_ID= :Pet_ID and User_ID=:User_ID and AND TO_CHAR(comment_time, 'YYYY-MM-DD HH24:MI:SS')=:DateTime";
+                command.CommandText = $"delete from comment_pet where Pet_ID= :Pet_ID and User_ID=:User_ID  AND comment_time=:DateTime";
                 command.Parameters.Clear();
                 command.Parameters.Add("Pet_ID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
                 command.Parameters.Add("User_ID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                command.Parameters.Add("DateTime", OracleDbType.Varchar2, datetime.ToString(), ParameterDirection.Input);
+                command.Parameters.Add("DateTime", OracleDbType.TimeStamp, datetime, ParameterDirection.Input);
                 try
                 {
                     command.ExecuteNonQuery();

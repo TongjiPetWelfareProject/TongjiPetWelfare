@@ -141,7 +141,9 @@ namespace Glue.Controllers
                 {
                     pet2_temp.comments[i] = new Pet2.Comment(
                         pet.comments[i].comment_contents,
-                        pet.comments[i].comment_time
+                        pet.comments[i].comment_time,
+                        pet.comments[i].commenter,
+                        pet.comments[i].commenter_id
                     );
                 }
                 pet2_temp.Comment_Num = pet.Comment_Num;

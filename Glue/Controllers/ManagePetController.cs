@@ -222,6 +222,14 @@ namespace Glue.Controllers
                 string source = DBHelper.GetScalar($"select status from pet_source where pet_id={uid}");
                 if (source == "Wander")
                 {
+                    DBHelper.ExecuteNonScalar($"delete from appointment where pet_id={uid}");
+                    DBHelper.ExecuteNonScalar($"delete from adopt_apply where pet_id={uid}");
+                    DBHelper.ExecuteNonScalar($"delete from adopt where pet_id={uid}");
+                    DBHelper.ExecuteNonScalar($"delete from accommodate where pet_id={uid}");
+                    DBHelper.ExecuteNonScalar($"delete from foster where pet_id={uid}");
+                    DBHelper.ExecuteNonScalar($"delete from collect_pet_info where pet_id={uid}");
+                    DBHelper.ExecuteNonScalar($"delete from like_pet where pet_id={uid}");
+                    DBHelper.ExecuteNonScalar($"delete from comment_pet where pet_id={uid}");
                     DBHelper.ExecuteNonScalar($"delete from pet where pet_id={uid}");
                     return Ok();
                 }

@@ -67,7 +67,11 @@ namespace PetFoster.DAL
         public static DataTable ApplyInfo(string UID = null, string PID = null, string Categories = null)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT category,pet_name,breed,age,user_name,reason,apply_time,phone_number FROM appoointment join user2 on user2.user_id=application.user_id join pet on application.pet_id=pet.pet_id";
+            //string query = "SELECT appointment.pet_id,pet_name,appointment.vet_id,vet_name,custom_time,reason FROM appointment" +
+            //    " left join pet on pet.pet_id=appointment.pet_id left join vet on vet.vet_id=appointment.vet_id";
+            string query = "SELECT appointment.pet_id as pet_id, appointment.vet_id as vet_id,pet_name,vet_name,custom_time as reserve_time," +
+                " treat_Time,  reason as category ,case when treat_time is null then '申请' else '记录' end as tag FROM appointment" +
+                " left join pet on pet.pet_id=appointment.pet_id left join vet on vet.vet_id=appointment.vet_id";
             if (UID != null && PID == null)
                 query += $" where User_ID={UID} ";
             else if (PID != null && UID == null)
