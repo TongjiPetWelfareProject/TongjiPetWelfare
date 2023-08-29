@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 using Oracle.ManagedDataAccess.Client;
 using PetFoster.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +37,40 @@ namespace PetFoster.DAL
                 {
                     return false;
                 }
+            }
+        }
+        public static void InsertTreatTime(int pid,int vid,DateTime dt)
+        {
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "update appointment set custom_time=:dt1" +
+                        $" where pet_id={pid} and vet_id={vid} and treat_time=:dt2";
+                    command.Parameters.Clear();
+                    command.Parameters.Add("dt1", OracleDbType.TimeStamp, dt, ParameterDirection.Input);
+                    command.Parameters.Add("dt2", OracleDbType.TimeStamp, DateTime.Now, ParameterDirection.Input);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+                        throw;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+                throw new Exception("数据库无法执行");
             }
         }
         public static bool DeleteAppointment(string VID)
@@ -175,6 +212,41 @@ namespace PetFoster.DAL
             }
 
             return dataTable;
+        }
+
+        public static void UpdateAppointment(int vid, int pid, DateTime origin_time, DateTime postpone_time)
+        {
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "update appointment set custom_time=:dt1" +
+                        $" where pet_id={pid} and vet_id={vid} and custom_time=:dt2";
+                    command.Parameters.Clear();
+                    command.Parameters.Add("dt1", OracleDbType.TimeStamp, postpone_time, ParameterDirection.Input);
+                    command.Parameters.Add("dt2", OracleDbType.TimeStamp, origin_time, ParameterDirection.Input);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+                        throw;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+                throw new Exception("数据库无法执行");
+            }
         }
     }
 }

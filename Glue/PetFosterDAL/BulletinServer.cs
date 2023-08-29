@@ -92,7 +92,7 @@ namespace PetFoster.DAL
 
                 OracleCommand command = new OracleCommand(query, connection);
 
-                using (OracleDataReader reader = command.ExecuteReader())
+                using ( OracleDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {

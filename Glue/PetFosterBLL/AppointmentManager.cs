@@ -17,20 +17,6 @@ namespace PetFoster.BLL
         {
             DataTable dt = AppointmentServer.ApplyInfo(UID, PID, Categories);
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-20}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var item in row.ItemArray)
-                {
-                    Console.Write("{0,-20}", item);
-                }
-                Console.WriteLine();
-            }
             return dt;
         }
         //未注册宠物预约
@@ -77,6 +63,11 @@ namespace PetFoster.BLL
             DataTable dt = new DataTable();
             dt = AppointmentServer.GetUserAppointment(UID);
             return dt;
+        }
+
+        public static void DoneTreatment(int pid, int vid, DateTime value)
+        {
+            AppointmentServer.InsertTreatTime(pid, vid, value);
         }
     }
 }

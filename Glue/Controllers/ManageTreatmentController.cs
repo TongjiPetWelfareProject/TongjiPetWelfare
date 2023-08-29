@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
 using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -48,7 +49,7 @@ namespace Glue.Controllers
         }
         // POST api/<ManageTreatmentController>
         // 完成医疗
-        [HttpPost("approve-medical-record")]
+        [HttpPost("approve-medical-application")]
         public IActionResult PostApprove([FromBody] MedicalRecord record)
         {
             if(record == null)
@@ -71,9 +72,13 @@ namespace Glue.Controllers
                 return BadRequest("Invalid DateTime Format.");
             }
             // 调试
-            Console.WriteLine("pid:" + pid);
-            Console.WriteLine("vid:" + vid);
-            Console.WriteLine("time:" + record.reserveTime);
+            if(time.Value.DayOfWeek== DayOfWeek.Saturday||
+                time.Value.DayOfWeek==DayOfWeek.Sunday||
+                time.Value.Day-DateTime.Now.Day<0||
+                time.Value.Hour>=8||time.Value.Hour<=17) {
+                return BadRequest("我们只在周一到周五8点到17点营业");
+            }
+            AppointmentManager.DoneTreatment(pid,vid,time.Value);
             try
             {
                 // logic:完成并结束医疗
@@ -116,10 +121,12 @@ namespace Glue.Controllers
                 return BadRequest("postponeTime: Invalid DateTime Format.");
             }
             // 调试
-            Console.WriteLine("pid:" + pid);
-            Console.WriteLine("vid:" + vid);
-            Console.WriteLine("origin_time:" + origin_time);
-            Console.WriteLine("postpone_time:" + postpone_time);
+            if (origin_time.Value.Day - postpone_time.Value.Day > 0 ||
+                origin_time.Value.Day - postpone_time.Value.Day < -7 ||
+                postpone_time.Value.DayOfWeek == DayOfWeek.Saturday ||
+                postpone_time.Value.DayOfWeek == DayOfWeek.Sunday)
+                return BadRequest("请在一周内的工作日延迟预约");
+            AppointmentServer.UpdateAppointment(vid, pid,origin_time.Value,postpone_time.Value);
             try
             {
                 // logic:延期
