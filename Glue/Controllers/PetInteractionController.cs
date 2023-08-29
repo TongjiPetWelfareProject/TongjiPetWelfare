@@ -85,21 +85,21 @@ namespace Glue.Controllers
         //url和参数为临时
         public class HaveInteractModel
         {
-            public bool is_liked;
-            public bool is_collected;
+            public bool is_liked { get; set; }
+            public bool is_collected { get; set; }
         }
         public class HaveInteractRequest
         {
-            public int userId;
-            public int petId;
+            public int user { get; set; }
+            public int pet { get; set; }
         }
-        [HttpGet("ifinteractpet")]
-        public IActionResult GetFavored(int petId, [FromBody] HaveInteractRequest request)
+        [HttpPost("ifinteractpet")]
+        public IActionResult GetFavored([FromBody] HaveInteractRequest request)
         {
             HaveInteractModel result = new HaveInteractModel();
             try
             {
-                result.is_collected = CollectPetInfoManager.HaveUserCollected(request.userId.ToString(), request.petId.ToString());
+                result.is_collected = CollectPetInfoManager.HaveUserCollected(request.user.ToString(), request.pet.ToString());
             }
             catch(Exception ex)
             {
@@ -107,7 +107,7 @@ namespace Glue.Controllers
             }
             try
             {
-                result.is_liked = LikePetManager.HaveUserLiked(request.userId.ToString(), request.petId.ToString());
+                result.is_liked = LikePetManager.HaveUserLiked(request.user.ToString(), request.pet.ToString());
             }
             catch
             {

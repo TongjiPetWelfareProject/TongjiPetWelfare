@@ -134,7 +134,7 @@ namespace Glue.Controllers
             try
             {
                 Pet2 pet = AdoptApplyManager.RetrievePet(petId);
-                Pet2WithHaveLiked pet2_temp = new Pet2WithHaveLiked();
+                Pet2WithoutAvartar pet2_temp = new Pet2WithoutAvartar();
                 PetWithoutAvartar pet_temp = new PetWithoutAvartar();
                 pet2_temp.comments = new Pet2.Comment[pet.comments.Length];
                 for (int i = 0; i < pet.comments.Length; i++)
