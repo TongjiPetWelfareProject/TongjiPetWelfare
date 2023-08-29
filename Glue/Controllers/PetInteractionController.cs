@@ -82,13 +82,13 @@ namespace Glue.Controllers
         //url和参数为临时
         public class HaveInteractModel
         {
-            public bool is_liked;
-            public bool is_collected;
+            public bool is_liked { get; set; }
+            public bool is_collected { get; set; }
         }
         public class HaveInteractRequest
         {
-            public int user;
-            public int pet;
+            public int user { get; set; }
+            public int pet { get; set; }
         }
         [HttpPost("ifinteractpet")]
         public IActionResult GetFavored([FromBody] HaveInteractRequest request)
