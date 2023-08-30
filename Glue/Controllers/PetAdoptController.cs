@@ -4,6 +4,7 @@ using PetFoster.Model;
 using System.Data;
 using System.Text;
 using Newtonsoft.Json;
+using PetFoster.DAL;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -175,7 +176,8 @@ namespace Glue.Controllers
                 try
                 {
                     string jsondata = Newtonsoft.Json.JsonConvert.SerializeObject(pet2_temp);
-                    Console.WriteLine(jsondata);
+                    PetServer.ReadPet(pet.original_pet.Pet_ID);
+                    Console.WriteLine($"{pet.original_pet.Pet_Name}的阅读量+1!");
                     return Ok(jsondata);
                 }
                 catch (Exception ex)
