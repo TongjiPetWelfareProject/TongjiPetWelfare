@@ -135,5 +135,13 @@ namespace PetFoster.DAL
                 }
             }
         }
+
+        internal static DataTable GetCommentPets(string user_id)
+        {
+            string query = "select user_name,pet_name,comment_time,comment_contents from comment_pet left join " +
+                $"pet on pet.pet_id=comment_pet.pet_id left join" +
+                $" user2 on user2.user_id=comment_pet.user_id where comment_pet.user_id={user_id}";
+            return DBHelper.ShowInfo(query);
+        }
     }
 }

@@ -56,6 +56,34 @@ namespace WebApplicationTest1
             string json = DataTableToJson(collectpets);
             return Content(json, "application/json");
         }
+        [HttpPost("usercommentpet")]
+        public IActionResult GetUserCommentPet([FromBody] UserInfoModel userinfoModel)
+        {
+            DataTable collectpets = CommentPetServer.GetCommentPets(userinfoModel.user_id);
+            string json = DataTableToJson(collectpets);
+            return Content(json, "application/json");
+        }
+        [HttpPost("useradoptpet")]
+        public IActionResult GetUserAdoptPet([FromBody] UserInfoModel userinfoModel)
+        {
+            DataTable adoptedpets = AdoptApplyServer.GetAdoptPets(userinfoModel.user_id);
+            string json = DataTableToJson(adoptedpets);
+            return Content(json, "application/json");
+        }
+        [HttpPost("userfosterpet")]
+        public IActionResult GetUserFosterPet([FromBody] UserInfoModel userinfoModel)
+        {
+            DataTable adoptedpets = FosterServer.GetFosterPets(userinfoModel.user_id);
+            string json = DataTableToJson(adoptedpets);
+            return Content(json, "application/json");
+        }
+        [HttpPost("userlikepet")]
+        public IActionResult GetUserLikePet([FromBody] UserInfoModel userinfoModel)
+        {
+            DataTable collectpets = LikePetServer.GetLikePet(userinfoModel.user_id);
+            string json = DataTableToJson(collectpets);
+            return Content(json, "application/json");
+        }
         [HttpPost("userdonation")]
         public IActionResult GetUserDonation([FromBody] UserInfoModel userinfoModel)
         {

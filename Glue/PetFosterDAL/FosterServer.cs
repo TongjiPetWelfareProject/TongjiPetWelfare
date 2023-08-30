@@ -202,6 +202,24 @@ namespace PetFoster.DAL
                 
             }
         }
+
+        public static DataTable GetFosterPets(string user_id)
+        {
+            string query = "select foster.pet_id,pet_name," +
+                "to_char(foster.start_year)||'-'||to_char(foster.start_month)||'-'" +
+                "||to_char(foster.start_day) as start_date" +
+                $",duration,case when species='dog' and psize='small' then duration*20" +
+                $"when species='dog' and psize='medium' then duration*25" +
+                $"when species='dog' and psize='large' then duration*30" +
+                $"when species='cat' then duration*20" +
+                $"else duration*100 end as expense" +
+                $",CASE WHEN CENSOR_STATE = 'invalid' THEN '无效' WHEN CENSOR_STATE = 'legitimate' " +
+                $"THEN '通过' WHEN CENSOR_STATE = 'to be censored' THEN '待审核' WHEN CENSOR_STATE = 'aborted' " +
+                $"then '未通过' WHEN CENSOR_STATE = 'outdated' then '过期' end as censor_state " +
+                $"from foster left join pet on pet.pet_id=foster.pet_id " +
+                $"where fosterer={user_id}";
+            return DBHelper.ShowInfo(query);
+        }
     }
 
 }

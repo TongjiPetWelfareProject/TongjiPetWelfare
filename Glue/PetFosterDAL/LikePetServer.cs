@@ -158,5 +158,13 @@ namespace PetFoster.DAL
                 }
             }
         }
+
+        public static DataTable GetLikePet(string user_id)
+        {
+            string query = "select like_pet.pet_id,pet_name,sex," +
+                "TRUNC(MONTHS_BETWEEN(SYSDATE, birthdate) / 12) AS age from like_pet" +
+                $" left join pet on pet.pet_id=like_pet.pet_id where user_id={user_id}";
+            return DBHelper.ShowInfo(query);
+        }
     }
 }
