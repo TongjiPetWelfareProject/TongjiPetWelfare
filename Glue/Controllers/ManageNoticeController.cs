@@ -59,7 +59,7 @@ namespace Glue.Controllers
                     {
                         if (dt.Columns[j].ColumnName.ToLower() == "bulletin_id")
                         {
-                            NoticeItem.id = dt.Rows[i][j].ToString();
+                            //NoticeItem.id = dt.Rows[i][j].ToString();
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "heading")
                         {
@@ -117,6 +117,10 @@ namespace Glue.Controllers
             {
                 return BadRequest("Empty title");
             }
+            if (UserServer.GetRole(notice.employeeId) != "Admin")
+            {
+                return BadRequest("Only admin/employee can edit the bulletin");
+            }
             //调试
             Console.WriteLine("eid:" + eid);
             Console.WriteLine("title:" + notice.title);
@@ -124,6 +128,7 @@ namespace Glue.Controllers
             try
             {
                 // 在这里编写发送新公告的逻辑
+                BulletinServer.AddBulletin(notice.title, eid.ToString(), notice.content);
                 // 返回发送结果
                 return Ok();
             }
@@ -167,13 +172,14 @@ namespace Glue.Controllers
                 return BadRequest("Empty title");
             }
             //调试
-            Console.WriteLine("bulletin_id:" + bulletin_id);
+            //Console.WriteLine("bulletin_id:" + bulletin_id);
             Console.WriteLine("eid:" + eid);
             Console.WriteLine("title:" + notice.title);
             Console.WriteLine("content:" + notice.content);
             try
             {
                 // 在这里编写发送编辑过的公告的逻辑
+                BulletinServer.EditBulletin(bulletin_id.ToString(), notice.content);
                 // 返回发送结果
                 return Ok();
             }
@@ -191,6 +197,8 @@ namespace Glue.Controllers
             {
                 // 在这里编写删除公告的逻辑
                 // 返回删除结果
+                BulletinServer.DeleteBulletin(noticeId.ToString());
+                Console.WriteLine($"已删除{noticeId}号公告");
                 return Ok();
             }
             catch (Exception ex)

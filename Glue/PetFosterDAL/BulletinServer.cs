@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -114,7 +115,7 @@ namespace PetFoster.DAL
 
             return bulletins;
         }
-        public static bool DeleteBulletins(string EID)
+        public static bool DeleteBulletin(string BID)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
             {
@@ -122,7 +123,84 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"delete from bulletin where Employee_ID= {EID}";
+                command.CommandText = $"delete from bulletin where Bulletin_ID= {BID}";
+                command.Parameters.Clear();
+                try
+                {
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool AddBulletin(string heading,string EmployeeID,string content)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"insert into bulletin(bulletin_id,employee_id," +
+                    $"heading,bulletin_contents,published_time) " +
+                    $"values(bulletin_id_seq.NEXTVAL,:EID,:TITLE,:CONTENTS,CURRENT_TIMESTAMP)";
+                command.Parameters.Clear();
+                command.Parameters.Add("EID", OracleDbType.Varchar2, EmployeeID, ParameterDirection.Input);
+                command.Parameters.Add("TITLE", OracleDbType.Varchar2, heading, ParameterDirection.Input);
+                command.Parameters.Add("CONTENTS", OracleDbType.Varchar2, content, ParameterDirection.Input);
+                try
+                {
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool EditBulletin(string BID,string content)
+        {
+            
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"update bulletin set content=:content " +
+                $" where bulletin_id=:BID";
+                command.Parameters.Clear();
+                command.Parameters.Add("BID", OracleDbType.Varchar2, BID, ParameterDirection.Input);
+                command.Parameters.Add("content",OracleDbType.Varchar2,content,ParameterDirection.Input);
+
+                
+                try
+                {
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool DeleteBulletins(string BID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 执行删除操作
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = $"delete from bulletin where Bulletin_ID= {BID}";
                 command.Parameters.Clear();
                 try
                 {
