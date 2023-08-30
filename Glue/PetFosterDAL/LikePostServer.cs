@@ -164,5 +164,14 @@ namespace PetFoster.DAL
             string query = $"select count(*) from like_post where post_id={PID}";
             return DBHelper.GetScalarInt(query);
         }
+
+        public static DataTable GetLikePosts(string user_id)
+        {
+            string query = $"select heading,post_time,like_numpost_func(like_post.post_id) as like_num,like_post.post_id," +
+                $"comment_numpost_func(like_post.post_id) as comment_num," +
+                $"read_count from like_post left join forum_posts " +
+                $"on forum_posts.post_id=like_post.post_id where like_post.user_id={user_id}";
+            return DBHelper.ShowInfo(query);
+        }
     }
 }

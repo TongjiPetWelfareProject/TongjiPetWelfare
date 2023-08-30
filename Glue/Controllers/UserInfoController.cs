@@ -56,6 +56,13 @@ namespace WebApplicationTest1
             string json = DataTableToJson(collectpets);
             return Content(json, "application/json");
         }
+        [HttpPost("userpostlike")]
+        public IActionResult GetUserLikePost([FromBody] UserInfoModel userinfoModel)
+        {
+            DataTable likedposts = LikePostServer.GetLikePosts(userinfoModel.user_id);
+            string json = DataTableToJson(likedposts);
+            return Content(json, "application/json");
+        }
         [HttpPost("usercommentpet")]
         public IActionResult GetUserCommentPet([FromBody] UserInfoModel userinfoModel)
         {
