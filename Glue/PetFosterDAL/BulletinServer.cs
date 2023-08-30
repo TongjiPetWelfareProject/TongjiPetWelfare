@@ -164,7 +164,7 @@ namespace PetFoster.DAL
                 }
             }
         }
-        public static bool EditBulletin(string BID,string content)
+        public static bool EditBulletin(string BID,string title,string content)
         {
             
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -173,13 +173,13 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"update bulletin set content=:content " +
-                $" where bulletin_id=:BID";
+                command.CommandText = $"update bulletin set bulletin_contents=:content,heading=:title," +
+                    $"published_time=CURRENT_TIMESTAMP" +
+                $" where bulletin_id='{BID}'";
                 command.Parameters.Clear();
-                command.Parameters.Add("BID", OracleDbType.Varchar2, BID, ParameterDirection.Input);
                 command.Parameters.Add("content",OracleDbType.Varchar2,content,ParameterDirection.Input);
+                command.Parameters.Add("title", OracleDbType.Varchar2, title, ParameterDirection.Input);
 
-                
                 try
                 {
                     command.ExecuteNonQuery();
