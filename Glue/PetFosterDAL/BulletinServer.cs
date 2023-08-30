@@ -123,7 +123,7 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = $"delete from bulletin where Bulletin_ID= {BID}";
+                command.CommandText = $"delete from bulletin where Bulletin_ID= '{BID}'";
                 command.Parameters.Clear();
                 try
                 {
