@@ -25,11 +25,13 @@ namespace Glue.Controllers
             public string content { get; set; }
             public string time { get; set; }
             public string employeeId { get; set; }
+            public string employeeName { get; set; }
             public NoticeModel()
             {
                 id = "";
                 employeeId = "";
                 title = "";
+                employeeName = "";
                 content = "";
                 time = "";
             }
@@ -59,7 +61,7 @@ namespace Glue.Controllers
                     {
                         if (dt.Columns[j].ColumnName.ToLower() == "bulletin_id")
                         {
-                            //NoticeItem.id = dt.Rows[i][j].ToString();
+                            NoticeItem.id = dt.Rows[i][j].ToString();
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "heading")
                         {
@@ -76,6 +78,7 @@ namespace Glue.Controllers
                         else if (dt.Columns[j].ColumnName.ToLower() == "employee_id")
                         {
                             NoticeItem.employeeId = dt.Rows[i][j].ToString();
+                            NoticeItem.employeeName = EmployeeServer.GetName(dt.Rows[i][j].ToString());
                         }
                     }
                     NoticeList.Add(NoticeItem);
@@ -104,7 +107,7 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }*/
-        
+
         // 发送新公告
         [HttpPost("send-notice")]
         public IActionResult sendNewNotice([FromBody] NoticeModel notice)

@@ -55,7 +55,8 @@ namespace PetFoster.DAL
         public static DataTable PetInfoForAdmin(decimal Limitrows = -1, string Orderby = null)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT pet_id,pet_name, read_num,like_num FROM pet_profile order by popularity desc";
+            string query = "SELECT distinct pet.pet_id,pet.pet_name, pet_profile.read_num,pet_profile.like_num,popularity FROM pet left join pet_profile" +
+                " on pet_profile.pet_id=pet.pet_id order by popularity desc";
             return DBHelper.ShowInfo(query, Limitrows, Orderby);
         }
         /// <summary>
