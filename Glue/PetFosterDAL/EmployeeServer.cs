@@ -10,6 +10,12 @@ namespace PetFoster.DAL
     public class EmployeeServer
     {
         public static string conStr = AccommodateServer.conStr;
+        public static string GetName(string id)
+        {
+            string query = $"select employee_name from employee where employee_id={id}";
+            return DBHelper.GetScalar(query);
+
+        }
         /// <summary>
         /// 查看雇员信息，由ShowProfiles(DataTable dt)调用
         /// </summary>

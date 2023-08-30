@@ -20,16 +20,20 @@ namespace Glue.Controllers
     {
         public class NoticeModel
         {
-            public string id { get; set; }
+            public string Id { get; set; }
+            public string noticeId { get; set; }
             public string title { get; set; }
             public string content { get; set; }
             public string time { get; set; }
             public string employeeId { get; set; }
+            public string employeeName { get; set; }
             public NoticeModel()
             {
-                id = "";
+                Id = "";
+                noticeId = "";
                 employeeId = "";
                 title = "";
+                employeeName = "";
                 content = "";
                 time = "";
             }
@@ -59,7 +63,7 @@ namespace Glue.Controllers
                     {
                         if (dt.Columns[j].ColumnName.ToLower() == "bulletin_id")
                         {
-                            NoticeItem.id = dt.Rows[i][j].ToString();
+                            NoticeItem.Id = dt.Rows[i][j].ToString();
                         }
                         else if (dt.Columns[j].ColumnName.ToLower() == "heading")
                         {
@@ -76,6 +80,7 @@ namespace Glue.Controllers
                         else if (dt.Columns[j].ColumnName.ToLower() == "employee_id")
                         {
                             NoticeItem.employeeId = dt.Rows[i][j].ToString();
+                            NoticeItem.employeeName = EmployeeServer.GetName(dt.Rows[i][j].ToString());
                         }
                     }
                     NoticeList.Add(NoticeItem);
@@ -104,15 +109,31 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }*/
-        /*
+
         // 发送新公告
-        [HttpPost]
-        [Route("send-notice")]
+        [HttpPost("send-notice")]
         public IActionResult sendNewNotice([FromBody] NoticeModel notice)
         {
+            if (string.IsNullOrEmpty(notice.employeeId) || !int.TryParse(notice.employeeId, out int eid))
+            {
+                return BadRequest("Invalid Employee Id.");
+            }
+            if (string.IsNullOrEmpty(notice.title))
+            {
+                return BadRequest("Empty title");
+            }
+            if (UserServer.GetRole(notice.employeeId) != "Admin")
+            {
+                return BadRequest("Only admin/employee can edit the bulletin");
+            }
+            //调试
+            Console.WriteLine("eid:" + eid);
+            Console.WriteLine("title:" + notice.title);
+            Console.WriteLine("content:" + notice.content);
             try
             {
                 // 在这里编写发送新公告的逻辑
+                BulletinServer.AddBulletin(notice.title, eid.ToString(), notice.content);
                 // 返回发送结果
                 return Ok();
             }
@@ -120,7 +141,7 @@ namespace Glue.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-        }*/
+        }
 
         // 获取公告内容
         /*[HttpGet]
@@ -138,15 +159,32 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }*/
-        /*
+        
         // 发送编辑过的公告
-        [HttpPost]
-        [Route("send-edited-notice")]
+        [HttpPost("send-edited-notice")]
         public IActionResult sendEditedNotice([FromBody] NoticeModel notice)
         {
+            if(string.IsNullOrEmpty(notice.noticeId) || !int.TryParse(notice.noticeId, out int bulletin_id))
+            {
+                return BadRequest("Invalid Notice Id.");
+            }
+            if (string.IsNullOrEmpty(notice.employeeId) || !int.TryParse(notice.employeeId, out int eid))
+            {
+                return BadRequest("Invalid Employee Id.");
+            }
+            if (string.IsNullOrEmpty(notice.title))
+            {
+                return BadRequest("Empty title");
+            }
+            //调试
+            //Console.WriteLine("bulletin_id:" + bulletin_id);
+            Console.WriteLine("eid:" + eid);
+            Console.WriteLine("title:" + notice.title);
+            Console.WriteLine("content:" + notice.content);
             try
             {
                 // 在这里编写发送编辑过的公告的逻辑
+                BulletinServer.EditBulletin(bulletin_id.ToString(),notice.title, notice.content);
                 // 返回发送结果
                 return Ok();
             }
@@ -155,17 +193,17 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        */
-        /*
+
         // 删除公告
-        [HttpDelete]
-        [Route("delete-notice/{noticeId}")]
+        [HttpDelete("delete-notice/{noticeId}")]
         public IActionResult deleteNotice(int noticeId)
         {
             try
             {
                 // 在这里编写删除公告的逻辑
                 // 返回删除结果
+                BulletinServer.DeleteBulletin(noticeId.ToString());
+                Console.WriteLine($"已删除{noticeId}号公告");
                 return Ok();
             }
             catch (Exception ex)
@@ -173,6 +211,5 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        */
     }
 }

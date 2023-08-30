@@ -49,6 +49,13 @@ namespace WebApplicationTest1
             List<PostComment> usercomment = CommentPostManager.ShowUIDComment(userinfoModel.user_id);
             return Ok(usercomment);
         }
+        [HttpPost("usercollectpet")]
+        public IActionResult GetUserCollectPet([FromBody] UserInfoModel userinfoModel)
+        {
+            DataTable collectpets = CollectPetInfoServer.GetCollectPetInfos(userinfoModel.user_id);
+            string json = DataTableToJson(collectpets);
+            return Content(json, "application/json");
+        }
         [HttpPost("userdonation")]
         public IActionResult GetUserDonation([FromBody] UserInfoModel userinfoModel)
         {
