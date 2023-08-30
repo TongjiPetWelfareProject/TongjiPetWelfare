@@ -19,12 +19,9 @@ namespace Glue.Controllers
             public string? lastCleaningTime { get; set; }
         }
 
-        public class RoomRecordReceive
+        public class Room
         {
-            public short compartment { get; set; }
-            public short storey { get; set; }
-            public string? room_status { get; set; }
-            public string? cleaning_time { get; set; }
+            public string? roomId { get; set; }
         }
         
         // GET: api/<RoomController>
@@ -98,19 +95,44 @@ namespace Glue.Controllers
         }
         */
 
+        public bool parseRoomId(string roomId, out (short,short) result)
+        {
+            result = (0, 0);
+            string[] parts = roomId.Split('-');
+            if(parts.Length == 2 && short.TryParse(parts[0],out short storey) && short.TryParse(parts[1],out short compartment))
+            {
+                result = (storey, compartment);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         // POST api/<RoomController>
         [HttpPost("send-room")]
-        public IActionResult Post([FromBody] RoomRecordReceive RoomData)
+        public IActionResult Post([FromBody] Room RoomData)
         {
+            if(RoomData.roomId == null)
+            {
+                return BadRequest("Empty RoomId.");
+            }
+            if(!parseRoomId(RoomData.roomId,out(short,short) parsed_result))
+            {
+                return BadRequest("不正确的房间号格式");
+            }
+            short storey = parsed_result.Item1;
+            short compartment = parsed_result.Item2;
             try
             {
-                RoomManager.ReturnRoom(RoomData.storey, RoomData.compartment);
+                // 打扫
+                return Ok();
             }
             catch(Exception ex)
             {
                 return(StatusCode(500, ex.Message));
             }
-            return Ok();
         }
 
         /*
