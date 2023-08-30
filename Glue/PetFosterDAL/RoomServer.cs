@@ -65,10 +65,12 @@ namespace PetFoster.DAL
                     
                     if (HaveCleaned)
                     {
-                        command.CommandText = "UPDATE room SET cleaning_time=:Cleaning_Time " +
+                        command.CommandText = "UPDATE room SET cleaning_time=TO_CHAR(:Cleaning_Time,'YYYY-MM-DD HH24:MI:SS') " +
                         "where compartment=:compartment and storey=:storey";
                         command.Parameters.Clear();
                         command.Parameters.Add("Cleaning_Time", OracleDbType.TimeStamp, DateTime.Now, ParameterDirection.Input);
+                        command.Parameters.Add("compartment", OracleDbType.Int32, compartment, ParameterDirection.Input);
+                        command.Parameters.Add("storey", OracleDbType.Int32, storey, ParameterDirection.Input);
                     }
                     else
                     {

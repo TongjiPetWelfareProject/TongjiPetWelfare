@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
 using System.Data;
+using PetFoster.DAL;
 using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -126,6 +127,7 @@ namespace Glue.Controllers
             short compartment = parsed_result.Item2;
             try
             {
+                RoomServer.UpdateRoom(storey, compartment,true);
                 // 打扫
                 return Ok();
             }
