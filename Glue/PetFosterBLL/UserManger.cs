@@ -26,42 +26,7 @@ namespace PetFoster.BLL
         {
             DataTable dt = UserServer.UserInfo(Limitrow, Orderby);
             //调试用
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.Write("{0,-20}", column.ColumnName);
-            }
-            Console.WriteLine();
-
-            foreach (DataRow row in dt.Rows)
-            {
-                for (int i = 0; i < row.ItemArray.Length; i++)
-                {
-                    string[] results = row.ItemArray[i].ToString().Split(',');
-                    if (i == 4 && results.Length == 2)
-                    {
-                        string result = "";
-                        string province = "";
-                        province = JsonHelper.TranslateToCn(results[1], "provinces");
-                        result += province;
-                        result += JsonHelper.TranslateToCn(results[0], results[1]);
-                        Console.Write("{0,-20}", result);
-                    }
-                    else if (i == 4 && results.Length == 1)
-                    {
-                        string province = "";
-                        province = JsonHelper.TranslateToCn(results[0], "provinces");
-                        Console.Write("{0,-20}", province);
-                    }
-                    else if (i == 3)
-                    {
-                        Console.Write("{0,-20}", JsonHelper.TranslateToCn(row.ItemArray[i].ToString(), "status"));
-                    }
-                    else
-                        Console.Write("{0,-20}", row.ItemArray[i].ToString());
-                }
-
-                Console.WriteLine();
-            }
+            Console.WriteLine("展示用户列表");
             return dt;
         }
         public static string ComputeSHA256Hash(string input)

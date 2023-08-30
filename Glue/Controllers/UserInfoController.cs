@@ -22,12 +22,34 @@ namespace WebApplicationTest1
         public class UserInfoModel
         {
             public string user_id { get; set; }
-
+            public string user_name { get; set; }
+            public string phone { get; set; }
+            public string province { get; set; }
+            public string city { get; set; }
             public UserInfoModel()
             {
                 user_id = string.Empty;
+                user_name = string.Empty;
+                phone = string.Empty;
+                province = string.Empty;
+                city = string.Empty;
             }
 
+        }
+        [HttpPost("editinfo")]
+        public IActionResult EditUserInfo([FromBody] UserInfoModel userinfoModel)
+        {
+            try
+            {
+                UserServer.UpdateUser2(userinfoModel.user_id, userinfoModel.user_name,
+                    userinfoModel.phone, userinfoModel.city+","+userinfoModel.province );
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest("更改个人信息失败！");
+            }
+            
         }
         [HttpPost("userinfo")]
         public IActionResult GetUserInfo([FromBody] UserInfoModel userinfoModel)

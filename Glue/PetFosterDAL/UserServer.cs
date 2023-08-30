@@ -379,6 +379,38 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static void UpdateUser2(string UID, string Username, string phoneNumber, string Address)
+        {
+            // 更改信息
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.Clear();
+                    command.CommandText = $"UPDATE user2 SET user_name='{Username}', phone_number='{phoneNumber}', " +
+                        $"address='{Address}' where user_id={UID}";
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+
+                        throw;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
+        }
         public static void UpdateUser(string UID, string Username, string pwd, string phoneNumber, string Address = "Beijing", string account_status = "In Good Standing")
         {
             // 更改信息
