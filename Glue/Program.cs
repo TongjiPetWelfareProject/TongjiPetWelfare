@@ -34,4 +34,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseStaticFiles(); // 允许前端访问后端服务器的静态资源
+
 app.Run();
