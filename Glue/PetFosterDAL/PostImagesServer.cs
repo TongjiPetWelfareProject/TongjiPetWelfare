@@ -13,18 +13,12 @@ namespace PetFoster.DAL
     public class PostImagesServer
     {
         public static string conStr = AccommodateServer.conStr;
-
-        public static int InsertImage(string FID, string Path)
-        {
-            byte[] BinImage = PetServer.ConvertImageToByteArray(Path);
-            return InsertImage(FID, BinImage);
-        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="FID">帖子ID</param>
         /// <param name="contents"></param>
-        public static int InsertImage(string FID, byte[] image)
+        public static int InsertImage(string FID, string url)
         {
             // 添加新行
             try
@@ -34,12 +28,12 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO post_images (image_id,post_id,image_data) " +
+                    command.CommandText = "INSERT INTO post_images (image_id,post_id,image_path) " +
                         $"VALUES (img_id_seq.NEXTVAL,:post_id,:image_data)"
                         ;
                     command.Parameters.Clear();
                     command.Parameters.Add("post_id", OracleDbType.Varchar2, FID, ParameterDirection.Input);
-                    command.Parameters.Add("image_data", OracleDbType.Blob, image, ParameterDirection.Input);
+                    command.Parameters.Add("image_data", OracleDbType.Varchar2, url, ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();
@@ -61,10 +55,10 @@ namespace PetFoster.DAL
             }
             return -1;
         }
-        public static List<byte[]> GetImages(int FID)
+        public static List<string> GetImages(int FID)
         {
-            List<byte[]> Imgs = new List<byte[]>();
-            string getImageQuery = $"SELECT image_data FROM post_images WHERE Post_ID = {FID}";
+            List<string> Imgs = new List<string>();
+            string getImageQuery = $"SELECT image_path FROM post_images WHERE Post_ID = {FID}";
 
             using (OracleConnection connection = new OracleConnection(conStr))
             {
@@ -76,8 +70,8 @@ namespace PetFoster.DAL
                     {
                         while (reader.Read())
                         {
-                            byte[] postID = (byte[])reader["Image_data"];
-                            Imgs.Add(postID);
+                            string postPath = reader["Image_path"].ToString();
+                            Imgs.Add(postPath);
                         }
                     }
                 }
