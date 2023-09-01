@@ -48,22 +48,43 @@ namespace Glue.Controllers
             Console.WriteLine("收到帖子请求："+ postModel.post_id);
             return Ok(post);
         }
-
-        [HttpPost("postcontent")]
-        public IActionResult PostContent([FromBody] PostModel postModel)
+        public class PostRequestModel
         {
+            public string? user_id { get; set; }
+            public string? post_title { get; set; }
+            public string? post_content { get; set; }
+            public List<IFormFile> files { get; set; }
+        }
+        [HttpPost("postcontent")]
+        public async Task<IActionResult> PostContent([FromForm] PostRequestModel postModel)
+        {
+            if(postModel.user_id == null)
+            {
+                return BadRequest("用户未登录");
+            }
             string acstatus = UserServer.GetStatus(postModel.user_id);
             string role = UserServer.GetRole(postModel.user_id);
-            if(acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")
+            
+            if (acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")
                 return BadRequest("您的账号活动异常，无法发布帖子");
-            int status = ForumPostManager.PublishPost(postModel.user_id,postModel.post_title,postModel.post_content);
-            if (role == "Admin")
-                ForumPostManager.CensorPost(status.ToString(), false);
-            Console.WriteLine("收到发帖请求：" + postModel.post_id);
-            if(status!=-1)
-                return Ok(0);
-            else 
-                return BadRequest(-1);
+
+            try
+            {
+                List<string> FileNames = await FileHelper.SaveImagesAsync(postModel.files);
+                // 把下面的调用要改成传FileNames进去
+                int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content);
+                if (role == "Admin")
+                    ForumPostManager.CensorPost(status.ToString(), false);
+                //Console.WriteLine("收到发帖请求：" + postModel.post_id);
+                if (status != -1)
+                    return Ok(0);
+                else
+                    return BadRequest(-1);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Upload failed");
+            } 
         }
 
         [HttpPost("postcomment")]
