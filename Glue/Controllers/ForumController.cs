@@ -72,7 +72,7 @@ namespace Glue.Controllers
             {
                 List<string> FileNames = await FileHelper.SaveImagesAsync(postModel.filename);
                 // 把下面的调用要改成传FileNames进去
-                int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content);
+                int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content,FileNames);
                 if (role == "Admin")
                     ForumPostManager.CensorPost(status.ToString(), false);
                 //Console.WriteLine("收到发帖请求：" + postModel.post_id);

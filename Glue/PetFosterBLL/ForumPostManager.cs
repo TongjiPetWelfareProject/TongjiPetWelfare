@@ -94,15 +94,21 @@ namespace PetFoster.BLL
         /// <param name="UID"></param>
         /// <param name="contents"></param>
         /// <param name="paths">图片路径</param>
-        public static int PublishPost(string UID,string heading,string contents,string path="")
+        public static int PublishPost(string UID,string heading,string contents,List<string> paths)
         {
             //更新帖子
             int FID = ForumPostServer.InsertPost(UID, heading,contents);
             //上传图片（最多五张）
-            //foreach(var path in paths)
-            //{
-            //    PostImagesServer.InsertImage(FID.ToString(), path);
-            //}
+            foreach(var path in paths)
+            {
+                PostImagesServer.InsertImage(FID.ToString(), path);
+            }
+            return FID;
+        }
+        public static int PublishPost(string UID, string heading, string contents)
+        {
+            //更新帖子
+            int FID = ForumPostServer.InsertPost(UID, heading, contents);
             return FID;
         }
         /// <summary>
