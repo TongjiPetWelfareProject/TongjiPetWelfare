@@ -25,7 +25,7 @@
                     {
                         Directory.CreateDirectory(dateFolder);
                     }
-                    string uniqueFileName = Guid.NewGuid().ToString();
+                    string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 
                     // Calculate the file path within the specified uploadFolder
                     string filePath = Path.Combine(dateFolder, uniqueFileName);
