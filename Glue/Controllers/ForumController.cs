@@ -53,7 +53,7 @@ namespace Glue.Controllers
             public string? user_id { get; set; }
             public string? post_title { get; set; }
             public string? post_content { get; set; }
-            public List<IFormFile> files { get; set; }
+            public List<IFormFile> filename { get; set; }
         }
         [HttpPost("postcontent")]
         public async Task<IActionResult> PostContent([FromForm] PostRequestModel postModel)
@@ -70,7 +70,7 @@ namespace Glue.Controllers
 
             try
             {
-                List<string> FileNames = await FileHelper.SaveImagesAsync(postModel.files);
+                List<string> FileNames = await FileHelper.SaveImagesAsync(postModel.filename);
                 // 把下面的调用要改成传FileNames进去
                 int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content);
                 if (role == "Admin")
