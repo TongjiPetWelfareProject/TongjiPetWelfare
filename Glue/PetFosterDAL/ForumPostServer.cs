@@ -66,7 +66,8 @@ namespace PetFoster.DAL
                             LikeNum = LikePostServer.GetLikePostNums(PID),
                             CommentNum = CommentPostServer.GetCommentPostNums(PID),
                             Heading = reader["heading"].ToString(),
-                            UserName = UserServer.GetName(reader["user_id"].ToString())
+                            UserName = UserServer.GetName(reader["user_id"].ToString()),
+                            urls = PostImagesServer.GetImages(Convert.ToInt32(reader["post_id"]))
                         };
 
                         posts.Add(forumpost);
