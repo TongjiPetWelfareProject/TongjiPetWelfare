@@ -3,6 +3,10 @@
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<Glue.Controllers.FileHelper>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -29,6 +33,8 @@ app.UseCors();
 app.UseRouting();
 
 //app.UseHttpsRedirection();
+
+app.UseStaticFiles(); // 允许前端访问后端服务器的静态资源
 
 app.UseAuthorization();
 

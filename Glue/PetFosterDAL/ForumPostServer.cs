@@ -66,7 +66,8 @@ namespace PetFoster.DAL
                             LikeNum = LikePostServer.GetLikePostNums(PID),
                             CommentNum = CommentPostServer.GetCommentPostNums(PID),
                             Heading = reader["heading"].ToString(),
-                            UserName = UserServer.GetName(reader["user_id"].ToString())
+                            UserName = UserServer.GetName(reader["user_id"].ToString()),
+                            urls = PostImagesServer.GetImages(Convert.ToInt32(reader["post_id"]))
                         };
 
                         posts.Add(forumpost);
@@ -110,7 +111,10 @@ namespace PetFoster.DAL
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     command.CommandText = "INSERT INTO forum_posts (post_id, user_id,heading, post_contents)" +
-                        $"VALUES (post_id_seq.NEXTVAL,{UID},'{heading}','{contents}')";
+                        $"VALUES (post_id_seq.NEXTVAL,:user_id,:heading,:contents)";
+                    command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                    command.Parameters.Add("heading", OracleDbType.Varchar2, heading, ParameterDirection.Input);
+                    command.Parameters.Add("contents", OracleDbType.Varchar2, contents, ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();

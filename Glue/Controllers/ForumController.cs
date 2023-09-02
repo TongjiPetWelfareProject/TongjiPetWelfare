@@ -21,6 +21,12 @@ namespace Glue.Controllers
     [ApiController]
     public class ForumController : Controller
     {
+        private readonly FileHelper _fileHelper;
+
+        public ForumController(FileHelper fileHelper)
+        {
+            _fileHelper = fileHelper;
+        }
         public class PostModel
         {
             public string? post_id { get; set; }
@@ -48,22 +54,44 @@ namespace Glue.Controllers
             Console.WriteLine("收到帖子请求："+ postModel.post_id);
             return Ok(post);
         }
-
-        [HttpPost("postcontent")]
-        public IActionResult PostContent([FromBody] PostModel postModel)
+        public class PostRequestModel
         {
+            public string? user_id { get; set; }
+            public string? post_title { get; set; }
+            public string? post_content { get; set; }
+            public List<IFormFile> filename { get; set; }
+        }
+        [HttpPost("postcontent")]
+        public async Task<IActionResult> PostContent([FromForm] PostRequestModel postModel)
+        {
+            if(postModel.user_id == null)
+            {
+                return BadRequest("用户未登录");
+            }
             string acstatus = UserServer.GetStatus(postModel.user_id);
             string role = UserServer.GetRole(postModel.user_id);
-            if(acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")
+            
+            if (acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")
                 return BadRequest("您的账号活动异常，无法发布帖子");
-            int status = ForumPostManager.PublishPost(postModel.user_id,postModel.post_title,postModel.post_content);
-            if (role == "Admin")
-                ForumPostManager.CensorPost(status.ToString(), false);
-            Console.WriteLine("收到发帖请求：" + postModel.post_id);
-            if(status!=-1)
-                return Ok(0);
-            else 
-                return BadRequest(-1);
+            if (postModel.post_content == null)
+                postModel.post_content = "";
+            try
+            {
+                List<string> FileNames = await _fileHelper.SaveImagesAsync(postModel.filename);
+                // 把下面的调用要改成传FileNames进去
+                int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content,FileNames);
+                if (role == "Admin")
+                    ForumPostManager.CensorPost(status.ToString(), false);
+                //Console.WriteLine("收到发帖请求：" + postModel.post_id);
+                if (status != -1)
+                    return Ok(0);
+                else
+                    return BadRequest(-1);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Upload failed");
+            } 
         }
 
         [HttpPost("postcomment")]
@@ -110,6 +138,7 @@ namespace Glue.Controllers
         [HttpPost("deletepost")]
         public IActionResult DeletePost([FromBody] PostModel postModel)
         {
+            PostImagesServer.DeleteImages(postModel.post_id);
             bool status = ForumPostManager.DeleteForumProfile(postModel.post_id,postModel.user_id);
             Console.WriteLine("收到删除帖子请求：" + postModel.post_id+"；用户id："+postModel.user_id);
             if(status)

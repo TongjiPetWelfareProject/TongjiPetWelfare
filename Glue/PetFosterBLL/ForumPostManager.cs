@@ -16,8 +16,9 @@ namespace PetFoster.BLL
     public class Posts
     {
         string contents;
-        List<byte[]> images;
-        public Posts(string s, List<byte[]> imgs)
+        //图片相对路径
+        List<string> images;
+        public Posts(string s, List<string> imgs)
         {
             contents = s;
              images= imgs ;
@@ -93,15 +94,21 @@ namespace PetFoster.BLL
         /// <param name="UID"></param>
         /// <param name="contents"></param>
         /// <param name="paths">图片路径</param>
-        public static int PublishPost(string UID,string heading,string contents)
+        public static int PublishPost(string UID,string heading,string contents,List<string> paths)
         {
             //更新帖子
             int FID = ForumPostServer.InsertPost(UID, heading,contents);
             //上传图片（最多五张）
-            //foreach(var path in paths)
-            //{
-            //    PostImagesServer.InsertImage(FID.ToString(), path);
-            //}
+            foreach(var path in paths)
+            {
+                PostImagesServer.InsertImage(FID.ToString(), path);
+            }
+            return FID;
+        }
+        public static int PublishPost(string UID, string heading, string contents)
+        {
+            //更新帖子
+            int FID = ForumPostServer.InsertPost(UID, heading, contents);
             return FID;
         }
         /// <summary>
@@ -125,7 +132,7 @@ namespace PetFoster.BLL
         {
             //获得图片与帖子内容
             string content = ForumPostServer.GetContent(FID);
-            List<byte[]> image = PostImagesServer.GetImages(Convert.ToInt32(FID));
+            List<string> image = PostImagesServer.GetImages(Convert.ToInt32(FID));
             Posts tmp = new Posts(content, image);
             //阅读量+1！
             ForumPostServer.ReadForum(FID);
