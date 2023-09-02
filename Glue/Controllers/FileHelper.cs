@@ -69,16 +69,20 @@
         }
         public async Task<List<string>> SaveImagesAsync(List<IFormFile> files, string uploadRoot = "wwwroot")
         {
-            var tasks = new List<Task<string>>();
+            Dictionary<int, Task<string>> saveTasks = new Dictionary<int, Task<string>>();
+            int index = 0;
 
             foreach (var file in files)
             {
-                tasks.Add(SaveFileAsync(file, uploadRoot));
+                Task<string> saveTask = SaveFileAsync(file);
+                saveTasks.Add(index++, saveTask);
             }
 
-            await Task.WhenAll(tasks);
+            await Task.WhenAll(saveTasks.Values);
 
-            return tasks.Select(t => t.Result).ToList();
+            List<string> filePaths = saveTasks.OrderBy(kv => kv.Key).Select(kv => kv.Value.Result).ToList();
+
+            return filePaths;
         }
         
     }
