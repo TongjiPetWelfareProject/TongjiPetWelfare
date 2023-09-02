@@ -73,7 +73,8 @@ namespace Glue.Controllers
             
             if (acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")
                 return BadRequest("您的账号活动异常，无法发布帖子");
-
+            if (postModel.post_content == null)
+                postModel.post_content = "";
             try
             {
                 List<string> FileNames = await _fileHelper.SaveImagesAsync(postModel.filename);
