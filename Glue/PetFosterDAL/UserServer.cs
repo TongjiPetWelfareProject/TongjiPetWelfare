@@ -212,6 +212,52 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static string GetPhone(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select phone_number from user2 where User_ID=:user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    string phone = command.ExecuteScalar() as string;
+                    return phone;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "No Phone";
+                }
+            }
+        }
+        public static string GetAddress(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select address from user2 where User_ID=:user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    string address = command.ExecuteScalar() as string;
+                    return address;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "No Address";
+                }
+            }
+        }
         public static string GetName(string UID)
         {
             bool con = false;
@@ -292,6 +338,7 @@ namespace PetFoster.DAL
             }
             return totalLikes;
         }
+
 
         static bool IsValidAddress(string address)
         {
