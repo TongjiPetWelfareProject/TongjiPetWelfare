@@ -2,8 +2,24 @@
 {
     public class FileHelper
     {
+        private static readonly string uploadFolder = "uploads";
         private static readonly int maxFileSizeInBytes = 10 * 1024 * 1024; // 10 MB大小限制
-        public static async Task<string> SaveFileAsync(IFormFile file, string uploadFolder= "wwwroot/uploads")
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public FileHelper(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+        private string AddHostToFileUrl(string filePath)
+        {
+            // Get the server's base URL
+            string baseUrl = _httpContextAccessor.HttpContext.Request.Scheme + "://" + _httpContextAccessor.HttpContext.Request.Host;
+
+            // Generate the full URL for the uploaded file
+            string fileUrl = baseUrl + filePath;
+            return fileUrl;
+        }
+        public async Task<string> SaveFileAsync(IFormFile file, string uploadRoot = "wwwroot")
         {
             try
             {
@@ -19,7 +35,7 @@
                     }
                     DateTime currentDate = DateTime.Now;
                     // Create a folder path based on the current date
-                    string dateFolder = Path.Combine(uploadFolder, currentDate.ToString("yyyy/MM/dd"));
+                    string dateFolder = Path.Combine(uploadRoot, uploadFolder, currentDate.ToString("yyyy/MM/dd"));
                     // Create the date folder if it doesn't exist
                     if (!Directory.Exists(dateFolder))
                     {
@@ -37,7 +53,9 @@
                     }
 
                     // Return the file path (or URL) for the client
-                    return filePath;
+                    string relativePath = AddHostToFileUrl(filePath.Replace(uploadRoot, ""));
+
+                    return relativePath;
                 }
                 else
                 {
@@ -49,18 +67,19 @@
                 throw ex;
             }
         }
-        public static async Task<List<string>> SaveImagesAsync(List<IFormFile> files, string uploadFolder = "wwwroot/uploads")
+        public async Task<List<string>> SaveImagesAsync(List<IFormFile> files, string uploadRoot = "wwwroot")
         {
             var tasks = new List<Task<string>>();
 
             foreach (var file in files)
             {
-                tasks.Add(SaveFileAsync(file, uploadFolder));
+                tasks.Add(SaveFileAsync(file, uploadRoot));
             }
 
             await Task.WhenAll(tasks);
 
             return tasks.Select(t => t.Result).ToList();
         }
+        
     }
 }

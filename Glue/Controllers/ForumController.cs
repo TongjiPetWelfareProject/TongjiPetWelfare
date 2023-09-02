@@ -21,6 +21,12 @@ namespace Glue.Controllers
     [ApiController]
     public class ForumController : Controller
     {
+        private readonly FileHelper _fileHelper;
+
+        public ForumController(FileHelper fileHelper)
+        {
+            _fileHelper = fileHelper;
+        }
         public class PostModel
         {
             public string? post_id { get; set; }
@@ -70,7 +76,7 @@ namespace Glue.Controllers
 
             try
             {
-                List<string> FileNames = await FileHelper.SaveImagesAsync(postModel.filename);
+                List<string> FileNames = await _fileHelper.SaveImagesAsync(postModel.filename);
                 // 把下面的调用要改成传FileNames进去
                 int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content,FileNames);
                 if (role == "Admin")
