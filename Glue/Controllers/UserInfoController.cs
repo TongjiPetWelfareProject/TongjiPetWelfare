@@ -56,9 +56,15 @@ namespace WebApplicationTest1
         {
             int likenum = UserManager.GetLikeNum(userinfoModel.user_id);
             int readnum = UserManager.GetReadNum(userinfoModel.user_id);
+            string user_name = UserServer.GetName(userinfoModel.user_id);
+            string phone = UserServer.GetPhone(userinfoModel.user_id);
+            string address = UserServer.GetAddress(userinfoModel.user_id);
 
             var userInfo = new
             {
+                User_name = user_name, 
+                Phone = phone,
+                Address = JsonHelper.TranslateBackToChinese(address),
                 Likes = likenum,
                 Reads = readnum
             };
