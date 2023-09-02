@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 //不需要查询图片！！！
@@ -78,6 +80,39 @@ namespace PetFoster.DAL
             }
 
             return Imgs;
+        }
+
+        public static void DeleteImages(string? post_id)
+        {
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "delete from post_images where post_id=:pid ";
+                    command.Parameters.Clear();
+                    command.Parameters.Add("pid", OracleDbType.Varchar2, post_id, ParameterDirection.Input);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        command.CommandText = "SELECT img_id_seq.CURRVAL FROM DUAL";
+                        int ImgId = Convert.ToInt32(command.ExecuteScalar());
+                        return;
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

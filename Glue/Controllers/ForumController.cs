@@ -137,6 +137,7 @@ namespace Glue.Controllers
         [HttpPost("deletepost")]
         public IActionResult DeletePost([FromBody] PostModel postModel)
         {
+            PostImagesServer.DeleteImages(postModel.post_id);
             bool status = ForumPostManager.DeleteForumProfile(postModel.post_id,postModel.user_id);
             Console.WriteLine("收到删除帖子请求：" + postModel.post_id+"；用户id："+postModel.user_id);
             if(status)
