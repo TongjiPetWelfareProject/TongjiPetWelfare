@@ -111,7 +111,10 @@ namespace PetFoster.DAL
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     command.CommandText = "INSERT INTO forum_posts (post_id, user_id,heading, post_contents)" +
-                        $"VALUES (post_id_seq.NEXTVAL,{UID},'{heading}','{contents}')";
+                        $"VALUES (post_id_seq.NEXTVAL,:uid,:title,:contents)";
+                    command.Parameters.Add("uid", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                    command.Parameters.Add("title", OracleDbType.Varchar2, heading, ParameterDirection.Input);
+                    command.Parameters.Add("contents", OracleDbType.Varchar2, contents, ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();
