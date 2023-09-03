@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.Text;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
+using Glue.Controllers;
 
 namespace WebApplicationTest1
 {
@@ -19,6 +20,11 @@ namespace WebApplicationTest1
     [ApiController]
     public class UserInfoController : ControllerBase
     {
+        private readonly FileHelper _fileHelper;
+        public UserInfoController(FileHelper fileHelper)
+        {
+            _fileHelper = fileHelper;
+        }
         public class UserInfoModel
         {
             public string user_id { get; set; }
@@ -50,6 +56,25 @@ namespace WebApplicationTest1
                 return BadRequest("更改个人信息失败！");
             }
             
+        }
+        public class AvatarRequestModel
+        {
+            public string user_id { get; set; }
+            public IFormFile? filename { get; set; }
+        }
+        [HttpPost("editavatar")]
+        public async Task<IActionResult> EditUserAvatar([FromBody] AvatarRequestModel avatarRequest)
+        {
+            try
+            {
+                string FileName = await _fileHelper.SaveFileAsync(avatarRequest.filename);
+                UserManager.UpdateAvatar(avatarRequest.user_id, FileName);
+                return Ok("上传头像成功");
+            }
+            catch
+            {
+                return BadRequest("更改头像失败！");
+            }
         }
         [HttpPost("userinfo")]
         public IActionResult GetUserInfo([FromBody] UserInfoModel userinfoModel)
