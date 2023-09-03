@@ -446,10 +446,41 @@ namespace PetFoster.DAL
                     catch (OracleException ex)
                     {
                         Console.WriteLine("错误码" + ex.ErrorCode.ToString());
-
                         throw;
                     }
                     connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        public static void UpdateUserAvatar(string UID, string url)
+        {
+            // 添加新行
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = $"UPDATE user2 SET " +
+                        $"avatar='{url}' where user_id={UID}";
+                    command.Parameters.Clear();
+                    command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                    command.Parameters.Add("avatar", OracleDbType.Varchar2, url, ParameterDirection.Input);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+                        throw;
+                    }
                 }
             }
             catch (Exception ex)
