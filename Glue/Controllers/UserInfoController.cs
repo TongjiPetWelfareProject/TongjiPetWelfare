@@ -32,6 +32,7 @@ namespace WebApplicationTest1
             public string phone { get; set; }
             public string province { get; set; }
             public string city { get; set; }
+            public string avatar { get; set; }
             public UserInfoModel()
             {
                 user_id = string.Empty;
@@ -39,6 +40,7 @@ namespace WebApplicationTest1
                 phone = string.Empty;
                 province = string.Empty;
                 city = string.Empty;
+                avatar = string.Empty;
             }
 
         }
@@ -84,14 +86,15 @@ namespace WebApplicationTest1
             string user_name = UserServer.GetName(userinfoModel.user_id);
             string phone = UserServer.GetPhone(userinfoModel.user_id);
             string address = UserServer.GetAddress(userinfoModel.user_id);
-
+            string avatar = UserServer.GetAvatar(userinfoModel.user_id);
             var userInfo = new
             {
                 User_name = user_name, 
                 Phone = phone,
                 Address = JsonHelper.TranslateBackToChinese(address),
                 Likes = likenum,
-                Reads = readnum
+                Reads = readnum,
+                Avatar=avatar
             };
 
             return Ok(userInfo);
