@@ -51,6 +51,7 @@ namespace Glue.Controllers
             //    dataRows.Add(rowData);
             //}
             string json = DataTableToJson(dt);
+            json=json.Replace("\\", "//").Replace("\\", "/");
             return Content(json, "application/json");
             /*
             try
