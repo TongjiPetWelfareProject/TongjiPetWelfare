@@ -314,7 +314,7 @@ namespace PetFoster.DAL
                     command.Parameters.Add("pet_name", OracleDbType.Varchar2, Petname, ParameterDirection.Input);
                     command.Parameters.Add("species", OracleDbType.Varchar2, Breed, ParameterDirection.Input);
                     command.Parameters.Add("birthdate", OracleDbType.Date, birthDate, ParameterDirection.Input);
-                    command.Parameters.Add("avatar", OracleDbType.Blob, Avatar, ParameterDirection.Input);
+                    command.Parameters.Add("avatar", OracleDbType.Varchar2, ParameterDirection.Input);
                     command.Parameters.Add("health_state", OracleDbType.Varchar2, Health_State, ParameterDirection.Input);
                     command.Parameters.Add("vaccine", OracleDbType.Varchar2, vaccine, ParameterDirection.Input);
                     //command.Parameters.Add("new_pet_id", OracleDbType.Int32, ParameterDirection.Output);
