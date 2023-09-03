@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 using PetFoster.BLL;
@@ -56,9 +56,15 @@ namespace WebApplicationTest1
         {
             int likenum = UserManager.GetLikeNum(userinfoModel.user_id);
             int readnum = UserManager.GetReadNum(userinfoModel.user_id);
+            string user_name = UserServer.GetName(userinfoModel.user_id);
+            string phone = UserServer.GetPhone(userinfoModel.user_id);
+            string address = UserServer.GetAddress(userinfoModel.user_id);
 
             var userInfo = new
             {
+                User_name = user_name, 
+                Phone = phone,
+                Address = JsonHelper.TranslateBackToChinese(address),
                 Likes = likenum,
                 Reads = readnum
             };
@@ -70,6 +76,13 @@ namespace WebApplicationTest1
         {
             List<PostComment> usercomment = CommentPostManager.ShowUIDComment(userinfoModel.user_id);
             return Ok(usercomment);
+        }
+        [HttpPost("userpostsend")]
+        public IActionResult GetUserPostSend([FromBody] UserInfoModel userinfoModel)
+        {
+            DataTable userposts = ForumPostManager.ShowUIDPosts(userinfoModel.user_id);
+            string json = DataTableToJson(userposts);
+            return Content(json, "application/json");
         }
         [HttpPost("usercollectpet")]
         public IActionResult GetUserCollectPet([FromBody] UserInfoModel userinfoModel)

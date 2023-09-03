@@ -75,7 +75,7 @@ namespace Glue.Controllers
             if(time.Value.DayOfWeek== DayOfWeek.Saturday||
                 time.Value.DayOfWeek==DayOfWeek.Sunday||
                 time.Value.Day-DateTime.Now.Day<0||
-                time.Value.Hour>=8||time.Value.Hour<=17) {
+                time.Value.Hour<8||time.Value.Hour>=17) {
                 return BadRequest("我们只在周一到周五8点到17点营业");
             }
             AppointmentManager.DoneTreatment(pid,vid,time.Value);
