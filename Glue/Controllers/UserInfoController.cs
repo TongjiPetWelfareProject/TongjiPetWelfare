@@ -60,14 +60,14 @@ namespace WebApplicationTest1
         public class AvatarRequestModel
         {
             public string user_id { get; set; }
-            public IFormFile? filename { get; set; }
+            public List<IFormFile>? filename { get; set; }
         }
         [HttpPost("editavatar")]
-        public async Task<IActionResult> EditUserAvatar([FromBody] AvatarRequestModel avatarRequest)
+        public async Task<IActionResult> EditUserAvatar([FromForm] AvatarRequestModel avatarRequest)
         {
             try
             {
-                string FileName = await _fileHelper.SaveFileAsync(avatarRequest.filename);
+                string FileName = await _fileHelper.SaveFileAsync(avatarRequest.filename[0]);
                 UserManager.UpdateAvatar(avatarRequest.user_id, FileName);
                 return Ok("上传头像成功");
             }

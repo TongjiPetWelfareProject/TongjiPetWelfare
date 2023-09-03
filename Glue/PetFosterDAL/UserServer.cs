@@ -468,7 +468,7 @@ namespace PetFoster.DAL
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     command.CommandText = $"UPDATE user2 SET " +
-                        $"avatar='{url}' where user_id={UID}";
+                        $"avatar=:avatar where user_id=:user_id";
                     command.Parameters.Clear();
                     command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                     command.Parameters.Add("avatar", OracleDbType.Varchar2, url, ParameterDirection.Input);
