@@ -71,7 +71,7 @@ namespace Glue.Controllers
             string acstatus = UserServer.GetStatus(postModel.user_id);
             string role = UserServer.GetRole(postModel.user_id);
             
-            if (acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")
+            if ((acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")&&role=="User")
                 return BadRequest("您的账号活动异常，无法发布帖子");
             if (postModel.post_content == null)
                 postModel.post_content = "";

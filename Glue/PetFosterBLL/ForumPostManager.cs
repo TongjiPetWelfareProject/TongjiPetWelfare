@@ -66,6 +66,7 @@ namespace PetFoster.BLL
             int id;
             int uid;
             bool status=false;
+            string role = "";
             if (int.TryParse(FID, out id))
             {
                 // FID 全为数字，执行相应的逻辑
@@ -76,7 +77,9 @@ namespace PetFoster.BLL
                 LikePostServer.DeleteAllLikesForPost(FID);
                 Console.WriteLine("All relative likes has been removed");
                 status = ForumPostServer.DeleteForum(FID);
-                UserManager.Ban(uid, "Warning Issued");
+                role=UserServer.GetRole(UID);
+                if(role=="User")
+                    UserManager.Ban(uid, "Warning Issued");
                 Console.WriteLine("Forum profile with FID " + FID + " has been deleted.");
                 Console.WriteLine("User with UID " + uid + " has been warned.");
             }

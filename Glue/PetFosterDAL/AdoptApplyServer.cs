@@ -189,7 +189,7 @@ namespace PetFoster.DAL
                     pet.Species = reader["Species"].ToString();
                     pet.birthdate = Convert.ToDateTime(reader["BIRTHDATE"]);
                     if (reader["Avatar"] != DBNull.Value)
-                        pet.Avatar = (byte[])reader["Avatar"];
+                        pet.Avatar = reader["Avatar"].ToString();
                     else
                         pet.Avatar = null;
                     pet.Read_Num = Convert.ToDecimal(reader["Read_Num"]);
