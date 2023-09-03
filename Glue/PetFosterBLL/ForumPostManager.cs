@@ -182,5 +182,12 @@ namespace PetFoster.BLL
             string query = $"select sum(comment_num) from verbosepost where UID={UID}";
             return DBHelper.ShowInfo(query);
         }
+
+        public static DataTable ShowUIDPosts(string user_id)
+        {
+            string query = "select post_id,heading,read_count,comment_numpost_func(post_id) as comment_num,like_numpost_func(post_id) as like_num,post_time from forum_posts" +
+                $" where user_id={user_id}";
+            return DBHelper.ShowInfo(query);
+        }
     }
 }
