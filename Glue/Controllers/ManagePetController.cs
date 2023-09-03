@@ -12,6 +12,11 @@ namespace Glue.Controllers
     [ApiController]
     public class ManagePetController : ControllerBase
     {
+        private readonly FileHelper _fileHelper;
+        public ManagePetController(FileHelper fileHelper)
+        {
+            _fileHelper = fileHelper;
+        }
         // GET: api/<ManagePetController>
         [HttpGet("petlist")]
         public IActionResult Get()
@@ -91,7 +96,21 @@ namespace Glue.Controllers
             public string? vaccine { get; set; }
             public string? from { get; set; }
         }
-        
+        public class PetModelWithImgs
+        {
+            public string? id { get; set; }
+            public string? petname { get; set; }
+            public string? breed { get; set; }
+            public string? size { get; set; }
+            public int age { get; set; }
+            public string? sex { get; set; }
+            public string? popularity { get; set; }
+            public string? health { get; set; }
+            public string? vaccine { get; set; }
+            public string? from { get; set; }
+            public List<IFormFile>? filename { get; set; }
+        }
+
         // POST api/<ManagePetController>
         [HttpPost("add-pet")]
         public IActionResult AddPet([FromBody] PetModel pet)
@@ -160,7 +179,7 @@ namespace Glue.Controllers
 
         // POST api/<ManagePetController>/5
         [HttpPost("edited-pet")]
-        public IActionResult Post(int employeeId, [FromBody] PetModel pet)
+        public async Task<IActionResult> Post([FromForm] PetModelWithImgs pet)
         {
             if (pet == null)
             {
@@ -197,6 +216,12 @@ namespace Glue.Controllers
             }
             try
             {
+                List<string> FileNames = new List<string>();
+                if(pet.filename != null)
+                {
+                    FileNames = await _fileHelper.SaveImagesAsync(pet.filename);
+                }
+                // FileNames为上传的图片URL
                 PetManager.UpdatePet(pet.id,pet.petname, pet.health, vaccine.Value);
                 return Ok();
             }
