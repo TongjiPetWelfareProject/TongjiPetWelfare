@@ -87,7 +87,7 @@ namespace PetFoster.DAL
                         pet.Pet_Name = reader["Pet_Name"].ToString();
                         pet.Species = reader["Species"].ToString();
                         pet.birthdate = Convert.ToDateTime(reader["BIRTHDATE"]);
-                        pet.Avatar = (byte[])(reader["Avatar"]);
+                        pet.Avatar = reader["Avatar"].ToString();
                         pet.Read_Num = Convert.ToDecimal(reader["Read_Num"]);
                         pet.Like_Num = Convert.ToDecimal(reader["Like_Num"]);
                         pet.Collect_Num = Convert.ToDecimal(reader["Collect_Num"]);

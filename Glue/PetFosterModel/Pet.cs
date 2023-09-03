@@ -12,7 +12,7 @@ namespace PetFoster.Model
         public string Pet_Name { get; set; }
         public string Species { get; set; }
         public DateTime birthdate { get; set; }
-        public byte[] Avatar { get; set; }
+        public string Avatar { get; set; }
         public string Health_State { get; set; }
         public string Vaccine { get; set; }
         public decimal Read_Num { get; set; }
@@ -23,6 +23,7 @@ namespace PetFoster.Model
             Pet_ID = "-1";
             Pet_Name = "宠物已注销";
         }
+        /*
         public Pet(PetData.PETRow prow)
         {
             Pet_ID = prow.PET_ID;
@@ -36,5 +37,6 @@ namespace PetFoster.Model
             Like_Num = prow.LIKE_NUM;
             Collect_Num = prow.COLLECT_NUM;
         }
+        */
     }
 }
