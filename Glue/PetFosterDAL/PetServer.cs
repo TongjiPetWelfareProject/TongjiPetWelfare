@@ -87,7 +87,7 @@ namespace PetFoster.DAL
                         pet.Pet_Name = reader["Pet_Name"].ToString();
                         pet.Species = reader["Species"].ToString();
                         pet.birthdate = Convert.ToDateTime(reader["BIRTHDATE"]);
-                        pet.Avatar = (byte[])(reader["Avatar"]);
+                        pet.Avatar = reader["Avatar"].ToString();
                         pet.Read_Num = Convert.ToDecimal(reader["Read_Num"]);
                         pet.Like_Num = Convert.ToDecimal(reader["Like_Num"]);
                         pet.Collect_Num = Convert.ToDecimal(reader["Collect_Num"]);
@@ -234,7 +234,7 @@ namespace PetFoster.DAL
         {
             return GetAttr(PID, "Health_State");
         }
-        public static void UpdatePet(string PID, string Petname, string Health_State, bool Vaccine)
+        public static void UpdatePet(string PID, string Petname, string Health_State, bool Vaccine,string avatar="")
         {
             Health_State = JsonHelper.TranslateToEn(Health_State, "health_state");
             string vaccine = "";
@@ -249,10 +249,11 @@ namespace PetFoster.DAL
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
                     command.CommandText = "UPDATE pet SET pet_name=:pname,health_state=:hs," +
-                        " vaccine=:vc" + $" where pet_id='{PID}'";
+                        " vaccine=:vc,avatar=:img" + $" where pet_id='{PID}'";
                     command.Parameters.Add("pname", OracleDbType.Varchar2, Petname, ParameterDirection.Input);
                     command.Parameters.Add("hs", OracleDbType.Varchar2, Health_State, ParameterDirection.Input);
                     command.Parameters.Add("vc", OracleDbType.Varchar2, vaccine, ParameterDirection.Input);
+                    command.Parameters.Add("img", OracleDbType.Varchar2, avatar, ParameterDirection.Input);
                     try
                     {
                         command.ExecuteNonQuery();
