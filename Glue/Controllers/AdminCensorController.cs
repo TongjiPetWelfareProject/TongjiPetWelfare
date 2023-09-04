@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
+using PetFoster.DAL;
 using System.Data;
 using System.Text.Json;
 
@@ -18,6 +19,7 @@ namespace Glue.Controllers
             public string? postTime { get; set; }
             public string? content { get; set; }
             public string? censor_status { get; set; }
+            public List<string> urls { get; set; }
             public PostModel()
             {
                 censor_status = "to be censored";
@@ -54,6 +56,7 @@ namespace Glue.Controllers
                             PostItem.content = dt.Rows[i][j].ToString();
                         }
                     }
+                    PostItem.urls = PostImagesServer.GetImages(Convert.ToInt32(PostItem.postId));
                     PostsList.Add(PostItem);
                 }
                 //Console.WriteLine(JsonSerializer.Serialize(PostsList));
