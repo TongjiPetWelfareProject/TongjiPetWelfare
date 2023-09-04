@@ -373,7 +373,11 @@ namespace PetFoster.DAL
             {
                 connection.Open();
 
-                string query = "SELECT * FROM forum_posts where censored='Y'";
+                string query = "SELECT post_id,forum_posts.user_id,post_time,post_contents" +
+                    " ,read_count,like_numpost_func(post_id) as like_num" +
+                    ",comment_numpost_func(post_id) as comment_num,heading," +
+                    "user_name FROM forum_posts left join user2 on" +
+                    " user2.user_id=forum_posts.user_id where censored='Y'";
 
                 OracleCommand command = new OracleCommand(query, connection);
 
@@ -388,10 +392,10 @@ namespace PetFoster.DAL
                             Post_time = Convert.ToDateTime(reader["post_time"]),
                             Content = reader["post_contents"].ToString(),
                             ReadCount = Convert.ToInt32(reader["read_count"]),
-                            LikeNum = LikePostServer.GetLikePostNums(reader["post_id"].ToString()),
-                            CommentNum = CommentPostServer.GetCommentPostNums(reader["post_id"].ToString()),
+                            LikeNum = Convert.ToInt32(reader["like_num"]),
+                            CommentNum = Convert.ToInt32(reader["comment_num"]),
                             Heading = reader["heading"].ToString(),
-                            UserName = UserServer.GetName(reader["user_id"].ToString())
+                            UserName =reader["user_name"].ToString()
                         };
 
                         posts.Add(forumpost);
