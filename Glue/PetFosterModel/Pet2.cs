@@ -17,14 +17,15 @@ namespace PetFoster.Model
             public DateTime comment_time;
             public string commenter;
             public string commenter_id;
-            public Comment(string co, DateTime comdt,string cer,string cid)
+            public string commenter_avatar;
+            public Comment(string co, DateTime comdt,string cer,string cid,string cav)
             {
                 comment_contents = co;
                 comment_time = comdt;
                 commenter = cer;
                 commenter_id = cid;
-                
-            }
+                commenter_avatar = cav;
+        }
         }
         public Pet2()
         {

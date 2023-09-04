@@ -205,11 +205,12 @@ namespace PetFoster.DAL
                     petoverall.comments = new Pet2.Comment[petoverall.Comment_Num];
                     for (int k = 0; k < petoverall.Comment_Num; k++)
                     {
-                        petoverall.comments[k] = new Pet2.Comment("", DateTime.Now,"","");
+                        petoverall.comments[k] = new Pet2.Comment("", DateTime.Now,"","","");
                         petoverall.comments[k].comment_time = Convert.ToDateTime(reader["comment_time"]);
                         petoverall.comments[k].comment_contents = reader["comment_contents"].ToString();
                         petoverall.comments[k].commenter = reader["user_name"].ToString();
                         petoverall.comments[k].commenter_id = reader["commenter"].ToString();
+                        petoverall.comments[k].commenter_avatar = UserServer.GetAvatar(reader["commenter"].ToString());
                         reader.Read();
                     }
                     if (pet.Pet_ID == "-1")

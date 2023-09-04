@@ -139,46 +139,6 @@ namespace Glue.Controllers
             try
             {
                 Pet2 pet = AdoptApplyManager.RetrievePet(petId);
-                // pet.original_pet.Avatar = "";
-                /*
-                Pet2WithoutAvartar pet2_temp = new Pet2WithoutAvartar();
-                PetWithoutAvartar pet_temp = new PetWithoutAvartar();
-                pet2_temp.comments = new Pet2.Comment[pet.comments.Length];
-                for (int i = 0; i < pet.comments.Length; i++)
-                {
-                    pet2_temp.comments[i] = new Pet2.Comment(
-                        pet.comments[i].comment_contents,
-                        pet.comments[i].comment_time,
-                        pet.comments[i].commenter,
-                        pet.comments[i].commenter_id
-                    );
-                }
-                pet2_temp.Comment_Num = pet.Comment_Num;
-                pet2_temp.Psize = pet.Psize;
-                pet2_temp.sex = pet.sex;
-                pet2_temp.Popularity = pet.Popularity;
-                pet_temp.Pet_ID = pet.original_pet.Pet_ID;
-                pet_temp.Pet_Name = pet.original_pet.Pet_Name;
-                pet_temp.Species = pet.original_pet.Species;
-                pet_temp.birthdate = pet.original_pet.birthdate;
-                pet_temp.Health_State = pet.original_pet.Health_State;
-                pet_temp.Vaccine = pet.original_pet.Vaccine;
-                pet_temp.Read_Num = pet.original_pet.Read_Num;
-                pet_temp.Like_Num = pet.original_pet.Like_Num;
-                pet_temp.Collect_Num = pet.original_pet.Collect_Num;
-                pet2_temp.original_pet = pet_temp;*/
-                /*
-                // newly added to show whether user has liked or collected this pet
-                try
-                {
-                    pet2_temp.have_liked = LikePetManager.HaveUserLiked(request.userId.ToString(), petId.ToString());
-                    pet2_temp.have_collected = CollectPetInfoManager.HaveUserCollected(request.userId.ToString(), petId.ToString());
-                }
-                catch (Exception ex)
-                {
-                    pet2_temp.have_liked = false;
-                    pet2_temp.have_collected = false;
-                }*/
                 try
                 {
                     string jsondata = Newtonsoft.Json.JsonConvert.SerializeObject(pet);
