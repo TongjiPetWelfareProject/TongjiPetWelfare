@@ -166,6 +166,7 @@ namespace PetFoster.DAL
                         {
                             PID = inPID,
                             UID = reader["user_id"].ToString(),
+                            Avatar = UserServer.GetAvatar(reader["user_id"].ToString()),
                             Comment_Time = Convert.ToDateTime(reader["comment_time"]),
                             Content = reader["comment_contents"].ToString(),
                             User_Name = UserServer.GetName(reader["user_id"].ToString()),
@@ -200,6 +201,7 @@ namespace PetFoster.DAL
                         {
                             PID = reader["post_id"].ToString(),
                             UID = reader["user_id"].ToString(),
+                            Avatar = UserServer.GetAvatar(reader["user_id"].ToString()),
                             Comment_Time = Convert.ToDateTime(reader["comment_time"]),
                             Content = reader["comment_contents"].ToString(),
                             Post_Title = ForumPostServer.PIDtoPostTitle(reader["post_id"].ToString())

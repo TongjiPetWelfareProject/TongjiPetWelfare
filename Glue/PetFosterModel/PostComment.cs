@@ -12,6 +12,7 @@ namespace PetFoster.Model
         public string Post_Title { get; set; }
         public string UID { get; set; }
         public string User_Name { get; set; }
+        public string Avatar { get; set; }
         public string Content { get; set; }
         public DateTime Comment_Time { get; set; }
         public PostComment() { }
