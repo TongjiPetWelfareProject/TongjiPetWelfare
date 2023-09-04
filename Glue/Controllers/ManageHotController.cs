@@ -25,12 +25,14 @@ namespace Glue.Controllers
             public string name { get; set; }
             public int views { get; set; }
             public int likes { get; set; }
+            public string image { get; set; }
             public TopPet()
             {
                 id = "";
                 name = "";
                 views = 0;
                 likes = 0;
+                image = "";
             }
         }
 
@@ -42,7 +44,21 @@ namespace Glue.Controllers
             try
             {
                 // 在这里编写获取点赞量和阅读量最高的10个宠物信息的逻辑
-                List<TopPet> topPets = _GetTop10Pets();
+                List<TopPet> topPets = _GetTopNPets(10);
+                return Ok(topPets);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpGet("topAdoptPets")]
+        public IActionResult GetTopAdoptPets()
+        {
+            try
+            {
+                // 在这里编写获取点赞量和阅读量最高的10个宠物信息的逻辑
+                List<TopPet> topPets = _GetTopNPets(3);
                 return Ok(topPets);
             }
             catch (Exception ex)
@@ -85,7 +101,7 @@ namespace Glue.Controllers
         }*/
 
         // 模拟获取点赞量和阅读量最高的10个宠物信息的方法
-        private List<TopPet> _GetTop10Pets()
+        private List<TopPet> _GetTopNPets(int n)
         {
             // 在这里编写获取点赞量和阅读量最高的10个宠物信息的逻辑
             // 返回一个包含宠物信息的List<Pet>对象
@@ -114,10 +130,14 @@ namespace Glue.Controllers
                     {
                         TopPetItem.likes = Convert.ToInt32(dt.Rows[i][j]);
                     }
+                    else if (dt.Columns[j].ColumnName.ToLower() == "avatar")
+                    {
+                        TopPetItem.image = dt.Rows[i][j].ToString();
+                    }
                 }
                 TopPetsList.Add(TopPetItem);
                 cnt++;
-                if(cnt >= 10)
+                if(cnt >= n)
                 {
                     break;
                 }

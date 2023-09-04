@@ -49,6 +49,12 @@ namespace PetFoster.BLL
                 return stringBuilder.ToString();
             }
         }
+        public static void UpdateAvatar(string UID, string path)
+        {
+        
+            UserServer.UpdateUserAvatar(UID, path);
+         
+        }
         /// <summary>
         /// 登录
         /// </summary>

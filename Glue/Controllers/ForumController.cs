@@ -59,7 +59,7 @@ namespace Glue.Controllers
             public string? user_id { get; set; }
             public string? post_title { get; set; }
             public string? post_content { get; set; }
-            public List<IFormFile> filename { get; set; }
+            public List<IFormFile>? filename { get; set; }
         }
         [HttpPost("postcontent")]
         public async Task<IActionResult> PostContent([FromForm] PostRequestModel postModel)
@@ -71,22 +71,36 @@ namespace Glue.Controllers
             string acstatus = UserServer.GetStatus(postModel.user_id);
             string role = UserServer.GetRole(postModel.user_id);
             
-            if (acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")
+            if ((acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")&&role=="User")
                 return BadRequest("您的账号活动异常，无法发布帖子");
             if (postModel.post_content == null)
                 postModel.post_content = "";
             try
             {
-                List<string> FileNames = await _fileHelper.SaveImagesAsync(postModel.filename);
-                // 把下面的调用要改成传FileNames进去
-                int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content,FileNames);
-                if (role == "Admin")
-                    ForumPostManager.CensorPost(status.ToString(), false);
-                //Console.WriteLine("收到发帖请求：" + postModel.post_id);
-                if (status != -1)
-                    return Ok(0);
+                if (postModel.filename != null)
+                {
+                    List<string> FileNames = await _fileHelper.SaveImagesAsync(postModel.filename);
+                    // 把下面的调用要改成传FileNames进去
+                    int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content, FileNames);
+                    if (role == "Admin")
+                        ForumPostManager.CensorPost(status.ToString(), false);
+                    //Console.WriteLine("收到发帖请求：" + postModel.post_id);
+                    if (status != -1)
+                        return Ok(0);
+                    else
+                        return BadRequest(-1);
+                }
                 else
-                    return BadRequest(-1);
+                {
+                    int status = ForumPostManager.PublishPost(postModel.user_id, postModel.post_title, postModel.post_content);
+                    if (role == "Admin")
+                        ForumPostManager.CensorPost(status.ToString(), false);
+                    //Console.WriteLine("收到发帖请求：" + postModel.post_id);
+                    if (status != -1)
+                        return Ok(0);
+                    else
+                        return BadRequest(-1);
+                }
             }
             catch (Exception ex)
             {

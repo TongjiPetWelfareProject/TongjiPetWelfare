@@ -212,6 +212,29 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static string GetAvatar(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                // 连接对象将在 using 块结束时自动关闭和释放资源
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "select avatar from user2 where User_ID=:user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                try
+                {
+                    string path = command.ExecuteScalar() as string;
+                    return path;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
+            }
+        }
         public static string GetPhone(string UID)
         {
             using (OracleConnection connection = new OracleConnection(conStr))
@@ -446,10 +469,40 @@ namespace PetFoster.DAL
                     catch (OracleException ex)
                     {
                         Console.WriteLine("错误码" + ex.ErrorCode.ToString());
-
                         throw;
                     }
                     connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        public static void UpdateUserAvatar(string UID, string url)
+        {
+            // 添加新行
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = $"UPDATE user2 SET " +
+                        $"avatar=:avatar where user_id={UID}";
+                    command.Parameters.Clear();
+                    command.Parameters.Add("avatar", OracleDbType.Varchar2, url, ParameterDirection.Input);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+                        throw;
+                    }
                 }
             }
             catch (Exception ex)

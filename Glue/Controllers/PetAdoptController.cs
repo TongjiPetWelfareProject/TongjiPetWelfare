@@ -51,6 +51,7 @@ namespace Glue.Controllers
             //    dataRows.Add(rowData);
             //}
             string json = DataTableToJson(dt);
+            json=json.Replace("\\", "//").Replace("\\", "/");
             return Content(json, "application/json");
             /*
             try
@@ -87,10 +88,12 @@ namespace Glue.Controllers
             public decimal Read_Num { get; set; }
             public decimal Like_Num { get; set; }
             public decimal Collect_Num { get; set; }
+            public string Avatar { get; set; }
             public PetWithoutAvartar()
             {
                 Pet_ID = "-1";
                 Pet_Name = "宠物已注销";
+                Avatar = "http://localhost:6001/uploads/2023/09/02/f36fa6ba-78fe-4179-be4a-6ba0a6e0d38e.png";
             }
             public PetWithoutAvartar(PetData.PETRow prow)
             {
@@ -103,6 +106,7 @@ namespace Glue.Controllers
                 Read_Num = prow.READ_NUM;
                 Like_Num = prow.LIKE_NUM;
                 Collect_Num = prow.COLLECT_NUM;
+                Avatar = "http://localhost:6001/uploads/2023/09/02/f36fa6ba-78fe-4179-be4a-6ba0a6e0d38e.png";
             }
         }
         public class Pet2WithoutAvartar
@@ -135,6 +139,8 @@ namespace Glue.Controllers
             try
             {
                 Pet2 pet = AdoptApplyManager.RetrievePet(petId);
+                // pet.original_pet.Avatar = "";
+                /*
                 Pet2WithoutAvartar pet2_temp = new Pet2WithoutAvartar();
                 PetWithoutAvartar pet_temp = new PetWithoutAvartar();
                 pet2_temp.comments = new Pet2.Comment[pet.comments.Length];
@@ -160,7 +166,7 @@ namespace Glue.Controllers
                 pet_temp.Read_Num = pet.original_pet.Read_Num;
                 pet_temp.Like_Num = pet.original_pet.Like_Num;
                 pet_temp.Collect_Num = pet.original_pet.Collect_Num;
-                pet2_temp.original_pet = pet_temp;
+                pet2_temp.original_pet = pet_temp;*/
                 /*
                 // newly added to show whether user has liked or collected this pet
                 try
@@ -175,7 +181,7 @@ namespace Glue.Controllers
                 }*/
                 try
                 {
-                    string jsondata = Newtonsoft.Json.JsonConvert.SerializeObject(pet2_temp);
+                    string jsondata = Newtonsoft.Json.JsonConvert.SerializeObject(pet);
                     PetServer.ReadPet(pet.original_pet.Pet_ID);
                     Console.WriteLine($"{pet.original_pet.Pet_Name}的阅读量+1!");
                     return Ok(jsondata);

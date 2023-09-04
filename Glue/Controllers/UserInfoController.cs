@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.Text;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
+using Glue.Controllers;
 
 namespace WebApplicationTest1
 {
@@ -19,6 +20,11 @@ namespace WebApplicationTest1
     [ApiController]
     public class UserInfoController : ControllerBase
     {
+        private readonly FileHelper _fileHelper;
+        public UserInfoController(FileHelper fileHelper)
+        {
+            _fileHelper = fileHelper;
+        }
         public class UserInfoModel
         {
             public string user_id { get; set; }
@@ -26,6 +32,7 @@ namespace WebApplicationTest1
             public string phone { get; set; }
             public string province { get; set; }
             public string city { get; set; }
+            public string avatar { get; set; }
             public UserInfoModel()
             {
                 user_id = string.Empty;
@@ -33,6 +40,7 @@ namespace WebApplicationTest1
                 phone = string.Empty;
                 province = string.Empty;
                 city = string.Empty;
+                avatar = string.Empty;
             }
 
         }
@@ -51,6 +59,25 @@ namespace WebApplicationTest1
             }
             
         }
+        public class AvatarRequestModel
+        {
+            public string user_id { get; set; }
+            public List<IFormFile>? filename { get; set; }
+        }
+        [HttpPost("editavatar")]
+        public async Task<IActionResult> EditUserAvatar([FromForm] AvatarRequestModel avatarRequest)
+        {
+            try
+            {
+                string FileName = await _fileHelper.SaveFileAsync(avatarRequest.filename[0]);
+                UserManager.UpdateAvatar(avatarRequest.user_id, FileName);
+                return Ok("上传头像成功");
+            }
+            catch
+            {
+                return BadRequest("更改头像失败！");
+            }
+        }
         [HttpPost("userinfo")]
         public IActionResult GetUserInfo([FromBody] UserInfoModel userinfoModel)
         {
@@ -59,14 +86,15 @@ namespace WebApplicationTest1
             string user_name = UserServer.GetName(userinfoModel.user_id);
             string phone = UserServer.GetPhone(userinfoModel.user_id);
             string address = UserServer.GetAddress(userinfoModel.user_id);
-
+            string avatar = UserServer.GetAvatar(userinfoModel.user_id);
             var userInfo = new
             {
                 User_name = user_name, 
                 Phone = phone,
                 Address = JsonHelper.TranslateBackToChinese(address),
                 Likes = likenum,
-                Reads = readnum
+                Reads = readnum,
+                Avatar=avatar
             };
 
             return Ok(userInfo);

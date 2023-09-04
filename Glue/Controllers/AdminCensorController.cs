@@ -27,7 +27,6 @@ namespace Glue.Controllers
         [HttpGet("check")]
         public IActionResult Get()
         {
-            int ContentMaxLength = 100;  // Temp：设定最多给100字符
             try
             {
                 DataTable dt = ForumPostManager.ShowForumProfile();
@@ -53,11 +52,6 @@ namespace Glue.Controllers
                         else if(dt.Columns[j].ColumnName.ToLower() == "post_contents")
                         {
                             PostItem.content = dt.Rows[i][j].ToString();
-                            if(PostItem.content != null)
-                            {
-                                PostItem.content = PostItem.content.Substring
-                                    (0, Math.Min(PostItem.content.Length,ContentMaxLength)) + "...";
-                            }
                         }
                     }
                     PostsList.Add(PostItem);
