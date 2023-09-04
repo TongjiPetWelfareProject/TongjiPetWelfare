@@ -139,6 +139,7 @@ namespace PetFoster.BLL
             //Address = JsonHelper.TranslateAddr(Address);
             UID = UserServer.InsertUser(Username, ComputeSHA256Hash(pwd), phoneNumber, Address);
             //注册时的其他操作，如验证码等等.....
+            if (UID == "-1"){ return -1; }
             return code;
         }
         public static string Unregister(decimal UID)
