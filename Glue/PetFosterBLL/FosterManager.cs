@@ -21,7 +21,7 @@ namespace PetFoster.BLL
         {
             censorStr=JsonHelper.GetErrorMessage("censor_state",censorstate);
 
-            DataTable dt = FosterServer.FosterInfo(censorStr,Limitrow, Orderby,verbose);
+            DataTable dt = FosterServer.FosterInfo("",Limitrow, Orderby,verbose);
             //调试用
             Console.WriteLine("显示寄养申请列表");
             return dt;

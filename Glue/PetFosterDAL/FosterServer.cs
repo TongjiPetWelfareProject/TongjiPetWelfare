@@ -50,7 +50,7 @@ namespace PetFoster.DAL
         {
             DataTable dataTable = new DataTable();
             string query = "SELECT duration,fosterer,pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
-                    ",REMARK FROM foster ";
+                    ",REMARK,censor_state FROM foster ";
             if (verbose)
                 query = "SELECT * from foster_window";
             if (Limitrows > 0)
@@ -60,8 +60,6 @@ namespace PetFoster.DAL
                 else
                     query += $" where rownum<={Limitrows}";
             }
-            else
-                query += $" where censor_state='{censorStr}'";
             if ((Orderby) != null)
                 query += $" order by {Orderby} desc";
             return DBHelper.ShowInfo(query);

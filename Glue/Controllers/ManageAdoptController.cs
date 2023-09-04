@@ -70,10 +70,13 @@ namespace Glue.Controllers
                             RecordItem.reason = dt.Rows[i][j].ToString().Replace("Y","是").Replace("N","否")
                                 .Replace("M","男").Replace("F","女");
                         }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "censor_status")
+                        {
+                            RecordItem.censor_status = dt.Rows[i][j].ToString();
+                        }
                     }
                     RecordItem.petName = PetServer.GetName(RecordItem.petId);
                     RecordItem.userName = UserServer.GetName(RecordItem.userId);
-                    RecordItem.censor_status = JsonHelper.GetErrorMessage("censor_state", censorstate);
                     RecordList.Add(RecordItem);
                 }
 

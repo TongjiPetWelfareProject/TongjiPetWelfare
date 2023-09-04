@@ -78,10 +78,13 @@ namespace Glue.Controllers
                         {
                             RecordItem.date = dt.Rows[i][j].ToString();
                         }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "censor_state")
+                        {
+                            RecordItem.censor_status = dt.Rows[i][j].ToString();
+                        }
                     }
                     RecordItem.petName = PetServer.GetName(RecordItem.petId);
                     RecordItem.userName = UserServer.GetName(RecordItem.userId);
-                    RecordItem.censor_status = censorStr;
                     RecordList.Add(RecordItem);
                 }
                 /*
