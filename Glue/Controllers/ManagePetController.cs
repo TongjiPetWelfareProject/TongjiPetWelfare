@@ -73,6 +73,7 @@ namespace Glue.Controllers
             //    dataRows.Add(rowData);
             //}
             string json = ConvertTools.DataTableToJson(dt);
+            json = json.Replace("\\", "//").Replace("\\", "/"); //防止逃逸字符
             return Content(json, "application/json");
         }
         /*
@@ -149,7 +150,7 @@ namespace Glue.Controllers
                 }
             }
             bool vaccine;
-            if(pet.vaccine == "已经接种")
+            if(pet.vaccine == "已接种")
             {
                 vaccine = true;
             }
@@ -202,7 +203,7 @@ namespace Glue.Controllers
                 health = null;
             }
             bool? vaccine;
-            if (pet.vaccine == "已经接种")
+            if (pet.vaccine == "已接种")
             {
                 vaccine = true;
             }

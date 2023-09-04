@@ -96,7 +96,7 @@ namespace Glue.Controllers
         }
         */
 
-        public bool parseRoomId(string roomId, out (short,short) result)
+        private bool parseRoomId(string roomId, out (short,short) result)
         {
             result = (0, 0);
             string[] parts = roomId.Split('-');
