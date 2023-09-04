@@ -74,9 +74,15 @@ namespace Glue.Controllers
                         {
                             RecordItem.censor_status = dt.Rows[i][j].ToString();
                         }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "user_name")
+                        {
+                            RecordItem.userName = dt.Rows[i][j].ToString();
+                        }
+                        else if (dt.Columns[j].ColumnName.ToLower() == "pet_name")
+                        {
+                            RecordItem.petName = dt.Rows[i][j].ToString();
+                        }
                     }
-                    RecordItem.petName = PetServer.GetName(RecordItem.petId);
-                    RecordItem.userName = UserServer.GetName(RecordItem.userId);
                     RecordList.Add(RecordItem);
                 }
 

@@ -49,8 +49,10 @@ namespace PetFoster.DAL
         public static DataTable FosterInfo(string censorStr="",decimal Limitrows = -1, string Orderby = null,bool verbose=false)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT duration,fosterer,pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
-                    ",REMARK,censor_state FROM foster ";
+            string query = "SELECT duration,fosterer,foster.pet_id,to_char(start_year)||'-'||to_char(start_month)||'-'||to_char(start_day) AS STARTDATE" +
+                    ",REMARK,censor_state,user_name,pet_name FROM foster " +
+                    " left join user2 on user2.user_id=foster.fosterer" +
+                    " left join pet on pet.pet_id=foster.pet_id";
             if (verbose)
                 query = "SELECT * from foster_window";
             if (Limitrows > 0)

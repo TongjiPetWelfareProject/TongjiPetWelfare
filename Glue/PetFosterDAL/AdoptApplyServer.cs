@@ -42,8 +42,9 @@ namespace PetFoster.DAL
         public static DataTable AdoptInfo(decimal Limitrows = -1, string Orderby = null)
         {
             
-            string query = "SELECT *" +
-                    "FROM adopt_view ";
+            string query = "SELECT adopt_view.*,pet_name,user_name" +
+                    " FROM adopt_view left join pet on pet.pet_id=adopt_view.pet_id" +
+                    " left join user2 on user2.user_id=adopt_view.adopter_id";
             DataTable dataTable = DBHelper.ShowInfo(query, Limitrows, Orderby);
             return dataTable;
         }
