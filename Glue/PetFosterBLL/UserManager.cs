@@ -192,14 +192,15 @@ namespace PetFoster.BLL
         /// <param name="Password">旧密码</param>
         /// <param name="NewPassword">新密码</param>
         /// <returns></returns>
-        public static string ChangePassword(decimal UID, string Password, string NewPassword)
+        public static int ChangePassword(string UID, string Password, string NewPassword)
         {
             TimeSpan timeRemaining;
-            User candidate = UserServer.GetUser(UID.ToString(), Password, true);
+            User candidate = UserServer.GetUser(UID, Password, true);
             if (Waiting && countdownTimer.GetTimeRemaining().Ticks > 0)
             {
                 timeRemaining = countdownTimer.GetTimeRemaining();
-                return $"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes, {timeRemaining.Seconds} seconds";
+                //return $"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes, {timeRemaining.Seconds} seconds";
+                return 1;
             }
             else if (Waiting && countdownTimer.GetTimeRemaining().Ticks <= 0)
             {
@@ -208,7 +209,8 @@ namespace PetFoster.BLL
             }
             if (candidate.Password != Password && --RemainingTime > 0)
             {
-                return $"密码不正确,还有{RemainingTime}次机会，共计5次机会";
+                //return $"密码不正确,还有{RemainingTime}次机会，共计5次机会";
+                return -1;
             }
             else if (RemainingTime == 0)
             {
@@ -218,15 +220,13 @@ namespace PetFoster.BLL
             }
             else if (candidate.Password == Password)
             {
-                if (!ValidatePassword(NewPassword))
-                {
-                    return "密码长度必须为8~16位，同时包含大小写，数字，特殊字符（/!@#$%^&*()）！";
-                }
-                UserServer.UpdateUser(UID.ToString(), candidate.User_Name, NewPassword, candidate.Phone_Number, candidate.Address, candidate.Account_Status);
-                return $"{candidate.User_Name},你好！密码已成功修改，请不要忘记密码";
+                UserServer.UpdatePassword(UID,NewPassword);
+                //return $"{candidate.User_Name},你好！密码已成功修改，请不要忘记密码";
+                return 0;
             }
             timeRemaining = countdownTimer.GetTimeRemaining();
-            return $"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes, {timeRemaining.Seconds} seconds";
+            //return $"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes, {timeRemaining.Seconds} seconds";
+            return 1;
 
         }
         public static int GetLikeNum(string UID)

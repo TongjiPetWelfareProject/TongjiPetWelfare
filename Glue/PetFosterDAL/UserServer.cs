@@ -116,7 +116,44 @@ namespace PetFoster.DAL
                 }
             }
         }
+        public static int CheckUserPhoneExistence(string phone)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
 
+                command.CommandText = "SELECT COUNT(*) FROM user2 WHERE Phone_Number = :user_phone";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_phone", OracleDbType.Varchar2, phone, ParameterDirection.Input);
+
+                try
+                {
+                    int userCount = Convert.ToInt32(command.ExecuteScalar());
+
+                    if (userCount == 0)
+                    {
+                        // 用户不存在
+                        return -1;
+                    }
+                    else
+                    {
+                        // 用户存在
+                        return 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
         public static Profile GetStatistics(int UID, out int err)
         {
             bool con = false;
@@ -565,6 +602,40 @@ namespace PetFoster.DAL
                     command.Parameters.Add("phone_number", OracleDbType.Varchar2, phoneNumber, ParameterDirection.Input);
                     command.Parameters.Add("account_status", OracleDbType.Varchar2, account_status, ParameterDirection.Input);
                     command.Parameters.Add("address", OracleDbType.Varchar2, Address, ParameterDirection.Input);
+                    command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+
+                        throw;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        public static void UpdatePassword(string UID, string pwd)
+        {
+            // 更改信息
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "UPDATE user2 SET password=:password " +
+                        " where user_id=:user_id";
+                    command.Parameters.Clear();
+                    command.Parameters.Add("password", OracleDbType.Varchar2, pwd, ParameterDirection.Input);
                     command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                     try
                     {

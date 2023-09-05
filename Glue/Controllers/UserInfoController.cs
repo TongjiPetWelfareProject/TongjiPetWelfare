@@ -28,6 +28,8 @@ namespace WebApplicationTest1
         public class UserInfoModel
         {
             public string user_id { get; set; }
+            public string currentpassword { get; set; }
+            public string editedpassword { get; set; }
             public string user_name { get; set; }
             public string phone { get; set; }
             public string province { get; set; }
@@ -36,6 +38,8 @@ namespace WebApplicationTest1
             public UserInfoModel()
             {
                 user_id = string.Empty;
+                currentpassword = string.Empty;
+                editedpassword = string.Empty; 
                 user_name = string.Empty;
                 phone = string.Empty;
                 province = string.Empty;
@@ -43,6 +47,26 @@ namespace WebApplicationTest1
                 avatar = string.Empty;
             }
 
+        }
+        static string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // 将输入字符串转换为字节数组
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+
+                // 计算哈希值
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
+
+                // 将字节数组转换为十六进制字符串
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    stringBuilder.Append(hashBytes[i].ToString("x2")); // 使用 "x2" 格式将字节转换为两位十六进制
+                }
+
+                return stringBuilder.ToString();
+            }
         }
         [HttpPost("editinfo")]
         public IActionResult EditUserInfo([FromBody] UserInfoModel userinfoModel)
@@ -58,6 +82,23 @@ namespace WebApplicationTest1
                 return BadRequest("更改个人信息失败！");
             }
             
+        }
+        [HttpPost("editpassword")]
+        public IActionResult EditUserPassword([FromBody] UserInfoModel userinfoModel)
+        {
+            try
+            {
+                int result=UserManager.ChangePassword(userinfoModel.user_id, ComputeSHA256Hash(userinfoModel.currentpassword), ComputeSHA256Hash(userinfoModel.editedpassword));
+                if(result == 0) { return Ok(0); }
+                else if(result == -2) { return BadRequest(-2); }//密码不符合要求
+                else if(result == -1) { return BadRequest(-1); }//密码不正确
+                else { return BadRequest(1); }//响应超时
+            }
+            catch
+            {
+                return BadRequest("更改密码失败！");
+            }
+
         }
         public class AvatarRequestModel
         {
