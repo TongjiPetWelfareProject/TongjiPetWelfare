@@ -98,6 +98,10 @@ namespace PetFoster.BLL
             DAL.PetServer.InsertPet(Petname,Breed,Psize,birthDate,BinImage,Health_State,HaveVaccinated,sex:gender);
 
         }
+        public static void UpdatePet(string PID, string Petname, string Health_State, bool Vaccine)
+        {
+            DAL.PetServer.UpdatePet(PID, Petname, Health_State, Vaccine);
+        }
         public static void UpdatePet(string PID, string Petname, string Health_State, bool Vaccine,string avatar="")
         {
             DAL.PetServer.UpdatePet(PID, Petname, Health_State, Vaccine,avatar);

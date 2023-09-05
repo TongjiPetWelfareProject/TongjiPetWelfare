@@ -234,6 +234,45 @@ namespace PetFoster.DAL
         {
             return GetAttr(PID, "Health_State");
         }
+        public static void UpdatePet(string PID, string Petname, string Health_State, bool Vaccine)
+        {
+            Health_State = JsonHelper.TranslateToEn(Health_State, "health_state");
+            string vaccine = "";
+            if (Vaccine)
+                vaccine = Vaccine == true ? "Y" : "N";
+            // 更改信息
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "UPDATE pet SET pet_name=:pname,health_state=:hs," +
+                        " vaccine=:vc" + $" where pet_id='{PID}'";
+                    command.Parameters.Add("pname", OracleDbType.Varchar2, Petname, ParameterDirection.Input);
+                    command.Parameters.Add("hs", OracleDbType.Varchar2, Health_State, ParameterDirection.Input);
+                    command.Parameters.Add("vc", OracleDbType.Varchar2, vaccine, ParameterDirection.Input);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        Console.WriteLine($"宠物{PID}的阅读量+1!");
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+
+                        throw;
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
+            }
+        }
         public static void UpdatePet(string PID, string Petname, string Health_State, bool Vaccine,string avatar="")
         {
             Health_State = JsonHelper.TranslateToEn(Health_State, "health_state");
