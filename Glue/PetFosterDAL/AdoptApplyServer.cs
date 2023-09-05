@@ -230,7 +230,7 @@ namespace PetFoster.DAL
 
         public static DataTable GetAdoptPets(string user_id)
         {
-            string query = "select adopt_apply.pet_id,pet_name,TRUNC(MONTHS_BETWEEN(SYSDATE, birthdate) / 12) AS age" +
+            string query = "select adopt_apply.pet_id,pet_name,avatar,TRUNC(MONTHS_BETWEEN(SYSDATE, birthdate) / 12) AS age" +
                 $",sex,CASE WHEN CENSOR_STATE = 'invalid' THEN '无效' WHEN CENSOR_STATE = 'legitimate' " +
                 $"THEN '通过' WHEN CENSOR_STATE = 'to be censored' THEN '待审核' WHEN CENSOR_STATE = 'aborted' " +
                 $"then '未通过' end as censor_state from adopt_apply left join pet on pet.pet_id=adopt_apply.pet_id " +
