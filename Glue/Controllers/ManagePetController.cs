@@ -219,11 +219,15 @@ namespace Glue.Controllers
             {
                 // FileNames为上传的图片URL
                 List<string> FileNames = new List<string>();
-                if(pet.filename != null)
+                if (pet.filename != null)
                 {
                     FileNames = await _fileHelper.SaveImagesAsync(pet.filename);
+                    PetManager.UpdatePet(pet.id, pet.petname, pet.health, vaccine.Value, FileNames[0]);
                 }
-                PetManager.UpdatePet(pet.id, pet.petname, pet.health, vaccine.Value, FileNames[0]);
+                else
+                {
+                    PetManager.UpdatePet(pet.id, pet.petname, pet.health, vaccine.Value);
+                }
                 return Ok();
             }
             catch (Exception ex)
