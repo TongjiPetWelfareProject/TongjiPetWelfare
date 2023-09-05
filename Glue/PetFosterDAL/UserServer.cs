@@ -197,23 +197,21 @@ namespace PetFoster.DAL
         }
         public static User GetUserByTel(string Tel, string pwd, bool IsAdmin = false)
         {
-            bool con = false;
             User user1 = new User();
+
             using (OracleConnection connection = new OracleConnection(conStr))
             {
-                // 连接对象将在 using 块结束时自动关闭和释放资源
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT * FROM user2 WHERE Phone_Number = :tel";
+                command.Parameters.Add(new OracleParameter(":tel", Tel));
 
-                command.CommandText = $"select *from user2 where Phone_Number={Tel}";
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        // 访问每一行的数据
-                        // 其他列..
                         user1.User_ID = reader["User_ID"].ToString();
                         user1.User_Name = reader["User_Name"].ToString();
                         user1.Account_Status = reader["Account_Status"].ToString();
@@ -230,11 +228,11 @@ namespace PetFoster.DAL
                 {
                     Console.WriteLine(ex.Message);
                 }
-                connection.Close();
             }
 
             return user1;
         }
+
         public static string GetRole(string UID)
         {
             bool con = false;

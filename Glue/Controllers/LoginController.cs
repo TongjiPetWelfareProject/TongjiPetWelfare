@@ -56,10 +56,10 @@ namespace WebApplicationTest1
             string uid = loginModel.Username;
             string password = loginModel.Password;
             Console.WriteLine(uid + " " + password);
-            int exit = UserServer.CheckUserExistence(uid);
-            if(exit == -1) {
-                return Unauthorized(-3); //"用户不存在"
-            }
+            //int exit = UserServer.CheckUserExistence(uid);
+            //if(exit == -1) {
+            //    return Unauthorized(-3); //"用户不存在"
+            //}
             User candidate = UserManager.Login(uid, password);
             password = ComputeSHA256Hash(password);
             if (candidate.Password != password)

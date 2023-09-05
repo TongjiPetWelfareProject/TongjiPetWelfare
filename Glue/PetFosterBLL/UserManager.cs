@@ -64,7 +64,7 @@ namespace PetFoster.BLL
         {
             // 连接对象将在 using 块结束时自动关闭和释放资源
             // 在此块中执行数据操作
-            User Candidate = UserServer.GetUser(UID, Pwd);
+            User Candidate = UserServer.GetUserByTel(UID, Pwd);
             return Candidate;
         }
         public static User LoginByTel(string Tel, string Pwd)
