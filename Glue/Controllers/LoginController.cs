@@ -56,19 +56,23 @@ namespace WebApplicationTest1
             string uid = loginModel.Username;
             string password = loginModel.Password;
             Console.WriteLine(uid + " " + password);
+            int exit = UserServer.CheckUserExistence(uid);
+            if(exit == -1) {
+                return Unauthorized(-3); //"用户不存在"
+            }
             User candidate = UserManager.Login(uid, password);
             password = ComputeSHA256Hash(password);
             if (candidate.Password != password)
             {
-                return Unauthorized("密码错误，请重新输入");
+                return Unauthorized(-1);//"密码错误，请重新输入"
             }
             else if (candidate.Account_Status == "Banned")
             {
-                return Unauthorized("账号已被封禁，请等待解禁");
+                return Unauthorized(-2);//"账号已被封禁，请等待解禁"
             }
             else if (candidate.User_ID == "-1")
             {
-                return Unauthorized("用户不存在");
+                return Unauthorized(-3); //"用户不存在"
             }
             else
             {

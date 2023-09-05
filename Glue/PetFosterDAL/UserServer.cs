@@ -78,6 +78,45 @@ namespace PetFoster.DAL
 
             return user1;
         }
+        public static int CheckUserExistence(string UID)
+        {
+            using (OracleConnection connection = new OracleConnection(conStr))
+            {
+                connection.Open();
+                OracleCommand command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+
+                command.CommandText = "SELECT COUNT(*) FROM user2 WHERE User_ID = :user_id";
+                command.Parameters.Clear();
+                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
+
+                try
+                {
+                    int userCount = Convert.ToInt32(command.ExecuteScalar());
+
+                    if (userCount == 0)
+                    {
+                        // 用户不存在
+                        return -1;
+                    }
+                    else
+                    {
+                        // 用户存在
+                        return 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public static Profile GetStatistics(int UID, out int err)
         {
             bool con = false;
