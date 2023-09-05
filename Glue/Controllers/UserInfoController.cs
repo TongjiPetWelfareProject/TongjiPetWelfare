@@ -158,6 +158,7 @@ namespace WebApplicationTest1
         {
             DataTable collectpets = CollectPetInfoServer.GetCollectPetInfos(userinfoModel.user_id);
             string json = DataTableToJson(collectpets);
+            json = json.Replace("\\", "/");
             return Content(json, "application/json");
         }
         [HttpPost("userpostlike")]
@@ -179,6 +180,7 @@ namespace WebApplicationTest1
         {
             DataTable adoptedpets = AdoptApplyServer.GetAdoptPets(userinfoModel.user_id);
             string json = DataTableToJson(adoptedpets);
+            json = json.Replace("\\", "/");
             return Content(json, "application/json");
         }
         [HttpPost("userfosterpet")]
@@ -193,6 +195,7 @@ namespace WebApplicationTest1
         {
             DataTable collectpets = LikePetServer.GetLikePet(userinfoModel.user_id);
             string json = DataTableToJson(collectpets);
+            json = json.Replace("\\", "/");
             return Content(json, "application/json");
         }
         [HttpPost("userdonation")]
