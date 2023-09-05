@@ -83,27 +83,13 @@ namespace WebApplicationTest1
                         Phone_Number = candidate.Phone_Number,
                         Address = JsonHelper.TranslateBackToChinese(candidate.Address),
                         Role = candidate.Role,
-                        Account_Status = candidate.Account_Status
+                        Account_Status = candidate.Account_Status,
+                        Avatar = candidate.Avatar
                     }
                 };
                 string responseJson = JsonSerializer.Serialize(responseData);
                 return Ok(responseJson);
             }
-
-            
-}
-        // PUT api/<LoginController>/5
-        /*
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
         }
-
-        // DELETE api/<LoginController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-        */
     }
 }

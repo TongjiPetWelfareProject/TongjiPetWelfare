@@ -63,8 +63,7 @@ namespace PetFoster.DAL
                         user1.Password = reader["Password"].ToString();
                         user1.Phone_Number = reader["Phone_Number"].ToString();
                         user1.Role = reader["Role"].ToString();
-                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
-
+                        user1.Avatar = GetAvatar(reader["User_ID"].ToString());
                     }
                     if (user1.User_ID == "-1")
                         throw new Exception("不存在的用户，请注册新用户！");
@@ -146,8 +145,7 @@ namespace PetFoster.DAL
                         user1.Password = reader["Password"].ToString();
                         user1.Phone_Number = reader["Phone_Number"].ToString();
                         user1.Role = reader["Role"].ToString();
-                        // 执行你的逻辑操作，例如将数据存储到自定义对象中或进行其他处理
-
+                        user1.Avatar = GetAvatar(reader["User_ID"].ToString());
                     }
                     if (user1.User_ID == "-1")
                         throw new Exception("不存在的用户，请注册新用户！");
