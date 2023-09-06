@@ -18,23 +18,6 @@ namespace Glue.Controllers
             public string? comment_time { get; set; }
             public string? comment_contents { get; set; }
         }
-        /*
-        // GET: api/<CommentpetController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<CommentpetController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-        */
-
-        // POST api/<CommentpetController>
         [HttpPost]
         public IActionResult Post([FromBody] string value)
         {
@@ -72,19 +55,5 @@ namespace Glue.Controllers
 
             return Ok(jsondata);
         }
-
-        /*
-        // PUT api/<CommentpetController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<CommentpetController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-        */
     }
 }

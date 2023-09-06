@@ -136,19 +136,5 @@ namespace Glue.Controllers
                 return(StatusCode(500, ex.Message));
             }
         }
-
-        /*
-        // PUT api/<RoomController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<RoomController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-        */
     }
 }

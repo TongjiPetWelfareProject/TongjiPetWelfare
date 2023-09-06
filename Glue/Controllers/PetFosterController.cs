@@ -69,20 +69,5 @@ namespace Glue.Controllers
                 return Ok();
             }
         }
-
-        /*
-
-        // PUT api/<PetFoster>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PetFoster>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-        */
     }
 }

@@ -29,14 +29,6 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        /*
-        // GET api/<ManageTreatmentController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-        */
         public class MedicalRecord
         {
             public string? pet { get; set; }
@@ -75,7 +67,7 @@ namespace Glue.Controllers
             if(time.Value.DayOfWeek== DayOfWeek.Saturday||
                 time.Value.DayOfWeek==DayOfWeek.Sunday||
                 time.Value.Day-DateTime.Now.Day<0||
-                time.Value.Hour<8||time.Value.Hour>=17) {
+                DateTime.Now.Hour<8|| DateTime.Now.Hour >=17) {
                 return BadRequest("我们只在周一到周五8点到17点营业");
             }
             AppointmentManager.DoneTreatment(pid,vid,time.Value);
@@ -137,18 +129,5 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        /*
-        // PUT api/<ManageTreatmentController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ManageTreatmentController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-        */
     }
 }
