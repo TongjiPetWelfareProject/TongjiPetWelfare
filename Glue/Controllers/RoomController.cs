@@ -3,6 +3,8 @@ using PetFoster.BLL;
 using System.Data;
 using PetFoster.DAL;
 using System.Text.Json;
+using Newtonsoft.Json;
+using PetFoster.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -75,7 +77,7 @@ namespace Glue.Controllers
                     RecordList.Add(RoomItem);
                 }
 
-                jsondata = JsonSerializer.Serialize(RecordList);
+                jsondata = System.Text.Json.JsonSerializer.Serialize(RecordList);
                 // Console.WriteLine(jsondata);
 
             }
@@ -134,6 +136,31 @@ namespace Glue.Controllers
             catch(Exception ex)
             {
                 return(StatusCode(500, ex.Message));
+            }
+        }
+        [HttpGet("room-pet/{roomId}")]
+        public IActionResult Get(string roomId)
+        {
+            if (roomId == null)
+            {
+                return BadRequest("Empty RoomId.");
+            }
+            if (!parseRoomId(roomId, out (short, short) parsed_result))
+            {
+                return BadRequest("不正确的房间号格式");
+            }
+            short storey = parsed_result.Item1;
+            short compartment = parsed_result.Item2;
+            try
+            {
+                int PID=RoomServer.GetPet(storey, compartment);
+                string json=Newtonsoft.Json.JsonConvert.SerializeObject(PID);
+                // 打扫
+                return Ok(PID);
+            }
+            catch (Exception ex)
+            {
+                return (StatusCode(500, ex.Message));
             }
         }
     }

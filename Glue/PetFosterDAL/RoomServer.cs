@@ -140,5 +140,12 @@ namespace PetFoster.DAL
                 connection.Close();
             }
         }
+
+        internal static int GetPet(short storey, short compartment)
+        {
+            string query = "select pet_id from accommodate where" +
+                $" storey={storey} and compartment={compartment}";
+            return DBHelper.GetScalarInt(query);
+        }
     }
 }
