@@ -71,6 +71,11 @@ namespace WebApplicationTest1
         [HttpPost("editinfo")]
         public IActionResult EditUserInfo([FromBody] UserInfoModel userinfoModel)
         {
+            int exit = UserServer.CheckUserPhoneExistence(userinfoModel.phone);
+            if (exit == 1)
+            {
+                return BadRequest("该手机号已被使用");
+            }
             try
             {
                 UserServer.UpdateUser2(userinfoModel.user_id, userinfoModel.user_name,
