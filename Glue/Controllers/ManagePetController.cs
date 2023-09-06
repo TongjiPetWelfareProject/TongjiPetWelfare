@@ -162,6 +162,19 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid Vaccine Status.");
             }
+            string sex;
+            if (pet.sex == "公" || pet.sex == "男")
+            {
+                sex = "男";
+            }
+            else if (pet.sex == "母" || pet.sex == "女")
+            {
+                sex = "女";
+            }
+            else
+            {
+                return BadRequest("Invalid Sex.");
+            }
             /*
             if (!ConvertTools.ConvertHourStringToDouble(employee.workingHours, out double hours))
             {
@@ -169,7 +182,7 @@ namespace Glue.Controllers
             }*/
             try
             {
-                PetManager.RegisterPet(pet.petname, pet.breed, pet.size, pet.age, null, health, vaccine);
+                PetManager.RegisterPet(pet.petname, pet.breed, pet.size, pet.age, null, health, vaccine, sex);
                 return Ok();
             }
             catch (Exception ex)
