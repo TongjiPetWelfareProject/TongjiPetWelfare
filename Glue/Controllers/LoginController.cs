@@ -10,6 +10,9 @@ using PetFoster.Model;
 using System.Text.Json;
 using System.Text;
 using System.Security.Cryptography;
+using System.Security.Claims;
+using Glue.Controllers;
+
 namespace WebApplicationTest1
 {
 
@@ -17,6 +20,13 @@ namespace WebApplicationTest1
     [ApiController]
     public class LoginController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
+        private readonly TokenHelper _tokenHelper;
+        public LoginController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            _tokenHelper = new TokenHelper(_configuration["Jwt:SecretKey"]);
+        }
         public class LoginModel
         {
             public string Username { get; set; }
@@ -76,11 +86,14 @@ namespace WebApplicationTest1
             }
             else
             {
+                //用户身份验证成功，生成JWT令牌
+                string tokenString = _tokenHelper.GenerateToken(candidate.User_ID);
 
                 var responseData = new
                 {
                     data = new
                     {
+                        token = tokenString,
                         User_ID = candidate.User_ID,
                         User_Name = candidate.User_Name,
                         Password = candidate.Password,
