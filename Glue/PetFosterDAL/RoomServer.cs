@@ -114,7 +114,7 @@ namespace PetFoster.DAL
                 Random random = new Random();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select * from room where room_status='N'"; 
+                command.CommandText = "select * from room where room_status='Y'"; 
                 try
                 {
                     OracleDataReader reader = command.ExecuteReader();
@@ -138,6 +138,48 @@ namespace PetFoster.DAL
                     throw;
                 }
                 connection.Close();
+            }
+        }
+
+        internal static int GetPet(short storey, short compartment)
+        {
+            string query = "select pet_id from accommodate where" +
+                $" storey={storey} and compartment={compartment}";
+            return DBHelper.GetScalarInt(query);
+        }
+
+        internal static void OccupyRoom(short storey, short compartment, string v)
+        {
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(conStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "UPDATE room SET room_status=:occupied " +
+                        "where compartment=:compartment and storey=:storey";
+                        command.Parameters.Clear();
+                    command.Parameters.Add("occupied", OracleDbType.Varchar2, v, ParameterDirection.Input);
+                    command.Parameters.Add("compartment", OracleDbType.Int32, compartment, ParameterDirection.Input);
+                    command.Parameters.Add("storey", OracleDbType.Int32, storey, ParameterDirection.Input);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine("错误码" + ex.ErrorCode.ToString());
+                        connection.Close();
+                        throw;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // 处理异常
+                Console.WriteLine(ex.ToString());
             }
         }
     }

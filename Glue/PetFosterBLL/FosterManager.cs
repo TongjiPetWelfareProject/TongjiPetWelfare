@@ -132,7 +132,7 @@ namespace PetFoster.BLL
                     Censorship(UID, PID, dateTime, 5);
                     return 3;//房间分配已满
                 }
-                RoomServer.UpdateRoom(storey, compartment, false, "Y");
+                RoomServer.OccupyRoom(storey, compartment,"N");
                 //4. 在accommodate中登记入住
                 AccommodateServer.InsertAccommodate(UID, PID.ToString(), storey, compartment);
             }

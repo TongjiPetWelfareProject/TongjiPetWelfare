@@ -66,8 +66,13 @@ namespace PetFoster.DAL
                 command.CommandText = query;
                 try
                 {
-                    string val = command.ExecuteScalar().ToString();
-                    int petname = Convert.ToInt32(command.ExecuteScalar().ToString());
+                    Object? oval = command.ExecuteScalar();
+                    string val;
+                    if (oval == null)
+                        val = "-1";
+                    else
+                        val = oval.ToString();
+                    int petname = Convert.ToInt32(val);
                     connection.Close();
                     return petname;
                 }
