@@ -66,9 +66,8 @@ namespace Glue.Controllers
             // 调试
             if(time.Value.DayOfWeek== DayOfWeek.Saturday||
                 time.Value.DayOfWeek==DayOfWeek.Sunday||
-                time.Value.Day-DateTime.Now.Day<0||
-                DateTime.Now.Hour<8|| DateTime.Now.Hour >=17) {
-                return BadRequest("我们只在周一到周五8点到17点营业");
+                time.Value.Subtract(DateTime.Now).Days>0) {
+                return BadRequest("我们只在周一到周五营业");
             }
             AppointmentManager.DoneTreatment(pid,vid,time.Value);
             try
@@ -113,11 +112,11 @@ namespace Glue.Controllers
                 return BadRequest("postponeTime: Invalid DateTime Format.");
             }
             // 调试
-            if (origin_time.Value.Day - postpone_time.Value.Day > 0 ||
-                origin_time.Value.Day - postpone_time.Value.Day < -7 ||
+            if (DateTime.Compare(origin_time.Value,postpone_time.Value) > 0 ||
+                origin_time.Value.Subtract(postpone_time.Value).Days < -14 ||
                 postpone_time.Value.DayOfWeek == DayOfWeek.Saturday ||
                 postpone_time.Value.DayOfWeek == DayOfWeek.Sunday)
-                return BadRequest("请在一周内的工作日延迟预约");
+                return BadRequest("请在两周内的工作日延迟预约");
             AppointmentServer.UpdateAppointment(vid, pid,origin_time.Value,postpone_time.Value);
             try
             {

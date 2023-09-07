@@ -48,11 +48,10 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "update appointment set custom_time=:dt1" +
-                        $" where pet_id={pid} and vet_id={vid} and treat_time=:dt2";
+                    command.CommandText = "update appointment set treat_time=CURRENT_TIMESTAMP" +
+                        $" where pet_id='{pid}' and vet_id='{vid}' and custom_time=:dt1";
                     command.Parameters.Clear();
                     command.Parameters.Add("dt1", OracleDbType.TimeStamp, dt, ParameterDirection.Input);
-                    command.Parameters.Add("dt2", OracleDbType.TimeStamp, DateTime.Now, ParameterDirection.Input);
 
                     try
                     {
