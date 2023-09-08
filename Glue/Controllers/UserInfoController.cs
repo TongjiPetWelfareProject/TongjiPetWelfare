@@ -76,7 +76,7 @@ namespace WebApplicationTest1
 
             if (exit == 1)
             {
-                if (status.User_ID == userinfoModel.phone)
+                if (status.User_ID == userinfoModel.user_id)
                 {
                     try
                     {
