@@ -166,11 +166,8 @@ namespace PetFoster.DAL
                     command.CommandType = CommandType.Text;
                     string account_status = "In Good Standing";
                     command.CommandText = "INSERT INTO appointment (user_id,pet_id,vet_id,reason,custom_time ) " +
-                        $"VALUES (:UID,:PID,:VID,:reason,:dt)";
+                        $"VALUES ({UID},{PID},{VID},:reason,:dt)";
                     command.Parameters.Clear();
-                    command.Parameters.Add("UID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                    command.Parameters.Add("PID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
-                    command.Parameters.Add("VID", OracleDbType.Varchar2, VID, ParameterDirection.Input);
                     command.Parameters.Add("reason", OracleDbType.Varchar2, reason, ParameterDirection.Input);
                     command.Parameters.Add("dt", OracleDbType.TimeStamp, dt, ParameterDirection.Input);
                     try
