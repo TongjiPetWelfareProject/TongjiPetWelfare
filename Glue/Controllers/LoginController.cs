@@ -25,7 +25,7 @@ namespace WebApplicationTest1
         public LoginController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _tokenHelper = new TokenHelper(_configuration["Jwt:SecretKey"]);
+            _tokenHelper = new TokenHelper(configuration);
         }
         public class LoginModel
         {
