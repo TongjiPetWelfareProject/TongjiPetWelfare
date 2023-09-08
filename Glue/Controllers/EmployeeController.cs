@@ -98,6 +98,12 @@ namespace Glue.Controllers
             {
                 return BadRequest("Invalid Working Hours Format.");
             }*/
+            int exit = UserServer.CheckUserPhoneExistence(employee.phone);
+
+            if (exit == 1)
+            {
+                return BadRequest("该手机号已被使用");
+            }
             try
             {
                 EmployeeManager.RecruitEmployee(employee.name, (decimal)salary, employee.phone,
