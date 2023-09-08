@@ -3,6 +3,7 @@ using PetFoster.BLL;
 using PetFoster.DAL;
 using System.Data;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -91,6 +92,7 @@ namespace Glue.Controllers
         */
 
         // POST api/<MedicalController>
+        [Authorize]
         [HttpPost("submitAppointment")]
         public IActionResult Post([FromBody] AppointmentData appointment_data)
         {

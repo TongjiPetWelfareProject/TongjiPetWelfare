@@ -14,6 +14,7 @@ using System.Numerics;
 using Glue.PetFoster.Model;
 using static Glue.Controllers.RegisterController;
 using System.Net.NetworkInformation;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Glue.Controllers
 {
@@ -61,6 +62,7 @@ namespace Glue.Controllers
             public string? post_content { get; set; }
             public List<IFormFile>? filename { get; set; }
         }
+        [Authorize]
         [HttpPost("postcontent")]
         public async Task<IActionResult> PostContent([FromForm] PostRequestModel postModel)
         {
@@ -115,7 +117,7 @@ namespace Glue.Controllers
             Console.WriteLine("收到帖子评论列表请求：" + postModel.post_id);
             return Ok(AllComment);
         }
-
+        [Authorize]
         [HttpPost("addcomment")]
         public IActionResult AddComment([FromBody] PostModel postModel)
         {
@@ -128,6 +130,7 @@ namespace Glue.Controllers
                 return Ok("评论成功");
             return BadRequest(-1);
         }
+        [Authorize]
         [HttpPost("likepost")]
         public IActionResult LikePost([FromBody] PostModel postModel)
         {
@@ -142,6 +145,7 @@ namespace Glue.Controllers
             int status = LikePostManager.IfLike(postModel.user_id, postModel.post_id);
             return Ok(status);
         }
+        [Authorize]
         [HttpPost("deletecomment")]
         public IActionResult DeleteComment([FromBody] PostModel postModel)
         {
@@ -149,6 +153,7 @@ namespace Glue.Controllers
             CommentPostManager.UndoACommentPost(postModel.user_id, postModel.post_id,postModel.comment_time);
             return Ok();
         }
+        [Authorize]
         [HttpPost("deletepost")]
         public IActionResult DeletePost([FromBody] PostModel postModel)
         {

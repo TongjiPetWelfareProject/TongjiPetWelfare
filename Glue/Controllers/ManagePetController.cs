@@ -3,6 +3,7 @@ using PetFoster.BLL;
 using PetFoster.DAL;
 using System.Data;
 using System.Data.Common;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,6 +19,7 @@ namespace Glue.Controllers
             _fileHelper = fileHelper;
         }
         // GET: api/<ManagePetController>
+        [Authorize(Policy = "AdminOnly")]
         [HttpGet("petlist")]
         public IActionResult Get()
         {
@@ -113,6 +115,7 @@ namespace Glue.Controllers
         }
 
         // POST api/<ManagePetController>
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost("add-pet")]
         public IActionResult AddPet([FromBody] PetModel pet)
         {
@@ -192,6 +195,7 @@ namespace Glue.Controllers
         }
 
         // POST api/<ManagePetController>/5
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost("edited-pet")]
         public async Task<IActionResult> Post([FromForm] PetModelWithImgs pet)
         {
@@ -252,6 +256,7 @@ namespace Glue.Controllers
         {
             public string? pid { get; set; }
         }
+        [Authorize(Policy = "AdminOnly")]
         [HttpDelete("delete-pet")]
         public IActionResult Delete([FromBody] DeletePetRequest request)
         {
