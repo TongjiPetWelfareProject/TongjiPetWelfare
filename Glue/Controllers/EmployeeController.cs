@@ -3,6 +3,7 @@ using PetFoster.BLL;
 using PetFoster.DAL;
 using PetFoster.Model;
 using System.Data;
+using static WebApplicationTest1.UserInfoController;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -149,6 +150,33 @@ namespace Glue.Controllers
                 return BadRequest("Invalid Working Hours Format.");
             }
             */
+            int exit = UserServer.CheckUserPhoneExistence(employee.phone);
+            User status = UserServer.GetUserByTel(employee.phone);
+
+            if (exit == 1)
+            {
+                if (status.User_ID == employee.id)
+                {
+                    try
+                    {
+                        try
+                        {
+                            EmployeeManager.UpdateEmployee(employee.id, employee.name, salary,
+                                employee.phone, employee.responsibility, employee.workingHours);
+                            return Ok();
+                        }
+                        catch (Exception ex)
+                        {
+                            return StatusCode(500, ex.Message);
+                        }
+                    }
+                    catch
+                    {
+                        return BadRequest("更改个人信息失败！");
+                    }
+                }
+                return BadRequest("该手机号已被使用");
+            }
             try
             {
                 EmployeeManager.UpdateEmployee(employee.id, employee.name, salary,
