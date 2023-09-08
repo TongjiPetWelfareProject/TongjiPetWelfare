@@ -64,7 +64,7 @@ namespace PetFoster.BLL
         {
             // 连接对象将在 using 块结束时自动关闭和释放资源
             // 在此块中执行数据操作
-            User Candidate = UserServer.GetUserByTel(UID, Pwd);
+            User Candidate = UserServer.GetUserByTel(UID);
             return Candidate;
         }
         public static User LoginByTel(string Tel, string Pwd)
@@ -74,7 +74,7 @@ namespace PetFoster.BLL
         }
         private static bool ValidatePhoneNumber(string phoneNumber)
         {
-            string pattern = @"^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9]|98|99)\s\d{4}\s\d{4}$";
+            string pattern = @"^1\d{2}\s\d{4}\s\d{4}$";
             bool isValid = Regex.IsMatch(phoneNumber, pattern);
             return isValid;
         }

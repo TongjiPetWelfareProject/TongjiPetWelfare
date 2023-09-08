@@ -48,11 +48,10 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "update appointment set custom_time=:dt1" +
-                        $" where pet_id={pid} and vet_id={vid} and treat_time=:dt2";
+                    command.CommandText = "update appointment set treat_time=CURRENT_TIMESTAMP" +
+                        $" where pet_id='{pid}' and vet_id='{vid}' and custom_time=:dt1";
                     command.Parameters.Clear();
                     command.Parameters.Add("dt1", OracleDbType.TimeStamp, dt, ParameterDirection.Input);
-                    command.Parameters.Add("dt2", OracleDbType.TimeStamp, DateTime.Now, ParameterDirection.Input);
 
                     try
                     {
@@ -167,11 +166,8 @@ namespace PetFoster.DAL
                     command.CommandType = CommandType.Text;
                     string account_status = "In Good Standing";
                     command.CommandText = "INSERT INTO appointment (user_id,pet_id,vet_id,reason,custom_time ) " +
-                        $"VALUES (:UID,:PID,:VID,:reason,:dt)";
+                        $"VALUES ({UID},{PID},{VID},:reason,:dt)";
                     command.Parameters.Clear();
-                    command.Parameters.Add("UID", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                    command.Parameters.Add("PID", OracleDbType.Varchar2, PID, ParameterDirection.Input);
-                    command.Parameters.Add("VID", OracleDbType.Varchar2, VID, ParameterDirection.Input);
                     command.Parameters.Add("reason", OracleDbType.Varchar2, reason, ParameterDirection.Input);
                     command.Parameters.Add("dt", OracleDbType.TimeStamp, dt, ParameterDirection.Input);
                     try
