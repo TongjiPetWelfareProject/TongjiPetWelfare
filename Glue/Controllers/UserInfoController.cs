@@ -72,21 +72,35 @@ namespace WebApplicationTest1
         public IActionResult EditUserInfo([FromBody] UserInfoModel userinfoModel)
         {
             int exit = UserServer.CheckUserPhoneExistence(userinfoModel.phone);
+            User status = UserServer.GetUserByTel(userinfoModel.phone);
+
             if (exit == 1)
             {
+                if (status.User_ID == userinfoModel.phone)
+                {
+                    try
+                    {
+                        UserServer.UpdateUser2(userinfoModel.user_id, userinfoModel.user_name,
+                            userinfoModel.phone, userinfoModel.city + "," + userinfoModel.province);
+                        return Ok();
+                    }
+                    catch
+                    {
+                        return BadRequest("更改个人信息失败！");
+                    }
+                }
                 return BadRequest("该手机号已被使用");
             }
             try
             {
                 UserServer.UpdateUser2(userinfoModel.user_id, userinfoModel.user_name,
-                    userinfoModel.phone, userinfoModel.city+","+userinfoModel.province );
+                    userinfoModel.phone, userinfoModel.city + "," + userinfoModel.province);
                 return Ok();
             }
             catch
             {
                 return BadRequest("更改个人信息失败！");
             }
-            
         }
         [HttpPost("editpassword")]
         public IActionResult EditUserPassword([FromBody] UserInfoModel userinfoModel)

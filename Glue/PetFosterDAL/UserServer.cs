@@ -195,7 +195,7 @@ namespace PetFoster.DAL
 
             return profile;
         }
-        public static User GetUserByTel(string Tel, string pwd, bool IsAdmin = false)
+        public static User GetUserByTel(string Tel)
         {
             User user1 = new User();
 
