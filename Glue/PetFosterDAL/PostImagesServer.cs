@@ -30,8 +30,8 @@ namespace PetFoster.DAL
                     connection.Open();
                     OracleCommand command = connection.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT INTO post_images (image_id,post_id,image_path) " +
-                        $"VALUES (img_id_seq.NEXTVAL,:post_id,:image_data)"
+                    command.CommandText = "INSERT INTO post_images (post_id,image_path) " +
+                        $"VALUES (:post_id,:image_data)"
                         ;
                     command.Parameters.Clear();
                     command.Parameters.Add("post_id", OracleDbType.Varchar2, FID, ParameterDirection.Input);
@@ -39,9 +39,7 @@ namespace PetFoster.DAL
                     try
                     {
                         command.ExecuteNonQuery();
-                        command.CommandText = "SELECT img_id_seq.CURRVAL FROM DUAL";
-                        int ImgId = Convert.ToInt32(command.ExecuteScalar());
-                        return ImgId;
+                        return 0;
                     }
                     catch (OracleException ex)
                     {
