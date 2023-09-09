@@ -4,7 +4,6 @@ using System.Data;
 using System.Text.Json;
 using PetFoster.DAL;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Authorization;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Glue.Controllers
@@ -36,7 +35,6 @@ namespace Glue.Controllers
         }
 
         // GET: api/<ManageAdoptController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpGet("manage-adopt")]
         public IActionResult Get()
         {
@@ -100,7 +98,6 @@ namespace Glue.Controllers
         }
 
         // PATCH: api/<ManageAdoptController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpPatch("manage-adopt-update")]
         public IActionResult UpdateAdoptRecord([FromBody] AdoptionRecord record)
         {

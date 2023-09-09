@@ -3,7 +3,6 @@ using PetFoster.BLL;
 using PetFoster.DAL;
 using PetFoster.Model;
 using System.Data;
-using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -43,7 +42,6 @@ namespace Glue.Controllers
         }
 
         // GET: api/<DoctorController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpGet("doctor")]
         public IActionResult Get()
         {
@@ -58,7 +56,6 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("add-doctor")]
         public IActionResult AddEmployee([FromBody] Doctor vet)
         {
@@ -106,7 +103,6 @@ namespace Glue.Controllers
         }
         */
         // PUT api/<DoctorController>/5
-        [Authorize(Policy = "AdminOnly")]
         [HttpPut("edit-doctor/{doctorId}")]
         public IActionResult Put(int doctorId, [FromBody] Doctor vet)
         {
@@ -141,9 +137,8 @@ namespace Glue.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
+        
         // DELETE api/<DoctorController>/5
-        [Authorize(Policy = "AdminOnly")]
         [HttpDelete("delete-doctor/{id}")]
         public IActionResult Delete(int id)
         {

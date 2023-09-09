@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetFoster.BLL;
 using static Glue.Controllers.RegisterController;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Glue.Controllers
 {
@@ -20,7 +19,7 @@ namespace Glue.Controllers
                 Amount = 0;
             }
         }
-        [Authorize]
+
         [HttpPost]
         public IActionResult Donate([FromBody] DonateModel donateModel)
         {

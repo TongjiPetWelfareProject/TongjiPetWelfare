@@ -5,7 +5,6 @@ using PetFoster.DAL;
 using System.Text.Json;
 using Newtonsoft.Json;
 using PetFoster.Model;
-using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,9 +26,8 @@ namespace Glue.Controllers
         {
             public string? roomId { get; set; }
         }
-
+        
         // GET: api/<RoomController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpGet("room")]
         public IActionResult Get()
         {
@@ -116,7 +114,6 @@ namespace Glue.Controllers
         }
 
         // POST api/<RoomController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("send-room")]
         public IActionResult Post([FromBody] Room RoomData)
         {
@@ -141,7 +138,6 @@ namespace Glue.Controllers
                 return(StatusCode(500, ex.Message));
             }
         }
-        [Authorize(Policy = "AdminOnly")]
         [HttpGet("room-pet/{roomId}")]
         public IActionResult Get(string roomId)
         {

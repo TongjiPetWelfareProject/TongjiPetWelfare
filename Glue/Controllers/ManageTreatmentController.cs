@@ -2,7 +2,6 @@
 using PetFoster.BLL;
 using PetFoster.DAL;
 using System.Data;
-using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,7 +12,6 @@ namespace Glue.Controllers
     public class ManageTreatmentController : ControllerBase
     {
         // GET: api/<ManageTreatmentController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpGet("treatlist")]
         public IActionResult GetTreatList()
         {
@@ -43,7 +41,6 @@ namespace Glue.Controllers
         }
         // POST api/<ManageTreatmentController>
         // 完成医疗
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("approve-medical-application")]
         public IActionResult PostApprove([FromBody] MedicalRecord record)
         {
@@ -86,7 +83,6 @@ namespace Glue.Controllers
 
         // POST api/<ManageTreatmentController>
         // 延期
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("postpone-medical-application")]
         public IActionResult PostPostpone([FromBody] PostPoneRecord record)
         {

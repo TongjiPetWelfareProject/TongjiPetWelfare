@@ -3,7 +3,6 @@ using PetFoster.BLL;
 using PetFoster.DAL;
 using System.Data;
 using System.Text.Json;
-using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,7 +26,6 @@ namespace Glue.Controllers
             }
         }
         // GET: api/<AdminCensorController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpGet("check")]
         public IActionResult Get()
         {
@@ -99,7 +97,6 @@ namespace Glue.Controllers
         }
         */
         // PATCH api/<AdminCensorController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpPatch("check-info-update")]
         public IActionResult Patch([FromBody] PostModel PostData)
         {

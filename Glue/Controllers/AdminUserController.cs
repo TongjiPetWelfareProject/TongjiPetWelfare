@@ -3,7 +3,6 @@ using PetFoster.BLL;
 using PetFoster.DAL;
 using System.Data;
 using System.Text.Json;
-using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,9 +20,8 @@ namespace Glue.Controllers
             public string? address { get; set; }
             public string? account_status { get; set; }
         }
-
+        
         // GET: api/<AdminUserController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpGet("tableuser")]
         public IActionResult Get()
         {
@@ -100,14 +98,12 @@ namespace Glue.Controllers
         }
 
         // POST api/<AdminUserController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("block")] // 封号
         public IActionResult PostBlock([FromBody] string id)
         {
             return _ChangeUserStatus(id, "Banned");
         }
         // POST api/<AdminUserController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("ban")] // 禁言
         public IActionResult PostBan([FromBody] string id)
         {
@@ -115,7 +111,6 @@ namespace Glue.Controllers
                 return Ok();
             return _ChangeUserStatus(id, "Under Review");
         }
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("remove-block")]
         [HttpPost("remove-ban")] // 解除禁言/解除封号，逻辑由UserManager.Ban实现，故在这里共用同一函数
         public IActionResult PostRemoveBan([FromBody] string id)

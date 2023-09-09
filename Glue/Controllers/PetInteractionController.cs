@@ -3,7 +3,6 @@ using PetFoster.BLL;
 using PetFoster.DAL;
 using System.Data;
 using System.Globalization;
-using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -118,7 +117,6 @@ namespace Glue.Controllers
         }
 
         // POST api/<PetInteractionController>
-        [Authorize]
         [HttpPost("pet-submit-like")]
         public IActionResult PostLike([FromBody] InteractionData like_data)
         {
@@ -145,7 +143,6 @@ namespace Glue.Controllers
             }
         }
         // POST api/<PetInteractionController>
-        [Authorize]
         [HttpPost("pet-cancel-like")]
         public IActionResult PostUndoLike([FromBody] InteractionData like_data)
         {
@@ -172,7 +169,6 @@ namespace Glue.Controllers
             }
         }
         // POST api/<PetInteractionController>
-        [Authorize]
         [HttpPost("pet-submit-favorite")]
         public IActionResult PostFavorite([FromBody] InteractionData favorite_data)
         {
@@ -199,7 +195,6 @@ namespace Glue.Controllers
             }
         }
         // POST api/<PetInteractionController>
-        [Authorize]
         [HttpPost("pet-cancel-favorite")]
         public IActionResult PostUndoFavorite([FromBody] InteractionData favorite_data)
         {
@@ -226,7 +221,6 @@ namespace Glue.Controllers
             }
         }
         // POST api/<PetInteractionController>
-        [Authorize]
         [HttpPost("pet-submit-comment")]
         public IActionResult PostComment([FromBody] CommentData comment_data)
         {
@@ -253,7 +247,6 @@ namespace Glue.Controllers
             }
         }
         // POST api/<PetInteractionController>
-        [Authorize]
         [HttpPost("pet-delete-comment")]
         public IActionResult PostUndoComment([FromBody] CommentData comment_data)
         {

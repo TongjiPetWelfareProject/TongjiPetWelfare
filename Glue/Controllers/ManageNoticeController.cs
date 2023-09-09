@@ -10,7 +10,6 @@ using System.Text;
 using System.Security.Cryptography;
 using System;
 using System.Numerics;
-using Microsoft.AspNetCore.Authorization;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Glue.Controllers
@@ -112,7 +111,6 @@ namespace Glue.Controllers
         }*/
 
         // 发送新公告
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("send-notice")]
         public IActionResult sendNewNotice([FromBody] NoticeModel notice)
         {
@@ -163,7 +161,6 @@ namespace Glue.Controllers
         }*/
         
         // 发送编辑过的公告
-        [Authorize(Policy = "AdminOnly")]
         [HttpPost("send-edited-notice")]
         public IActionResult sendEditedNotice([FromBody] NoticeModel notice)
         {
@@ -198,7 +195,6 @@ namespace Glue.Controllers
         }
 
         // 删除公告
-        [Authorize(Policy = "AdminOnly")]
         [HttpDelete("delete-notice/{noticeId}")]
         public IActionResult deleteNotice(int noticeId)
         {

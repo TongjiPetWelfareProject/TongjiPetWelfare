@@ -3,7 +3,6 @@ using System;
 using System.Globalization;
 using PetFoster.BLL;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -43,7 +42,6 @@ namespace Glue.Controllers
         */
 
         // POST api/<PetFoster>
-        [Authorize]
         [HttpPost("pet-foster")]
         public IActionResult FosterApply([FromBody] FosterData foster_table)
         {

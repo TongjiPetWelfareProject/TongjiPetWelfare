@@ -4,7 +4,6 @@ using PetFoster.DAL;
 using System.Data;
 using System.Text.Json;
 //using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -46,7 +45,7 @@ namespace Glue.Controllers
         }
 
         // GET: api/<ManageFosterController>
-        [Authorize(Policy = "AdminOnly")]
+        
         [HttpGet("manage-foster")]
         public IActionResult Get()
         {
@@ -109,9 +108,8 @@ namespace Glue.Controllers
             }
             return Ok(jsondata);
         }
-
+        
         // PATCH: api/<ManageFosterController>
-        [Authorize(Policy = "AdminOnly")]
         [HttpPatch("manage-foster-update")]
         public IActionResult UpdateFosterRecord([FromBody] FosterRecord record)
         {

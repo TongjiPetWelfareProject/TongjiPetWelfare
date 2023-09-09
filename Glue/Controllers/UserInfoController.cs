@@ -12,7 +12,6 @@ using System.Text;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
 using Glue.Controllers;
-using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplicationTest1
 {
@@ -69,7 +68,6 @@ namespace WebApplicationTest1
                 return stringBuilder.ToString();
             }
         }
-        [Authorize]
         [HttpPost("editinfo")]
         public IActionResult EditUserInfo([FromBody] UserInfoModel userinfoModel)
         {
@@ -104,7 +102,6 @@ namespace WebApplicationTest1
                 return BadRequest("更改个人信息失败！");
             }
         }
-        [Authorize]
         [HttpPost("editpassword")]
         public IActionResult EditUserPassword([FromBody] UserInfoModel userinfoModel)
         {
@@ -127,7 +124,6 @@ namespace WebApplicationTest1
             public string user_id { get; set; }
             public List<IFormFile>? filename { get; set; }
         }
-        [Authorize]
         [HttpPost("editavatar")]
         public async Task<IActionResult> EditUserAvatar([FromForm] AvatarRequestModel avatarRequest)
         {
@@ -142,7 +138,6 @@ namespace WebApplicationTest1
                 return BadRequest("更改头像失败！");
             }
         }
-        [Authorize]
         [HttpPost("userinfo")]
         public IActionResult GetUserInfo([FromBody] UserInfoModel userinfoModel)
         {
@@ -229,7 +224,6 @@ namespace WebApplicationTest1
             string json = DataTableToJson(donation);
             return Content(json, "application/json");
         }
-        [Authorize]
         [HttpPost("usermedical")]
         public IActionResult GetUserMedical([FromBody] UserInfoModel userinfoModel)
         {
