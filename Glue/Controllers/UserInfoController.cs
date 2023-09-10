@@ -192,6 +192,7 @@ namespace WebApplicationTest1
         {
             DataTable collectpets = CommentPetServer.GetCommentPets(userinfoModel.user_id);
             string json = DataTableToJson(collectpets);
+            json=json.Replace("\n", "").Replace("\r", "");
             return Content(json, "application/json");
         }
         [HttpPost("useradoptpet")]

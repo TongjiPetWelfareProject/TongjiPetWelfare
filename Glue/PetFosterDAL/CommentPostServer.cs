@@ -168,7 +168,7 @@ namespace PetFoster.DAL
                             UID = reader["user_id"].ToString(),
                             Avatar = UserServer.GetAvatar(reader["user_id"].ToString()),
                             Comment_Time = Convert.ToDateTime(reader["comment_time"]),
-                            Content = reader["comment_contents"].ToString(),
+                            Content = reader["comment_contents"].ToString().Replace("\n","").Replace("\r",""),
                             User_Name = UserServer.GetName(reader["user_id"].ToString()),
                             Post_Title = ForumPostServer.PIDtoPostTitle(inPID)
                         };
@@ -203,7 +203,7 @@ namespace PetFoster.DAL
                             UID = reader["user_id"].ToString(),
                             Avatar = UserServer.GetAvatar(reader["user_id"].ToString()),
                             Comment_Time = Convert.ToDateTime(reader["comment_time"]),
-                            Content = reader["comment_contents"].ToString().Replace("\n","").Replace("\r",""),
+                            Content = reader["comment_contents"].ToString().Replace("\n"," ").Replace("\r"," "),
                             Post_Title = ForumPostServer.PIDtoPostTitle(reader["post_id"].ToString())
                         };
                         postcomments.Add(comment);

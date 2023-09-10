@@ -383,29 +383,10 @@ namespace PetFoster.DAL
         }
         public static int GetTotalLikes(string UID)
         {
-            int totalLikes = 0;
-            using (OracleConnection connection = new OracleConnection(conStr))
-            {
-                connection.Open();
-                OracleCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = "select sum(unit_nums) from (select post_id,sum(comment_numpost_func(post_id))" +
-                    " as unit_nums from forum_posts where user_id=:user_id group by post_id);";
-                command.Parameters.Clear();
-                command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
-                try
-                {
-                    object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
-                    {
-                        totalLikes = Convert.ToInt32(result);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
+
+            string query = $"select sum(unit_nums) from (select sum(like_numpost_func(post_id))" +
+                    $" as unit_nums from forum_posts where user_id='{UID}')";
+            int totalLikes=DBHelper.GetScalarInt(query);
             return totalLikes;
         }
         public static int GetTotalReadCount(string UID)
