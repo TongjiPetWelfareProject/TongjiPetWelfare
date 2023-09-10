@@ -36,6 +36,7 @@ namespace Glue.Controllers
             DataTable dt = AdoptManager.ShowPetProfile();
             string json = DataTableToJson(dt);
             json=json.Replace("\\", "//").Replace("\\", "/");
+            json = json.Replace("\n", "").Replace("\r", "");
             return Content(json, "application/json");
         }
 
@@ -106,6 +107,7 @@ namespace Glue.Controllers
                     string jsondata = Newtonsoft.Json.JsonConvert.SerializeObject(pet);
                     PetServer.ReadPet(pet.original_pet.Pet_ID);
                     Console.WriteLine($"{pet.original_pet.Pet_Name}的阅读量+1!");
+                    jsondata = jsondata.Replace("\n", "").Replace("\r", "");
                     return Ok(jsondata);
                 }
                 catch (Exception ex)

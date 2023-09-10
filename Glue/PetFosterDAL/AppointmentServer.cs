@@ -107,7 +107,8 @@ namespace PetFoster.DAL
             //    " left join pet on pet.pet_id=appointment.pet_id left join vet on vet.vet_id=appointment.vet_id";
             string query = "SELECT appointment.pet_id as pet_id, appointment.vet_id as vet_id,pet_name,vet_name,custom_time as reserve_time," +
                 " treat_Time,  reason as category ,case when treat_time is null then '申请' else '记录' end as tag FROM appointment" +
-                " left join pet on pet.pet_id=appointment.pet_id left join vet on vet.vet_id=appointment.vet_id";
+                " left join pet on pet.pet_id=appointment.pet_id left join vet on vet.vet_id=appointment.vet_id" +
+                " where pet.health_state='Unhealthy' or pet.health_state='Critical'";
             if (UID != null && PID == null)
                 query += $" where User_ID={UID} ";
             else if (PID != null && UID == null)

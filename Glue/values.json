@@ -114,6 +114,22 @@
     "锡林郭勒盟": "Xilingol",
     "阿拉善盟": "Alxa"
   },
+  "Hunan": {
+    "长沙市": "Changsha",
+    "株洲市": "Zhuzhou",
+    "湘潭市": "Xiangtan",
+    "衡阳市": "Hengyang",
+    "邵阳市": "Shaoyang",
+    "岳阳市": "Yueyang",
+    "常德市": "Changde",
+    "张家界市": "Zhangjiajie",
+    "益阳市": "Yiyang",
+    "郴州市": "Chenzhou",
+    "永州市": "Yongzhou",
+    "怀化市": "Huaihua",
+    "娄底市": "Loudi",
+    "湘西土家族苗族自治州": "Xiangxi Tujia and Miao Autonomous Prefecture"
+  },
   "Heilongjiang": {
     "哈尔滨市": "Harbin",
     "齐齐哈尔市": "Qiqihar",
@@ -383,7 +399,7 @@
     "周口市": "Zhoukou",
     "驻马店市": "Zhumadian",
     "济源市": "Jiyuan"
-},
+  },
   "Hubei": {
     "武汉市": "Wuhan",
     "黄石市": "Huangshi",
@@ -583,7 +599,7 @@
     "用户名不得大于20位!"
 
   ],
-  "censor_state":[
+  "censor_state": [
     "to be censored",
     "aborted",
     "legitimate",
@@ -591,7 +607,7 @@
     "invalid",
     "at capacity"
   ],
-  "foster":[
+  "foster": [
     "恭喜你，申请寄养成功!",
     "时间冲突",
     "不存在此宠物",

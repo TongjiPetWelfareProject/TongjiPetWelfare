@@ -68,6 +68,7 @@ namespace PetFoster.BLL
         public static void DoneTreatment(int pid, int vid, DateTime value)
         {
             AppointmentServer.InsertTreatTime(pid, vid, value);
+            PetServer.UpdateStatus(pid.ToString(), "Well");
         }
     }
 }

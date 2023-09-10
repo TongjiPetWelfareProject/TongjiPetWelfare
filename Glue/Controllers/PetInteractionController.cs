@@ -270,7 +270,14 @@ namespace Glue.Controllers
             }
             catch
             {
-                time= DateTime.ParseExact(comment_data.time, "yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
+                try
+                {
+                    time = DateTime.ParseExact(comment_data.time, "yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
+                }
+                catch
+                {
+                    time = DateTime.ParseExact(comment_data.time, "yyyy-MM-ddTHH:mm:ss.sss", CultureInfo.InvariantCulture);
+                }
             }
             if(time == null)
             {
