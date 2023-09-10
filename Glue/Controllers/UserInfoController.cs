@@ -73,6 +73,12 @@ namespace WebApplicationTest1
         [HttpPost("editinfo")]
         public IActionResult EditUserInfo([FromBody] UserInfoModel userinfoModel)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            userinfoModel.user_id = uid;
             int exit = UserServer.CheckUserPhoneExistence(userinfoModel.phone);
             User status = UserServer.GetUserByTel(userinfoModel.phone);
 
@@ -110,6 +116,12 @@ namespace WebApplicationTest1
         {
             try
             {
+                string? uid = TokenHelper.GetUserIdFromToken(User);
+                if (string.IsNullOrEmpty(uid))
+                {
+                    return Unauthorized("用户未登录！");
+                }
+                userinfoModel.user_id = uid;
                 int result=UserManager.ChangePassword(userinfoModel.user_id, ComputeSHA256Hash(userinfoModel.currentpassword), ComputeSHA256Hash(userinfoModel.editedpassword));
                 if(result == 0) { return Ok(0); }
                 else if(result == -2) { return BadRequest(-2); }//密码不符合要求
@@ -133,6 +145,12 @@ namespace WebApplicationTest1
         {
             try
             {
+                string? uid = TokenHelper.GetUserIdFromToken(User);
+                if (string.IsNullOrEmpty(uid))
+                {
+                    return Unauthorized("用户未登录！");
+                }
+                avatarRequest.user_id = uid;
                 string FileName = await _fileHelper.SaveFileAsync(avatarRequest.filename[0]);
                 UserManager.UpdateAvatar(avatarRequest.user_id, FileName);
                 return Ok("上传头像成功");
@@ -146,6 +164,12 @@ namespace WebApplicationTest1
         [HttpPost("userinfo")]
         public IActionResult GetUserInfo([FromBody] UserInfoModel userinfoModel)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            userinfoModel.user_id = uid;
             int likenum = UserManager.GetLikeNum(userinfoModel.user_id);
             int readnum = UserManager.GetReadNum(userinfoModel.user_id);
             string user_name = UserServer.GetName(userinfoModel.user_id);
@@ -233,6 +257,12 @@ namespace WebApplicationTest1
         [HttpPost("usermedical")]
         public IActionResult GetUserMedical([FromBody] UserInfoModel userinfoModel)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            userinfoModel.user_id = uid;
             DataTable medical = AppointmentManager.GetUserAppointment(userinfoModel.user_id);
             string json = DataTableToJson(medical);
             return Content(json, "application/json");

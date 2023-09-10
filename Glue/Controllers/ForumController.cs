@@ -66,12 +66,25 @@ namespace Glue.Controllers
         [HttpPost("postcontent")]
         public async Task<IActionResult> PostContent([FromForm] PostRequestModel postModel)
         {
-            if(postModel.user_id == null)
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            /*
+            if (postModel.user_id == null)
             {
                 return BadRequest("用户未登录");
+            }*/
+            postModel.user_id = uid;
+
+            string? role = TokenHelper.GetRoleFromToken(User);
+            if (string.IsNullOrEmpty(role))
+            {
+                return Unauthorized("用户信息异常！");
             }
             string acstatus = UserServer.GetStatus(postModel.user_id);
-            string role = UserServer.GetRole(postModel.user_id);
+            // string role = UserServer.GetRole(postModel.user_id);
             
             if ((acstatus == "Warning Issued" || acstatus == "Banned" ||acstatus=="Under Review")&&role=="User")
                 return BadRequest("您的账号活动异常，无法发布帖子");
@@ -121,6 +134,12 @@ namespace Glue.Controllers
         [HttpPost("addcomment")]
         public IActionResult AddComment([FromBody] PostModel postModel)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            postModel.user_id = uid;
             string acstatus = UserServer.GetStatus(postModel.user_id);
             if (acstatus == "Warning Issued" || acstatus == "Banned" || acstatus == "Under Review")
                 return BadRequest("您的账号活动异常，无法发布评论");
@@ -134,6 +153,12 @@ namespace Glue.Controllers
         [HttpPost("likepost")]
         public IActionResult LikePost([FromBody] PostModel postModel)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            postModel.user_id = uid;
             Console.WriteLine("收到点赞帖子请求,帖子ID：" + postModel.post_id + "点赞人ID：" + postModel.user_id);
             LikePostManager.GiveALike(postModel.user_id, postModel.post_id);
             return Ok("点赞或取消成功");
@@ -149,6 +174,12 @@ namespace Glue.Controllers
         [HttpPost("deletecomment")]
         public IActionResult DeleteComment([FromBody] PostModel postModel)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            postModel.user_id = uid;
             Console.WriteLine("收到获取点赞信息请求,帖子ID：" + postModel.post_id + "点赞人ID：" + postModel.user_id);
             CommentPostManager.UndoACommentPost(postModel.user_id, postModel.post_id,postModel.comment_time);
             return Ok();
@@ -157,6 +188,12 @@ namespace Glue.Controllers
         [HttpPost("deletepost")]
         public IActionResult DeletePost([FromBody] PostModel postModel)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            postModel.user_id = uid;
             PostImagesServer.DeleteImages(postModel.post_id);
             bool status = ForumPostManager.DeleteForumProfile(postModel.post_id,postModel.user_id);
             Console.WriteLine("收到删除帖子请求：" + postModel.post_id+"；用户id："+postModel.user_id);

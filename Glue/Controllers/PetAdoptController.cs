@@ -129,6 +129,12 @@ namespace Glue.Controllers
         [HttpPost("pet-adopt")]
         public IActionResult Post([FromBody] AdoptData adopt_table)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            adopt_table.user = uid;
             if (adopt_table == null)
             {
                 return BadRequest("Invalid data.");

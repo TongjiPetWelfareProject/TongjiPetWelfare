@@ -24,7 +24,12 @@ namespace Glue.Controllers
         [HttpPost]
         public IActionResult Donate([FromBody] DonateModel donateModel)
         {
-            string userId = donateModel.UserId;
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            string userId = uid;
             decimal amount = donateModel.Amount;
             int status = DonationManager.Donate(userId, amount);
             if(status == 0) { return Ok("捐款成功"); }

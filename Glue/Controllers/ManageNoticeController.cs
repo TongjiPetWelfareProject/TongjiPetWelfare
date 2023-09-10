@@ -116,6 +116,12 @@ namespace Glue.Controllers
         [HttpPost("send-notice")]
         public IActionResult sendNewNotice([FromBody] NoticeModel notice)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            notice.employeeId = uid;
             if (string.IsNullOrEmpty(notice.employeeId) || !int.TryParse(notice.employeeId, out int eid))
             {
                 return BadRequest("Invalid Employee Id.");
@@ -124,10 +130,12 @@ namespace Glue.Controllers
             {
                 return BadRequest("Empty title");
             }
+            /*
             if (UserServer.GetRole(notice.employeeId) != "Admin")
             {
                 return BadRequest("Only admin/employee can edit the bulletin");
             }
+            */
             //调试
             Console.WriteLine("eid:" + eid);
             Console.WriteLine("title:" + notice.title);

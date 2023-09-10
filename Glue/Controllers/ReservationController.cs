@@ -96,8 +96,14 @@ namespace Glue.Controllers
         [HttpPost("submitAppointment")]
         public IActionResult Post([FromBody] AppointmentData appointment_data)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            appointment_data.userId = uid;
             /* check data */
-            if(appointment_data == null)
+            if (appointment_data == null)
             {
                 return BadRequest("Invalid Data");
             }

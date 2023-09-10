@@ -42,5 +42,16 @@ namespace Glue.Controllers
 
             return tokenString;
         }
+        public static string? GetUserIdFromToken(ClaimsPrincipal user)
+        {
+            var userIdClaim = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            return userIdClaim;
+        }
+        public static string? GetRoleFromToken(ClaimsPrincipal user)
+        {
+            var roleClaim = user.Claims.FirstOrDefault(c => c.Type == "Role")?.Value;
+            return roleClaim;
+        }
     }
 }

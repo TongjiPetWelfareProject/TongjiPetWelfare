@@ -122,7 +122,13 @@ namespace Glue.Controllers
         [HttpPost("pet-submit-like")]
         public IActionResult PostLike([FromBody] InteractionData like_data)
         {
-            if(like_data == null)
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            like_data.user = uid;
+            if (like_data == null)
             {
                 return BadRequest("Invalid Data");
             }
@@ -149,6 +155,12 @@ namespace Glue.Controllers
         [HttpPost("pet-cancel-like")]
         public IActionResult PostUndoLike([FromBody] InteractionData like_data)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            like_data.user = uid;
             if (like_data == null)
             {
                 return BadRequest("Invalid Data");
@@ -176,6 +188,12 @@ namespace Glue.Controllers
         [HttpPost("pet-submit-favorite")]
         public IActionResult PostFavorite([FromBody] InteractionData favorite_data)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            favorite_data.user = uid;
             if (favorite_data == null)
             {
                 return BadRequest("Invalid Data");
@@ -203,6 +221,12 @@ namespace Glue.Controllers
         [HttpPost("pet-cancel-favorite")]
         public IActionResult PostUndoFavorite([FromBody] InteractionData favorite_data)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            favorite_data.user = uid;
             if (favorite_data == null)
             {
                 return BadRequest("Invalid Data");
@@ -230,6 +254,12 @@ namespace Glue.Controllers
         [HttpPost("pet-submit-comment")]
         public IActionResult PostComment([FromBody] CommentData comment_data)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            comment_data.user = uid;
             if (comment_data == null)
             {
                 return BadRequest("Invalid Data");
@@ -257,6 +287,12 @@ namespace Glue.Controllers
         [HttpPost("pet-delete-comment")]
         public IActionResult PostUndoComment([FromBody] CommentData comment_data)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            comment_data.user = uid;
             if (comment_data == null)
             {
                 return BadRequest("Invalid Data");

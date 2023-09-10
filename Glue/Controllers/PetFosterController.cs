@@ -47,6 +47,12 @@ namespace Glue.Controllers
         [HttpPost("pet-foster")]
         public IActionResult FosterApply([FromBody] FosterData foster_table)
         {
+            string? uid = TokenHelper.GetUserIdFromToken(User);
+            if (string.IsNullOrEmpty(uid))
+            {
+                return Unauthorized("用户未登录！");
+            }
+            foster_table.user = uid;
             DateTime? rdate = ConvertTools.StringConvertToDate(foster_table.date);
             if (rdate == null)
             {
