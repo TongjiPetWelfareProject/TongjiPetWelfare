@@ -389,7 +389,8 @@ namespace PetFoster.DAL
                 connection.Open();
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "select sum(like_num) from forum_posts where user_id = :user_id";
+                command.CommandText = "select sum(unit_nums) from (select post_id,sum(comment_numpost_func(post_id))" +
+                    " as unit_nums from forum_posts where user_id=:user_id group by post_id);";
                 command.Parameters.Clear();
                 command.Parameters.Add("user_id", OracleDbType.Varchar2, UID, ParameterDirection.Input);
                 try
