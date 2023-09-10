@@ -5,6 +5,7 @@ using System.Data;
 using System.Text;
 using Newtonsoft.Json;
 using PetFoster.DAL;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -124,6 +125,7 @@ namespace Glue.Controllers
         }
 
         // POST api/<PetAdoptController>
+        [Authorize]
         [HttpPost("pet-adopt")]
         public IActionResult Post([FromBody] AdoptData adopt_table)
         {
@@ -154,7 +156,7 @@ namespace Glue.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound("不存在的用户或宠物");
+                return BadRequest(ex);
             }
         }
         private string DataTableToJson(DataTable table)

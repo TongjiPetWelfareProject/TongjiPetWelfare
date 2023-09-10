@@ -157,6 +157,7 @@ namespace PetFoster.DAL
                     catch (OracleException ex)
                     {
                         Console.WriteLine("不存在的用户或宠物");
+                        throw new Exception("不存在的用户或宠物");
                     }
                     connection.Close();
                 }
@@ -165,6 +166,7 @@ namespace PetFoster.DAL
             {
                 // 处理异常
                 Console.WriteLine(ex.ToString());
+                throw;
             }
         }
         public static Pet2 SelectPet(string PID)

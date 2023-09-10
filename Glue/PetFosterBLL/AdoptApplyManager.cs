@@ -44,7 +44,7 @@ namespace PetFoster.BLL
             }
             return false;
         }
-        public static int ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,
+        public static void ApplyAdopt(string UID, string PID, bool gender, bool pet_exp, bool long_term_care,
             bool w_to_treat, decimal d_care_h, string P_Caregiver, decimal f_popul, bool be_children, bool accept_vis)
         {
             //1.获取宠物的健康状况
@@ -61,9 +61,8 @@ namespace PetFoster.BLL
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
-                return -1;
+                throw;
             }
-            return 0;
         }
         //审核
         public static int CensorAdopt(string UID, int pid, DateTime dt, bool pass, out int errcode)

@@ -3,6 +3,8 @@ using PetFoster.BLL;
 using PetFoster.DAL;
 using PetFoster.Model;
 using System.Data;
+using Microsoft.AspNetCore.Authorization;
+
 using static WebApplicationTest1.UserInfoController;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,6 +25,7 @@ namespace Glue.Controllers
             public string? salary { get; set; }
         }
         // GET: api/<EmployeeController>
+        [Authorize(Policy = "AdminOnly")]
         [HttpGet("employee")]
         public IActionResult Get()
         {
@@ -76,7 +79,7 @@ namespace Glue.Controllers
             }
 
         }
-
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost("add-employee")]
         public IActionResult AddEmployee([FromBody] EmployeeModel employee)
         {
@@ -131,6 +134,7 @@ namespace Glue.Controllers
         }
         */
         // PUT api/<EmployeeController>/5
+        [Authorize(Policy = "AdminOnly")]
         [HttpPut("edit-employee/{employeeId}")]
         public IActionResult Put(int employeeId, [FromBody] EmployeeModel employee)
         {
@@ -196,6 +200,7 @@ namespace Glue.Controllers
         }
 
         // DELETE api/<EmployeeController>/5
+        [Authorize(Policy = "AdminOnly")]
         [HttpDelete("delete-employee/{employeeId}")]
         public IActionResult Delete(int employeeId)
         {
